@@ -8,7 +8,7 @@
      - $ sudo apt-get update
      - $ sudo apt-get upgrade
 
-* Install Git program
+* Install Git program manju123@manju123-VirtualBox:~/vsdflow$ sudo apt-get install git 
 * Install Yosys
 
 ![Screenshot from 2024-01-21 15-33-16](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/2e457813-147f-4336-9099-6ef315d52c0c)
