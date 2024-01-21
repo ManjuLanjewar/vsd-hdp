@@ -6,4 +6,5 @@ Day 0
 * Download and install VitualBox
 * Download and install Ubuntu 22.04. The VM configured with 8GB RAM and 40GB storage.
      - Update and upgarde the Ubuntu to latest version of program.
-     - 
+     - $ sudo apt-get update
+     - $ sudo apt-get upgade
