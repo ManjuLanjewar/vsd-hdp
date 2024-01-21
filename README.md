@@ -9,8 +9,7 @@
        <pre>$ sudo apt-get upgrade</pre>   
 * Install Git program <pre>$ sudo apt-get install git</pre>
 * Install Yosys
-  <pre> 
-        $ git clone https://github.com/YosysHQ/yosys.git
+  <pre> $ git clone https://github.com/YosysHQ/yosys.git
         $ cd yosys
         $ sudo apt install make
         $ sudo apt-get install build-essential clang bison flex \
@@ -19,8 +18,6 @@
         libboost-python-dev libboost-filesystem-dev zlib1g-dev
         $ make config-gcc
         $ make
-        $ sudo make install  <pre> 
-   
-    
+        $ sudo make install <pre>     
 ![Screenshot from 2024-01-21 15-33-16](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/2e457813-147f-4336-9099-6ef315d52c0c)
 
