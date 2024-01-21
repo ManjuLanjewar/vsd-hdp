@@ -10,7 +10,7 @@
 
 * Install Git program
 * Install Yosys
- file:///home/manju123/Pictures/Screenshots/Screenshot%20from%202024-01-21%2015-25-03.png
+
 ![Screenshot from 2024-01-21 15-25-03](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/423d922a-59f2-48cf-bed0-fc79f9f4a00b)
 
 
