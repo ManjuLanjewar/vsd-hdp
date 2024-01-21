@@ -11,6 +11,5 @@
 * Install Git program
 * Install Yosys
 
-![Screenshot from 2024-01-21 15-25-03](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/423d922a-59f2-48cf-bed0-fc79f9f4a00b)
-
+![Screenshot from 2024-01-21 15-33-16](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/2e457813-147f-4336-9099-6ef315d52c0c)
 
