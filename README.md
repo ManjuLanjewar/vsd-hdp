@@ -5,12 +5,12 @@
 * Download and install VitualBox
 * Download and install Ubuntu 22.04. The VM configured with 8GB RAM and 40GB storage.
      - Update and upgarde the Ubuntu to latest version of program.
-$ sudo apt-get update
-$ sudo apt-get upgrade
 
-$ sudo apt-get update
-$ sudo apt-get upgrade
-
+<pre>sage: sudo -v [-ABknS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABknS] [-g group] [-h host] [-p prompt] [-U user] [-u user] [command]
+usage: sudo [-ABbEHknPS] [-r role] [-t type] [-C num] [-D directory] [-g group] [-h host] [-p prompt] [-R
+            directory] [-T timeout] [-u user] [VAR=value] [-i|-s] [&lt;command&gt;]
+</pre>
 * Install Git program 
 * Install Yosys
 
