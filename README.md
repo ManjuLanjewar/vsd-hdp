@@ -19,7 +19,8 @@
         libboost-python-dev libboost-filesystem-dev zlib1g-dev
         $ make config-gcc
         $ make
-        $ sudo make install
-    <pre> 
+        $ sudo make install  <pre> 
+   
+    
 ![Screenshot from 2024-01-21 15-33-16](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/2e457813-147f-4336-9099-6ef315d52c0c)
 
