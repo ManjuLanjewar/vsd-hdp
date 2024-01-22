@@ -87,3 +87,9 @@ $ sudo ./configure
 $ sudo make
 $ sudo make install</pre>
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/62a97dfb-f60c-425d-8955-c026a0ac623a)
+
+# Day1
+ <details>
+ <summary> Introduction to Verilog RTL Design and Synthesis </summary>
+
+ </details>
