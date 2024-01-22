@@ -106,8 +106,14 @@ $ sudo make install</pre>
 
 Design under testbench have set of primary inputs or one (in case of inverter) and 1 or more primary outputs. To all Primary inputs need to generate stimulus using Stimulus generator and from all primary output, observe stimulus in stimlus observer. Design is instantiated in testbench. 
 TB doesn't have primary inputs or primary outputs.  
-  
-  ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e8b30f3e-1550-4cc7-abcf-246689bdffc7)
+
+Simulation flow in iverilog simulator:  
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e8b30f3e-1550-4cc7-abcf-246689bdffc7)
+
+Design and testbench applied to iverilog. Any simulator look only for changes in input and going to dump changes in output.
+Output of simulator is vcd file where vcd stands for value change dump because looking for changes in values. So, format is called vcd format.
+To view vcd file, gtkwave tool is used for viewing waveforms and see waveform output. For given inputs, what is change in outputs.
+So, functionality of design is verified from waveforms.
   
    2.SKY130RTLD1SK2 - Labs using iVerilog and gtkwaveg
    - In this enviornment setup is done for running lab. First tool flow setup and then file setup for running the labs
