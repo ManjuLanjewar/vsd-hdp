@@ -128,8 +128,13 @@ $ sudo make install</pre>
 
 uut i.e. unit under test is under testbench. Drag and drop inputs and output to signal window and zoom fit to view the waveforms. To zoom on particular region on waveforms  click on that region and Zoom In to it. To see transition on signal , select signal and click on 'Zoom to End' and then click on 'Find Next Edge' to see forward transitions and 'Find Previous Edge' to see backward transitions. This is useful for evaluating designs.
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/7fc65606-e78f-48b6-8a2e-37f66cddd602)
 
-       
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/5dfdaeff-2518-48f2-a574-558213606358)
+
+  ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d481c7bb-6e6e-4562-83ff-858f0151470d)
+
         
 
 
