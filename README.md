@@ -94,9 +94,19 @@ $ sudo make install</pre>
  <details>
    <summary>1.SKY130RTLD1SK1 - Introduction to Opensource Simulator iVerilog</summary>
                   <summary> -Introduction to iverilog design test bench</summary>
-  - RTL design is implementation of Specifications. Intend of spec need to be verified by simulating design . RTL design is checked for adherence to the spec by simulating design 
-  -Simulator is tool used for simulating the design. iverilog is simulator
-      
+- RTL design is implementation of Specifications. Intend of spec need to be verified by simulating design. RTL design is checked for adherence to the spec by simulating design 
+-Simulator is tool used for simulating the design. iverilog is simulator.
+-Design is the actual verilog code or set of verilog codes/files which has the intended functionality to meet with the required specifications.
+-To check weather design obeying required specifications or not, apply stimulus to design and observe it's ouput and match it to spec.
+ So,Testbench is the setup to apply stimulus(test_vector) to the design to check its functionality. 
+
+-Simulator looks for changes on the input signals and evaluating the output. If there is no change in the input, tere is no change in output. Simulator is looking for change in values of input. 
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/710a2e7d-6660-4d2a-b3ba-4fc721ae8cf3)
+
+Design under testbench have set of primary inputs or one (in case of inverter) and 1 or more primary outputs. To all Primary inputs need to generate stimulus using Stimulus generator and from all primary output, observe stimulus in stimlus observer. Design is instantiated in testbench. 
+TB doesn't have primary inputs or primary outputs.  
+  
   ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e8b30f3e-1550-4cc7-abcf-246689bdffc7)
   
    2.SKY130RTLD1SK2 - Labs using iVerilog and gtkwaveg
