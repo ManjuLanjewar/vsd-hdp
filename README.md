@@ -94,7 +94,8 @@ $ sudo make install</pre>
  <details>
    <summary>1.SKY130RTLD1SK1 - Introduction to Opensource Simulator iVerilog</summary>
                   <summary> -Introduction to iverilog design test bench</summary>
-                                 -Simulator is tool to test design. RTL design is implementation of Speccifications 
+  - RTL design is implementation of Specifications. Intend of spec need to be verified by simulating design . RTL design is checked for adherence to the spec by simulating design 
+  -Simulator is tool used for simulating the design. iverilog is simulator
       
   ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e8b30f3e-1550-4cc7-abcf-246689bdffc7)
   
@@ -127,8 +128,9 @@ iv).vcd file is loaded in gtkwave simulator
 
 uut i.e. unit under test is under testbench. Drag and drop inputs and output to signal window and zoom fit to view the waveforms. To zoom on particular region on waveforms  click on that region and Zoom In to it. To see transition on signal , select signal and click on 'Zoom to End' and then click on 'Find Next Edge' to see forward transitions and 'Find Previous Edge' to see backward transitions. This is useful for evaluating designs.
 
+v)To see file structure of design file and testbench file in gvim which is vim text editor with its own GUI.
 <pre>$ gvim tb_good_mux.v -o good_mux.v</pre>
-
+In testbench, Testbench instantiate design. Testbench doesn't have primary inputs or primary outputs. Design is instantiated in testbench and called design instantiated as uut or dut (design under test). In this testbench, there is no stimuls observer. Instead, directly Dumping vcd files. stimulus is generated. oserving output in gtkwave. 
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/c397a7e9-a8d3-4173-9e67-98679d106305)
 
