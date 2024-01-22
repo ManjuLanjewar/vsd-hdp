@@ -89,7 +89,35 @@ $ sudo make install</pre>
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/62a97dfb-f60c-425d-8955-c026a0ac623a)
 
 # Day1
- <details>
- <summary> Introduction to Verilog RTL Design and Synthesis </summary>
+ ### Introduction to Verilog RTL Design and Synthesis
 
- </details>
+ <details>
+   <summary>1.SKY130RTLD1SK1 - Introduction to Opensource Simulator iVerilog</summary>
+                  <summary> -Introduction to iverilog design test bench</summary>
+                                 -Simulator is tool to test design. RTL design is implementation of Speccifications 
+      
+  ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e8b30f3e-1550-4cc7-abcf-246689bdffc7)
+   2.SKY130RTLD1SK2 - Labs using iVerilog and gtkwaveg
+   
+         - In this enviornment setup is done for running lab. First tool flow setup and then file setup for running the labs
+            i. Clone the below repo as it contains library files and verilog files. 
+                Library files contains verilog model and SKY130 standard cell library which will be used for synthesis. 
+                verilog_model contains all standard cell verilog models of standard cells which are present in library files.
+                Verilog_files contains source file and its corresponding testbench files.
+                
+       $ git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
+       
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/c08e0b6b-6ccf-4aa6-9f3e-eb3ddbd9d130)
+
+      - Design files which are present in verilog_file folder will be loaded in iverilog. After loading design file, iverilog create output file              (a.out) 
+
+               $ iverilog good_mux.v tb_good_mux.v
+      
+      - Execute the a.out file to generate the VCD info as a .vcd file(output of Simulator):
+      
+              $ ./a.out
+           
+      -.vcd file is loaded in gtkwave simulator
+
+        $ gtkwave tb_good_mux.vcd
