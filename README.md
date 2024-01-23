@@ -150,3 +150,22 @@ In testbench, Testbench instantiate design. Testbench doesn't have primary input
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/c397a7e9-a8d3-4173-9e67-98679d106305)
 
+3) Introduction to Yosys and Logic Synthesis
+   * Yosysy is synthesizer tool used or converting RTL to netlist.
+   
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/8002d046-99c8-4eaa-8132-5dcb22f6b6a6)
+
+Setup shows, read_verilog command to read design.  read_liberty command to read .lib.  write_verilog command to write out netlist file. Execute write_verilog, to get netlist output.Netlist is represantation of the design in the form of standard cells present in the .lib. 
+So, Design and netlist should be one and the same.
+
+
+
+
+
+
+
+
+
+
+
