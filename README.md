@@ -240,7 +240,8 @@ Note that it has inferred what all cells (i.e.3 input signals, 1 output signal, 
 
 To view the logic it realized in graphical form write show inside yosys:
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/5bd92b93-a777-429e-bd08-6fce12a2dc8e)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/7ce921e8-630b-411b-8e2f-7ae39e1b6781)
+
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/26778c08-5aad-4b43-9129-a8a2243803a5)
 
