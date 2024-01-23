@@ -190,6 +190,10 @@ Tclk > Tcq_A + Tcombi + Tsetup_B. This is minimum requirement of clock period an
 To achive maximum clock speed, because min clock period, maximum will be clk speed so better is performance. Always looking for max performance, these delays (i.e. Tcq_A, Tcombi, Tsetup) should be as less as possible. so need cell to work very fast to make Tcombi small. So, are faster cells sufficient? 
 should have faster cells in .lib? why do have slow and medium cells in .lib? 
 Why do you need slow Cells?
+F/F A is launching and F/F B to capture after F/F A i.e in next clk. Whatever F/F A is launching in previous cycle, it should be captured by F/F B in next clock cycle. If F/F B captures when F/F A is launching in previous cycle then there will be mismatch what F/F A launch in previous cycle. Missing some data. Need to guarantee minimum delay, that is delay from F/F A to F/F B should be greater than hold time.
+Hold time of F/F is time after edge of clock, data should not change. Fastest change that can happen, the input of B should be after certain some time. so that F/F B reliablly catpture previous data. To ensure that there are no hold issues at F/F B, we need cells to work slowly. No need of fast cells.
+, if start using fast cells, violating hold. because what my A is trying given out , may appear at. 
+Cicuit should work fast but not ultra fast, should be optimally fast. Need some cells to work slowly also to meet hold time. Need some cells fast to meet setup. need variety of cells to meet this requieremnt ....thos is present in .lib
 
 Yes, to increase performance until the required state, but we need slower cells to meet HOLD. The collection of these forms the .lib. 
 
