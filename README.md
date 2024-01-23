@@ -205,18 +205,30 @@ Faster cells Vs Slower Cells
 LOAD in Digital Logic Circuit is the capacitance. Faster is charging and discharging of capacitance, lesser is cell delay. charge capacitance at fast, propogation delay is less.  
 
 Selection of Cells
+
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/f77dcd03-7ef0-464e-8e96-4d15b4dc7885)
 
 
 Synthesis
+
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/9101ebec-983b-4be1-afd2-d5f21a71e70e)
 
 
  4) Labs using Yosys and Sky130 PDKs 
 
+    Invoke Yosys
 
+<pre>yosys</pre>
 
+    Once inside yosys, read_liberty command can be used to read libraries:
 
+<pre>read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
+
+    read the design (verilog file)
+    
+<pre> read_verilog good_mux.v</pre>
+
+  
 
 
 
