@@ -183,10 +183,15 @@ Logic Synthesis comes to resolve the problem of translating RTL code to Digital 
 
 Why different flavours of Gate requied. 
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/56a6c270-d0ed-4f67-b78e-d02d2fe6f90f)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/73a8d382-79d4-41b5-bb18-1726da58f40a)
 
 F/F A and F/F B connected through combinational circuit. What is maximum speed of combinational circuit work? what is max clock rate can be applied to this? Tclk is period of clock. Tclk should be such big that time for data to travel from F/F A to F/F B, this should be achieved in 1 clk cycle. Tcq_A is Propogation ddelay of F/F A. Tcombi is propogation delay of combinational circuit. Set up time (Tsetup_B) is time before clock edge need to supply data at input of F/F B. Before clock arrives, data needs to be stable a small duration before. That small duration is called set up time.   
-Tclk > Tcq_A + Tcombi + Tsetup_B. This is minimum requirement of clock period and that will decide maximum frequency Fclk(max) will be 1/ Tclk(min).
+Tclk > Tcq_A + Tcombi + Tsetup_B. This is minimum requirement of clock period and that will decide maximum frequency, Fclk(max) will be 1/ Tclk(min).
+To achive maximum clock speed, because min clock period, maximum will be clk speed so better is performance. Always looking for max performance, these delays (i.e. Tcq_A, Tcombi, Tsetup) should be as less as possible. so need cell to work very fast to make Tcombi small. So, are faster cells sufficient? 
+should have faster cells in .lib? why do have slow and medium cells in .lib? 
+Why do you need slow Cells?
+
+Yes, to increase performance until the required state, but we need slower cells to meet HOLD. The collection of these forms the .lib. 
 
 
 
