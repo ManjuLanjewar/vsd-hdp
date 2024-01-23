@@ -199,6 +199,29 @@ Hold time of F/F is time after edge of clock, data should not change. Fastest ch
 , if start using fast cells, violating hold. because what my A is trying give out , may appear at. 
 Cicuit should work fast but not ultra fast. Cicuit should be optimally fast. Need some cells to work slowly to meet hold time. Need some cells fast to meet setup. Need variety of cells to meet this requirement and this collection is present in .lib
 
+Faster cells Vs Slower Cells
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e08806b5-e2f4-412f-a123-f59a5b123441)
+
+LOAD in Digital Logic Circuit is the capacitance. Faster is charging and discharging of capacitance, lesser is cell delay. charge capacitance at fast, propogation delay is less.  
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/f77dcd03-7ef0-464e-8e96-4d15b4dc7885)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
