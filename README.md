@@ -194,3 +194,18 @@ Netlist is true representation of design that means the design was written as be
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
