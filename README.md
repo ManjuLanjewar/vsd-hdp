@@ -142,20 +142,6 @@ iv).vcd file is loaded in gtkwave simulator
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/8bcee619-6741-4493-9a84-20f1d0a8e56e)
 
-Logic Synthesis: 
-RTL design is behavioural repesentation of required specifications written in behavioural form in verilog HDL. 
-To get hardware digital design circuit how to map RTL code and digital design circuit. Synthesis means RTL to gate level translation. Design is converted into gates and connections are made between gates and file that is written out what we call out as netlist. 
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/9dff0597-764b-42f1-a645-e98d117dc01b)
-
-Logic Synthesis comes to resolve the problem of translating RTL code to Digital Logic Circuit form (Gate level translation + connecyions between the gates) by giving out the netlist file.
-.lib is a collection of logical modules includes all basic gates like AND, OR, NOT, etc.( bucket of all standard cells availabale), as well as different flavors of same gates and their functionalities (slow, medium and fast versions/ 2, 3, 4 input versions). 
-.lib is just collection of all standard cell, different flavours of same standard cell , different flavours of functionalities of same standard cell 
-.lib contain std cells to implement any boolean logic functionalities. 
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/2c96a561-bca1-445e-a632-0bf1616b04ee)
-
-
 uut i.e. unit under test is under testbench. Drag and drop inputs and output to signal window and zoom fit to view the waveforms. To zoom on particular region on waveforms  click on that region and Zoom In to it. To see transition on signal , select signal and click on 'Zoom to End' and then click on 'Find Next Edge' to see forward transitions and 'Find Previous Edge' to see backward transitions. This is useful for evaluating designs.
 
 v)To see file structure of design file and testbench file in gvim which is vim text editor with its own GUI.
@@ -181,11 +167,18 @@ Here, to verify the synthesis netlist file and testbench file is given as  input
 Netlist is true representation of design that means the design was written as behavioral verilog code, netlist is verilog code in terms of standard cells but between design and synthesize netlist, design is form of RTL code and design in form of netlist, primary input and outputs have not changed, should remains same. Use same testbench as RTL testbench. No need of new TB.    
 (This means that the netlist and the RTL are simply two representations of the design. The netlist representing rhe design in terms of standard cells and the RTL in terms of behavior.)
 
-RTL design is behavioural representation of required sepcifications which written in Verilog HDL. To get hardware digital circuit from RTL then how to map hardware digital circuit and RTL. Synthesis means RTL to Gate level traslation. Design is converted into Gates and connection  are made between gates and file that written out , called as netlist. RTL , front end libraries going through synthesis to get Netlist 
+Logic Synthesis: 
+RTL design is behavioural repesentation of required specifications written in behavioural form in verilog HDL. 
+To get hardware digital design circuit how to map RTL code and digital design circuit. Synthesis means RTL to gate level translation. Design is converted into gates and connections are made between gates and file that is written out called as netlist. 
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b0d461dc-d5ac-43ce-9a5b-40c83f0a37b5)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/9dff0597-764b-42f1-a645-e98d117dc01b)
 
+Logic Synthesis comes to resolve the problem of translating RTL code to Digital Logic Circuit form (Gate level translation + connecyions between the gates) by giving out the netlist file.
+.lib is a collection of logical modules includes all basic gates like AND, OR, NOT, etc.( bucket of all standard cells availabale), as well as different flavors of same gates and their functionalities (slow, medium and fast versions/ 2, 3, 4 input versions). 
+.lib is just collection of all standard cell, different flavours of same standard cell , different flavours of functionalities of same standard cell 
+.lib contain std cells to implement any boolean logic functionalities. 
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/2c96a561-bca1-445e-a632-0bf1616b04ee)
 
 
 
