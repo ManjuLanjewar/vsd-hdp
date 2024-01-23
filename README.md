@@ -224,12 +224,15 @@ Once inside yosys, read_liberty command can be used to read libraries:
 
 read the design (verilog file)
  <pre> read_verilog good_mux.v</pre>
-
+After executing read command, "Successfully finished Verilog frontend",this statement should be printed, means verilog file is read successfully.
   
+To synthesize the design, specify the module to use (good_mux):
+<pre>synth -top good_mux</pre>
+synth -top specify what is module going to be synthesize. 
 
-
-
-
+To generate the netlist:
+<pre>abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib </pre>
+abc convert RTL file into Gates and what gates link is specified....logic of good_mux will be  realized 
 
 
 
