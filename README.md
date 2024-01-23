@@ -216,17 +216,14 @@ Synthesis
 
  4) Labs using Yosys and Sky130 PDKs 
 
-    Invoke Yosys
-
+Invoke Yosys
 <pre>yosys</pre>
 
-    Once inside yosys, read_liberty command can be used to read libraries:
-
+Once inside yosys, read_liberty command can be used to read libraries:
 <pre>read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
 
-    read the design (verilog file)
-    
-<pre> read_verilog good_mux.v</pre>
+read the design (verilog file)
+ <pre> read_verilog good_mux.v</pre>
 
   
 
