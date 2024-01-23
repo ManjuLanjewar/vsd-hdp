@@ -174,6 +174,7 @@ To get hardware digital design circuit how to map RTL code and digital design ci
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/9dff0597-764b-42f1-a645-e98d117dc01b)
 
 Logic Synthesis comes to resolve the problem of translating RTL code to Digital Logic Circuit form (Gate level translation + connecyions between the gates) by giving out the netlist file.
+
 .lib is a collection of logical modules includes all basic gates like AND, OR, NOT, etc.( bucket of all standard cells availabale), as well as different flavors of same gates and their functionalities (slow, medium and fast versions/ 2, 3, 4 input versions). 
 .lib is just collection of all standard cell, different flavours of same standard cell , different flavours of functionalities of same standard cell 
 .lib contain std cells to implement any boolean logic functionalities. 
