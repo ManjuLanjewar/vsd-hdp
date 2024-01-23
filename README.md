@@ -156,13 +156,6 @@ Logic Synthesis comes to resolve the problem of translating RTL code to Digital 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/2c96a561-bca1-445e-a632-0bf1616b04ee)
 
 
-
-
-
-
-
-
- 
 uut i.e. unit under test is under testbench. Drag and drop inputs and output to signal window and zoom fit to view the waveforms. To zoom on particular region on waveforms  click on that region and Zoom In to it. To see transition on signal , select signal and click on 'Zoom to End' and then click on 'Find Next Edge' to see forward transitions and 'Find Previous Edge' to see backward transitions. This is useful for evaluating designs.
 
 v)To see file structure of design file and testbench file in gvim which is vim text editor with its own GUI.
