@@ -188,6 +188,24 @@ Here, to verify the synthesis netlist file and testbench file is given as  input
 Netlist is true representation of design that means the design was written as behavioral verilog code, netlist is verilog code in terms of standard cells but between design and synthesize netlist, design is form of RTL code and design in form of netlist, primary input and outputs have not changed, should remains same. Use same testbench as RTL testbench. No need of new TB.    
 (This means that the netlist and the RTL are simply two representations of the design. The netlist representing rhe design in terms of standard cells and the RTL in terms of behavior.)
 
+RTL design is behavioural representation of required sepcifications which written in Verilog HDL. To get hardware digital circuit from RTL then how to map hardware digital circuit and RTL. Synthesis means RTL to Gate level traslation. Design is converted into Gates and connection  are made between gates and file that written out , called as netlist. RTL , front end libraries going through synthesis to get Netlist 
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b0d461dc-d5ac-43ce-9a5b-40c83f0a37b5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
