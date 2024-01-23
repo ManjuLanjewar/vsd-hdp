@@ -212,7 +212,7 @@ Synthesis
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/9101ebec-983b-4be1-afd2-d5f21a71e70e)
 
 
-
+ 4) Labs using Yosys and Sky130 PDKs 
 
 
 
