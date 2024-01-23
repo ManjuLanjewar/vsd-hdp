@@ -260,7 +260,8 @@ There is more switch to use to get netlist in simple way.
 <pre>!gvim good_mux_netlist.v</pre>
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/de2a6edb-7ae9-4469-a780-194d50c754da)
 
-
+here,instantiation of MUX is created. given some name to instantiation (Here, sky130_fd_sc_hd_mux2_1_4_)
+some internal nets or wires are created (like, wire_0_, wire_1_ etc.)to make connection
 
 
 
