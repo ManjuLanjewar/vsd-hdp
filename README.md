@@ -265,10 +265,10 @@ some internal nets or wires are created (like, wire_0_, wire_1_ etc.)to make con
 
 Top module of netlist is same module what we synthesize i.e.good_mux module 
 
+## Day 2
+| Timing libs, hierarchical vs flat synthesis and efficient flop coding styles
 
-
-
-
+1) Introduction to timing.libs
 
 
 
