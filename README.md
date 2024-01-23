@@ -153,8 +153,7 @@ In testbench, Testbench instantiate design. Testbench doesn't have primary input
 3) Introduction to Yosys and Logic Synthesis
    * Yosys is synthesizer tool used or converting RTL to netlist.
    
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/8002d046-99c8-4eaa-8132-5dcb22f6b6a6)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6ae20ed1-6b19-4e65-b03b-96ac310a4837)
 
 Setup shows, read_verilog command to read design.  read_liberty command to read .lib.  write_verilog command to write out netlist file. Execute write_verilog, to get netlist output.Netlist is represantation of the design in the form of standard cells present in the .lib. 
 So, Design and netlist should be one and the same.
@@ -164,7 +163,8 @@ How to verify synthesis is correct or how to verify how tool has not messed up w
 Need to verify synthesis output as well.
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6c6bacc8-8a82-4e25-8808-bd743c2fd94f)
 
-
+Here, to verify the synthesis netlist file and testbench file is given as  input to simulator tool iverilog to get vcd output. Load the waveform in gtkwave tool to observe stimulus. This stimulus should be same as output observed during RTL simulation. 
+Netlist is true representation of my design that means the design was written as behavioral verilog code, my netlist is verilog code in terms of standard cells but betwwen my design and my synthesize netlist, my design is form of RTL code and design in form of netlist, primary input and outputs have not changed, should remains same. Use same testbench as RTL testbench. No need of new TB.   
 
 
 
