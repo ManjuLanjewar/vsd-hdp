@@ -261,8 +261,8 @@ There is more switch to use to get netlist in simple way.
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/de2a6edb-7ae9-4469-a780-194d50c754da)
 
 here,instantiation of MUX is created. given some name to instantiation (Here, sky130_fd_sc_hd_mux2_1_4_)
-some internal nets or wires are created (like, wire_0_, wire_1_ etc.)to make connection
-(This explanation os simplified netlist should be understand from kunal)
+some internal nets or wires are created (like, wire_0_, wire_1_ etc.)to make connection (This explanation os simplified netlist should be understand from kunal)
+
 Top module of netlist is same module what we synthesize i.e.good_mux module 
 
 
