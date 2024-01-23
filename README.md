@@ -238,7 +238,11 @@ abc command  convert RTL file into Gates and what gates it has to link to is spe
 
 Note that it has inferred what all cells (i.e.3 input signals, 1 output signal, internal signals 0) as shown above. 
 
+To view the logic it realized in graphical form write show inside yosys:
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/5bd92b93-a777-429e-bd08-6fce12a2dc8e)
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/26778c08-5aad-4b43-9129-a8a2243803a5)
 
 
 
