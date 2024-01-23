@@ -232,10 +232,11 @@ synth -top specify what is module going to be synthesize.
 
 To generate the netlist:
 <pre>abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib </pre>
-abc convert RTL file into Gates and what gates link is specified....logic of good_mux will be  realized 
+abc command  convert RTL file into Gates and what gates it has to link to is specified in library....logic of good_mux will be realized in terms of standard cells available in library sky130_fd_sc_hd__tt_025C_1v80.lib
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/de53476e-f337-46b3-97b9-9608848b7224)
 
-
+Note that it has inferred what all cells (i.e.3 input signals, 1 output signal, internal signals 0) as shown above. 
 
 
 
