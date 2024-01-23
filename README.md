@@ -246,11 +246,13 @@ To view the logic it realized in graphical form, write show inside yosys:
 
 Mux is realized completely in library sky130_fd_sc_hd__tt_025C_1v80.lib which is used.
 
-How to write netlist 
+How to write netlist
+
 The commands to write the netlist is write_verilog
 <pre>write_verilog good_mux_netlist.v</pre>
 <pre>!gvim good_mux_netlist.v</pre>
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/757a78fa-cdfd-4827-abec-c90f2fcad3c4)
+
 It has dump out so many extra information. 
 
 There is more switch to use to get netlist in simple way. 
