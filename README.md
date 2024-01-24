@@ -269,7 +269,7 @@ Top module of netlist is same module what we synthesize i.e.good_mux module
 I] Introduction to library files 
 | Timing libs, hierarchical vs flat synthesis and efficient flop coding styles
 
-1) Introduction to timing.libs
+1) Introduction to .libs
 
  What exactly .lib looks like and what it contains? Libraries present in sky130_fd_sc_hd__tt_025C_1v80.lib
 <pre>$ gvim ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
@@ -354,7 +354,12 @@ Here, 2 inverters output is given as input to NAND Gate. As per DeMorgans theore
 
 CMOS NAND implementation is choosen. In NAND, NMoS is stacked. In case, to realize NOR, in CMOS, OR cannot be implemented. CMOS always implements inverting function. So, Use NOR, followed by inverter to get OR. It will have stacked PMoS followed by inverter to get OR Gate. Stacking PMoS is always bad.Because PMoS has poor mobility and to improve, make wide cells which requires good logical efforts. (Exercice: Read about This)
 
-
+Flattened
+To flatten the hierarchical design, the command flatten is used to write the flatten netlist.
+<pre>yosys&gt; flatten</pre>
+<pre>yosys&gt; write_verilog multiple_modules_flat.v</pre>
+<pre>yosys&gt; write_verilog -noattr multiple_modules_flat.v</pre>
+<pre>yosys&gt; !gvim multiple_modules_flat.v</pre>
 
 
 
