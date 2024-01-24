@@ -282,10 +282,18 @@ Name of library "sky130_fd_sc_hd__tt_025C_1v80". Here, 130nm library, "tt" stand
 When looked into library, three words come into picture i.e. P V T where P stands for Process, V stands for Voltage, T stands for temperature. 
 These 3 are very important for design to work. There will be variation in process due to fabrication. Variation due to voltage because when vary voltage there will be variation in behaviour of circuit. Semiconductors are very sensitive to temperature. These these three together will determine how my silicon is going to work faster or slower. When silicon to work, it should work all the corner. If any of parameter varies Process/ Voltage /temperature, still silicon should work
 Ex. CD player sold in different parts of world and it should work in country like Dubai where temp high, India where temp varies whole yea and in  country like Swiss, temp less than 20C and somtimes 0C. Across all places, all time, CD player circuit should wotk. 
-So, we need to factor in theses variation while designing circuit. So, libraries will be charactrise to model theses variations. These P, V, T is indicated in first line of library name i.e 'tt' indicates process, 025C indicates temperature and 1v indicates Voltage. 
+So, we need to factor in theses variation while designing circuit. So, libraries will be charactrised to model theses variations. These P, V, T is indicated in first line of library name i.e 'tt' indicates process, 025C indicates temperature and 1v80 indicates Voltage. 
+Then, .lib will give information about technology used(CMOS), delay model (lookup table) used, and then units of time is specified in (ns), voltage (V), resistance (kohm), power(nW), capacitance(pf), current(mA) and operating condition (P, V, T).
+.lib contains lot of all standrad cells with different flavours of different cells, different flavours of same cells. 
+.lib contains different features of cell, it will tell leakage power for all input condition. 
+For Example 
+cell ("sky130_fd_sc_hd__a2111o_1") {
+        leakage_power () {
+            value : 0.0017945000;
+            when : "!A1&!A2&!B1&!C1&D1";
+        }
 
-
-
+a2111o means it is AND-OR gate,and it's 2-input AND gate , remaining are OR Gate. It is havinf so many inputs "!A1&!A2&!B1&!C1&D1 (A1 and A2 are AND and OR it with B1, C1 and D1
 
 
 
