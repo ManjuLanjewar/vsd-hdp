@@ -320,8 +320,13 @@ Read liberty file
 <pre>yosys&gt; read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
 Read Verilog 
 <pre>yosys&gt; read_verilog multiple_modules.v</pre>
+<pre>yosys&gt; synth -top multiple_modules</pre>
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/5d0542db-9ead-4732-b2be-cde61d8bf172)
 
+It shows report.
+
+<pre>yosys&gt; abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib </pre>
 
 
 
