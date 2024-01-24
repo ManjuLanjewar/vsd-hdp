@@ -318,9 +318,7 @@ First launch yosys
 <pre><font color="#12488B"><b>~/vsdflow/VLSI/sky130RTLDesignAndSynthesisWorkshop/verilog_files</b></font>$ yosys</pre>
 Read liberty file 
 <pre>yosys&gt; read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
-<pre>read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
 Read Verilog 
-<pre>read_verilog multiple_modules.v</pre>
 <pre>yosys&gt; read_verilog multiple_modules.v</pre>
 
 
