@@ -361,6 +361,22 @@ To flatten the hierarchical design, the command flatten is used to write the fla
 <pre>yosys&gt; write_verilog -noattr multiple_modules_flat.v</pre>
 <pre>yosys&gt; !gvim multiple_modules_flat.v</pre>
 
+Netlist is shown in gvim. To see both Hierarchial and Flattend netlist simultaneously, write command in gvim as (:vsp multiple_modules_hier.v)
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/29120127-b914-44cf-bbb9-820bd8eaf4f3)
+
+In Hierarchial design, hierarchies of sub-module 1 and sub-module 2 are preserved.
+In Flattened design, single netlist, hierarchies are flattened out. Instantiation of AND Gate and OR Gate directly under multiple_module.  
+This is difference of using flatten switch vs not using flatten switch.
+
+The submodule synthesis (instead of top level as above) goes like this:
+
+<pre>yosys&gt; read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
+<pre>yosys&gt; read_verilog multiple_modules.v</pre>
+<pre>yosys&gt; synth -top multiple_modules</pre>
+<pre>yosys&gt; abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
+<pre>yosys&gt; flatten</pre>
+<pre>yosys&gt; show</pre>
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/28a3047a-8ddc-44d3-aa6c-7dfc91735cc5)
 
 
