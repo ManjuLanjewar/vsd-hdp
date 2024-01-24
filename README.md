@@ -313,8 +313,13 @@ It has 2 sub modules, sub_module1 is an AND gate, sub_module2 is OR Gate and mod
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/5e65e523-1f20-494e-8c20-f49955143c03)
 
 This is how design looks. Here, multiple_module where sub_module1 which is AND Gate instantiated as u1 and sub_module2 which is OR Gate is instantiated as u2. multiple_module has 3 inputs a,b,c and 1 output y.
-
-
+When synthesize, how it make differnce and why it should make difference?
+First launch yosys
+<pre><font color="#12488B"><b>~/vsdflow/VLSI/sky130RTLDesignAndSynthesisWorkshop/verilog_files</b></font>$ yosys</pre>
+Read liberty file 
+<pre>read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
+Read Verilog 
+<pre>read_verilog multiple_modules.v</pre>
 
 
 
