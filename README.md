@@ -266,13 +266,19 @@ some internal nets or wires are created (like, wire_0_, wire_1_ etc.)to make con
 Top module of netlist is same module what we synthesize i.e.good_mux module 
 
 ## Day 2
+Introduction to library files 
 | Timing libs, hierarchical vs flat synthesis and efficient flop coding styles
 
 1) Introduction to timing.libs
 
+ What exactly .lib looks like and what it contains? Libraries present in sky130_fd_sc_hd__tt_025C_1v80.lib
+<pre>$ gvim ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
 
-
-
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/939b38f5-0a8d-4009-b285-1b562f74c645)
+After opening libraru file in gvim, to have plesant colour, use command :syn off
+First understaning name of library. 
+Name of library "sky130_fd_sc_hd__tt_025C_1v80". Here, 130nm library, "tt" stands for typical. libratry can be slow, fast or typical. 025C is temperature. 
+When looked into library, three words come into picture i.e. P V T where P stands  for Process, V stands for VOltage, T stands for temperature. These 3 are very important for design to work. There will be variation in process due to fabrication i.e 
 
 
 
