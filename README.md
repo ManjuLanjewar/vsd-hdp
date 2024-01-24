@@ -275,10 +275,13 @@ Introduction to library files
 <pre>$ gvim ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/939b38f5-0a8d-4009-b285-1b562f74c645)
+
 After opening libraru file in gvim, to have plesant colour, use command :syn off
 First understaning name of library. 
 Name of library "sky130_fd_sc_hd__tt_025C_1v80". Here, 130nm library, "tt" stands for typical. libratry can be slow, fast or typical. 025C is temperature. 
-When looked into library, three words come into picture i.e. P V T where P stands  for Process, V stands for VOltage, T stands for temperature. These 3 are very important for design to work. There will be variation in process due to fabrication i.e 
+When looked into library, three words come into picture i.e. P V T where P stands for Process, V stands for Voltage, T stands for temperature. 
+These 3 are very important for design to work. There will be variation in process due to fabrication. Variation due to voltage because when vary voltage there will be variation in behaviour of circuit. Semiconductors are very sensitive to temperature. These these three together will determine how my silicon is going to work faster or slower. When silicon to work, it should work all the corner. If any of parameter varies Process/ Voltage /temperature, still silicon should work
+Ex. CD player should work in Dubai where temp high, India where temp varies whole year, in Swiss, temp less than 20C and somtimes 0C. 
 
 
 
