@@ -394,7 +394,17 @@ To synthesize at u1 or u2 level and not at multiple_module level:
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/c928dc79-fc22-4beb-9181-51332cefa51f)
 
-Here seen only sub_module1 i.e. AND Gate. Why did this? To control module synthesize using keyword synth -top. Because
+Here seen only sub_module1 i.e. AND Gate. Why sub_module level synthesize is done? 
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/f8e5fcbf-47bc-4881-bcb6-6228b6ff7d7f)
+
+
+This is your top module and this is multiple instantiation of same component. let's say we have design called multiplier and it is instantiated muliple times i.e. mult1, mult2, mult3, mult4, mult5, mult6...here 6 instantiation of multiplier. So instead of instantiation of multiplier 6 times, synthesize one time and replicate that netlist 6 times and stitched it together in top module. Module levele synthesize is preferred when we have multiple instances of same module. 
+Divide and Conqure: Let's say your deign is very massive. When massive design is given to tool, tool is not doing good job. Instead of giving entire massive design to tool, giving one portion by one portion to tool. So that it writes optimised netlist and stitched all netlist together in top module.
+These are two reason why sub_module level synthesize. In yosys tool, to control which module to synthesize by using keyword synth -top <module name>.
+
+
+
 
 
 
