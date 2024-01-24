@@ -369,8 +369,6 @@ In Hierarchial design, hierarchies of sub-module 1 and sub-module 2 are preserve
 In Flattened design, single netlist, hierarchies are flattened out. Instantiation of AND Gate and OR Gate directly under multiple_module.  
 This is difference of using flatten switch vs not using flatten switch.
 
-The submodule synthesis (instead of top level as above) goes like this:
-
 <pre>yosys&gt; read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
 <pre>yosys&gt; read_verilog multiple_modules.v</pre>
 <pre>yosys&gt; synth -top multiple_modules</pre>
@@ -378,5 +376,27 @@ The submodule synthesis (instead of top level as above) goes like this:
 <pre>yosys&gt; flatten</pre>
 <pre>yosys&gt; show</pre>
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/28a3047a-8ddc-44d3-aa6c-7dfc91735cc5)
+
+Here, no u1 and u2 as it is flattened.  AND Gate, Inverter feeding NAND Gate (i.e. OR Gate). Output of u1 feeding u2 with another input coming from c. 
+This how multiple_module looks in flattended design, complete structure is seen. 
+
+The submodule synthesis (instead of top level as above) goes like this:
+<pre>yosys&gt; read_liberty -lib  ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
+<pre>yosys&gt; read_verilog multiple_modules.v</pre>
+
+To synthesize at u1 or u2 level and not at multiple_module level: 
+
+<pre>yosys&gt; synth -top sub_module1</pre>
+
+<pre>yosys&gt; abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib </pre>
+
+<pre>yosys&gt; show</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/c928dc79-fc22-4beb-9181-51332cefa51f)
+
+Here seen only sub_module1 i.e. AND Gate. Why did this? To control module synthesize using keyword synth -top. Because
+
+
+
 
 
