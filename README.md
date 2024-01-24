@@ -266,7 +266,7 @@ some internal nets or wires are created (like, wire_0_, wire_1_ etc.)to make con
 Top module of netlist is same module what we synthesize i.e.good_mux module 
 
 ## Day 2
-Introduction to library files 
+I] Introduction to library files 
 | Timing libs, hierarchical vs flat synthesis and efficient flop coding styles
 
 1) Introduction to timing.libs
@@ -300,6 +300,13 @@ Here, !A1&!A2&!B1&!C1&D1 means A1, A2, B1 and C1 are all low and D1 high , at th
 Here, for 2 inputs AND gates with different flavours like _and_2_0, Area is 6.256,for _and_2_2, Area is 7.507 and for _and_2_4, Area is 8.758.
 _and_2_4, this is Larger cell than other two but all are _and_2 cell. Larger Cell means this cell employing wider transistors. Wider cell will be faster, but area is more so power is more, delay is less. Smaller cell, delay more,area will be less and power is less.
 
+II] Hierarchical vs Flat Synthesis and how netlist looks about
+
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/2577909c-9d15-4788-86ba-f8b2fbae1b08)
+
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/5e65e523-1f20-494e-8c20-f49955143c03)
 
 
 
