@@ -344,6 +344,8 @@ Netlist for multiple module is as follow:
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/71a8c357-2a27-4e4b-940f-09a55f6b73f0)
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e8e4069b-f8e1-4c83-8f9a-6dda95fb1065)
+
 multiple_module has inputs a,b,c and output y and instantitaion of sub-module 1 which is u1 and sub-module 2 which is u2.
 sub-module 1 is separate module inferring AND Gate and  sub-module 2 is separate module inferring OR Gate but here instead of OR Gate, NAND Gate is inferred.
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/76f60307-a013-46c5-aefc-5384fe1b732a)
