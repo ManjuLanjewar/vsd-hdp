@@ -328,6 +328,28 @@ It shows report.
 
 <pre>yosys&gt; abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib </pre>
 
+<pre>yosys&gt; show multiple_modules</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/a6b87fcd-be39-4e44-9d6e-0e72d014e59c)
+
+Here, it shows top module. Not showing AND Gate or OR Gate. It is showing u1 and u2 which are instance of sub_module1 and sub_module1.
+Ideally it is expected to see AND Gate or OR Gate. This is called Hierarchical design. Here,the hierarchies are preserved:
+
+<pre>yosys&gt; write_verilog -noattr multiple_modules_hier.v</pre>
+
+<pre>yosys&gt; !gvim multiple_modules_hier.v</pre>
+
+Netlist for multiple module is as follow: 
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/71a8c357-2a27-4e4b-940f-09a55f6b73f0)
+
+multiple_module has inputs a,b,c and output y and instantitaion of sub-module 1 which is u1 and sub-module 2 which is u2.
+sub-module 1 is separate module inferring AND Gate and  sub-module 2 is separate module inferring OR Gate but here instead of OR Gate, NAND Gate is inferred.
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/76f60307-a013-46c5-aefc-5384fe1b732a)
+
+Here, 2 inverters output is given as input to NAND Gate. As per DeMorgans theorem, NAND Gate is nothing but input inverted OR Gate. so replace NAND Gate with input inverted OR Gate. These invertes are back to back which are cancel out and a and b forms y. OR Gate is expected but sub-module 2 inferred NAND Gate. Why do synthesis do this? 
+
+
 
 
 
