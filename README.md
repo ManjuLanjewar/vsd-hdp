@@ -404,6 +404,24 @@ Divide and Conqure: Let's say your deign is very massive. When massive design is
 These are two reason why sub_module level synthesize. In yosys tool, to control which module to synthesize by using keyword synth -top <module name>.
 
 
+Various Flops Coding Styles and Optimization
+
+Different types of flops, Different coding style. 
+Why Flops? For any combinational circuit, when input is given, output is going to change after propogation delay. Due to this ouput is going to glitch. 
+
+
+Here,when c goes 0, y is 1.  initially a and b both are 0, internal node 'i' is 0. C is going from 1 to 0. So, y is '0'. 
+y was intially 1 because c was 1. Let's say propogation delay of OR Gate as 1ns. After 1ns, c going low, y will go low. 
+Delay of AND gate is 2ns. Now a and b goes high, after 2ns, Node i to go high. After i goes high, it will take propogation delay of OR Gate i.e. 1ns, output y to go high again. but momentarialy y goes low and then high. This is called glitch. 
+For boolean expression (a&B)|c  for input condition a=b=0 and c=1, y=1 
+                                                    a=b=1 and c=0, y=1     
+For both input condition, y=1, but momentarialy 'y' goes low and then high. This is called glitch. 
+In design, there are combinational circuit, more combinational circuit means more glitches. Output will continuously be glitchy. To avoid this, element required to store value. That element called flops which are like storage elements. In f/f are put in between combinational circuits, using f/f is sort of restrict glitches, way f/f works is, f/f output will change only on edge of clock, So giving clock to this f/f, output of f/f will change only on edge of clock. That means even though i/p of flop is glitching, o/p of f/f will be stable. Output of f/f is stable, this f/f is feeding to combinational circuits. This combinational circuits sees stable inputs, eventually combinational circuits output will also settle down. Otherwise, this glitches propogates through combinational circuits.Because of putting f/f, this is sort of shielding, this, D,and Q. The Q node is sort of shield from D node because of through clock, there is no connection between D and Q and there is no clock. If clock edge doesn't occur, Q doesn't change. 
+So, Q is shielded from changes in D. Therefore, Q is always giving stable value that means output of combinational circuits will settled down. 
+That ismain pupose of f/f using in digital circuits. There should be intitial state of f/f. If it is unknown, combinational circuit is looking to f/f to evaluate output. If f/f is not initialized, combinational circuits will evaluate into garbage value. To initialize f/f, we have control pins on f/f as SET or RESET. These pins cab be synchronous or asynchronous.
+
+
+
 
 
 
