@@ -409,6 +409,7 @@ Various Flops Coding Styles and Optimization
 Different types of flops, Different coding style. 
 Why Flops? For any combinational circuit, when input is given, output is going to change after propogation delay. Due to this ouput is going to glitch. 
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/0d3b23fc-29ca-4c1a-87fd-de8ed67b3162)
 
 Here,when c goes 0, y is 1.  initially a and b both are 0, internal node 'i' is 0. C is going from 1 to 0. So, y is '0'. 
 y was intially 1 because c was 1. Let's say propogation delay of OR Gate as 1ns. After 1ns, c going low, y will go low. 
