@@ -318,7 +318,7 @@ When synthesize, how it make differnce and why it should make difference?
 First launch yosys
 <pre><font color="#12488B"><b>~/vsdflow/VLSI/sky130RTLDesignAndSynthesisWorkshop/verilog_files</b></font>$ yosys</pre>
 Read liberty file 
-<pre>yosys&gt; read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
+<pre>yosys&gt; <pre>yosys&gt; read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre></pre>
 Read Verilog 
 <pre>yosys&gt; read_verilog multiple_modules.v</pre>
 <pre>yosys&gt; synth -top multiple_modules</pre>
@@ -448,7 +448,7 @@ In first code have both async_reset and sync_reset, always block is evaluated up
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/c3f0fdc0-02bc-4898-80ec-25409713f477)
 
-D f/f with asynchronous reset
+####D f/f with asynchronous reset
 
 To see file structure of design file and testbench file in gvim 
 
@@ -468,5 +468,32 @@ reset went low here and d was high, but  output of f/f, q is not immediaitely go
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/5b0b74b8-6fc7-40bf-88e6-6b10d055f6f8)
 
 Here just before reset was coming, upon previous posedge, d==1, q become 1 but moment reset come, it was not waiting for subsequent clkedge, immediately q goes low. This asynchronous reset is not awaiting clkedge, immediately making q go low. 
+
+Synthesis 
+
+<pre>$ yosys</pre>
+<pre>yosys&gt; read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
+<pre>yosys&gt; read_verilog dff_asyncres.</pre>
+<pre>yosys&gt; read_verilog dff_asyncres.v</pre>
+<pre>yosys&gt; dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+<pre>yosys&gt; show</pre>
+
+NOTE : To synthesize flip-flops using Ysosys, we need to provide an additional command dfflibmap so as to map the internal flip-flop cells to the flip-flop cells in the technology library specified in the given liberty file.
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e557a29c-a084-4903-ae62-c4102658011b)
+
+Inverter is here , in code, f/f is written with active high reset but f/f having active low reset so tool inserted inverter here so reset bar bar is reset, so active high reset.
+
+
+
+
+
+
+
+
+
+
+
 
 
