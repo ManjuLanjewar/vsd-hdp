@@ -472,9 +472,8 @@ Here just before reset was coming, upon previous posedge, d==1, q become 1 but m
 Synthesis 
 
 <pre>$ yosys</pre>
-<pre>yosys&gt; read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
-<pre>yosys&gt; read_verilog dff_asyncres.</pre>
 <pre>yosys&gt; read_verilog dff_asyncres.v</pre>
+<pre>yosys&gt; synth -top dff_asyncres</pre>
 <pre>yosys&gt; dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
 <pre>yosys&gt; abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
 <pre>yosys&gt; show</pre>
@@ -487,8 +486,41 @@ Inverter is here , in code, f/f is written with active high reset but f/f having
 
 ####D f/f with asynchronous set
 
+To see file structure of design file and testbench file in gvim 
 
+<pre><font color="#12488B"><b>verilog_files</b></font>$ gvim dff_async_set.v -o tb_dff_async_set.v</pre>
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/79a8ae77-8522-41ae-88a5-ca171ccf5f6e)
+
+<pre><font color="#12488B"><b>verilog_files</b></font>$ ls *dff*</pre>
+<pre><font color="#12488B"><b>verilog_files</b></font>$ iverilog dff_async_set.v tb_dff_async_set.v</pre>
+<pre><font color="#12488B"><b>verilog_files</b></font>$ ./a.out</pre>
+<pre><font color="#12488B"><b>verilog_files</b></font>$ gtkwave tb_dff_async_set.vcd</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d63a400c-4d52-4acd-a648-55cac9da57f5)
+
+changes in d pin are felt on q pin only upon edge of clk. q stuck at 1 irrespective of d till async_set is high. 
+Once async_set is low, q is looking for changes in d only upon edge of clk. Upon clock edge, d =1, q=1
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/92252267-ffd2-4e42-a870-ea047bbc9171)
+
+Ireespective of clk, async_set is making q go 1 and is continuing to be 1 and not following clk and d , till  async_set is high.
+when async_set is goes low, only then again with respect to posedge clk, q follows posedge of clk
+
+Synthesis
+
+<pre><font color="#12488B"><b>verilog_files</b></font>$ yosys</pre>
+<pre>yosys&gt; read_verilog dff_async_set.v</pre>
+<pre>yosys&gt; synth -top dff_async_set</pre>
+<pre>yosys&gt; dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
+<pre>yosys&gt; abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
+<pre>yosys&gt; show</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/5b96d5bb-523d-4bf0-9a2f-8da79b24ab10)
+
+Here, async_set f/f. Library has f/f with active low SET but in code written as active high SET so tool is putting inverter on SET path. 
+
+####D f/f with synchronous reset
 
 
 
