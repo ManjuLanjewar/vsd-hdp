@@ -439,9 +439,16 @@ If reset is high then 1'b0 else load it with D. It is synchronous reset because 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/f46ab3ee-b9e5-44e2-b8db-ec448149944f)
 
 comparing asynchronous reset with synchronous reset code, in synchronous reset, only clk is present but in asynchronous reset, clk and async_reset both present. In synchronous reset, always block is evaluated only upon clk. Even if sync_reset going to toggle, always block not evaluated till there is posedge on clk.
-Upon posedge on clk, if there is synchronous reset, q goes low elde q follows D. This is behaviour of f/f with synchronous set.
+Upon posedge on clk, if there is synchronous reset, q goes low else q follows D. This is behaviour of f/f with synchronous reset.
+In some situations have both synchronous and asynchronous reset, there is not race condition but clearly we should have circuit to avoid race around condition in case of both set or reset.  
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e6e00289-8f62-40b1-ae89-a80553fd7688)
 
+In first code have both async_reset and sync_reset, always block is evaluated upon posedge clk and async_reset. If enter into always block due to async_reset, q goes low else (that means not because of async_reset), always block was entered due to posedge of clk. Upon clk, if there was sync_reset, q goes low else q ==d. 
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/c3f0fdc0-02bc-4898-80ec-25409713f477)
+
+D f/f with asynchronous reset
 
 
 
