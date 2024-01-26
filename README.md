@@ -421,8 +421,24 @@ In design, there are combinational circuit, more combinational circuit means mor
 So, Q is shielded from changes in D. Therefore, Q is always giving stable value that means output of combinational circuits will settled down. 
 That ismain pupose of f/f using in digital circuits. There should be intitial state of f/f. If it is unknown, combinational circuit is looking to f/f to evaluate output. If f/f is not initialized, combinational circuits will evaluate into garbage value. To initialize f/f, we have control pins on f/f as SET or RESET. These pins cab be synchronous or asynchronous.
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/da0a9b61-11e7-4b2e-9e52-a1370ac9a981)
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/a13de00c-b6f8-4bbd-b40a-b90f2524c799)
 
+first circuit is f/f with asynchronous reset. This is code for f/f always at posedge clk signifies posedge f/f. Posedge of asynchronous reset (posedge async_reset). In verilog code,always block evaluated, if there is change in posedge clk or change in async_reset. Once enter always block, bacause of async_reset, q goes low. Instead of name async_reset, if  named as X,Y or Z, upon signal output is going low, then clearly it is async_reset. If it is not async_reset, then q=d due to posedge clk. If there is negedge then this always block will not evaluated. Upon posedge, q==d, so This is D f/f with asynchronus reset because it is not looking for any clock / wait for clk. Suppose you have clk, and apply asynchronus reset. Initially asynchronus reset is low, q may be 1 or 0, but q goes low once asynchronus reset goes high, it will not wait for posedge. asynchronus means irrespective of clock.
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/3af6e320-4179-422f-9398-ba23fb45cef9)
+
+For asynchronus set, name signal as async_set.
+always block gets evaluated upon posedge clk or async_set. Once enter always block because of async_set, q=1 that means without dependancy of clock. Hence called as asynchronus set. Else q==d. 
+Now for synchronous set or synchronus reset, Whenever there is synchronus, will come in D pin of clock. This is f/f, with synchronous reset using MUX.
+If reset is high then 1'b0 else load it with D. It is synchronous reset because it wait for clock. Suppose we have clock and synchronous reset, sync_reset going to pin D of f/f. So, 0 will be waiting at pin D and it will be awaiting posedge of clock. So on subsequent next rising edge, weather f/f was 0 or 1 here, it will go to 0. Clearly reset is waiting clock edge. So it is synchronous reset. 
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/82a039cb-f265-4cac-b7bb-264c512db174)
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/f46ab3ee-b9e5-44e2-b8db-ec448149944f)
+
+comparing asynchronous reset with synchronous reset code, in synchronous reset, only clk is present but in asynchronous reset, clk and async_reset both present. In synchronous reset, always block is evaluated only upon clk. Even if sync_reset going to toggle,  
 
 
 
