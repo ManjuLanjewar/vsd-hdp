@@ -476,7 +476,7 @@ Synthesis
 <pre>yosys&gt; read_verilog dff_asyncres.</pre>
 <pre>yosys&gt; read_verilog dff_asyncres.v</pre>
 <pre>yosys&gt; dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
-yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+<pre>yosys&gt; abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
 <pre>yosys&gt; show</pre>
 
 NOTE : To synthesize flip-flops using Ysosys, we need to provide an additional command dfflibmap so as to map the internal flip-flop cells to the flip-flop cells in the technology library specified in the given liberty file.
