@@ -438,7 +438,8 @@ If reset is high then 1'b0 else load it with D. It is synchronous reset because 
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/f46ab3ee-b9e5-44e2-b8db-ec448149944f)
 
-comparing asynchronous reset with synchronous reset code, in synchronous reset, only clk is present but in asynchronous reset, clk and async_reset both present. In synchronous reset, always block is evaluated only upon clk. Even if sync_reset going to toggle,  
+comparing asynchronous reset with synchronous reset code, in synchronous reset, only clk is present but in asynchronous reset, clk and async_reset both present. In synchronous reset, always block is evaluated only upon clk. Even if sync_reset going to toggle, always block not evaluated till there is posedge on clk.
+Upon posedge on clk, if there is synchronous reset, q goes low elde q follows D. This is behaviour of f/f with synchronous set.
 
 
 
