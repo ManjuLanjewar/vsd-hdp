@@ -533,6 +533,27 @@ To see file structure of design file and testbench file in gvim
 <pre><font color="#12488B"><b>verilog_files</b></font>$ ./a.out</pre>
 <pre><font color="#12488B"><b>verilog_files</b></font>$ gtkwave tb_dff_syncres.vcd</pre>
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/88676ba2-56fe-419d-9756-2a03b6c0612f)
+
+In previous ex, rest went high, irrespective of clk, q goes low. But here q is not going low, waiting for subsequent clkedge and then only going low.
+Reset is applied on posedge of clk. 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6ce9e995-7b1b-43de-a386-0f827d78ef7f)
+
+Here both reset as well as d is present and reset is taking high precedence and enforcing output to be zero. 
+Once posedge of clk is entered, sync_reset has higher priority than d. 
+If both clk as well as d are high on edge of clk , prefernce given to sync_reset because sync_reset is in if part and d is in else part in verilog code.
+
+
+
+
+
+
+
+ 
+
+
+
+
 
 
 
