@@ -485,7 +485,7 @@ NOTE : To synthesize flip-flops using Ysosys, we need to provide an additional c
 
 Inverter is here , in code, f/f is written with active high reset but f/f having active low reset so tool inserted inverter here so reset bar bar is reset, so active high reset.
 
-
+####D f/f with asynchronous set
 
 
 
