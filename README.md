@@ -449,12 +449,24 @@ In first code have both async_reset and sync_reset, always block is evaluated up
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/c3f0fdc0-02bc-4898-80ec-25409713f477)
 
 D f/f with asynchronous reset
-To open file structure in gvim 
+
+To see file structure of design file and testbench file in gvim 
 
 <pre>$ gvim tb_dff_asyncres.v -o dff_asyncres.v </pre>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/73ad9a3d-ca14-4d79-8be2-ffc438febf80)
 
+<pre>$ ls *dff*</pre>
+<pre>$ iverilog dff_asyncres.v tb_dff_asyncres.v</pre>
+<pre>$ ./a.out</pre>
+<pre>$ gtkwave tb_dff_asyncres.vcd</pre>
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/356f8f39-19b9-4a86-8afd-b9c7075d5d91)
+
+reset went low here and d was high, but  output of f/f, q is not immediaitely going high waiting for clkedge to become 1.  d is aligned with clk and q is generated so q is synchronous to clk, d may come at any time but q will change upon clk. 
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/5b0b74b8-6fc7-40bf-88e6-6b10d055f6f8)
+
+Here just before reset was coming, upon previous posedge, d==1, q become 1 but moment reset come, it was not waiting for subsequent clkedge, immediately q goes low. This asynchronous reset is not awaiting clkedge, immediately making q go low. 
 
 
