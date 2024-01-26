@@ -522,9 +522,16 @@ Here, async_set f/f. Library has f/f with active low SET but in code written as 
 
 ####D f/f with synchronous reset
 
+To see file structure of design file and testbench file in gvim 
 
+<pre><font color="#12488B"><b>verilog_files</b></font>$ gvim tb_dff_syncres.v -o dff_syncres.v</pre>
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/36a666fe-0cb1-4055-95ac-a4b8123e079d)
 
+<pre><font color="#12488B"><b>verilog_files</b></font>$ ls *dff*</pre>
+<pre><font color="#12488B"><b>verilog_files</b></font>$ iverilog dff_syncres.v tb_dff_syncres.v</pre>
+<pre><font color="#12488B"><b>verilog_files</b></font>$ ./a.out</pre>
+<pre><font color="#12488B"><b>verilog_files</b></font>$ gtkwave tb_dff_syncres.vcd</pre>
 
 
 
