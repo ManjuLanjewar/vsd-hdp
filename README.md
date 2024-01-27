@@ -546,6 +546,7 @@ If both clk as well as d are high on edge of clk , prefernce given to sync_reset
 Synthesis
 
 <pre><font color="#12488B"><b>verilog_files</b></font>$ yosys</pre>
+<pre>yosys&gt; read_verilog dff_syncres.v</pre>
 <pre>yosys&gt; synth -top dff_syncres</pre>
 <pre>yosys&gt; dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
 <pre>yosys&gt; abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
@@ -557,13 +558,33 @@ There is no SET pin and RESET pin. In input D pin, Synch_reset with inverted inp
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/9cb98224-16f6-4828-91fd-11afa0541e64)
 
+Some interesting synthesis optimizations involving multipliers
+
+1. Multiplication by 2
+
+Verilog Snippet
+
 <pre>module mul2 (input [2:0] a, output [3:0] y);
 	assign y = a * 2;
 endmodule</pre>
 
+Synthesis :
 
+<pre><font color="#12488B"><b>verilog_files</b></font>$ ls</pre>
+<pre><font color="#12488B"><b>verilog_files</b></font>$ mult_*.v -o</pre>
+<pre><font color="#12488B"><b>verilog_files</b></font>$ gvim mult_*.v -o</pre>
+<pre><font color="#12488B"><b>verilog_files</b></font>$ yosys</pre>
+<pre>yosys&gt; read_verilog mult_2.v</pre>
+<pre>yosys&gt; read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
+<pre>yosys&gt; synth -top mul2</pre>
 
- 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/f4e8327d-5c93-4a2d-a106-1a2921d07632)
+
+After execution synth -top, number of memories, memory bits, processes and cells are zero. So, there is no need of abc -liberty as there is nothing to map as there is no standard cells.
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/8f99c0e3-490c-4b7f-a4cc-8430d153b985)
+
+So, here number a is appended with 1'b0.
 
 
 
