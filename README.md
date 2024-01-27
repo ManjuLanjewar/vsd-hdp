@@ -543,7 +543,19 @@ Here both reset as well as d is present and reset is taking high precedence and 
 Once posedge of clk is entered, sync_reset has higher priority than d. 
 If both clk as well as d are high on edge of clk , prefernce given to sync_reset because sync_reset is in if part and d is in else part in verilog code.
 
+Synthesis
 
+<pre><font color="#12488B"><b>verilog_files</b></font>$ yosys</pre>
+<pre>yosys&gt; synth -top dff_syncres</pre>
+<pre>yosys&gt; dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
+<pre>yosys&gt; abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
+<pre>yosys&gt; show</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1e4d09eb-cf5c-4d10-b68d-064b994a966d)
+
+There is no SET pin and RESET pin. In input D pin, Synch_reset with inverted input A_N and d
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/9cb98224-16f6-4828-91fd-11afa0541e64)
 
 
 
