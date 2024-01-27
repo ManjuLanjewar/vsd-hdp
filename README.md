@@ -586,8 +586,15 @@ After execution synth -top, number of memories, memory bits, processes and cells
 
 So, here number a is appended with 1'b0.
 
+Netlist
 
+<pre><font color="#12488B"><b>verilog_files</b></font>$ yosys</pre>
+<pre>yosys&gt; read_verilog mult_2.v</pre>
+<pre>yosys&gt; abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
+<pre>yosys&gt; write_verilog -noattr mul2_net.v</pre>
+<pre>yosys&gt; !gvim mul2_net.v</pre>
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/c94e98c4-8242-4db5-8a31-2871206f61f2)
 
 
 
