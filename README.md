@@ -557,7 +557,9 @@ There is no SET pin and RESET pin. In input D pin, Synch_reset with inverted inp
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/9cb98224-16f6-4828-91fd-11afa0541e64)
 
-
+<pre>module mul2 (input [2:0] a, output [3:0] y);
+	assign y = a * 2;
+endmodule</pre>
 
 
 
