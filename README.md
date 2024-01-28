@@ -903,6 +903,8 @@ In this example, no optimization is possible as the flop output, q changes.
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/4ec9a922-5a0c-4438-b9ec-474ca1c23307)
 
+-Synthesis
+
 	$ yosys
 	yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 	yosys> read_verilog dff_const1.v
@@ -927,6 +929,28 @@ In this example, no optimization is possible as the flop output, q changes.
 	end
 
 	endmodule
+ 
+Here, the the flip-flop output, q remains constant at 1 irrespective of the other signals in the sensitivity list.
+Thus the realization does not need any cells and q is connected to 1'b1.
 
+- Behavioral Simulation
 
+	<pre><font color="#12488B"><b>verilog_files</b></font>$ iverilog dff_const2.v tb_dff_const2.v</pre>
+	<pre><font color="#12488B"><b>verilog_files</b></font>$ ./a.out</pre>
+	<pre><font color="#12488B"><b>verilog_files</b></font>$ gtkwave tb_dff_const2.vcd</pre>
 
+  
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/fbfbf756-131d-4d26-8490-232012cac985)
+
+-Synthesis
+
+        $ yosys
+	yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> read_verilog dff_const1.v
+	yosys> synth -top dff_const1
+	yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> show
+ 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/904b6710-7349-4654-8dd6-28a0a137503b)
+ 
