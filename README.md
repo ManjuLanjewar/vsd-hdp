@@ -898,8 +898,8 @@ In this example, no optimization is possible as the flop output, q changes.
 - Behavioral Simulation
   
 <pre><font color="#12488B"><b>verilog_files</b></font>$ iverilog dff_const1.v tb_dff_const1.v
-	<font color="#12488B"><b>verilog_files</b></font>$ ./a.out
-      <font color="#12488B"><b>verilog_files</b></font>$ gtkwave tb_dff_const1.vcd</pre>
+<font color="#12488B"><b>verilog_files</b></font>$ ./a.out
+<font color="#12488B"><b>verilog_files</b></font>$ gtkwave tb_dff_const1.vcd</pre>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/4ec9a922-5a0c-4438-b9ec-474ca1c23307)
 
