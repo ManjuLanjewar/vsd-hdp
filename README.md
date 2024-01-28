@@ -690,6 +690,10 @@ The additional switch, purge also removes the internal nets if they have a publi
     	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	show
 
+#### Synthesis Result 
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1404d3dc-f8d9-41e5-b492-947a1f7e7b05)
+
 
 
 
