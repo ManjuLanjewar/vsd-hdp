@@ -820,9 +820,9 @@ endmodule</pre>
 
  <pre><font color="#12488B"><b>verilog_files</b></font>$ gvim multiple_module_opt2.v</pre>    
 
-module sub_module(input a , input b , output y);
- assign y = a & b;
-endmodule
+<pre>module sub_module(input a , input b , output y);
+     assign y = a & b;
+    endmodule
 
 module multiple_module_opt2(input a , input b , input c , input d , output y);
 wire n1,n2,n3;
@@ -832,7 +832,7 @@ sub_module U2 (.a(b), .b(c) , .y(n2));
 sub_module U3 (.a(n2), .b(d) , .y(n3));
 sub_module U4 (.a(n3), .b(n1) , .y(y));
 
-endmodule
+endmodule</pre>
 
 #### Example showing the sequence of commands to perform combinational logic optimization using Yosys on multiple_module_opt2 in multiple_module_opt2.v:
 
