@@ -714,12 +714,12 @@ endmodule</pre>
 
 #### Example showing the sequence of commands to perform combinational logic optimization using Yosys on module opt_check2 in opt_check2.v:
 
-        <pre>read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+        read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	read_verilog opt_check2.v 
     	synth -top opt_check2 
     	opt_clean -purge
     	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
-    	show</pre>
+    	show
      
 #### Synthesis Result 
 
@@ -742,12 +742,12 @@ endmodule</pre>
 
 #### Example showing the sequence of commands to perform combinational logic optimization using Yosys on module opt_check3 in opt_check3.v:
 
-        <pre>read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+        read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	read_verilog opt_check3.v 
     	synth -top opt_check3 
     	opt_clean -purge
     	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
-    	show</pre>
+    	show
      
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/9b8cb14e-8d7e-405c-a2c6-95f9ebf3454a)
 
@@ -770,12 +770,12 @@ endmodule</pre>
 
 #### Example showing the sequence of commands to perform combinational logic optimization using Yosys on module opt_check4 in opt_check4.v:
 
-        <pre>read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+        read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	read_verilog opt_check4.v 
     	synth -top opt_check4
     	opt_clean -purge
     	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
-    	show</pre>
+    	show
      
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b3b38fee-2bca-4e30-b8c8-9fe0d8fd34fa)
 
@@ -804,13 +804,13 @@ endmodule</pre>
 
 #### Example showing the sequence of commands to perform combinational logic optimization using Yosys on multiple_module_opt in multiple_module_opt.v:
 
-        <pre>read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+        read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	read_verilog multiple_module_opt.v 
     	synth -top multiple_module_opt
     	opt_clean -purge
     	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	show
-        write_verilog -noattr multiple_module_opt_flat.v</pre>
+        write_verilog -noattr multiple_module_opt_flat.v
 	
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/515416a9-ee64-40db-a8e9-396a28b758d7)
 
@@ -835,13 +835,13 @@ endmodule</pre>
 #### Example showing the sequence of commands to perform combinational logic optimization using Yosys on multiple_module_opt2 in multiple_module_opt2.v:
 
 
-         <pre>read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+        read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	read_verilog multiple_module_opt2.v 
     	synth -top multiple_module_opt2
     	opt_clean -purge
     	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	show
-        write_verilog -noattr multiple_module_opt2_flat.v</pre>
+        write_verilog -noattr multiple_module_opt2_flat.v
 	
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/4b0cf916-c6f4-4ddb-b4c5-85e883372ce0)
 
