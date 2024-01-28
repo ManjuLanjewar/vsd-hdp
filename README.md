@@ -990,6 +990,8 @@ Here, both q1 & q have transitions and thus cannot be optimized further. So the 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/ed9d6d70-d39c-4313-93d2-edbaaf87ba6e)
 
  ###### Ex: 4) D f/f sequential constant (dff_const4.v)
+ 
+<pre><font color="#12488B"><b>verilog_files</b></font>$ gvim dff_const4.v</pre>
 
 <pre>module dff_const4(input clk, input reset, output reg q);
 reg q1;
@@ -1012,7 +1014,12 @@ endmodule</pre>
 
 In this example, both q1 & q remain constant at 1'b1. Thus, the design can be optimized to have only wires. Further, 
 q1 being an internal net can also be removed.
-
+	
+ 	$ gvim dff_const4.v
+	$ iverilog dff_const4.v tb_dff_const4.v
+	$ ./a.out
+        $ gtkwave tb_dff_const4.vcd
+	
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d046b8e4-0a80-403c-9ab5-e7479c3e8384)
 
 
