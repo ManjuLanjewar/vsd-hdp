@@ -1022,7 +1022,17 @@ q1 being an internal net can also be removed.
 	
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d046b8e4-0a80-403c-9ab5-e7479c3e8384)
 
+-Synthesis
 
+        $ yosys
+	yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> read_verilog dff_const1.v
+	yosys> synth -top dff_const1
+	yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> show
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/55459661-b43e-473c-8b60-88c51d0ca5bd)
 
 
 
