@@ -725,7 +725,28 @@ endmodule</pre>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/ebf0d0e3-36ea-4eab-97f9-21cd1ce7c7ca)
 
-OR gate involve NOR gate and NOR gate has stacked PMOS which is not good. So, it is a NAND-realization 
-of the OR
+OR gate involve NOR gate and NOR gate has stacked PMOS which is not good. So, it is a NAND-realization of the OR gate.
 
 
+#### Example 2: opt_check3.v
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/7e1a4152-d000-4d26-aace-a2907ba34573)
+
+3-input AND Gate
+
+<pre><font color="#12488B"><b>verilog_files</b></font>$ gvim opt_check3.v</pre>
+
+<pre>module opt_check3 (input a , input b, input c , output y);
+	assign y = a?(c?b:0):0;
+endmodule</pre>
+
+#### Example showing the sequence of commands to perform combinational logic optimization using Yosys on module opt_check3 in opt_check3.v:
+
+        read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    	read_verilog opt_check3.v 
+    	synth -top opt_check3 
+    	opt_clean -purge
+    	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    	show
+     
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/9b8cb14e-8d7e-405c-a2c6-95f9ebf3454a)
