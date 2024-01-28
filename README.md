@@ -806,17 +806,19 @@ endmodule</pre>
 
 #### Example showing the sequence of commands to perform combinational logic optimization using Yosys on multiple_module_opt in multiple_module_opt.v:
 
-        read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+        <pre>read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	read_verilog multiple_module_opt.v 
     	synth -top multiple_module_opt
     	opt_clean -purge
     	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	show
-     
+        write_verilog -noattr multiple_module_opt_flat.v</pre>
+	
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/515416a9-ee64-40db-a8e9-396a28b758d7)
 
 #### Example 6: multiple_module_opt2.v
-     
+
+ <pre><font color="#12488B"><b>verilog_files</b></font>$ gvim multiple_module_opt2.v</pre>    
 
 module sub_module(input a , input b , output y);
  assign y = a & b;
@@ -831,3 +833,22 @@ sub_module U3 (.a(n2), .b(d) , .y(n3));
 sub_module U4 (.a(n3), .b(n1) , .y(y));
 
 endmodule
+
+#### Example showing the sequence of commands to perform combinational logic optimization using Yosys on multiple_module_opt2 in multiple_module_opt2.v:
+
+
+         <pre>read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    	read_verilog multiple_module_opt2.v 
+    	synth -top multiple_module_opt2
+    	opt_clean -purge
+    	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    	show
+        write_verilog -noattr multiple_module_opt2_flat.v</pre>
+	
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/4b0cf916-c6f4-4ddb-b4c5-85e883372ce0)
+
+
+
+
+
+
