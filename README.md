@@ -866,12 +866,12 @@ Sometimes a verilog RTL code may generate DFF with sequential constant and some 
 
 # Example showing the sequence of commands to perform combinational logic optimization using Yosys
 
-yosys> read_liberty -lib ../path_of_library_file/library.lib
-yosys> read_verilog design_verilog_file.v
-yosys> synth -top module_name
-yosys> dfflibmap -liberty ../path_of_library_file/library.lib
-yosys> abc -liberty ../path_of_library_file/library.lib
-yosys> show 
+	yosys> read_liberty -lib ../path_of_library_file/library.lib
+	yosys> read_verilog design_verilog_file.v
+	yosys> synth -top module_name
+	yosys> dfflibmap -liberty ../path_of_library_file/library.lib
+	yosys> abc -liberty ../path_of_library_file/library.lib
+	yosys> show 
 
 Files used here are named with dff_const:
 
@@ -903,13 +903,13 @@ In this example, no optimization is possible as the flop output, q changes.
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/4ec9a922-5a0c-4438-b9ec-474ca1c23307)
 
-$ yosys
-yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-yosys> read_verilog dff_const1.v
-yosys> synth -top dff_const1
-yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-yosys> show
+	$ yosys
+	yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> read_verilog dff_const1.v
+	yosys> synth -top dff_const1
+	yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> show
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b7fdb125-0a3c-4c34-a344-a8ee699be78b)
 
