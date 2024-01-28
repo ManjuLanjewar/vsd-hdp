@@ -758,6 +758,7 @@ endmodule</pre>
 <pre>module opt_check4 (input a , input b , input c , output y);
  assign y = a?(b?(a & c ):c):(!c);
  endmodule</pre>
+
 #### Boolean simplification:
 ####      y = a*(abc + b_bar*c) + a_bar*c_bar
 ####        = abc + a*b_bar*c + a_bar*c_bar
@@ -774,5 +775,6 @@ endmodule</pre>
     	opt_clean -purge
     	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	show
+     
 
-     ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b3b38fee-2bca-4e30-b8c8-9fe0d8fd34fa)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b3b38fee-2bca-4e30-b8c8-9fe0d8fd34fa)
