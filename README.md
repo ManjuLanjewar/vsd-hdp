@@ -864,7 +864,7 @@ For example spread/partitioning the logic based on timing analysis to work on hi
 
 Sometimes a verilog RTL code may generate DFF with sequential constant and some of them we may replace to wires with static values. There are some examples with replacement and without.
 
-# Example showing the sequence of commands to perform combinational logic optimization using Yosys
+#### Example showing the sequence of commands to perform combinational logic optimization using Yosys
 
 	yosys> read_liberty -lib ../path_of_library_file/library.lib
 	yosys> read_verilog design_verilog_file.v
