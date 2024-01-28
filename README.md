@@ -728,7 +728,7 @@ endmodule</pre>
 OR gate involve NOR gate and NOR gate has stacked PMOS which is not good. So, it is a NAND-realization of the OR gate.
 
 
-#### Example 2: opt_check3.v
+#### Example 3: opt_check3.v
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/7e1a4152-d000-4d26-aace-a2907ba34573)
 
@@ -750,3 +750,29 @@ endmodule</pre>
     	show
      
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/9b8cb14e-8d7e-405c-a2c6-95f9ebf3454a)
+
+
+#### Example 4: opt_check4.v
+<pre><font color="#12488B"><b>verilog_files</b></font>$ gvim opt_check4.v</pre>
+
+<pre>module opt_check4 (input a , input b , input c , output y);
+ assign y = a?(b?(a & c ):c):(!c);
+ endmodule</pre>
+#### Boolean simplification:
+####      y = a*(abc + b_bar*c) + a_bar*c_bar
+####        = abc + a*b_bar*c + a_bar*c_bar
+####        = abc + a*b_bar*c + (a_bar*b*c_bar + a_bar*b_bar*c_bar)
+####        = ac + a_bar*c_bar
+####        = !(a^c)
+#### i.e, a 2-input XNOR Gate.
+
+#### Example showing the sequence of commands to perform combinational logic optimization using Yosys on module opt_check4 in opt_check4.v:
+
+        read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    	read_verilog opt_check4.v 
+    	synth -top opt_check4
+    	opt_clean -purge
+    	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    	show
+
+     ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b3b38fee-2bca-4e30-b8c8-9fe0d8fd34fa)
