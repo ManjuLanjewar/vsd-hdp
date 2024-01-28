@@ -753,6 +753,7 @@ endmodule</pre>
 
 
 #### Example 4: opt_check4.v
+
 <pre><font color="#12488B"><b>verilog_files</b></font>$ gvim opt_check4.v</pre>
 
 <pre>module opt_check4 (input a , input b , input c , output y);
@@ -776,5 +777,44 @@ endmodule</pre>
     	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	show
      
-
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b3b38fee-2bca-4e30-b8c8-9fe0d8fd34fa)
+
+#### Example 5: multiple_module_opt.v
+
+<pre><font color="#12488B"><b>verilog_files</b></font>$ ls multiple_module_opt*</pre>
+
+<pre>module sub_module1(input a , input b , output y);
+ assign y = a & b;
+endmodule
+
+
+module sub_module2(input a , input b , output y);
+ assign y = a^b;
+endmodule
+
+
+module multiple_module_opt(input a , input b , input c , input d , output y);
+wire n1,n2,n3;
+
+sub_module1 U1 (.a(a) , .b(1'b1) , .y(n1));
+sub_module2 U2 (.a(n1), .b(1'b0) , .y(n2));
+sub_module2 U3 (.a(b), .b(d) , .y(n3));
+
+assign y = c | (b & n1); 
+
+
+endmodule</pre>
+
+#### Example showing the sequence of commands to perform combinational logic optimization using Yosys on multiple_module_opt in multiple_module_opt.v:
+
+        read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    	read_verilog multiple_module_opt.v 
+    	synth -top multiple_module_opt
+    	opt_clean -purge
+    	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    	show
+     
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/515416a9-ee64-40db-a8e9-396a28b758d7)
+
+
+     
