@@ -698,13 +698,13 @@ The additional switch, purge also removes the internal nets if they have a publi
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/548834d3-8ebb-47cb-93be-4fc770c48a50)
 
-# Boolean simplification:
-#      y = a + a_bar*b
-#        = ab + a*b_bar + a_bar*b
-#        = (ab + ab) + a*b_bar + a_bar*b
-#        = (ab + a*b_bar) + (ab + a_bar*b)
-#        = a + b 
-# i.e, a 2-input OR Gate. 
+####  Boolean simplification:
+####     y = a + a_bar*b
+####        = ab + a*b_bar + a_bar*b
+####        = (ab + ab) + a*b_bar + a_bar*b
+####        = (ab + a*b_bar) + (ab + a_bar*b)
+####       = a + b 
+####  i.e, a 2-input OR Gate. 
 
 <pre><font color="#12488B"><b>verilog_files</b></font>$ gvim opt_check2.v</pre>
 
@@ -720,9 +720,12 @@ endmodule</pre>
     	opt_clean -purge
     	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	show
+     
 #### Synthesis Result 
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/ebf0d0e3-36ea-4eab-97f9-21cd1ce7c7ca)
 
-The cell library already seems to have an OR gate available as the synthesis result is an OR gate itself and not a NAND-realization 
-of the OR to avoid the stacked PMOS as shown in the demo videos
+OR gate involve NOR gate and NOR gate has stacked PMOS which is not good. So, it is a NAND-realization 
+of the OR
+
+
