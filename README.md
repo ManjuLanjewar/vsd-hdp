@@ -802,7 +802,6 @@ sub_module2 U3 (.a(b), .b(d) , .y(n3));
 
 assign y = c | (b & n1); 
 
-
 endmodule</pre>
 
 #### Example showing the sequence of commands to perform combinational logic optimization using Yosys on multiple_module_opt in multiple_module_opt.v:
@@ -816,5 +815,19 @@ endmodule</pre>
      
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/515416a9-ee64-40db-a8e9-396a28b758d7)
 
-
+#### Example 6: multiple_module_opt2.v
      
+
+module sub_module(input a , input b , output y);
+ assign y = a & b;
+endmodule
+
+module multiple_module_opt2(input a , input b , input c , input d , output y);
+wire n1,n2,n3;
+
+sub_module U1 (.a(a) , .b(1'b0) , .y(n1));
+sub_module U2 (.a(b), .b(c) , .y(n2));
+sub_module U3 (.a(n2), .b(d) , .y(n3));
+sub_module U4 (.a(n3), .b(n1) , .y(y));
+
+endmodule
