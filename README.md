@@ -640,10 +640,10 @@ The combinational logic is simplified to the most optimized form which is effici
    
 Combinational logic optimisation bring power and area savings by squeezing the logic to get the most optimised design; Some techniques are Constant Propagation, which is a direct optimisation, and Boolean Logic Optimisation, like K-Map and Quine McKluskey done in the synthesis process.
 
-One basic type of Sequential Logic optimisation is Sequential Constant propagation and it follows Q to have a constant value, for example in a flop where Q=0 it does not need to be retained in a circuit. Other, more advanced, types of Sequential optimisations are not convered in the labs, but are:
-State: Optimisation of unused states
-Cloning: Physical aware synthesis, for example reduce physical distance.
-Retiming: For example spread/partitioning the logic based on timing analysis to work on higher frequencies.
+1. Constant Propagation : This is a direct optimization method wherein the Boolean expression of the synthesized logic is simplified if any of the inputs are "a constant" and subsequently some of the logic gate outputs also propagate a constant value always.
+   
+3. Boolean Logic Optimization : The various Boolean expression optimization techniques like K-maps (graphical), Quine-McLusky, reduction to standard SOP/ POS forms best suited for the cell library/ technology etc.
+
 
 ### * Combinational logic optimization
    
@@ -847,5 +847,15 @@ endmodule</pre>
 
 ### * Sequential logic optimization
 
+Optimization technique used when a constant value is propagated through a flip-flop -- i.e., irrespective of the state of the triggering signals (CLK, Reset,Set) there are no transitions in the flip-flop output.
 
+Other, more advanced, types of Sequential optimisations are not covered in the labs, but are:
+
+State: Optimisation of unused states and/or the total states needed in the FSM are minimized.
+
+Cloning: Physical aware synthesis, for example reduce physical distance.
+This is a physically-aware (PnR-aware) optimization method where some of the flops in the design are cloned/ duplicated so that the timing can be met post-PnR for the timing arcs involved (provided there is already some minimum positive slack available).
+
+Retiming: The pipelining flops in the design are placed optimally so that the combinational delay at each pipeline stage is more or less equalized so that the maximum clock frequency can be increased.
+For example spread/partitioning the logic based on timing analysis to work on higher frequencies.
 
