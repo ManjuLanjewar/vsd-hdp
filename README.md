@@ -879,7 +879,7 @@ Files used here are named with dff_const:
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/4d601be3-2785-4b72-8aa3-1c1922e17196)
 
-###### Ex: 1) D f/f sequential constant
+###### Ex: 1) D f/f sequential constant (dff_const1.v)
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6c2a917b-2c2b-481c-9221-defef31f6ac6)
 
@@ -913,6 +913,9 @@ In this example, no optimization is possible as the flop output, q changes.
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b7fdb125-0a3c-4c34-a344-a8ee699be78b)
 
+###### Ex: 1) D f/f sequential constant (dff_const2.v)
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/7a7cdf23-43d6-48f3-9ef6-f26d60fdbfc8)
 
 
 
