@@ -643,9 +643,12 @@ Cloning: Physical aware synthesis, for example reduce physical distance.
 Retiming: For example spread/partitioning the logic based on timing analysis to work on higher frequencies.
 
 1) Combinational logic optimization
-   Files used for lab are :
+   
+Files used for lab are :
    
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/7ad9b833-c348-4530-87b9-ed952b165729)
+
+## Example 1: opt_check.v
 
 <pre><font color="#12488B"><b>verilog_files</b></font>$ gvim opt_check.v</pre>
 
@@ -653,9 +656,35 @@ Retiming: For example spread/partitioning the logic based on timing analysis to 
 	assign y = a?b:0;
 endmodule</pre>
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/8c872ab2-82ec-4ccb-8e85-03561fa8baba)
 
+## Note
+The command to perform logic optimization in Yosys is opt_clean before linking to liberty. 
+Additionally, for a hierarchical design involving multiple sub-modules, the design must be flattened by running the flatten command 
+before executing the opt_clean command.
+After the synth -top <module_name> command is executed, do:
+    <pre>opt_clean -purge</pre>
+This command identifies wires and cells that are unused and removes them.
+The additional switch, purge also removes the internal nets if they have a public name.
 
+<pre>
+# For combination logic optimization the general workflow for synthesis is: 
+$ yosys
+yosys> read_liberty -lib ../path_of_library_file/silicon_library.lib
+yosys> read_verilog design_top_file.v
+yosys> synth -top top_module_name
+yosys> opt_clean -purge
+yosys> abc -liberty ../path_of_library_file/silicon_library.lib
+yosys> show</pre>
 
+# Example showing the sequence of commands to perform combinational logic optimization using Yosys
+# on module opt_check in opt_check.v:
+    read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    read_verilog opt_check.v 
+    synth -top opt_check 
+    opt_clean -purge
+    abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    show
 
 
 
