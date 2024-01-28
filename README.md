@@ -1032,7 +1032,6 @@ q1 being an internal net can also be removed.
 	yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 	yosys> show
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/55459661-b43e-473c-8b60-88c51d0ca5bd)
-
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/aa303577-3c4e-45f7-b278-cccdd71a2ec2)
 
 
