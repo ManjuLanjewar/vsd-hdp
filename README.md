@@ -935,9 +935,9 @@ Thus the realization does not need any cells and q is connected to 1'b1.
 
 - Behavioral Simulation
 
-	<pre><font color="#12488B"><b>verilog_files</b></font>$ iverilog dff_const2.v tb_dff_const2.v</pre>
-	<pre><font color="#12488B"><b>verilog_files</b></font>$ ./a.out</pre>
-	<pre><font color="#12488B"><b>verilog_files</b></font>$ gtkwave tb_dff_const2.vcd</pre>
+	<pre><font color="#12488B"><b>verilog_files</b></font>$ iverilog dff_const2.v tb_dff_const2.v
+		<font color="#12488B"><b>verilog_files</b></font>$ ./a.out
+		<font color="#12488B"><b>verilog_files</b></font>$ gtkwave tb_dff_const2.vcd</pre>
 
   
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/fbfbf756-131d-4d26-8490-232012cac985)
