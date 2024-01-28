@@ -917,6 +917,16 @@ In this example, no optimization is possible as the flop output, q changes.
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/7a7cdf23-43d6-48f3-9ef6-f26d60fdbfc8)
 
+	module dff_const2(input clk, input reset, output reg q);
+	always @(posedge clk, posedge reset)
+		begin
+			if(reset)
+			q <= 1'b1;
+		else
+			q <= 1'b1;
+	end
+
+	endmodule
 
 
 
