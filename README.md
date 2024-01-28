@@ -915,7 +915,7 @@ In this example, no optimization is possible as the flop output, q changes.
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b7fdb125-0a3c-4c34-a344-a8ee699be78b)
 
-###### Ex: 1) D f/f sequential constant (dff_const2.v)
+###### Ex: 2) D f/f sequential constant (dff_const2.v)
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/7a7cdf23-43d6-48f3-9ef6-f26d60fdbfc8)
 
@@ -953,4 +953,44 @@ Thus the realization does not need any cells and q is connected to 1'b1.
 	yosys> show
  
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/904b6710-7349-4654-8dd6-28a0a137503b)
- 
+
+ ###### Ex: 3) D f/f sequential constant (dff_const3.v)
+
+<pre><font color="#12488B"><b>verilog_files</b></font>$ gvim dff_const3.v</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/86024379-4db4-48e2-bf5f-7c1b68b22cd0)
+
+<pre>module dff_const3(input clk, input reset, output reg q);
+reg q1;
+
+always @(posedge clk, posedge reset)
+begin
+	if(reset)
+	begin
+		q <= 1'b1;
+		q1 <= 1'b0;
+	end
+	else
+	begin
+		q1 <= 1'b1;
+		q <= q1;
+	end
+end
+
+endmodule</pre>
+
+Here, both q1 & q have transitions and thus cannot be optimized further. So the design will have two DFFs.
+
+<pre><font color="#12488B"><b>verilog_files</b></font>$ iverilog dff_const3.v tb_dff_const3.v
+	<font color="#12488B"><b>verilog_files</b></font>$ ./a.out
+	<font color="#12488B"><b>verilog_files</b></font>$ gtkwave tb_dff_const3.vcd</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/2a6161a3-1a29-46c8-93bd-067793be1f3b)
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/ed9d6d70-d39c-4313-93d2-edbaaf87ba6e)
+
+
+
+
+
+
