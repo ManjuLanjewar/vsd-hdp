@@ -804,6 +804,8 @@ endmodule</pre>
 
 #### Example showing the sequence of commands to perform combinational logic optimization using Yosys on multiple_module_opt in multiple_module_opt.v:
 
+For designes with submodules (must of designes) we should add special command for conversion of hierarhical design to flat. Because an optimizer can do optimization only inside one module. In this case our workflow extends to:
+
         read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	read_verilog multiple_module_opt.v 
     	synth -top multiple_module_opt
@@ -811,6 +813,7 @@ endmodule</pre>
     	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	show
         write_verilog -noattr multiple_module_opt_flat.v
+	
 	
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/515416a9-ee64-40db-a8e9-396a28b758d7)
 
@@ -858,4 +861,59 @@ This is a physically-aware (PnR-aware) optimization method where some of the flo
 
 Retiming: The pipelining flops in the design are placed optimally so that the combinational delay at each pipeline stage is more or less equalized so that the maximum clock frequency can be increased.
 For example spread/partitioning the logic based on timing analysis to work on higher frequencies.
+
+Sometimes a verilog RTL code may generate DFF with sequential constant and some of them we may replace to wires with static values. There are some examples with replacement and without.
+
+# Example showing the sequence of commands to perform combinational logic optimization using Yosys
+
+yosys> read_liberty -lib ../path_of_library_file/library.lib
+yosys> read_verilog design_verilog_file.v
+yosys> synth -top module_name
+yosys> dfflibmap -liberty ../path_of_library_file/library.lib
+yosys> abc -liberty ../path_of_library_file/library.lib
+yosys> show 
+
+Files used here are named with dff_const:
+
+<pre><font color="#12488B"><b>verilog_files</b></font>$ la *df*const*</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/4d601be3-2785-4b72-8aa3-1c1922e17196)
+
+###### Ex: 1) D f/f sequential constant
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6c2a917b-2c2b-481c-9221-defef31f6ac6)
+
+<pre>module dff_const1(input clk, input reset, output reg q);
+always @(posedge clk, posedge reset)
+begin
+	if(reset)
+		q <= 1'b0;
+	else
+		q <= 1'b1;
+end
+endmodule</pre>
+
+In this example, no optimization is possible as the flop output, q changes.
+
+- Behavioral Simulation
+  
+<pre><font color="#12488B"><b>verilog_files</b></font>$ iverilog dff_const1.v tb_dff_const1.v</pre>
+<pre><font color="#12488B"><b>verilog_files</b></font>$ ./a.out</pre>
+<pre><font color="#12488B"><b>verilog_files</b></font>$ gtkwave tb_dff_const1.vcd</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/4ec9a922-5a0c-4438-b9ec-474ca1c23307)
+
+$ yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog dff_const1.v
+yosys> synth -top dff_const1
+yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> show
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b7fdb125-0a3c-4c34-a344-a8ee699be78b)
+
+
+
+
 
