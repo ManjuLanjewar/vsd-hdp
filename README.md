@@ -714,12 +714,12 @@ endmodule</pre>
 
 #### Example showing the sequence of commands to perform combinational logic optimization using Yosys on module opt_check2 in opt_check2.v:
 
-        read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+        <pre>read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	read_verilog opt_check2.v 
     	synth -top opt_check2 
     	opt_clean -purge
     	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
-    	show
+    	show</pre>
      
 #### Synthesis Result 
 
@@ -742,12 +742,12 @@ endmodule</pre>
 
 #### Example showing the sequence of commands to perform combinational logic optimization using Yosys on module opt_check3 in opt_check3.v:
 
-        read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+        <pre>read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	read_verilog opt_check3.v 
     	synth -top opt_check3 
     	opt_clean -purge
     	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
-    	show
+    	show</pre>
      
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/9b8cb14e-8d7e-405c-a2c6-95f9ebf3454a)
 
@@ -770,12 +770,12 @@ endmodule</pre>
 
 #### Example showing the sequence of commands to perform combinational logic optimization using Yosys on module opt_check4 in opt_check4.v:
 
-        read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+        <pre>read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
     	read_verilog opt_check4.v 
     	synth -top opt_check4
     	opt_clean -purge
     	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
-    	show
+    	show</pre>
      
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b3b38fee-2bca-4e30-b8c8-9fe0d8fd34fa)
 
@@ -787,11 +787,9 @@ endmodule</pre>
  assign y = a & b;
 endmodule
 
-
 module sub_module2(input a , input b , output y);
  assign y = a^b;
 endmodule
-
 
 module multiple_module_opt(input a , input b , input c , input d , output y);
 wire n1,n2,n3;
@@ -847,8 +845,7 @@ endmodule</pre>
 	
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/4b0cf916-c6f4-4ddb-b4c5-85e883372ce0)
 
-
-
+### * Sequential logic optimization
 
 
 
