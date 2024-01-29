@@ -1034,4 +1034,45 @@ q1 being an internal net can also be removed.
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/aa303577-3c4e-45f7-b278-cccdd71a2ec2)
 
+###### Ex: 5) D f/f sequential constant (dff_const5.v)
+
+<pre><font color="#12488B"><b>verilog_files</b></font>$ gvim dff_const5.v</pre>
+
+<pre>module dff_const5(input clk, input reset, output reg q);
+reg q1;
+
+always @(posedge clk, posedge reset)
+begin
+	if(reset)
+	begin
+		q <= 1'b0;
+		q1 <= 1'b0;
+	end
+	else
+	begin
+		q1 <= 1'b1;
+		q <= q1;
+	end
+end
+endmodule</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d02d8de6-4370-43d5-ad7f-56e77f380fa9)
+
+	$ gvim dff_const5.v
+	$ iverilog dff_const5.v tb_dff_const5.v
+	$ ./a.out
+        $ gtkwave tb_dff_const5.vcd
+	
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/728de7b8-89a9-46d8-91c2-ee4729707775)
+
+
+
+
+
+
+
+
+
+
 
