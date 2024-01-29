@@ -1066,9 +1066,7 @@ endmodule</pre>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/728de7b8-89a9-46d8-91c2-ee4729707775)
 
-
-
-
+### Sequential optimizations for unused outputs 
 
 
 
