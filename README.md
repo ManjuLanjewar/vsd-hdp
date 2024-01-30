@@ -1070,10 +1070,11 @@ endmodule</pre>
 
 Sometimes we don't use all features of a verilog module. In this case an optimizer will remove unused part for safe space and power.
 
-module counter_opt (input clk , input reset , output q);
+<pre>$ gvim counter_opt.v</pre>
+
+<pre>module counter_opt (input clk , input reset , output q);
 reg [2:0] count;
 assign q = count[0];
-
 always @(posedge clk ,posedge reset)
 begin
 	if(reset)
@@ -1081,8 +1082,40 @@ begin
 	else
 		count <= count + 1;
 end
+endmodule</pre>
 
-endmodule
+This design serves as an example for Sequential logic optimization with designs having unused outputs.
+Although we have a 3-bit up counter in the RTL design, only the LSB, count[0:0] is used for generating the output signal, q.
+Since count[0:0] toggles every clock cycle, there really is a need for only one flip-flop in the circuit.
+In other words, the synthesis output does not have a 3-bit up counter and its associated count incrementing logic.
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/0ab60602-6b27-46de-961f-c6f0b99f98cf)
+
+**** Behavioral Simulation
+
+<pre>$ iverilog counter_opt.v tb_counter_opt</pre>
+<pre>$ ./a.out</pre>
+<pre>$ gtkwave tb_counter_opt.vcd</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/623c838e-7665-4134-af6c-e50d3ea89c1a)
+
+Synthesis Result w/o opt_clean switch
+
+        $ yosys
+	yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> read_verilog counter_opt.v
+	yosys> synth -top counter_top
+	yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> show
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d290881f-ef9a-4726-a5a7-d42067f73e6a)
+
+Synthesis Result with opt_clean switch
+
+
+
+
 
 
 
