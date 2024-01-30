@@ -1093,9 +1093,9 @@ In other words, the synthesis output does not have a 3-bit up counter and its as
 
 **** Behavioral Simulation
 
-<pre>$ iverilog counter_opt.v tb_counter_opt</pre>
-<pre>$ ./a.out</pre>
-<pre>$ gtkwave tb_counter_opt.vcd</pre>
+<pre>$ iverilog counter_opt.v tb_counter_opt
+ ./a.out
+$ gtkwave tb_counter_opt.vcd</pre>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/623c838e-7665-4134-af6c-e50d3ea89c1a)
 
@@ -1113,6 +1113,16 @@ Synthesis Result w/o opt_clean switch
 
 Synthesis Result with opt_clean switch
 
+	$ yosys
+	yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> read_verilog counter_opt.v
+	yosys> synth -top counter_top
+ 	yosys> opt_clean -purge
+	yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> show
+ 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/028435c1-2105-4518-8b00-ff33cdf71058)
 
 
 
