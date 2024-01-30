@@ -1068,6 +1068,8 @@ endmodule</pre>
 
 ### Sequential optimizations for unused outputs 
 
+##### Example 6: counter_opt.v
+
 Sometimes we don't use all features of a verilog module. In this case an optimizer will remove unused part for safe space and power.
 
 <pre>$ gvim counter_opt.v</pre>
@@ -1124,6 +1126,45 @@ Synthesis Result with opt_clean switch
  
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/028435c1-2105-4518-8b00-ff33cdf71058)
 
+##### Example 7: counter_opt2.v
+
+<pre>$ gvim counter_opt.v
+$ cp counter_opt.v counter_opt2.v
+$ gvim counter_opt2.v</pre>
+
+<pre>module counter_opt (input clk , input reset , output q);
+reg [2:0] count;
+assign q = (count[2:0] == 3'b100); 
+
+always @(posedge clk ,posedge reset)
+begin
+	if(reset)
+		count <= 3'b000;
+	else
+		count <= count + 1;
+end
+endmodule</pre>
+
+In this design, we have a 3-bit up counter and all the bits in the counter state value, count[2:0] are used for generating the output signal, q.
+q = 1, when count[2:0] = 3'b100
+So when this design is synthesized, we expect 3 DFF instantiations to be present along with the count incrementing logic and the logic to generate, q.
+
+Exercise: Make testbench of counter_opt2.v and then find behavioural simulation.
+
+
+Synthesis Result with opt_clean switch
+
+	$ yosys
+	yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> read_verilog counter_opt2.v
+	yosys> synth -top counter_top
+ 	yosys> opt_clean -purge
+	yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	yosys> show
+
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/bc9655da-8fac-4181-89f0-9081e097f36c)
 
 
 
