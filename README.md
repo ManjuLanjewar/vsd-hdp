@@ -1151,7 +1151,6 @@ So when this design is synthesized, we expect 3 DFF instantiations to be present
 
 Exercise: Make testbench of counter_opt2.v and then find behavioural simulation.
 
-
 Synthesis Result with opt_clean switch
 
 	$ yosys
@@ -1163,10 +1162,13 @@ Synthesis Result with opt_clean switch
 	yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 	yosys> show
 
-
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/bc9655da-8fac-4181-89f0-9081e097f36c)
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/adb1aa5d-2baa-4df6-8f6e-c38c7cbe48d8)
 
+
+## Day 4
+#### Gate Level Simulation (GLS)
 
 
 
