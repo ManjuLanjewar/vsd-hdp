@@ -1068,6 +1068,21 @@ endmodule</pre>
 
 ### Sequential optimizations for unused outputs 
 
+Sometimes we don't use all features of a verilog module. In this case an optimizer will remove unused part for safe space and power.
+
+module counter_opt (input clk , input reset , output q);
+reg [2:0] count;
+assign q = count[0];
+
+always @(posedge clk ,posedge reset)
+begin
+	if(reset)
+		count <= 3'b000;
+	else
+		count <= count + 1;
+end
+
+endmodule
 
 
 
