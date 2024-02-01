@@ -1353,8 +1353,23 @@ Next, perform GLS simulation:
 
 	gtkwave tb_bad_mux.vcd
 	
-
-
-
 	
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/a7e0c07d-ab99-4bf4-b312-e5197a3eca1f)
+
+
+	In this case, we can clearly see that there is a mismatch in the simulation between pre and post-synthesis.
+	The pre-synthesis simulation shows a behavior resembling that of a posedge triggered DFF with the "sel" signal acting as the CLK and the "i1" 		acting as the D input.
+	The synthesis result, however, is a 2-input mux and not a DFF.
+	In fact, yosys actually throws a warning message about the possible omission of signals from the sensitivity list assuming a purely 		
+ 	combinational circuit.
+
+Yosys warning about missing signals in sensitivity list
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/72fec9ca-29b3-49d1-bc0a-54ba33a64195)
+
+
+
+
+
+
+
+
