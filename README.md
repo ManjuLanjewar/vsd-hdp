@@ -1461,7 +1461,6 @@ An 4-bit arithmetic logic unit (ALU) is a combinational circuit which operates o
 based on selection inputs. The ALU performs common arithmetic operations like addition,subtraction multiplication and division and logic
 operations like AND, INV, XOR, and OR. 
 
-
 Inputs and outputs are as follows:
 
 
