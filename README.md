@@ -1210,3 +1210,46 @@ Some of the common reasons for Synthesis - Simulation mismatch (mismatch between
        - Hence, if the RTL was written assuming one functionality using blocking assignments, a simulation mismatch can occur in GLS.
     3) Non-standard verilog coding
 
+GLS Synthesis - Simulation mismatch - Example 1: ternary_operator_mux.v
+
+<pre>$ gvim ternary_operator_mux.v</pre>
+
+Verilog snippet
+
+<pre>module ternary_operator_mux (input i0 , input i1 , input sel , output y);
+	assign y = sel?i1:i0;
+	endmodule</pre>
+
+RTL Simulation 
+
+Begin by checking the current waveform of the code (ternary_operator_mux.v):
+
+<pre>$ iverilog ternary_operator_mux.v tb_ternary_operator_mux.v
+     $ ./a.out</pre>
+     $ gtkwave tb_ternary_operator_mux.vcd</pre>
+     
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/444ca772-89ec-4465-bc0b-afe54cf4f2db)
+
+Then, synthesize and write the GLS netlist:
+
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog ternary_operator_mux.v
+synth -top ternary_operator_mux
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+write_verilog -noattr ternary_operator_mux_net.v
+show
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/3a76b426-3ab5-4856-9905-4b327718606d)
+
+Next, perform GLS simulation:
+
+iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux_net.v tb_ternary_operator_mux.v
+./a.out
+gtkwave tb_ternary_operator_mux.vcd
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/dc6b9a75-2f0a-4676-ae1e-71192ce19091)
+
+
+
+
