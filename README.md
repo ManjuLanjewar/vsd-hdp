@@ -1463,6 +1463,9 @@ operations like AND, INV, XOR, and OR.
 
 Inputs and outputs are as follows:
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1c1c17fc-0806-4c6d-bc72-39438826f70d)
+
+
 <pre>$ gvim alu_4_bit.v
 
 module alu_4_bit(A,B,clk,rst,mode,y);
