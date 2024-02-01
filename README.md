@@ -1103,26 +1103,26 @@ $ gtkwave tb_counter_opt.vcd</pre>
 
 Synthesis Result w/o opt_clean switch
 
-        $ yosys
+        <pre>$ yosys
 	yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 	yosys> read_verilog counter_opt.v
 	yosys> synth -top counter_top
 	yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 	yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-	yosys> show
+	yosys> show</pre>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d290881f-ef9a-4726-a5a7-d42067f73e6a)
 
 Synthesis Result with opt_clean switch
 
-	$ yosys
+	<pre>$ yosys
 	yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 	yosys> read_verilog counter_opt.v
 	yosys> synth -top counter_top
  	yosys> opt_clean -purge
 	yosys> dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 	yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-	yosys> show
+	yosys> show</pre>
  
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/028435c1-2105-4518-8b00-ff33cdf71058)
 
@@ -1225,27 +1225,29 @@ RTL Simulation
 Begin by checking the current waveform of the code (ternary_operator_mux.v):
 
 <pre>$ iverilog ternary_operator_mux.v tb_ternary_operator_mux.v
-     $ ./a.out</pre>
+     $ ./a.out
      $ gtkwave tb_ternary_operator_mux.vcd</pre>
      
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/444ca772-89ec-4465-bc0b-afe54cf4f2db)
 
 Then, synthesize and write the GLS netlist:
 
-yosys
-read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-read_verilog ternary_operator_mux.v
-synth -top ternary_operator_mux
-abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-write_verilog -noattr ternary_operator_mux_net.v
-show
+	yosys
+	read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	read_verilog ternary_operator_mux.v
+	synth -top ternary_operator_mux
+	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+	write_verilog -noattr ternary_operator_mux_net.v
+	show
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/3a76b426-3ab5-4856-9905-4b327718606d)
 
 Next, perform GLS simulation:
 
 iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux_net.v tb_ternary_operator_mux.v
+
 ./a.out
+
 gtkwave tb_ternary_operator_mux.vcd
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/dc6b9a75-2f0a-4676-ae1e-71192ce19091)
