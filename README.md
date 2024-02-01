@@ -1168,9 +1168,29 @@ Synthesis Result with opt_clean switch
 
 
 ## Day 4
-#### Gate Level Simulation (GLS)
+#### Gate Level Simulation (GLS), Synthesis-Simulation mismatch and Blocking/Non-blocking statements  
 
 
+    * Gate Level refers to the netlist view of a design after the synthesis has been performed.
+    * RTL simulations are pre-synthesis, while GLS is post-synthesis - i.e., in RTL simulations, the Device Under Test (DUT) is the RTL design itself         while in GLS, the DUT is the netlist generated after synthesis.
+    * The RTL code and the generated netlist are logically equivalent (well, supposed to be!) and hence the same testbenches can be used to verify both.
+    * Although it is expected that the generated netlist has the same logical correctness as the RTL design, there can sometimes be mismatches between        the RTL-level simulation and the sythesized design (Synthesis - Simulation mismatch) and thus arises the need to run GLS to help identify such  
+      scenarios and fix them to ensure the logical correctness post-synthesis as well.
 
+   To run GLS, we need to provide the Gate level netlist, the testbench and the Gate Level verilog models to the simulator. GLS can be run in different delay modes:
 
+    * Functional validation (zero delay similar to RTL sim): if the Gate Level verilog models do not have the timing information for various corners,         we can only verify the functional correctness of the design by running GLS.
+    * Full Timing validation: if the Gate level verilog models have the necessary timing information, both the functional correctness and the timing  
+      behaviour can be verified by GLS.
 
+GLS Flow using iverilog
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6c480e89-83f6-461c-90b8-4188da87823f)
+
+The Gate level verilog model(s) need to be provided as shown below to do GLS using iverilog:
+
+Syntax:
+    iverilog <path-to-gate-level-verilog-model(s)> <netlist_file.v> <tb_top.v>
+
+Example using ternary_operator_mux_netlist.v:
+    iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux_netlist.v tb_ternary_operator_mux.v
