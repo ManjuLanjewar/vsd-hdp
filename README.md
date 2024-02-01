@@ -1352,3 +1352,5 @@ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_
 ./a.out
 
 gtkwave tb_bad_mux.vcd
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/5b9c8395-fc7d-4a0f-a247-d694a6a37598)
