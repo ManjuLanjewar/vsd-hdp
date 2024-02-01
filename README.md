@@ -1242,6 +1242,12 @@ Then, synthesize and write the GLS netlist:
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/3a76b426-3ab5-4856-9905-4b327718606d)
 
+Netlist output
+
+<pre>$ gvim ternary_operator_mux_net.v</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1991c0f8-65ea-4ea5-8cac-f3bd667c6202) 
+
 Next, perform GLS simulation:
 
 iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux_net.v tb_ternary_operator_mux.v
@@ -1251,7 +1257,6 @@ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_
 gtkwave tb_ternary_operator_mux.vcd
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/dc6b9a75-2f0a-4676-ae1e-71192ce19091)
-
 
 
 
