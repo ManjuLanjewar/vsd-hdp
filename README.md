@@ -1343,7 +1343,7 @@ module bad_mux(i0, i1, sel, y);
   assign _1_ = i1;
   assign _2_ = sel;
   assign y = _3_;
-endmodule<pre>
+endmodule</pre>
 
 Next, perform GLS simulation:
 
