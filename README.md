@@ -1463,7 +1463,15 @@ operations like AND, INV, XOR, and OR.
 
 Inputs and outputs are as follows:
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1c1c17fc-0806-4c6d-bc72-39438826f70d)
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b506be48-c212-4110-839a-d280b4911b9e)
+
+This is a ALU model which receives two input operands ’A’ and ’B’ which are 4 bits long. The result is denoted by ’Y’ which is 8 bit long. 
+The input signal ’Mode’ is a 3 bit value which tells the ALU what operation has to be performed. Since ’Mode’ is 3 bits long we can have a maximum of 
+8 operations.
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/f8ffbfd8-2b0d-410d-b3f8-5de56d2ab0ef)
+
 
 <pre>touch alu_4_bit.v tb_alu_4_bit.v</pre>
 
