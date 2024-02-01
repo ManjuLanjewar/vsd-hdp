@@ -1465,10 +1465,13 @@ Inputs and outputs are as follows:
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1c1c17fc-0806-4c6d-bc72-39438826f70d)
 
+<pre>touch alu_4_bit.v tb_alu_4_bit.v</pre>
 
-<pre>$ gvim alu_4_bit.v
+<pre>$ gvim alu_4_bit.v</pre>
 
-module alu_4_bit(A,B,clk,rst,mode,y);
+##### Verilog Snippet 
+
+<pre>module alu_4_bit(A,B,clk,rst,mode,y);
 
 	input[3:0]A,B;
 	input clk,rst;
@@ -1480,9 +1483,9 @@ module alu_4_bit(A,B,clk,rst,mode,y);
 
 	    y<= 8'b0000_0000;
         end
-	   // else begin
-		case(mode)
-           3'b000: y<= A+B;
+	   case(mode)
+
+	   3'b000: y<= A+B;
      	   3'b001: y<= A-B;
 	   3'b010: y<= A*B;
 	   3'b011: y<= A/B;
@@ -1492,8 +1495,7 @@ module alu_4_bit(A,B,clk,rst,mode,y);
 	   3'b111: y<= ~A;
            default:y<= 8'b0000_0000;
        endcase
-     //  end
-      
+         
    end 
 endmodule</pre>
 
