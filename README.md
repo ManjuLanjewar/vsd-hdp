@@ -1343,14 +1343,18 @@ module bad_mux(i0, i1, sel, y);
   assign _1_ = i1;
   assign _2_ = sel;
   assign y = _3_;
-endmodule
+endmodule<pre>
 
 Next, perform GLS simulation:
 
-iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v bad_mux_net.v tb_bad_mux.v
+	iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v bad_mux_net.v tb_bad_mux.v
 
-./a.out
+	./a.out
 
-gtkwave tb_bad_mux.vcd
+	gtkwave tb_bad_mux.vcd
+	
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/5b9c8395-fc7d-4a0f-a247-d694a6a37598)
+
+
+	
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/a7e0c07d-ab99-4bf4-b312-e5197a3eca1f)
