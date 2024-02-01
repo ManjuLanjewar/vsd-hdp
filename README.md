@@ -1190,7 +1190,23 @@ GLS Flow using iverilog
 The Gate level verilog model(s) need to be provided as shown below to do GLS using iverilog:
 
 Syntax:
+
     iverilog <path-to-gate-level-verilog-model(s)> <netlist_file.v> <tb_top.v>
 
 Example using ternary_operator_mux_netlist.v:
+
     iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux_netlist.v tb_ternary_operator_mux.v
+
+#### Synthesis - Simulation mismatch
+
+Some of the common reasons for Synthesis - Simulation mismatch (mismatch between pre- and post-synthesis simulations) :
+
+    1) Incomplete sensitivity list
+    2) Use of blocking assignments inside always block vs. non-blocking assignments
+       - Blocking assignments ("=") inside always block are executed sequentially by the simulator.
+       - The RHS of non-blocking assignments ("<=") are evaluated first and then assigned to the LHS at the same simulation clock tick by the simulator.
+       - Synthesis will yield the same circuit with blocking and non-blocking assignments, with the synthesis output being that of the non-blocking 
+         case for both.
+       - Hence, if the RTL was written assuming one functionality using blocking assignments, a simulation mismatch can occur in GLS.
+    3) Non-standard verilog coding
+
