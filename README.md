@@ -1453,12 +1453,16 @@ Mismatch behavior found. Rewrite Verilog RTL to fix it.
 
 ##### Day 5
 *** Arithmetic Logic Unit 
+
+The ALU is the mathematical brain of a computer. The first ALU was INTEL 74181 implemented as a 7400 series.
+It is a TTL integrated circuit that was released in 1970.
+An arithmatic logic unit is fundamental building block of central processing unit which performs arithmatic and logic operations. 
 An 4-bit arithmetic logic unit (ALU) is a combinational circuit which operates on two 4-bit input buses
-based on selection inputs. The ALU performs common arithmetic (addition and subtraction) and logic
-(AND, INV, XOR, and OR) functions. These operations are common to all computer systems and thus are
-an essential part of computer architecture.
+based on selection inputs. The ALU performs common arithmetic operations like addition,subtraction multiplication and division and logic
+operations like AND, INV, XOR, and OR. 
 
 
+Inputs and outputs are as follows:
 
 
 
