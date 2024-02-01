@@ -1468,7 +1468,7 @@ Inputs and outputs are as follows:
 
 This is a ALU model which receives two input operands ’A’ and ’B’ which are 4 bits long. The result is denoted by ’Y’ which is 8 bit long. 
 The input signal ’Mode’ is a 3 bit value which tells the ALU what operation has to be performed. Since ’Mode’ is 3 bits long we can have a maximum of 
-8 operations.
+8 operations. Following operations are performed based on 'mode' selection input are as follows: 
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/f8ffbfd8-2b0d-410d-b3f8-5de56d2ab0ef)
 
