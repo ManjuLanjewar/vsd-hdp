@@ -1451,7 +1451,12 @@ Next, perform GLS simulation:
 
 Mismatch behavior found. Rewrite Verilog RTL to fix it.
 
-
+##### Day 5
+*** Arithmetic Logic Unit 
+An 4-bit arithmetic logic unit (ALU) is a combinational circuit which operates on two 4-bit input buses
+based on selection inputs. The ALU performs common arithmetic (addition and subtraction) and logic
+(AND, INV, XOR, and OR) functions. These operations are common to all computer systems and thus are
+an essential part of computer architecture.
 
 
 
