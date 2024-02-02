@@ -1515,7 +1515,8 @@ Begin by checking the current waveform of the code (alu_4_bit.v):
      $ ./a.out
      $ gtkwave tb_alu_4_bit.vcd</pre>
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b8e39306-bba5-4fc1-a395-f61124f4d6cd)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/498dd00b-0f16-4550-ba3c-f2b98be277de)
+
 
 ##### Synthesize and write the GLS netlist:
 
