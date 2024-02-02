@@ -1481,7 +1481,7 @@ The input signal ’Mode’ is a 3 bit value which tells the ALU what operation 
 
 <pre>module alu_4_bit(A,B,clk,rst,mode,y);
 
-	input[3:0]A,B;
+	input wire[3:0]A,B;
 	input clk,rst;
 	output reg [7:0]y;
         input[2:0]mode;
@@ -3065,7 +3065,8 @@ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_
 
 gtkwave tb_alu_4_bit.vcd
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1479e426-8e39-4b8e-858e-f28097d77426)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/4d43ea8b-24ba-4b13-b4b5-20a7d8cedab8)
+
 
 
 
