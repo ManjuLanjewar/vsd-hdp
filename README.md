@@ -1520,17 +1520,17 @@ Begin by checking the current waveform of the code (alu_4_bit.v):
 
 ##### Synthesize and write the GLS netlist:
 
-	yosys
-	read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-	read_verilog alu_4_bit.v
-	synth -top alu_4_bit
-dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-flatten
-	opt
-        stat
-	write_verilog -noattr alu_4_bit_net.v
-	show
+		yosys
+		read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+		read_verilog alu_4_bit.v
+		synth -top alu_4_bit
+		dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+		abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+		flatten
+		opt
+        	stat
+		write_verilog -noattr alu_4_bit_net.v
+		show
  
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/dfb7abce-f45e-47a6-bba0-5ff0609272f2)
 
