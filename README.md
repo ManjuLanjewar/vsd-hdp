@@ -1524,9 +1524,9 @@ Begin by checking the current waveform of the code (alu_4_bit.v):
 	read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 	read_verilog alu_4_bit.v
 	synth -top alu_4_bit
-        dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 	abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-        flatten
+flatten
 	opt
         stat
 	write_verilog -noattr alu_4_bit_net.v
