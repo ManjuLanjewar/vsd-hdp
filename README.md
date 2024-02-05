@@ -1550,16 +1550,7 @@ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_
 
 gtkwave tb_alu_4_bit.vcd
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/4d43ea8b-24ba-4b13-b4b5-20a7d8cedab8)
-
-
-
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/7600d804-3f44-4642-94f1-a914213d7c86)
-
-
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/421403dd-257b-4d4e-a290-b08083ffccfa)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/04ac34ca-89cf-4b6d-a6f6-f4e82b177798)
 
 
 	
