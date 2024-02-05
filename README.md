@@ -1536,10 +1536,56 @@ Begin by checking the current waveform of the code (alu_4_bit.v):
         	stat
 		write_verilog -noattr alu_4_bit_net.v
 		show
- 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/dfb7abce-f45e-47a6-bba0-5ff0609272f2)
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/8eca2634-31f9-4b18-bd6a-49d5929c842a)
+##### Netlist statistics
+ 
+9. Printing statistics.
+
+=== alu_4_bit ===
+
+   Number of wires:                606
+   Number of wire bits:            628
+   Number of public wires:           6
+   Number of public wire bits:      21
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                159
+     sky130_fd_sc_hd__a21o_1         1
+     sky130_fd_sc_hd__a21oi_1       11
+     sky130_fd_sc_hd__a221oi_1       1
+     sky130_fd_sc_hd__a22oi_1        1
+     sky130_fd_sc_hd__a31oi_1        4
+     sky130_fd_sc_hd__a41oi_1        1
+     sky130_fd_sc_hd__and2_0         1
+     sky130_fd_sc_hd__and4_1         1
+     sky130_fd_sc_hd__clkinv_1       6
+     sky130_fd_sc_hd__dfxtp_1        8
+     sky130_fd_sc_hd__maj3_1         6
+     sky130_fd_sc_hd__mux2_1         1
+     sky130_fd_sc_hd__nand2_1       24
+     sky130_fd_sc_hd__nand2b_1       2
+     sky130_fd_sc_hd__nand3_1        6
+     sky130_fd_sc_hd__nand3b_1       3
+     sky130_fd_sc_hd__nand4_1        1
+     sky130_fd_sc_hd__nor2_1        20
+     sky130_fd_sc_hd__nor2b_1        3
+     sky130_fd_sc_hd__nor3_1         6
+     sky130_fd_sc_hd__nor3b_1        1
+     sky130_fd_sc_hd__o2111ai_1      1
+     sky130_fd_sc_hd__o211ai_1       3
+     sky130_fd_sc_hd__o21a_1         2
+     sky130_fd_sc_hd__o21ai_0       14
+     sky130_fd_sc_hd__o221ai_1       2
+     sky130_fd_sc_hd__o22ai_1        5
+     sky130_fd_sc_hd__o32ai_1        1
+     sky130_fd_sc_hd__or2_0          2
+     sky130_fd_sc_hd__or3_1          3
+     sky130_fd_sc_hd__or3b_1         1
+     sky130_fd_sc_hd__xnor2_1        9
+     sky130_fd_sc_hd__xnor3_1        1
+     sky130_fd_sc_hd__xor2_1         4
+     sky130_fd_sc_hd__xor3_1         3
 
 
 ##### Netlist output
