@@ -1616,7 +1616,8 @@ Working workflow is here:
 	gtkwave tb_alu_4_bit.vcd 
 
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/04ac34ca-89cf-4b6d-a6f6-f4e82b177798)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/78d8f3fd-36ea-462a-8c0c-ac82c05b1f01)
+
 
 #### Comparison RTL and netlist simulation
 
