@@ -1555,6 +1555,9 @@ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_
 
 gtkwave tb_alu_4_bit.vcd
 
+![Screenshot from 2024-02-05 13-15-00](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/abb1d091-4f22-4593-8500-35a47ee79ee2)
+
+
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/04ac34ca-89cf-4b6d-a6f6-f4e82b177798)
 
 
