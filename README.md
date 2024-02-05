@@ -1558,7 +1558,12 @@ gtkwave tb_alu_4_bit.vcd
 ![Screenshot from 2024-02-05 13-15-00](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/abb1d091-4f22-4593-8500-35a47ee79ee2)
 
 
-All output signals have X output value. It's known bug with sky130's verilog model library well described there The-OpenROAD-Project/OpenLane#518 A workaround is small modification of sky130's verilog model library and special options for simulation. Working workflow is here:
+All output signals have X output value. It's known bug with sky130's verilog model library by refering The-OpenROAD-Project/OpenLane#518 A workaround is small modification of sky130's verilog model library and special options for simulation.
+The current solution (until they are addressed in the skywater-pdk repo) is :
+1] manually comment out the wire 1; statement and 
+2] correct endif SKY130_FD_SC_HD__LPFLOW_BLEEDER_FUNCTIONAL_V as endif // SKY130_FD_SC_HD__LPFLOW_BLEEDER_FUNCTIONAL_V 
+
+Working workflow is here:
 
 iverilog -DFUNCTIONAL -DUNIT_DELAY=#1 ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v alu_4_bit_net.v tb_alu_4_bit.v
 ./a.out
