@@ -1534,8 +1534,7 @@ Begin by checking the current waveform of the code (alu_4_bit.v):
  
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/dfb7abce-f45e-47a6-bba0-5ff0609272f2)
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/44ff4d59-7cc9-43c1-855b-8962498d6bfb)
-
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/8eca2634-31f9-4b18-bd6a-49d5929c842a)
 
 
 ##### Netlist output
