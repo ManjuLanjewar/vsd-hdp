@@ -1556,5 +1556,8 @@ gtkwave tb_alu_4_bit.vcd
 
 
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/7600d804-3f44-4642-94f1-a914213d7c86)
+
+
 
 	
