@@ -1520,7 +1520,8 @@ Begin by checking the current waveform of the code (alu_4_bit.v):
      $ ./a.out
      $ gtkwave tb_alu_4_bit.vcd</pre>
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/498dd00b-0f16-4550-ba3c-f2b98be277de)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/2601ef9e-9672-4442-ac69-7fd0b86980ed)
+
 
 
 ##### Synthesize and write the GLS netlist:
@@ -1621,7 +1622,8 @@ Working workflow is here:
 
 #### Comparison RTL and netlist simulation
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/498dd00b-0f16-4550-ba3c-f2b98be277de)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/16347127-a071-4556-ba63-dbc399e87c56)
+
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/130f2ada-543c-4837-afe9-c4cfc66d5657)
 
