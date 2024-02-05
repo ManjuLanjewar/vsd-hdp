@@ -1529,17 +1529,16 @@ Begin by checking the current waveform of the code (alu_4_bit.v):
 		read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 		read_verilog alu_4_bit.v
 		synth -top alu_4_bit
+  		flatten
+		opt_clean -purge
 		dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 		abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-		flatten
-		opt
-        	stat
-		write_verilog -noattr alu_4_bit_net.v
+	     	write_verilog -noattr alu_4_bit_net.v
 		show
 
 ##### Netlist statistics
  
-9. Printing statistics.
+<pre>9. Printing statistics.
 
 === alu_4_bit ===
 
@@ -1585,7 +1584,7 @@ Begin by checking the current waveform of the code (alu_4_bit.v):
      sky130_fd_sc_hd__xnor2_1        9
      sky130_fd_sc_hd__xnor3_1        1
      sky130_fd_sc_hd__xor2_1         4
-     sky130_fd_sc_hd__xor3_1         3
+     sky130_fd_sc_hd__xor3_1         3</pre>
 
 
 ##### Netlist output
