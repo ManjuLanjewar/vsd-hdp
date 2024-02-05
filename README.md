@@ -1479,32 +1479,37 @@ The input signal ’Mode’ is a 3 bit value which tells the ALU what operation 
 
 ##### Verilog Snippet 
 
-<pre>module alu_4_bit(A,B,clk,rst,mode,y);
+<pre>module alu_4_bit(
+		 input clk,
+		 input rst,
+	         input [3:0]A,
+		 input [3:0]B,
+		 input [2:0]mode,
+		 output reg [7:0]y
+	        );
 
-	input wire[3:0]A,B;
-	input clk,rst;
-	output reg [7:0]y;
-        input[2:0]mode;
-    always@(posedge clk)begin
+    	always@(posedge clk)begin
 	   	
-        if(rst) begin
+	    	if(rst) begin
+            	    y<= 8'b0000_0000;
+                end
 
-	    y<= 8'b0000_0000;
-        end
-	   case(mode)
-
-	   3'b000: y<= A+B;
-     	   3'b001: y<= A-B;
-	   3'b010: y<= A*B;
-	   3'b011: y<= A/B;
-	   3'b100: y<= A & B;
-	   3'b101: y<= A | B;
- 	   3'b110: y<= A ^ B;
-	   3'b111: y<= ~A;
-           default:y<= 8'b0000_0000;
-       endcase
-         
-   end 
+        	else begin
+		
+		  case(mode)
+			  3'b000: begin y<= A+B;end
+			  3'b001: begin y<= A-B; end
+			  3'b010: begin y<= A*B;end
+			  3'b011: begin y<= A/B; end
+			  3'b100: begin y<= A & B;end
+			  3'b101: begin y<= A | B;end
+			  3'b110: begin y<= A ^ B;end
+			  3'b111: begin y<= ~A;end
+			  default:begin y<= 8'b0000_0000;end
+       		endcase
+      		end
+      
+   	end 
 endmodule</pre>
 
 ##### RTL Simulation 
