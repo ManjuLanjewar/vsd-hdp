@@ -1632,4 +1632,7 @@ Functionality of Verilog RTL and generated netlist is the same.
 
 # Day 6
 STA Basics
-STA stands  for static timimg analysis. AMximum clock frequenc circuit is opertaing is Tclk >= Tset_up+Tcombi+  Max delay associated with combinational logic  
+STA stands  for static timimg analysis.
+Maximum clock frequency circuit is opertaing is Tclk > Tcq_A+Tcombi+Tsetup_B  
+Tcombi is called Max delay constraint associated with combinational logic.
+Thold_B < Tcq_A + Tcombi where data should not chnage in hold window. 
