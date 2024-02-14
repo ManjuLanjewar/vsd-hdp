@@ -1650,3 +1650,6 @@ If both f/f are not getting clock at same time then
 > Thold_B + Tpush < Tcq_A + Tcombi
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d9d89ec4-2668-48e6-9559-187d5bca809a)
+
+What is delay and why delay 
+Delay is function of inflow. More is inflow, less is delay and vice-versa
