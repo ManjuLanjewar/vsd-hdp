@@ -1632,18 +1632,21 @@ Functionality of Verilog RTL and generated netlist is the same.
 
 # Day 6
 STA Basics
-	- STA stands  for static timimg analysis.
-	- Maximum clock frequency circuit is opertaing is Tclk > Tcq_A+Tcombi+Tsetup_B  
-	- Tcq_A+Tcombi+Tsetup_B is called Max delay constraint.
-	- Thold_B < Tcq_A + Tcombi where data should not chnage in hold window (Thold_B). 
-	- Tcq_A + Tcombi is called Min delay constraint.
-	- Max delay and Min delay both are important as two sides of same coin. 
-	- If no min delay, max delay meet by pushing clock. If start pushing clock then interfere hold time of capture f/f.
+
+	1) STA stands  for static timimg analysis.
+	2) Maximum clock frequency circuit is opertaing is Tclk > Tcq_A+Tcombi+Tsetup_B  
+	3) Tcq_A+Tcombi+Tsetup_B is called Max delay constraint.
+	4) Thold_B < Tcq_A + Tcombi where data should not chnage in hold window (Thold_B). 
+	5) Tcq_A + Tcombi is called Min delay constraint.
+	6) Max delay and Min delay both are important as two sides of same coin. 
+	7) If no min delay, max delay meet by pushing clock. If start pushing clock then interfere hold time of capture f/f.
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/0c6c58bb-c21a-447d-bc59-430487da7ff4)
 
 Here assuming both f/f is getting clock at same time. 
 
-If both f/f are not getting clock at same time then Thold_B + Tpush < Tcq_A + Tcombi
+If both f/f are not getting clock at same time then 
+
+> Thold_B + Tpush < Tcq_A + Tcombi
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d9d89ec4-2668-48e6-9559-187d5bca809a)
