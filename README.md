@@ -1722,3 +1722,21 @@ For the design having input port,input logic,Register(D F/F or D Latch), combina
    * IO delay comes from standard interface specifications (Ex: SPI or I2C whcih are industry standard protocols where delay is specified)
    * IO budgeting based on interaction with other modules.
 
+IO Delay modelling is not sufficient because signals from external circuit coming to input port are not ideal(zero rise time). But in practical, signals have some transition (Non-zero rise time). Cell delay is function of input transition and output load. So, Input logic see transiton and beacuse of this, input logic delay will vary and input logic will behave differently because Cell delay is function of input transition.
+This non zero rise time cause input logic delay to increase which infringing into setup time and this cause input set up time to fail at register logic(D F/F). So setup violation is seen with practical transtion. So, while modeling external input delay, model input transtion also. So, Tool need to do extra optimization in input logic. So, Delay has to be factored in.  
+Similarly on output side, there is external output delay accounted, and Cell delay is function of output load, it is necessary to model output load.  
+Theres is output load between output logic and external register, output logic is taking more time to settle down and violating set up time at capturing f/f. 
+
+The output load increased the delay of output logic, thereby potentially causing setup failure at the receiving flop. 
+Output modelling is done such that we need to tell tool that there is going to be output load and need to sqeeze ouput logic such that that output load is not going to derail setup time at capturing F/f. So need to meet timimg for output logic assuming there is output load. So, output logic is need to be squeeze such that even with load, meet timimg. 
+
+Now question is how much transtion is model and how much load is model? That comes from specification if it is standard interface. 70% for external delay and 30% for internal delay  
+
+
+
+
+
+
+
+
+
