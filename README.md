@@ -1732,6 +1732,8 @@ Output modelling is done such that we need to tell tool that there is going to b
 
 Now question is how much transtion is model and how much load is model? That comes from specification if it is standard interface. 70% for external delay and 30% for internal delay  
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6094ea1e-8541-4c19-8e6c-dc300c81f8bb)
+
 
 
 
