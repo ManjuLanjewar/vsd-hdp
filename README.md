@@ -1695,9 +1695,17 @@ In Sequential Cell (D F/F , D latch )
 For the design having input port,input logic,Register(D F/F or D Latch), combinational logic, output logic and output port.
 - What is acceptable delay at input logic, combi logic nad output logic? will clock arrive at same time to all F/F in design? 
   How to control delay at combi logic? 
-In practicle circuits, we want circuit to operate at some frequency based on that we will calculate what is optimised delay allowable here. So, It is not Tcombi which decide Tclk. It is Tclk whcih decide how much Tcombi delay to be allowed. That means it is clock period which limiting combinational logic. Once clock period is defined, all reg to reg paths are constraint. Synthesis tool will work to optimised this logic to meet this clock period.
+	In practicle circuits, we want circuit to operate at some frequency based on that we will calculate what is optimised delay 		allowable here. So, It is not Tcombi which decide Tclk. It is Tclk whcih decide how much Tcombi delay to be allowed. That 		means it is clock period which limiting combinational logic. Once clock period is defined, all reg to reg paths are constraint. 	Synthesis tool will work to optimised this logic to meet this clock period.
 
 	<pre> Clock period will limit the delays in all Reg to Reg paths</pre>
+
+- Input to design is from external registers having same clock. When design gets connected completey in system and starts working,
+  input logic should be squeeze for optimal delay such that reg to reg paths works and meet timings (from external reg to internal reg
+  through input logic). These are synchronous paths (working on same clock) and it needs to be constraint at input. So we need to
+  constraint what is acceptable delay in input logic. There should be way to specify how much input delay is accptable.
+  
+- There is output logic sending output to external reg clocked at same clock. This is also synchronous path and it needs to be constraint   at output. If output logic is not squeeze then there will be timimg issue. So, Output logic should be squeeze that means there should     be way to tell tool that squeeze output logic so we should be able to constrain output logic.
+	
  
 
 
