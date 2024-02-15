@@ -1673,5 +1673,5 @@ In Sequential Cell (D F/F , D latch )
   
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/07b11e4d-ea31-4f95-a4fb-3fa79d4dccea)
 
-
-
+Critical path that decides or limiting the clock frequency.
+To achieve better frequency by reducing delay of crtical path  how to tell tool to pick cell whcih has less delay? For this we need to constraining the design 
