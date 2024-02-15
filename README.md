@@ -1690,7 +1690,7 @@ In Sequential Cell (D F/F , D latch )
        * Clk to D (Reg to Reg Timing paths)
        * Clk to Output (IO Timing Paths)
        * Input to D (IO Timing Paths)
-       * Input to output
+       * Input to output (IO paths)
 
 For the design having input port,input logic,Register(D F/F or D Latch), combinational logic, output logic and output port.
 - What is acceptable delay at input logic, combi logic nad output logic? will clock arrive at same time to all F/F in design? 
