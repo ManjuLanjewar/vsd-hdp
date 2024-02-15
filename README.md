@@ -1706,8 +1706,19 @@ For the design having input port,input logic,Register(D F/F or D Latch), combina
   
 - There is output logic sending output to external reg clocked at same clock. This is also synchronous path and it needs to be constraint   at output. If output logic is not squeeze then there will be timimg issue. So, Output logic should be squeeze that means there should     be way to tell tool that squeeze output logic so we should be able to constrain output logic.
 	
- 
+ ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/2500c3a0-3a7c-42ab-80d1-b5bbb26bcc86)
 
+- Input External Delay:-
+  There are routing delay between external register/circuit and input logic. The delay given to external circuit is called input external   delay, so that tool automatically calculate what is time available for input logic therby accordingly it squeezes input logic.
+  
+- Output External Delay:-
+  There are routing delay between external register and output logic. The delay given to external register is called output external
+  delay, so that tool automatically calculate what is time available for output logic therby accordingly it squeezes output logic.
 
+  Input logic and output logic is constrain by specifying input external delay and output external delay associated with Tclk.
+  
+  So, IO Delay Modelling is done by
+  
+   * IO delay comes from standard interface specifications (Ex: SPI or I2C whcih are industry standard protocols where delay is specified)
+   * IO budgeting based on interaction with other modules.
 
-- Why to Constrain? 
