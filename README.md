@@ -1679,13 +1679,12 @@ In Sequential Cell (D F/F , D latch )
 - To achieve better frequency by reducing delay of crtical path, how to tell tool to pick cell whcih has less delay?
   For this we need to constraining the design.
 - Timig paths have start point and end points
-  
        - Start points
-          * Input ports
-  	  * Clk pins of register
+          	 * Input ports
+  	 	 * Clk pins of register
        - End Points
-   	  * output ports
-  	  * D pin of D F/F or D Latch
+   	 	 * output ports
+  	 	 * D pin of D F/F or D Latch
 - Always timimg paths start at one the start point and end at one of the end points
   
        * Clk to D (Reg to Reg Timing paths)
@@ -1698,7 +1697,7 @@ For the design having input port,input logic,Register(D F/F or D Latch), combina
   How to control delay at combi logic? 
 In practicle circuits, we want circuit to operate at some frequency based on that we will calculate what is optimised delay allowable here. So, It is not Tcombi which decide Tclk. It is Tclk whcih decide how much Tcombi delay to be allowed. That means it is clock period which limiting combinational logic. Once clock period is defined, all reg to reg paths are constraint. Synthesis tool will work to optimised this logic to meet this clock period.
 
-	<pre> **** Clock period will limit the delays in all Reg to Reg paths</pre>
+	<pre> Clock period will limit the delays in all Reg to Reg paths</pre>
  
 
 
