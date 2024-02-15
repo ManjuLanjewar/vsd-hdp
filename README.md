@@ -1651,10 +1651,27 @@ If both f/f are not getting clock at same time then
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d9d89ec4-2668-48e6-9559-187d5bca809a)
 
-Delay of cell will be a function of input transition and output load.
+      - Delay of cell will be a function of input transition and output load.
+
+#### Timing Arcs:
+ 
+- In combinational cell, delay informartion from every input pin to every output pin which it can control is present in timimg arcs.
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b07a232e-82b9-4c5f-a1c1-c0dab67d26b6)
 
 
-
+In Sequential Cell (D F/F , D latch )
+- Delay from clock to Q for D F/F
+- Delay from clock to Q for D F/F, Delay from D to Q for D Latch
+- Setup and Hold Time (It is around sampling point)
+  In case posedge D F/F, sample data at posedge and before posedge, there is setup time and after posedge, there is hold time.
+  In negedge D F/F, sample data at negedge, before negedge, there is setup time and after negedge there is hold time.
+- For poslevel latch, sampling data at negedge because before sampling edge,latch is transparent and after sampling edge, latch is opaque.
+  So, before sampling edge (negedge), there is setup time and after sampling edge (negedge) there is hold time.
+- For neglevel latch, sampling data at posedge because before sampling edge,latch is transparent and after sampling edge, latch is opaque.
+  So, before sampling edge (posedge), there is setup time and after sampling edge(posedge) there is hold time.
+  
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/07b11e4d-ea31-4f95-a4fb-3fa79d4dccea)
 
 
 
