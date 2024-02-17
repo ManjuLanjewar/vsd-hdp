@@ -1751,7 +1751,10 @@ DC knows that it has to buffer net by knowing max capacitance. If gate is heavil
 
 Delay model is lookup table
 
-
+- Delay is function of input transition and output load capacitance.
+- For every cell, there is table containing value of delay corresponding values of input transition and o/p load capacitance. This information is present in .lib
+- In DC, delay is calculated for cell from net transtion and output capacitance of cell. If calculated values of delay are not present in lib lookup table then DC will locate these values in cells (i/p trans and o/p load capacitance) of lookup table and do interpotaion of cells to find delay. In this way DC will calculate delay for each cell in design. Delay model is present as lookup table.
+  (Interpolation is a process of determining the unknown values that lie in between the known data points)
 
 
 
