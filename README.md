@@ -1764,36 +1764,36 @@ Delay should be more for more load . For wider transistor even for larger load, 
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/450fd35e-e4f3-41f3-9b2c-9e02e330758e)
 
-- timing_type : "combinational" (Timing arc)
-- timins_sense : "positive_unate"
 
-AND and OR gate has positive unateness
+* timing_sense : "positive_unate" / "negative_unate" /"non_unate"
+  
+> Unateness
 
-input changes from 0 to 1, o/p never change from 1 to 0. This will never happen. 
-i/p goes from 0 to 1, then o/p remains zero or o/p goes from 0 to 1. 
-If there is change in i/p then o/p will not change at all or o/p will follow same direction as i/p.
-That means i/p is rises then o/p will have no chnage or o/p will be rise. o/p cannot fall for i/p rise. 
-This is true for AND and OR gate and called positive unateness.
+- AND and OR gate has positive unateness
 
-NOT, NAND and NOR gate has negative unateness
+	Input changes from 0 to 1, o/p never change from 1 to 0. This will never happen. Input goes from 0 to 1, then o/p remains zero or o/p goes from 0 to 1. If there is change in i/p then o/p will not change at all or o/p will follow same direction as i/p.
+That means i/p is rises then o/p will have no chnage or o/p will be rise. o/p cannot fall for i/p rise. This is true for AND and OR gate and called positive unateness.
 
-In NOT gate When i/p goes from 0 to 1, then o/p goes from 1 to 0.  If i/p goes from 1 to 0, then o/p goes from 0 to 1. 
+- NOT, NAND and NOR gate has negative unateness
+
+	In NOT gate When i/p goes from 0 to 1, then o/p goes from 1 to 0.  If i/p goes from 1 to 0, then o/p goes from 0 to 1. 
 It will never happen in NOT gate that if i/p changes from 0 to 1, then o/p also 0 to 1.
-That means i/p rise, then o/p falls. 
-Same is case with NAND and NOR gate where i/p rise, then o/p falls or no change in o/p. i/p rise cannot result in o/p rise.
-This behaviour called negative unateness. 
+That means i/p rise, then o/p falls. Same is case with NAND and NOR gate where i/p rise, then o/p falls or no change in o/p. i/p rise cannot result in o/p rise. This behaviour called negative unateness. 
 
-XOR gate has 
-For same pin, it has positive unate and negative unate. o/p change dependent on value of other pin. This behaviour called Non unate.
-i/p rise can cause o/p rise or o/p fall .
+- XOR gate has Non unate
+	For same pin, it has positive unate and negative unate. o/p change dependent on value of other pin. This behaviour called Non unate. Input rise can cause o/p rise or o/p fall.
+
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/a4fca934-d28a-41a3-9d1d-e0a2cc5510cd)
 
 Complex gate have one pin as positive unate and one pin as negative unate.
+Here, timing_type : "combinational" (Timing arc) 
 
-This unateness information is imp for tool to understand how to propogate transition. 
+This unateness information is important for tool to understand how to propogate transition. 
 
+> Sequential Timimg Arcs
 
-
-
-
-
+  Clock to Q timing delay are sequential timing arcs.  
+With respect to clock, data may come at Tcq but that doesn't mean clock is rising so Q may rise or fall.
+Q will rise or fall that depends upon D pin. With respect to clock, Q has non unateness.
+timing_sense : "non_unate"
+timing_type : "falling_edge" 
