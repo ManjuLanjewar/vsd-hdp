@@ -1738,7 +1738,18 @@ Now question is how much transtion is model and how much load is model? That com
 
 Libraries present in sky130_fd_sc_hd__tt_025C_1v80.lib
 
-verilog_files$ gvim ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+<pre>verilog_files$ gvim ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
+
+Max Transition of 1.5pf 
+Cload = Coutput pin + Cnet + Σ Ci/p capacitance
+Delay is function of input capacitance. If cell is loaded beyond limit then output may not rise at all or it may take so slow to rise that delay will be in order of milisecond or micro second and we want delay should be in few nanosecond and entire ckt operation will jeoparadise.This should not happen. Lib itself contain information about max capacitance limit.But this is lib max capacitance and set to larger value 1.5pf and should never reach this lib limit. This limit can be overwrite in Design Compiler.
+DC to tell that if there is net with multiple cells connected, then buffer net and split.
+DC knows that it has to buffer net by knowing max capacitance. If gate is heavily loaded such that max capacitance limit is violated, DC will automatically break the net and buffer net. In DC tool, set max capacitance or there is provision of overwrite max capacitance which is much lower than lib limit of capacitance.
+
+
+
+
+
 
 
 
