@@ -1736,8 +1736,9 @@ Now question is how much transtion is model and how much load is model? That com
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6094ea1e-8541-4c19-8e6c-dc300c81f8bb)
 
 
+Libraries present in sky130_fd_sc_hd__tt_025C_1v80.lib
 
-
+verilog_files$ gvim ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 
 
 
