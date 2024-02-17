@@ -1796,4 +1796,12 @@ This unateness information is important for tool to understand how to propogate 
 With respect to clock, data may come at Tcq but that doesn't mean clock is rising so Q may rise or fall.
 Q will rise or fall that depends upon D pin. With respect to clock, Q has non unateness.
 timing_sense : "non_unate"
-timing_type : "falling_edge" 
+timing_type : "falling_edge" ( this information in .lib tells tool that clock to Q delay is always w.r. to falling edge or rising edge)
+timing_type : "setup_rising" and timing_type : "setup_falling" tells information to tool that for the f/f do setup check with respect to rising edge or falling edge.
+For the positive latch "dlrtp", timing_type : "setup_falling", this information tell tools to do setup calculation with respect to falling edge.
+For the negative latch "dlrtn", timing_type : "setup_rising", this information tell tools to do setup calculation with respect to rising edge.
+
+
+
+
+
