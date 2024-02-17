@@ -1786,5 +1786,14 @@ This behaviour called negative unateness.
 XOR gate has 
 For same pin, it has positive unate and negative unate. o/p change dependent on value of other pin. This behaviour called Non unate.
 i/p rise can cause o/p rise or o/p fall .
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/a4fca934-d28a-41a3-9d1d-e0a2cc5510cd)
+
+Complex gate have one pin as positive unate and one pin as negative unate.
+
+This unateness information is imp for tool to understand how to propogate transition. 
+
+
+
+
 
 
