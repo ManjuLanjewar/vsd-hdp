@@ -1740,6 +1740,8 @@ Libraries present in sky130_fd_sc_hd__tt_025C_1v80.lib
 
 <pre>verilog_files$ gvim ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</pre>
 
+To enter text in lib file, give : and then write "vsp" to split specific cell 
+
 Max Transition of 1.5pf 
 Cload = Coutput pin + Cnet + Σ Ci/p capacitance
 Delay is function of input capacitance. If cell is loaded beyond limit then output may not rise at all or it may take so slow to rise that delay will be in order of milisecond or micro second and we want delay should be in few nanosecond and entire ckt operation will jeoparadise.This should not happen. Lib itself contain information about max capacitance limit.But this is lib max capacitance and set to larger value 1.5pf and should never reach this lib limit. This limit can be overwrite in Design Compiler.
@@ -1759,5 +1761,30 @@ Delay model is lookup table
 
 - With respect to pin A, what is timing information, index values are same,(index_1 has capacitance values and index_2 has transition values)
 Delay should be more for more load . For wider transistor even for larger load, delay is less
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/450fd35e-e4f3-41f3-9b2c-9e02e330758e)
+
+- timing_type : "combinational" (Timing arc)
+- timins_sense : "positive_unate"
+
+AND and OR gate has positive unateness
+
+input changes from 0 to 1, o/p never change from 1 to 0. This will never happen. 
+i/p goes from 0 to 1, then o/p remains zero or o/p goes from 0 to 1. 
+If there is change in i/p then o/p will not change at all or o/p will follow same direction as i/p.
+That means i/p is rises then o/p will have no chnage or o/p will be rise. o/p cannot fall for i/p rise. 
+This is true for AND and OR gate and called positive unateness.
+
+NOT, NAND and NOR gate has negative unateness
+
+In NOT gate When i/p goes from 0 to 1, then o/p goes from 1 to 0.  If i/p goes from 1 to 0, then o/p goes from 0 to 1. 
+It will never happen in NOT gate that if i/p changes from 0 to 1, then o/p also 0 to 1.
+That means i/p rise, then o/p falls. 
+Same is case with NAND and NOR gate where i/p rise, then o/p falls or no change in o/p. i/p rise cannot result in o/p rise.
+This behaviour called negative unateness. 
+
+XOR gate has 
+For same pin, it has positive unate and negative unate. o/p change dependent on value of other pin. This behaviour called Non unate.
+i/p rise can cause o/p rise or o/p fall .
 
 
