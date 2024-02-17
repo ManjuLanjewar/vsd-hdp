@@ -1753,12 +1753,11 @@ Delay model is lookup table
 
 - Delay is function of input transition and output load capacitance.
 - For every cell, there is table containing value of delay corresponding values of input transition and o/p load capacitance. This information is present in .lib
-- In DC, delay is calculated for cell from net transtion and output capacitance of cell. If calculated values of delay are not present in lib lookup table then DC will locate these values in cells (i/p trans and o/p load capacitance) of lookup table and do interpotaion of cells to find delay. In this way DC will calculate delay for each cell in design. Delay model is present as lookup table.
-  (Interpolation is a process of determining the unknown values that lie in between the known data points)
+- In DC, delay is calculated for cell from net transtion and output capacitance of cell. If calculated values of delay are not present in lib lookup table then DC will locate these values in cells (i/p trans and o/p load capacitance) of lookup table and do interpotaion of cells to find delay. In this way DC will calculate delay for each cell in design. Delay model is present as lookup table. In .lib file, this information is in index_1 and index_2. Index_1 will form column and Index_2 forms rows. (Interpolation is a process of determining the unknown values that lie in between the known data points)
 
+- power pin information GND and VCC , cell leakage power, pin information like capacitance, direction (it is i/p or o/p), clock pin or not, functionality of pin in case of output pin and max tansition. These are called attributes. If clock pin attribute is "True" then it is clk pin else it's signal pin. In this way DC tool understand from .lib information. 
 
-
-
-
+- With respect to pin A, what is timing information, index values are same,(index_1 has capacitance values and index_2 has transition values)
+Delay should be more for more load . For wider transistor even for larger load, delay is less
 
 
