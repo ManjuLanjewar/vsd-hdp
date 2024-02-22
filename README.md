@@ -2262,3 +2262,35 @@ Path Type: max
            3.92   slack (MET)
 
 </pre>
+
+
+<pre>% set_load -max 0.4 [get_ports y]
+% set_load -min 0.1 [get_ports y]
+% report_checks
+Startpoint: _751_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: y[0] (output port clocked by clk)
+Path Group: clk
+Path Type: max
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   4.00    4.00   clock network delay (ideal)
+   0.00    4.00 ^ _751_/CLK (sky130_fd_sc_hd__dfxtp_1)
+   2.84    6.84 ^ _751_/Q (sky130_fd_sc_hd__dfxtp_1)
+   0.00    6.84 ^ y[0] (out)
+           6.84   data arrival time
+
+  10.00   10.00   clock clk (rise edge)
+   4.00   14.00   clock network delay (ideal)
+  -0.50   13.50   clock uncertainty
+   0.00   13.50   clock reconvergence pessimism
+  -5.00    8.50   output external delay
+           8.50   data required time
+---------------------------------------------------------
+           8.50   data required time
+          -6.84   data arrival time
+---------------------------------------------------------
+           1.66   slack (MET)
+
+</pre>
