@@ -1803,6 +1803,43 @@ For the negative latch "dlrtn", timing_type : "setup_rising", this information t
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e3b68c42-1aea-441f-baf9-2b1b7dcce3ff)
 
+% report_checks
+Startpoint: B[0] (input port clocked by clk)
+Endpoint: _751_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   3.00    3.00   clock network delay (ideal)
+   3.00    6.00 ^ input external delay
+   0.00    6.00 ^ B[0] (in)
+   0.28    6.28 v _600_/Y (sky130_fd_sc_hd__clkinv_1)
+   0.28    6.56 ^ _608_/Y (sky130_fd_sc_hd__o221ai_1)
+   0.18    6.74 v _609_/Y (sky130_fd_sc_hd__o21ai_0)
+   0.41    7.14 v _612_/X (sky130_fd_sc_hd__maj3_1)
+   0.35    7.49 v _615_/X (sky130_fd_sc_hd__maj3_1)
+   0.13    7.62 ^ _616_/Y (sky130_fd_sc_hd__nor2_1)
+   0.35    7.97 v _618_/X (sky130_fd_sc_hd__mux2_1)
+   0.28    8.25 ^ _626_/Y (sky130_fd_sc_hd__a221oi_1)
+   0.12    8.38 v _632_/Y (sky130_fd_sc_hd__o211ai_1)
+   0.12    8.49 ^ _649_/Y (sky130_fd_sc_hd__a21oi_1)
+   0.00    8.49 ^ _751_/D (sky130_fd_sc_hd__dfxtp_1)
+           8.49   data arrival time
+
+  10.00   10.00   clock clk (rise edge)
+   1.00   11.00   clock network delay (ideal)
+  -0.50   10.50   clock uncertainty
+   0.00   10.50   clock reconvergence pessimism
+          10.50 ^ _751_/CLK (sky130_fd_sc_hd__dfxtp_1)
+  -0.08   10.42   library setup time
+          10.42   data required time
+---------------------------------------------------------
+          10.42   data required time
+          -8.49   data arrival time
+---------------------------------------------------------
+           1.92   slack (MET)
 
 
 
