@@ -1801,7 +1801,8 @@ timing_type : "setup_rising" and timing_type : "setup_falling" tells information
 For the positive latch "dlrtp", timing_type : "setup_falling", this information tell tools to do setup calculation with respect to falling edge.
 For the negative latch "dlrtn", timing_type : "setup_rising", this information tell tools to do setup calculation with respect to rising edge.
 
-jljlk
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e3b68c42-1aea-441f-baf9-2b1b7dcce3ff)
+
 
 
 
