@@ -2372,7 +2372,7 @@ Path Type: max
 ![Screenshot from 2024-02-23 00-47-38](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/3ed9b867-6653-4114-96b0-7234a94165f7) ![Screenshot from 2024-02-23 00-46-43](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/495cb1ef-32ce-4f2f-b028-1811a953a980)
 
 
-![Screenshot from 2024-02-23 00-46-04](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/805e1b16-e826-4e34-a530-c14da41e58d8) ![Screenshot from 2024-02-23 00-44-26](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/35a9de26-97e6-4a81-bf59-01dd33151d61)
+ ![Screenshot from 2024-02-23 00-44-26](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/35a9de26-97e6-4a81-bf59-01dd33151d61)
 
 
 ![Screenshot from 2024-02-23 00-41-44](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/9799e529-402a-4f86-9dee-f0e138b42839) ![Screenshot from 2024-02-23 00-42-39](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/26f78636-d61f-4d93-b750-572e27052649)
