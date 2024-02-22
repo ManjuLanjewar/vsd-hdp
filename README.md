@@ -1803,7 +1803,7 @@ For the negative latch "dlrtn", timing_type : "setup_rising", this information t
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e3b68c42-1aea-441f-baf9-2b1b7dcce3ff)
 
-% report_checks
+<pre>% report_checks
 Startpoint: B[0] (input port clocked by clk)
 Endpoint: _751_ (rising edge-triggered flip-flop clocked by clk)
 Path Group: clk
@@ -1841,5 +1841,5 @@ Path Type: max
 ---------------------------------------------------------
            1.92   slack (MET)
 
-
+</pre>
 
