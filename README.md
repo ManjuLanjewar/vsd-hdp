@@ -1801,13 +1801,13 @@ timing_type : "setup_rising" and timing_type : "setup_falling" tells information
 For the positive latch "dlrtp", timing_type : "setup_falling", this information tell tools to do setup calculation with respect to falling edge.
 For the negative latch "dlrtn", timing_type : "setup_rising", this information tell tools to do setup calculation with respect to rising edge.
 
-manju123@manju123-VirtualBox:~/vsdflow/work/tools/OpenSTA$ sta
+<pre>manju123@manju123-VirtualBox:~/vsdflow/work/tools/OpenSTA$ sta
 % read_liberty ~/vsdflow/VLSI/sky130RTLDesignAndSynthesisWorkshop/DC_WORKSHOP/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 % read_verilog ~/vsdflow/VLSI/sky130RTLDesignAndSynthesisWorkshop/DC_WORKSHOP/verilog_files/alu_4_bit_net.v
 % link_design alu_4_bit
 % current_design
 % check_setup -verbose
-% create_clock -period 10 -name clk [get_ports clk]
+% create_clock -period 10 -name clk [get_ports clk]<pre>
 
 
 
