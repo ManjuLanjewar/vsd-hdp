@@ -2042,3 +2042,71 @@ Path Type: min
           -1.10   slack (VIOLATED)
 
 </pre>
+
+
+- Design Constraint file alu_4_bit.sdc is used for STA in OpenSTA tool
+
+<pre>% read_liberty ~/vsdflow/VLSI/sky130RTLDesignAndSynthesisWorkshop/DC_WORKSHOP/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Warning: /home/manju123/vsdflow/VLSI/sky130RTLDesignAndSynthesisWorkshop/DC_WORKSHOP/lib/sky130_fd_sc_hd__tt_025C_1v80.lib line 23, default_fanout_load is 0.0.
+1
+% read_verilog ~/vsdflow/VLSI/sky130RTLDesignAndSynthesisWorkshop/DC_WORKSHOP/verilog_files/alu_4_bit_net.v
+1
+% link_design alu_4_bit
+1
+% current_design
+alu_4_bit
+% check_setup -verbose
+Warning: There are 13 input ports missing set_input_delay.
+  A[0]
+  A[1]
+  A[2]
+  A[3]
+  B[0]
+  B[1]
+  B[2]
+  B[3]
+  clk
+  mode[0]
+  mode[1]
+  mode[2]
+  rst
+Warning: There are 8 output ports missing set_output_delay.
+  y[0]
+  y[1]
+  y[2]
+  y[3]
+  y[4]
+  y[5]
+  y[6]
+  y[7]
+Warning: There are 8 unclocked register/latch pins.
+  _751_/CLK
+  _752_/CLK
+  _753_/CLK
+  _754_/CLK
+  _755_/CLK
+  _756_/CLK
+  _757_/CLK
+  _758_/CLK
+Warning: There are 16 unconstrained endpoints.
+  y[0]
+  y[1]
+  y[2]
+  y[3]
+  y[4]
+  y[5]
+  y[6]
+  y[7]
+  _751_/D
+  _752_/D
+  _753_/D
+  _754_/D
+  _755_/D
+  _756_/D
+  _757_/D
+  _758_/D
+0
+% read_sdc alu_4_bit.sdc
+% check_setup -verbose
+1
+</pre>
