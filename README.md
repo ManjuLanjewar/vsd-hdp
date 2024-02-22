@@ -1803,15 +1803,170 @@ For the negative latch "dlrtn", timing_type : "setup_rising", this information t
 
 <pre>manju123@manju123-VirtualBox:~/vsdflow/work/tools/OpenSTA$ sta
 % read_liberty ~/vsdflow/VLSI/sky130RTLDesignAndSynthesisWorkshop/DC_WORKSHOP/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Warning: /home/manju123/vsdflow/VLSI/sky130RTLDesignAndSynthesisWorkshop/DC_WORKSHOP/lib/sky130_fd_sc_hd__tt_025C_1v80.lib line 23, default_fanout_load is 0.0.
+1
 % read_verilog ~/vsdflow/VLSI/sky130RTLDesignAndSynthesisWorkshop/DC_WORKSHOP/verilog_files/alu_4_bit_net.v
+1
 % link_design alu_4_bit
+1
 % current_design
+alu_4_bit
 % check_setup -verbose
-% create_clock -period 10 -name clk [get_ports clk]<pre>
-
-
-
-
+Warning: There are 13 input ports missing set_input_delay.
+  A[0]
+  A[1]
+  A[2]
+  A[3]
+  B[0]
+  B[1]
+  B[2]
+  B[3]
+  clk
+  mode[0]
+  mode[1]
+  mode[2]
+  rst
+Warning: There are 8 output ports missing set_output_delay.
+  y[0]
+  y[1]
+  y[2]
+  y[3]
+  y[4]
+  y[5]
+  y[6]
+  y[7]
+Warning: There are 8 unclocked register/latch pins.
+  _751_/CLK
+  _752_/CLK
+  _753_/CLK
+  _754_/CLK
+  _755_/CLK
+  _756_/CLK
+  _757_/CLK
+  _758_/CLK
+Warning: There are 16 unconstrained endpoints.
+  y[0]
+  y[1]
+  y[2]
+  y[3]
+  y[4]
+  y[5]
+  y[6]
+  y[7]
+  _751_/D
+  _752_/D
+  _753_/D
+  _754_/D
+  _755_/D
+  _756_/D
+  _757_/D
+  _758_/D
+0
+% create_clock -period 10 -name clk
+% check_setup -verbose
+Warning: There is 1 input port missing set_input_delay.
+  clk
+Warning: There are 8 unclocked register/latch pins.
+  _751_/CLK
+  _752_/CLK
+  _753_/CLK
+  _754_/CLK
+  _755_/CLK
+  _756_/CLK
+  _757_/CLK
+  _758_/CLK
+Warning: There are 16 unconstrained endpoints.
+  y[0]
+  y[1]
+  y[2]
+  y[3]
+  y[4]
+  y[5]
+  y[6]
+  y[7]
+  _751_/D
+  _752_/D
+  _753_/D
+  _754_/D
+  _755_/D
+  _756_/D
+  _757_/D
+  _758_/D
+0
+% create_clock -period 10 -name clk [get_ports clk]
+% check_setup -verbose
+1
+% set_clock_latency -source -max 3 clk
+% set_clock_latency -source -min 1 clk
+% set_clock_uncertainty -setup 0.5 [get_clock clk]
+% set_clock_uncertainty -hold 0.2 [get_clock clk]
+% set_input_delay -clock clk -max 3 [get_ports A[1]]
+% set_input_delay -clock clk -max 3 [get_ports A[2]]
+% set_input_delay -clock clk -max 3 [get_ports A[3]]
+% set_input_delay -clock clk -max 3 [get_ports B[0]]
+% set_input_delay -clock clk -max 3 [get_ports B[1]]
+% set_input_delay -clock clk -max 3 [get_ports B[2]]
+% set_input_delay -clock clk -max 3 [get_ports B[3]]
+% set_input_delay -clock clk -max 3 [get_ports rst] 
+% set_input_delay -clock clk -min 1 [get_ports A[1]]
+% set_input_delay -clock clk -min 1 [get_ports A[0]]
+% set_input_delay -clock clk -min 1 [get_ports A[2]]
+% set_input_delay -clock clk -min 1 [get_ports A[3]]
+% set_input_delay -clock clk -min 1 [get_ports B[0]]
+% set_input_delay -clock clk -min 1 [get_ports B[1]]
+% set_input_delay -clock clk -min 1 [get_ports B[2]]
+% set_input_delay -clock clk -min 1 [get_ports B[3]]
+% set_input_delay -clock clk -min 1 [get_ports rst] 
+% set_input_delay -clock clk -max 3 [get_ports mode[0]]
+% set_input_delay -clock clk -max 3 [get_ports mode[1]]    
+% set_input_delay -clock clk -max 3 [get_ports mode[2]]
+% set_input_delay -clock clk -min 1 [get_ports mode[0]]
+% set_input_delay -clock clk -min 1 [get_ports mode[1]]
+% set_input_delay -clock clk -min 1 [get_ports mode[2]]
+% set_input_transition -max 0.5 [get_ports A[0]]
+% set_input_transition -max 0.5 [get_ports A[1]]
+% set_input_transition -max 0.5 [get_ports A[2]]
+% set_input_transition -max 0.5 [get_ports A[3]]
+% set_input_transition -max 0.5 [get_ports B[0]]
+% set_input_transition -max 0.5 [get_ports B[1]]
+% set_input_transition -max 0.5 [get_ports B[2]]
+% set_input_transition -max 0.5 [get_ports B[3]]
+% set_input_transition -max 0.5 [get_ports rst] 
+% set_input_transition -min 0.1 [get_ports A[0]]
+% set_input_transition -min 0.1 [get_ports A[1]]
+% set_input_transition -min 0.1 [get_ports A[2]]
+% set_input_transition -min 0.1 [get_ports A[3]]
+% set_input_transition -min 0.1 [get_ports B[0]]
+% set_input_transition -min 0.1 [get_ports B[1]]
+% set_input_transition -min 0.1 [get_ports B[2]]
+% set_input_transition -min 0.1 [get_ports B[3]]
+% set_input_transition -min 0.1 [get_ports rst] 
+% set_input_transition -max 0.5 [get_ports mode[0]]
+% set_input_transition -max 0.5 [get_ports mode[1]]
+% set_input_transition -max 0.5 [get_ports mode[2]]
+% set_input_transition -min 0.1 [get_ports mode[0]]
+% set_input_transition -min 0.1 [get_ports mode[1]]
+% set_input_transition -min 0.1 [get_ports mode[2]]
+% set_output_delay -clock clk -max 5 [get_ports y[0]]
+% set_output_delay -clock clk -max 5 [get_ports y[1]]
+% set_output_delay -clock clk -max 5 [get_ports y[2]]
+% set_output_delay -clock clk -max 5 [get_ports y[3]]
+% set_output_delay -clock clk -max 5 [get_ports y[4]]
+% set_output_delay -clock clk -max 5 [get_ports y[5]]
+% set_output_delay -clock clk -max 5 [get_ports y[6]]
+% set_output_delay -clock clk -max 5 [get_ports y[7]]
+% set_output_delay -clock clk -min 1 [get_ports y[0]]
+% set_output_delay -clock clk -min 1 [get_ports y[1]]
+% set_output_delay -clock clk -min 1 [get_ports y[2]]
+% set_output_delay -clock clk -min 1 [get_ports y[3]]
+% set_output_delay -clock clk -min 1 [get_ports y[4]]
+% set_output_delay -clock clk -min 1 [get_ports y[5]]
+% set_output_delay -clock clk -min 1 [get_ports y[6]]
+% set_output_delay -clock clk -min 1 [get_ports y[7]]
+% check_setup -verbose
+1
+</pre>
+ 
 <pre>% report_checks
 Startpoint: B[0] (input port clocked by clk)
 Endpoint: _751_ (rising edge-triggered flip-flop clocked by clk)
@@ -1852,3 +2007,38 @@ Path Type: max
 
 </pre>
 
+<pre>% set_clock_latency -source -min 1 {clk}
+% report_checks -path_delay min </pre> 
+
+<pre>
+% set_clock_latency -source -min 1 {clk}
+% report_checks -path_delay min             
+Startpoint: rst (input port clocked by clk)
+Endpoint: _756_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   1.00    1.00   clock network delay (ideal)
+   1.00    2.00 ^ input external delay
+   0.00    2.00 ^ rst (in)
+   0.04    2.04 v _741_/Y (sky130_fd_sc_hd__a21oi_1)
+   0.00    2.04 v _756_/D (sky130_fd_sc_hd__dfxtp_1)
+           2.04   data arrival time
+
+   0.00    0.00   clock clk (rise edge)
+   3.00    3.00   clock network delay (ideal)
+   0.20    3.20   clock uncertainty
+   0.00    3.20   clock reconvergence pessimism
+           3.20 ^ _756_/CLK (sky130_fd_sc_hd__dfxtp_1)
+  -0.06    3.14   library hold time
+           3.14   data required time
+---------------------------------------------------------
+           3.14   data required time
+          -2.04   data arrival time
+---------------------------------------------------------
+          -1.10   slack (VIOLATED)
+
+</pre>
