@@ -2380,4 +2380,4 @@ Path Type: max
 
 <pre>% report_checks -path_delay min_max -fields {nets cap slew input_pins} -digits {4}</pre>
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1d5c559a-c73f-496c-8580-2ab2586061a9) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/ddef6e04-05a5-45f4-bcd1-a6c43ec33b22)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b3af53cf-4866-4f6e-8332-2ba2da978f81) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6646f75e-be2f-492a-bc1e-9c40946fb533)
