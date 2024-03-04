@@ -2382,11 +2382,13 @@ Path Type: max
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b3af53cf-4866-4f6e-8332-2ba2da978f81) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6646f75e-be2f-492a-bc1e-9c40946fb533)
 
+# Day 2
+<details>
+<summary>##### Introduction to Circuit Design and SPICE simulations</summary>
+							</details>
+
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/ebe16b5a-bcf0-4f76-a3c9-1a47c2e44c21)
 
-
-
-##### Introduction to Circuit Design and SPICE simulations
 
 Cicuit Desgin : All logic gates are made-up of PMOS and NMOS transistors connected in very particuar fashion and once they are connected in that fashion ,
 they perform required functionality of that particular respective gate. 
@@ -2492,8 +2494,6 @@ screenshot of equation (Day1 -L4)
 where
 
     ni is the intrinsic doping parameter for the substrate
-
-# Day 2 
 
 ###### NMOS Resistive region and Saturation region of operation
 
