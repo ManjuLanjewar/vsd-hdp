@@ -3323,8 +3323,16 @@ Note : Lab Activity: is pending
 
 <details>
 	<summary>PVT Corner Analysis</summary>
+	
+	STA analysis of different PVT corners is performed and the report generated for each corner. 
+ Based on the WNS, WHS and TNS report generated, a table is created containing all the information of each PVT corner 
+ as obatined from the OpenSTA tool and the concern library. 
 
+- Inorder to invoke the openSTA tool - the terminal has to be at the path where the necessary files for the design are available.
+- Consraints are defined the in the .sdc file.
+- The verilog file netlist.v is linked to the .lib using  link_design <module_name>
 - Use TCL script alu_4_bit.tcl to generate reports for each case of OpenPDK timing library.
+- Type sta <tcl> for report generation
 
 <pre>read_liberty ~/vsdflow/VLSI/sky130RTLDesignAndSynthesisWorkshop/DC_WORKSHOP/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 #read_liberty ~/vsdflow/VLSI/sky130RTLDesignAndSynthesisWorkshop/DC_WORKSHOP/lib/sky130_fd_sc_hd__ss_n40C_1v76.lib
@@ -3350,7 +3358,11 @@ report_worst_slack -min -digits {4} > sta_out_rep3.txt
 report_tns -digits {4} > sta_out_rep4.txt</pre>
 
 
+Note that all reports generated for pvt corners are included in this repository under the directory STA_reports.
+
 - PVT Corner Summary
+  
+  Below you can find the values obtained in the report and a corresponding plot:
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6f3568c6-597c-4fe4-b32b-6b9354aa6dad)
 
