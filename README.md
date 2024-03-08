@@ -3,10 +3,8 @@
   
 #### Day 0
 <details>
-	<summary>
-#### OpenSource Tools Installation Steps
-	                                                 </summary>
-	
+	<summary>OpenSource Tools Installation Steps</summary>
+	</details>
 * Create the GitHub Repository
 * Download and install VitualBox
 * Download and install Ubuntu 22.04. The VM configured with 8GB RAM and 40GB storage.
