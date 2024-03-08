@@ -3,7 +3,9 @@
   
 #### Day 0
 <details>
-	<summary>OpenSource Tools Installation Steps</summary>
+	<summary>
+#### OpenSource Tools Installation Steps
+	                                                 </summary>
 	
 * Create the GitHub Repository
 * Download and install VitualBox
