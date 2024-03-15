@@ -3221,7 +3221,7 @@ Method to calculate the Noise Margins from the plot:
 #### CMOS Power Supply and device variation robustness evaluation
  
  <details>
-	  <summary>CMOS Power supply and device variation robustness evaluation</summary>  
+	  <summary>CMOS Inverter Robustness: Power Supply Variation</summary>  
  
 Power supply scaling and device variation, where the effect of those on the CMOS is another characteristic that defines static behavior of 
 the inverter (robustness).
@@ -4184,7 +4184,7 @@ Fall/Rise Transition time = time(slew_high_thr) - time(slew_low_thr).
 
   Recall that the switching threshold (Vm, used to evaluate static behavior) of a CMOS inverter is the point on the voltage transfer characteristic curve where input voltage equals output voltage: at which both PMOS and NMOS are in saturation region which gives rise to a leakage current.
 
-**Lab VSDcell gitclone**
+**Note: Lab VSDcell gitclone **
 
 #### Inception of Layout : A CMOS Fabrication Process
 
