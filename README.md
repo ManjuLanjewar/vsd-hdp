@@ -27,8 +27,6 @@
 
 <h2 id="C0">Day 0</h2>
   
-### Day 0
-
 #### Opensource Tools
 
 <details>
