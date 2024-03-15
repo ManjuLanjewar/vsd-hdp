@@ -15,14 +15,12 @@
 <p><a href="#C8">Day 8</a></p>
 <p><a href="#C9">Day 9</a></p>
 <p><a href="#C10">Day 10</a></p>
+<p><a href="#C11">Day 11</a></p>
+<p><a href="#C12">Day 12</a></p>
+<p><a href="#C13">Day 13</a></p>
+<p><a href="#C14">Day 14</a></p>
+<p><a href="#C15">Day 15</a></p>
 
-
-
-
-
-<h2 id="C8">Day 8</h2>
-<h2 id="C9">Day 9</h2>
-<h2 id="C10">Day 10</h2>
 
 </body>
 </html>
@@ -122,6 +120,42 @@ $ sudo ./configure
 $ sudo make
 $ sudo make install</pre>
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/62a97dfb-f60c-425d-8955-c026a0ac623a)
+
+* Python Installation
+
+<pre>$ sudo apt install -y build-essential python3 python3-venv python3-pip</pre>
+
+* Docker Installation
+
+<pre>$ sudo apt-get remove docker docker-engine docker.io containerd runc (removes older version of docker if installed)
+
+$ sudo apt-get update
+
+$ sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+    
+$ sudo mkdir -p /etc/apt/keyrings
+
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+$ echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  
+$ sudo apt-get update
+
+$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+$ apt-cache madison docker-ce (copy the version string you want to install)
+
+$ sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io docker-compose-plugin (paste the version string copies in place of <VERSION_STRING>)
+
+$ sudo docker run hello-world (If the docker is successfully installed u will get a success message here)</pre>
+    
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/5a770edf-71a2-4d5f-ad70-7bdec390a873)
 
 </details>
 
@@ -3429,7 +3463,7 @@ Note that all reports generated for pvt corners are included in this repository 
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/c527382f-a095-4903-a762-20e1491beec4)
 
-</deatails>
+</details>
 
 <h2 id="C13">Day 13</h2>
 
@@ -3689,44 +3723,6 @@ The openLANE file structure looks something like this:
     * Invoking OpenLANE and Design Preparation
     * Openlane can be invoked using docker command followed by opening an interactive session.
       flow.tcl is a script that specifies details for openLANE flow.
-
-### Opensource EDA Tools used for physical Design
-
-#### Python Installation
-
-<pre>$ sudo apt install -y build-essential python3 python3-venv python3-pip</pre>
-
-#### Docker Installation
-
-<pre>$ sudo apt-get remove docker docker-engine docker.io containerd runc (removes older version of docker if installed)
-
-$ sudo apt-get update
-
-$ sudo apt-get install \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
-    
-$ sudo mkdir -p /etc/apt/keyrings
-
-$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-
-$ echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  
-$ sudo apt-get update
-
-$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-
-$ apt-cache madison docker-ce (copy the version string you want to install)
-
-$ sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io docker-compose-plugin (paste the version string copies in place of <VERSION_STRING>)
-
-$ sudo docker run hello-world (If the docker is successfully installed u will get a success message here)</pre>
-    
-![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/5a770edf-71a2-4d5f-ad70-7bdec390a873)
 
 #### Opensource EDA Tools 
 
