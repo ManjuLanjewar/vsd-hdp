@@ -4089,9 +4089,11 @@ We build, characterise and model these cells so that the tool can understand it.
 
 <h2 id="C15">Day 15</h2>
 
+#### Cell Design and Characteriztion Flow
+
 <details>
 
-   <summary>Cell Design and Characteriztion Flow</summary>
+   <summary>Cell Design</summary>
 
 **Inputs for Cell Design Flow**
 
