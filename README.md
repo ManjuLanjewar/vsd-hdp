@@ -1249,8 +1249,6 @@ Synthesis Result with opt_clean switch
 
 <h2 id="C4">Day 4</h2>
 
-### Day 4
-
 #### Gate Level Simulation (GLS), Synthesis-Simulation mismatch and Blocking/Non-blocking statements 
 
 <details>
@@ -3456,8 +3454,6 @@ Note that all reports generated for pvt corners are included in this repository 
 
 <h2 id="C13">Day 13</h2>
 
-### Day 13
-
 <details>
 <summary>Introduction to Chip, Pads, Core, Die and Ip's</summary>
 
@@ -4170,8 +4166,6 @@ Fall/Rise Transition time = time(slew_high_thr) - time(slew_low_thr).
 
 <h2 id="C16">Day 16</h2>
 
-#### Day 16
-
 <details>
 
    <summary>Design library cell using Magic Layout and ngspice characterization</summary>
@@ -4191,7 +4185,6 @@ Fall/Rise Transition time = time(slew_high_thr) - time(slew_low_thr).
   Recall that the switching threshold (Vm, used to evaluate static behavior) of a CMOS inverter is the point on the voltage transfer characteristic curve where input voltage equals output voltage: at which both PMOS and NMOS are in saturation region which gives rise to a leakage current.
 
 **Lab VSDcell gitclone**
-
 
 #### Inception of Layout : A CMOS Fabrication Process
 
