@@ -2,7 +2,7 @@
 # vsd-hdp
   VLSI Hardware Development Program. This repository contains the entire flow from RTL design to GDSII
 
-  <html>
+<html>
 <body>
 
 <p><a href="#C1">Day 1</a></p>
@@ -19,7 +19,7 @@
 
 
 
-<h2 id="C7">Day 7</h2>
+
 <h2 id="C8">Day 8</h2>
 <h2 id="C9">Day 9</h2>
 <h2 id="C10">Day 10</h2>
@@ -2444,6 +2444,8 @@ Path Type: max
 
 </details>
 
+<h2 id="C7">Day 7</h2>
+
 ### Day 7
 
 ##### Introduction to Circuit Design and SPICE simulations
@@ -2714,6 +2716,8 @@ plot -<name node></pre>
 
 </details>
 
+<h2 id="C8">Day 8</h2>
+
 ### Day 8
 
 #### velocity saturation and the basics of CMOS inverter Voltage Transfer Characteristics (VTC)
@@ -2832,6 +2836,8 @@ superimposed load curve of NMOS and load curve of PMOS as shown
  VTC has 5 regions: 1-) PMOS linear, NMOS off, 2-) PMOS linear, NMOS saturation, 3-) PMOS and NMOS in saturation, 4-) PMOS saturation, NMOS linear, and 5-) PMOS off, NMOS linear as shown in third picture (1, 3, and 5 regions are of importance).
 
 </details>
+
+<h2 id="C9">Day 9</h2>
 
 ### Day 9
 
@@ -3060,6 +3066,8 @@ The effect of increasing the pmos width. When the pmos width is wider than that 
 
 </details>
 
+<h2 id="C10">Day 10</h2>
+
 ### Day 10 
 
 #### CMOS Noise Margin Robustness Evaluation
@@ -3182,6 +3190,8 @@ Method to calculate the Noise Margins from the plot:
     - Therefore, we get NMh = 0.736177 and NMl = 0.655856
 
 </details>
+
+<h2 id="C11">Day 11</h2>
 
  ### Day 11
 
@@ -3365,6 +3375,8 @@ Note : Lab Activity: is pending
 
 </details>
 
+<h2 id="C12">Day 12</h2>
+
 ### Day 12
 
 #### Analysis of ALU using design constraints
@@ -3419,9 +3431,9 @@ Note that all reports generated for pvt corners are included in this repository 
 
 </deatails>
 
-### Day 12
+<h2 id="C13">Day 13</h2>
 
-<h2 id="C5">Day 5</h2>
+### Day 13
 
 <details>
 <summary>Introduction to Chip, Pads, Core, Die and Ip's</summary>
@@ -3851,7 +3863,9 @@ Chip area for module '\picorv32a': 147712.918400</pre>
 
 </details>
 
-<h2 id="C6">Day 6</h2>
+<h2 id="C14">Day 14</h2>
+
+#### Day 14
 
 ##### Good Floor Plan Vs Bad Floor Plan and Introduction to Library Cells 
 
@@ -4092,8 +4106,9 @@ We build, characterise and model these cells so that the tool can understand it.
 
 </details>
 
-<h2 id="C7">Day 7</h2>
+<h2 id="C15">Day 15</h2>
 
+#### Day 15
 <details>
 
    <summary>Cell Design and Characteriztion Flow</summary>
@@ -4171,7 +4186,9 @@ Fall/Rise Transition time = time(slew_high_thr) - time(slew_low_thr).
 
 </details>
 
-<h2 id="C8">Day 8</h2>
+<h2 id="C16">Day 16</h2>
+
+#### Day 16
 
 <details>
 
