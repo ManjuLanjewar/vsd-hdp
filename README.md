@@ -3397,6 +3397,818 @@ Note that all reports generated for pvt corners are included in this repository 
 
 ### Day 12
 
+<h2 id="C5">Day 5</h2>
+
+<details>
+<summary>Introduction to Chip, Pads, Core, Die and Ip's</summary>
+
+Consider a chip on an arduino board, it would contain the following components:-
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/652cf522-e255-4353-9b56-ee3e70ec00c9)! 
+
+* It has several protocols, an external memory unit (SDRAM), GPIOS, PWM etc.
+* Now all (except memory external chip) of these are contained in a package as shown below.
+* It represents a 7x7 [dimensions] QFN-48 [Quad Flat No leads; 48 pins].
+* The chip is connected to the package with the help of wire bonds
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/31c1a3b0-d101-44a5-9d9d-1f6b276f3c73)![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/da14e8a6-27e3-4ca3-8ea7-9ca990ae493e)!
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/d702cf45-5f1f-468c-bea7-df340f4fad4e)
+
+- Chip is at the center of a package. 
+- chip has PADs which allow signals to pass in and out of the chip (from core where the digital logic sits to outside or vice versa).
+- The die defines the size of the chip, which is manufactured on silicon wafers.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/a58cb1c2-4f38-4a00-9055-31c1d4dc4cfd)
+
+- A typical core consists of a CPU SoC, ADCs/DACs, SPI, PLL, and SRAM. PLL, SRAM, and DAC/ADC are called as foundary IPs.
+- The core region contains Macros and Foundry IPs.
+- Foundary is a big factory that has machines where chips get manufactured.
+- We need an interface (some files) to communicate with the foundary.
+- IP is intellectual property (needs intelligence to be built blocks of core).
+- SPI and CPU SoC are macros. Macros are pure digital logic.
+
+**Introduction To RISC-V**
+- RISC-V is a new ISA that's available under open, free and non-restrictive licences. RISC-V ISA delivers a new level of free, extensible software and hardware freedom on architecture.
+- It is far simpler and smaller than other commercial ISAs available.
+- It avoids micro-architecture or technology dependent features.
+- It has small standard base ISA and multiple standard extensions.
+- It supports variable-length instruction encoding. 
+
+**From Software Application to Hardware** 
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/fe55f1d8-006f-45e0-9476-7c0f52b560cf)
+
+- The above image represents the Software to Hardware translation. 
+- The application software or apps are handled by the system software in order to run on the hardware. 
+- System software consists of the OS, Compiler and the assembler.
+- An OS performs low level system functions, handles IO operations, allocates memory.
+- It starts at the software application level which takes in an input. This input is now processed by the Operating System (OS).
+- It instigates the Compiler to convert high level abstract code of the software to Assembly/Low level machine instructions (ISA) according to hardware.
+- The assembler then converts the instructions (abstract ISA, or 'architecture' of computer) to respective binary that is eventually fed to the hardware.
+- Hardware understands patterns and accordingly generates output. 
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/664ddca0-242e-449e-8fb1-f3d6a177bf6c)
+
+- Instructions acts as Abstract Interface between C/C++/JAVA language and hardware.
+- Abstarct Interface is called The Instruction Set Architecture (ISA) which refers to the 'architecture' of the computer/processor. 
+For example, if the ISA used is of RISC-V, the code converted by the compiler should give instructions suitable for RISC-V core.
+Hence, one can say that ISA basically represents the Hardware at an intermediate stage.
+- There is one more interface betwwen Instruction and Hardware is HDL ( Hardware description Language)
+  
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/d61da171-b278-4269-ab18-14df4b1d34f2)
+
+- The Assembler converts the instructions into a bitstream that is fed to the Hardware. 
+- To obtain the hardware or final layout, a certain number of steps need to be followed.
+- The RTL implements the instructions (the ISA), then RTL is synthesized into netlist which is physically implemented in hardware.
+ 
+**Components of opensource digital ASIC design**
+
+The design of digital Application Specific Integrated Circuit (ASIC) requires three enablers or elements
+- Resistor Transistor Logic of Intellectual Property (RTL IPs),
+- Electronic Design Automation (EDA) Tools and
+- Process Design Kit (PDK) data.
+  
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/46712f8c-221f-4d89-b791-d372e03e8837)
+
+  * Opensource RTL Designs: github, librecores, opencores
+  * Opensource EDA tools: QFlow, OpenROAD, OpenLANE
+  * Opensource PDK data: Google Skywater130 PDK
+
+**What is PDK?**
+
+- A PDK (Process Design Kit) is the iterface between the fabrication and design (which were separated in the past). 
+- It contains a collection of files used to model a fabrication process for the EDA tools used to design an IC.
+- PDK includes device models, process design rules(DRC, LVS, PEX), digital standard cell libraries, I/O libraries, etc.. 
+- Regular PDKs are distributed under NDAs (non disclosure agreements), but open PDKs (130nm, released by Google) do not require NDAs.
+
+ASIC flow objective: RTL to GDSII also called Automated PnR and /or physical implementation 
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/643ddf49-1959-45ef-86c8-d4c14248dd45)
+
+Simplified RTL to GDSII Flow
+
+- Synthesis (takes RTL as input, output is gate-level netlist. Standard cells have regular layouts)
+    converts RTL to a circuit out of componnets from the Standard Cell Library(SCL).
+    Resultant circuit is described in HDL and referred as Gate Level Netlist.
+    Standard cells have regular layouts
+-  Floor & Power Planning: Planning of silicon area to ensure robust power distribution
+      Objective: Plan silicon are and create robust power distribution network to power circuit.  
+      Chip Floor Planning : Partition the chip die between different system building blocks and place I/O Pads.
+      Macro Floor Planning: Dimensions, Pin locations, rows defination
+      Power planning : power network constructed typically chip is powered by multiple VDD and GND pins.
+      power pins are connected to all componets through rings and  vertical and horizontal metal straps
+- Placement: Placing cells on floorplan rows aligned with sites
+    Usually done in 2 steps: Global and detailed placement.
+    Global Placement: for optimal position of cells
+    Detailed Placement: for legal positions
+- CTS (creating clock distribution network to route the clock)
+- Route (implementing the interconnect using metal layers)
+  Global and detailed routing takes place in divide and conquer approach
+- Sign off: Physical verifications (DRC, LVS) and Timing verifications (STA)
+  Output is GDSII
+
+The PDK is used in all these steps.
+Developing an open ASIC design flow is tough as there are worries in tool qualification, tool calibration, and missing tools.
+
+**OpenLANE ASIC Flow**
+
+OpenLane is an open ASIC design flow (relies on multiple open-source tools).
+The main goal is produce a clean GDSII without human intervention. Clean means no LVS, DRC, STA violations. 
+OpenLane is tuned for skywater 130 open PDK. OpenLane can be used to produce GDSII for either macros and chips. 
+It has two modes of operation: autonomous (one click of button) or manual (step by step). 
+It provides a mean to sweep configurations allowing design space exploration, and has a large number of design examples available publicly.
+
+Below is the detailed ASIC design flow in OpenLane.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/99807f46-78de-42bf-8b48-c9d937e07626)
+
+OpenLANE is an opensource tool or flow used for opensource tape-outs. The OpenLANE flow comprises a variety of tools such as Yosys, ABC, OpenSTA, Fault, OpenROAD app, Netgen and Magic which are used to harden chips and macros, i.e. generate final GDSII from the design RTL. The primary goal of OpenLANE is to produce clean GDSII with no human intervention. OpenLANE has been tuned to function for the Google-Skywater130 Opensource Process Design Kit.
+From conception to product, the ASIC design flow is an iterative process that is not static for every design. The details of the flow may change depending on ECO’s, IP requirements, DFT insertion, and SDC constraints, however the base concepts still remain. The flow can be broken down into 11 steps:
+
+1) Architectural Design – A system engineer will provide the VLSI engineer with specifications for the system that are determined through physical constraints. The VLSI engineer will be required to design a circuit that meets these constraints at a microarchitecture modeling level.
+
+2) RTL Design/Behavioral Modeling – RTL design and behavioral modeling are performed with a hardware description language (HDL). EDA tools will use the HDL to perform mapping of higher-level components to the transistor level needed for physical implementation. HDL modeling is normally performed using either Verilog or VHDL. One of two design methods may be employed while creating the HDL of a microarchitecture:
+   
+    a. RTL Design – Stands for Register Transfer Level. It provides an abstraction of the digital circuit using:
+
+* i. Combinational logic
+* ii. Registers
+* iii. Modules (IP’s or Soft Macros)
+
+    b. Behavioral Modeling – Allows the microarchitecture modeling to be performed with behavior-based modeling in HDL. This method bridges the gap between C and HDL allowing HDL design to be performed
+  
+3) RTL Verification - Behavioral verification of design
+4) DFT Insertion - Design-for-Test Circuit Insertion
+5) Logic Synthesis – Logic synthesis uses the RTL netlist to perform HDL technology mapping.
+   The synthesis process is normally performed in two major steps:
+    o GTECH Mapping – Consists of mapping the HDL netlist to generic gates what are used to perform logical optimization based on AIGERs and
+      other topologies created from the generic mapped netlist.
+    o Technology Mapping – Consists of mapping the post-optimized GTECH netlist to standard cells described in the PDK
+
+6) Sandard Cells – Standard cells are fixed height and a multiple of unit size width. This width is an integer multiple of the SITE size or the PR boundary. Each standard cell comes with SPICE, HDL, liberty, layout (detailed and abstract) files used by different tools at different stages in the RTL2GDS flow.
+
+7) Post-Synthesis STA Analysis: Performs setup analysis on different path groups.
+
+8) Floorplanning – Goal is to plan the silicon area and create a robust power distribution network (PDN) to power each of the individual components of the synthesized netlist. In addition, macro placement and blockages must be defined before placement occurs to ensure a legalized GDS file. In power planning we create the ring which is connected to the pads which brings power around the edges of the chip. We also include power straps to bring power to the middle of the chip using higher metal layers which reduces IR drop and electro-migration problem.
+Initial Layout of the Design.
+   - Chip Partitioning --> divide the design into smaller blocks while maintaining functionality.
+   - Macro Partitioning --> dividing and placing macros, rows and pins.
+   - Power planning --> setting the VDD and GND layers. The top layers are used as they are wide and offer less resistance.
+the above steps involve Partitioning, Floor planning and Power planning.
+
+9) Placement – Place the standard cells on the floorplane rows, aligned with sites defined in the technology lef file.
+   Placement is done in two steps: Global and Detailed.
+   In Global placement tries to find optimal position for all cells but they may be overlapping and not aligned to rows,
+   In Detailed placement takes the global placement and legalizes all of the placements trying to adhere to what the global placement wants.
+   finalised layout of the modules, macros, pins and pads.
+
+11) CTS – Clock tree synteshsis is used to create the clock distribution network that is used to deliver the clock to all sequential elements.
+    The main goal is to create a network with minimal skew across the chip. H-trees are a common network topology that is used to achieve this goal.        * CTS alters the netlist. Functionality check is required before progressing
+    * Logical Equivalence Check (LEC) --> formally confirm that the function did not change after modifying netlist
+it is imperative to check functionality when the netlist is modified.
+
+Note that DFT (design for testing) step is optional and facilitated by Fault tool. Note that we need to deal with antenna rules violations: when a metal wire segment is fabricated, it can act as an antenna which leads to damage some transistor gates during fabrication => two solutions: bridging and inserting antenna diodes. The two solutions are shown side-to-side below:
+
+Note: Fake antenna diode insertion --> Antenna violations may occur which cause damage to the transistors as reactive charges begin to accumulate (usually taken care by Routing). There are two methods to approach this issue.
+
+   ![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/8a67d7e8-5b0d-4252-814b-afdfda55a4d7)
+
+OpenLane adds fake antenna cells to all gates after placement --> if ant violation is detected it will replace the fake cell with a real one.
+OpenLane deals with those antenna violations and gives the user option to user either OpenLane or OpenRoad solution. The pdk directory inside the OpenLane directory has skywater-pdk which contains PDK files provided by foundry, open_pdks that contains scripts to setup pdks for opensource tools, and sky130A which contains sky130 PDK files.
+
+13) Routing –
+    * Implements the interconnect system between standard cells using the remaining available metal layers after CTS and PDN generation.
+    * The routing is performed on routing grids to ensure minimal DRC errors.
+    * The skywater pdk contains all the data ( location, size, thickness, pitch, vias ..etc) about the interconnect/metal layers.
+    * Metal tracks form a routing grid.
+      - Global Routing --> coarse grained grids used to generate routing guides
+      - Detailed Routing --> fine grained grids and routing guides to implement actual wiring.
+    * Physical Verification --> DRC and LVS.
+    * Timing Verification --> STA
+
+skywater130 pdk --> (1) lowest layer/local interconnect layer (Titanium Nitride) + 5 layers above (Aluminium) = (6)
+Note: OpenLANE --> produce clean (no DRC, LVS, timing violations) GDSII with no human intervention.
+
+Opensource EDA tools OpenLANE utilises a variety of opensource tools in the execution of the ASIC flow:
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/659653ee-5b0e-451b-8729-b592b5aa1167)
+
+14) DFT (Design for Testing)
+
+    - Scan insertion
+    - Automatic Test Pattern Generation (ATPG)
+    - Test Patterns Compaction
+    - Fault Coverage
+    - Fault Simulation
+      
+      ![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/eae792db-4bf0-48da-90f9-a1fab803c839)
+
+15) Physical Implementation (Automatic PNR) --> OpenRoad
+
+    - Floor/Power planning
+    - End Decoupling capacitors and tap cell insertion
+    - Placement
+    - Post Placement Optimization
+    - CTS
+    - Routing
+
+OpenLANE design stages
+
+    1. Synthesis
+        o yosys - Performs RTL synthesis
+        o abc - Performs technology mapping
+        o OpenSTA - Performs static timing analysis on the resulting netlist to generate timing reports
+    2. Floorplan and PDN
+        o init_fp - Defines the core area for the macro as well as the rows (used for placement) and the tracks (used for routing)
+        o ioplacer - Places the macro input and output ports
+        o pdn - Generates the power distribution network
+        o tapcell - Inserts welltap and decap cells in the floorplan
+    3. Placement
+        o RePLace - Performs global placement
+        o Resizer - Performs optional optimizations on the design
+        o OpenDP - Perfroms detailed placement to legalize the globally placed components
+    4. CTS
+        o TritonCTS - Synthesizes the clock distribution network (the clock tree)
+    5. Routing
+        o FastRoute - Performs global routing to generate a guide file for the detailed router
+        o CU-GR - Another option for performing global routing.
+        o TritonRoute - Performs detailed routing
+        o SPEF-Extractor - Performs SPEF extraction
+    6. GDSII Generation
+        o Magic - Streams out the final GDSII layout file from the routed def
+        o Klayout - Streams out the final GDSII layout file from the routed def as a back-up
+    7. Checks
+        o Magic - Performs DRC Checks & Antenna Checks
+        o Klayout - Performs DRC Checks
+        o Netgen - Performs LVS Checks
+        o CVC - Performs Circuit Validity Checks
+        
+OpenLANE Files: 
+The openLANE file structure looks something like this:
+
+    * skywater-pdk: contains PDK files provided by foundry
+    * open_pdks: contains scripts to setup pdks for opensource tools
+    * sky130A: contains sky130 pdk files
+    * Invoking OpenLANE and Design Preparation
+    * Openlane can be invoked using docker command followed by opening an interactive session.
+      flow.tcl is a script that specifies details for openLANE flow.
+
+### Opensource EDA Tools used for physical Design
+
+#### Python Installation
+
+<pre>$ sudo apt install -y build-essential python3 python3-venv python3-pip</pre>
+
+#### Docker Installation
+
+<pre>$ sudo apt-get remove docker docker-engine docker.io containerd runc (removes older version of docker if installed)
+
+$ sudo apt-get update
+
+$ sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+    
+$ sudo mkdir -p /etc/apt/keyrings
+
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+$ echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  
+$ sudo apt-get update
+
+$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+$ apt-cache madison docker-ce (copy the version string you want to install)
+
+$ sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io docker-compose-plugin (paste the version string copies in place of <VERSION_STRING>)
+
+$ sudo docker run hello-world (If the docker is successfully installed u will get a success message here)</pre>
+    
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/5a770edf-71a2-4d5f-ad70-7bdec390a873)
+
+#### Opensource EDA Tools 
+
+**OpenLane Directory Structure**
+
+Openlane is automated RTL to GDSII flow that consists of multiple tools (obviously opensource) such as OpenROAD, Yosys, Magic, Netgen, and a number of custom scripts for design exploration and optimization. 
+It has two modes to promote "No human in flow", that is, autonomous and interactive. For understanding the process of the flow, I will be using the "interactive" method.
+
+All the Process Design Kit(PDK) are listed under the pdks/ directory.  Along with the Sky130A we are using some other open-source PDKs and other related files are also available in the directory. skywater-pdk has pdk related files means tech libs, cell lib etc. open_pdk any of silicon foundary files are compatible with commercial EDA tool and not for opensource tools. openpdk plans to mitigate that issue and they are set of scripts, files  converts foundary level pdks to be compatible with opensource EDA tools like Magic,Netgen etc.. The location of the PDK directory is given of $PDK_ROOT variable.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/288c6fe6-6af3-4c47-b9bb-aedf7edbde05)
+
+sky130A is a pdk variant is made compatible to work with opensource enviornment. Under the variant, we have libs.tech and libs.ref 
+sky130 is process name sky130nm, fd abbreviate foundary name, sc stands for standard cell library file and hd stands for high density is variant of pdk. osu is okloma state university. 
+Openlane is compatible with pdks namely skywater130 and osu.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/a800e527-96b8-425f-94ec-dd5f1d092142)
+
+libs.tech--> contains the library files related to the tools used in the flow 
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/b5e066c4-867e-46e1-b8c3-43cbe78562ff) 
+
+libs.ref--> contains process specific files timimg, cell lib.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/e0135089-9463-4636-b29f-2882cdc77b9f)
+
+I will be using sky130_fd_sc_hd for my design. all technology files like  teclef files contains layer information, lib file contains all process corner information.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/a5762896-ea00-4e9a-80f4-0cccb7add0da)
+
+Look into the different types of file types which are used to build a pdk.
+- verilog --> netlists
+- techlef --> metal layer data and design rules (technology files)
+- spice --> circuit netlists of analog devices
+- maglef --> used for displaying metal layers in the layout tool
+- mag --> used for displaying layout on the layout tool
+- lib --> contains the flavours of library files for different process corners. In short logical libraries.
+- lef --> contains physical info such as shape, size, direction, and symmetry, input and output pins direction for each cellin the design.
+- gds --> (GDSII) used to store IC layout information.
+- cdl --> similar to spice netlists; stores electronic circuit information.
+
+**Design Preparation Steps**
+
+To start with OpenLane: 
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/19fbaf48-36ed-4e66-84e1-9db77df097a5)
+
+* OpenLANE Initialization
+    For invoking OpenLANE in Linux Ubuntu, we should first run the docker everytime we use OpenLANE. 
+    A custom shell script or commands can be generated to make the task simpler.
+    - To invoke OpenLANE run the ./flow.tcl script.(as the name flow.tcl means using the script the flow has to go)
+    - OpenLANE supports two modes of operation: interactive and autonomous(note that without interactive switch, OpenLane will run in automatic mode)
+    - To use interactive mode use -interactive flag with ./flow.tcl (Interactive means step by steps)
+  
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/809325d2-12e0-46b0-8773-a514332b64be)
+
+Now prompt change to %
+1. The first step after invoking OpenLANE is to import the openlane package of required version. This is done using following command. Here 0.9 is the required version of OpenLANE.
+<pre>% package require openlane 0.9</pre>
+All designs run in OpenLane are extract from "designs" folder.
+<pre>vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane$ cd designs/</pre>
+Here we are using picorv32a. It contains following files
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/2aaf2103-8021-4e26-adaa-af3666e9d13a)
+- src file stands for source file which contain verilog file for RTL present as well as .sdc information
+- pdk specific configuration file.
+- config.tcl that has configurations for the design that will overwrite the default OpenLane settings. 
+Note: For a custom design. You will need to create a config.tcl. The sky130_fd_sc_hd_config.tcl is not compulsory as it will not affect flow.
+How OpenLane takes value? first it takes default values set in OpenLane. Then config.tcl and then sky130A_sky130_fd_sc_hd_config.tcl
+Config.tcl overwrites default parameters.
+sky130A_sky130_fd_sc_hd_config.tcl has higher priority which overwrites values in config.tcl.
+So the question that arises is what is in the config.tcl file?
+<pre>
+# Design
+set ::env(DESIGN_NAME) "picorv32a"
+
+set ::env(VERILOG_FILES) "./designs/picorv32a/src/picorv32a.v"
+set ::env(SDC_FILE) "./designs/picorv32a/src/picorv32a.sdc"
+
+set ::env(CLOCK_PERIOD) "5.000"
+set ::env(CLOCK_PORT) "clk"
+
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+
+set filename $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+        source $filename
+}
+config.tcl (END)
+</pre>
+Config.tcl is used to set the files and parameters in the flow environment. As shown in the snippet above.
+
+2. Design setup stage: The next step is to prepare our design for the OpenLANE flow. Means need to setup file system specific to flow like each and every step of flow will be fetching files property to location that location need to be created. That is design setup done using following command:
+
+  <pre>% prep -design design-name</pre>
+
+Some additional flags that can be used while preparation are:
+  
+    * -tag <name-for-current-run>
+    * All the files generated during the flow will be stored in a directory named <name-for-current-run>
+    * -overwrite - If a directory name mentioned in -tag already exists, it will be overwritten.
+    
+<pre>% prep -design picorv32a</pre> 
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/a6bc3395-a5e8-4ad4-b548-9e85c5b3467e)
+
+During the design preparation the technology LEF and cell LEF files are merged together to obtain a merged.lef file. The LEF file contains information like the layer information, set of design rules, information about each standard cell which is required for place and route.
+Also, a "runs" directory is created inside the picorv32a directory, and inside it a directory with the current date is created. Inside that directory, all folder structures required by OpenLanes are present empty, except for temp folder. temp folder has the merged LEF files. 
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/47f2adcf-2ac0-408d-85b9-20387cc92b3a)
+
+**Design Synthesis and Results**
+To run the synthesis of the picorv32a design, I used the following command (During this step yosys and ABC tools are utilized to convert RTL design to the gate level netlist, which will be found in the folder runs/<RUN_today_date>/results/synthesis):
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/c5b2754e-40f1-4c54-861d-972a87b3262e)
+
+% run_synthesis
+
+The obtained logs and reports are found in runs/<RUN_today_date>/logs/synthesis and runs/<RUN_today_date>/reports/synthesis respectively.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/022bc8cf-8009-4b41-b939-4e4c0bed43f6)
+
+Below are screenshots of the logs I obtained for STA results:
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/89480869-511e-4df2-94a0-ab7442eef8b2)
+
+To calculate the flop ratio, I used the following formula, and the numbers are extracted from the report whose screenshot is included below:
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/4621a3db-1b8b-4f3c-81c9-32879c976494)
+
+<pre>Flop ratio = Number of D Flipflops / Total Number of cells
+dfxtp_2 = 1613,
+Number of cells = 14876,
+Flop ratio = 1613/14876 = 0.1084 = 10.84%
+Chip area for module '\picorv32a': 147712.918400</pre>
+
+</details>
+
+<h2 id="C6">Day 6</h2>
+
+##### Good Floor Plan Vs Bad Floor Plan and Introduction to Library Cells 
+
+<details>
+<summary>Chip floor planning, Placement and Routing</summary>
+
+**Utilization factor and Aspect ratio**
+
+- In physical design flow, first step of floor planning is defining height and width of the core and die. 
+- Recall that logic cells are placed inside the core. 
+- Lets consider a basic example of a basic netlist consist of combo logic between capture and launch flops. 
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/8bb9173f-e2b9-4495-94aa-7a0fdd0cb089)
+
+- Now to produce the components of the netlist (cell and flops) , it needs to be structured on the silicon wafer die. 
+  Hence I would need to place these components of the netlist in certain way such that it fits in the core to be placed on the die.
+- Here we are intrested in dimension of core and die. So in that case intrested in dimension of std. cells and not wires.
+- Each cell and each flop will have dimensions. In this case lets take unit dimensions. 
+- Let's dimension of std. cells are 1 unit X 1 unit. So area = 1 sq. unit
+  Let's dimension of F/F's are 1 unit X 1 unit. So area = 1 sq. unit
+  Let's calculate area occupied by netlist on silicon wafer.
+  Now remove wires and place all on single plate. Now length will be 2 unit and breadth will be 2 unit. So, area will be 4 sq.unit
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/c63e4b09-a464-4916-9e5a-27130859c953)
+
+- silicon wafer on which all logic implemented. One section of wafer is die and inside die, there is core. Die encapsulate core.
+- Circuit is build in area of die so will exceed die area. Place all logical cells inside core. 
+
+- Utilization factor of the core = Area occupied by netlist / Total area of the core.
+  When netlist completely occupies core area then utilization factor is 100%. Then there will be no space to add any logic.
+  Ideally a 50-60% utilization (of cells only usually) is good and Utilization factor will be 0.5/0.6
+
+- Aspect ratio = Height of core / width of core. 
+  When Aspect ratio = 1, signifies chip is square shaped core;
+  When Aspect ratio is other than 1 signifies chip is rectangle shape core. 
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/9258984e-b452-4e1f-aefb-be3ed6234fad)
+
+- Here, Utilization factor = (2 unit x 2 unit) / (4 unit x 2 unit) = 0.5
+  Aspect ratio = (2 unit ) / (4 unit) = 0.5
+
+**Concept of pre-placed cells**
+
+The second step of floor planning is defining the locations of preplaced cells. 
+lets consider a combo logic which consists of a massive number of gates (50,000). When implementing this on a single die the utilization factor will surely increase. Hence the gates are partitioned into smaller blocks with input and outputs between these blocks. 
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/d9d991ce-7e15-48b2-8546-47dcf9a4dcc1)
+
+We cut big logic cells into different blocks, we extended IO pins, black box the blocks, and then separate the black boxes and implemented as two different IPs or modules. IPs are implemented once and can be instantiated multiple times to aid in reuseability of the function in the design.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/77cf4791-574c-4fc9-a81c-54399132b710)
+
+IP's are preplaced cells as their arrangement is done by user-defined locations and hence placed in the chip before automated placement-and-routing. The automatic placement-and-routing will place the remaining logical cells in design onto chip. It is important to place the preplaced cells in locations that are relevant to the design as this lcoation won't change.
+The arrangement of these IP's in a chip is referred as Floorplanning. 
+Some example of IP's availale are Memory, Clock-gating cell, Comparator, Mux. All of them implemented once and can be instantiated multiple times on to netlist. This is part of top level netlist. They performs some functions, receive some inputs signals, they delivers some output signals but functionality of this particular cell implemented once. 
+    
+**De-coupling Capacitors**
+
+Third step in floop planning is to define the decoupling capacitances around the preplaced cells. 
+Memories are often placed close to the input side. Memory units serve as pre-placed cells. Now connectivity with these units is done through the supply/power lines in the chip. They are connected with wires. The physical distance between the source and the cell will cause a drop in the voltage. In such a scenario, if the voltage reaching the cell is not sufficient to meet the Noise Margin specifications, it would cause an unpredictable output at the cell. The solution for it is to use de-coupling capacitors to provide a "backup supply" closer to the unit(zero to minimal voltage drop due to very short distance).
+
+How does a de-coupling capacitor work?
+lets take an AND gate. During switching from 0 to 1 state, if the voltage being supplied to the gate from the Power line drops below the required voltage, the capacitor Cd discharges and supplies power to the AND gate temporarily to ensure correct voltage is being supplied. When no switching is taking place the Cd is charged by the Power lines. Hence it ensures proper voltage is being supplied to the gate during switching operations.
+It also bypasses high frequency noise from other units and prevents crosstalk between closely placed cells.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/b43af33c-c793-4803-8852-feec7c24f657)
+
+Decoupling capacitances are used to decouple circuits from the main supply, and they are placed closer to the cell. The decoupling capacitances are important during the switching activity as it makes sure signal is delivered with attentuation that lies in the noise margin regions (as opposed to huge attentuation that can take place because the main supply is physically far away from the cells. The decoupling capacitances replenish their own charge when there is no switching activity.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/136fd791-23ba-4c46-8370-5462514849aa)
+
+**Power Planning**
+
+The forth step is power planning. 
+Macro is a predefined and reuseable blocks of logic which can perform specific tasks. There are two types of macros, namely:
+
+    Hard macros --> non-flexible, PPA and timing is fixed, available as ICs, industry graded.
+    Soft macros --> flexible, PPA and timing is unpredictable, synthesizable RTL.
+
+The power fluctuation issue was stabilised for a local module using de-coupling capacitors. Now I will have to consider fluctuations between multiple such modules in the chip. 
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/4712a390-507d-4ae7-9083-a307bf6c9334)
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/cc8e7f26-40b1-4df3-8d9a-50201fb8be09)
+
+It is not feasible to have capacitors throughout the chip. However, if not considered it will lead to voltage drooping and ground bounce which will momentarily affect the working of the chip (it is bad for large designs). Voltage drooping is a condition in which multiple capacitors (of a bus) draw current from the same power line causing the source voltage to drop below the original value. Closely, ground bounce is a state when the ground value is slightly above zero because of many capacitors discharge current into a single ground line. These will definitely lead to uncertaintity in the internal functioning of the chip.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/2e38c719-d8b5-4e2a-9da4-4bfa16297f55)
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/d2d0239e-0201-4028-987b-186a97c69108)
+
+This is used for global communication between the different macros as the receiving macro (load) should receive the same signal sent from the sending macro (driver). Using one power supply to feen in the signal can cause problems in ground bounce or supply droop if multiple decoupling transistors try to charge or discharge at the same time. The solution to this problem is to use multiple sources for the power supply, where each cell will take its power from the nearest supply. The problem of placing those multiple power supplies is called power planning (in OpenLane, this is done post placement). 
+The solution to this problem is the introduction of many other power lines in the form of a grid/mesh. Hence the capacitor closest to the power line can tap into whichever needed. VDD power lines are placed in vertically and horizontal layers with metal contacts. The GND lines are also placed similarly in the same level as VDD. However it is made sure that both these lines are isolated from each other. 
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/1e30f925-711c-4f12-80ad-495e6d6d8478)
+
+**Pin placement**
+
+The fifth step in floor planning is pin placement.
+The connectivity between the cells is defined in the netlist, and pin placement is the problem of placing those pins on the chip's die. Note that clock pins are bigger than other pins as this pin drives more cells. 
+
+A chip will have input as well as outputs and to tap into these values I will require pin placement on the chip. Once the design is complete, all the inputs and outputs are placed in a region specifically reserved for pins. This is done by adding a blockage element to that area to restrict the tool from placing cells. This is called as logical cell placement blockage.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/50f3b920-e729-46c1-af68-144c3094bdd4)
+
+The pins are optimized by fanout from a common point and are placed in a random order in the reserved area. Many parameters are considered while placing the pins such as connectivity, proximity, type of pins (eg i/o, clk, power/gnd),.. etc. Clock signal is used to facilitate all the flops and sequential elements in the chip. Hence, the clk pin is larger than the i/o pins so that it offers least resistance to the path.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/12041dfd-ecdc-402a-8cc5-09ae0b6fc80a)
+
+The sixth step is logical cell placement blockage where a blockage is placed in die area outside core to present tools from placing cells in that area.
+
+**Floorplan using OpenLANE**
+
+Note that when synthesis is performed for example a file will be created inside the results/synthesis directory. 
+Inside the runs/<RUN_today_date> directory there is a config.tcl file which contains the default OpenLane configuration settings, and it is important to check whether our modifications are reflected in it.
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/f4a17a60-3d57-4b35-8cd5-a6a268d6cb3d)
+
+Change switches/variables ( info under configuration) in the design config.tcl to suit your needs. It is not necesaary to set all switches. You can set any depends on where you are on floor. 
+
+<pre>vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/configuration$ less README.md</pre>
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/b4d03e37-5cce-4a3b-9ee9-6bbe77e5b9e3)
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/9f5de4f3-4b80-49e0-9f1a-7bc96a78fdd0)
+
+These are all default values of floorplanning and placement switches in floorplan .tcl and placement .tcl file.
+
+<pre>vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/configuration$ less floorplan.tcl</pre>
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/dd4dcbe8-77c7-409d-9fac-950d4cac1bdf)
+
+These are default values which can be set. 
+
+ <pre>set ::env(FP_IO_MODE) 1; # 0 matching mode - 1 random equidistant mode</pre>
+FP_IO_MODE: How you want your pin configuration to be around core? FP mode - 1 means pin position randomly but equidistant mode.
+When FP mode - 0 means pin position not equidistant. 
+These are system default values which have lowest priority. (settings in floorplan.tcl / placement.tcl)
+After that next priority to config.tcl of design (Note that these config.tcl files of designs are present in ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14_03_10_54) and then highest priority to pdk variant.tcl, here sky130A_sky130_fd_sc_hd_config.tcl 
+In openlane flow, in config.tcl, FP_IO_VMETAL and FP_IO_HMETAL layer are one more than what is specified.  
+
+**Floorplan Files and Steps to view floorplan**
+
+To run the floorplanning after synthesis of the picorv32a design, I used the following command (During this, the 6 steps mentioned are done, and a .def is created in the results/floorplan directory inside the chosen design directory. The results can be found in OpenLane/designs//RUN_*/runs):
+
+% run_floorplan
+
+Note that some of the floorplan switches (can be included with the command above) are FP_CORE_UTIL (floorplan core utilization), FP_ASPECT_RATIO (floorplan aspect ratio), FP_CORE_MARGIN (Core to die margin area), FP_IO_MODE (defines pin configurations: 1 = equidistant and 0 = not equidistant), FP_CORE_VMETAL (vertical metal layer), and FP_CORE_HMETAL (horizontal metal layer). The default values of these are defined in OpenLane/configuration/floorplan.tcl. In order to overwite these, we can define those switches in OpenLane/designs//config.json. Note that in OpenLane, horizontal and vertical metal are one value added to the value we specify.
+Successful floorplanning gives a .def file as output which contains the die area and placement of standard cells.
+Here, .def (Design Exchange Format) file is created in floorplan directory.
+<pre>vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-03_10-54/results/floorplan$ less picorv32a.floorplan.def</pre>
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/163208ab-b6c8-4cda-8742-039d9bda247e)
+ 
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/f40ad91c-26ff-451e-a11b-370f8c7ea055)
+Here, DIEAREA ( 0 0 ) ( 660685 671405 ) ; This is area of complete die. 
+1st '0' is lower left X; 2nd '0' lower left Y; '660685' is upper right X and '671405' is upper right Y. Using this calculate area of Die.
+Unit is set by UNITS DISTANCE MICRONS 1000; databites units per micron i.e 1 micron is equal to 1000 databits units. So, ( 660685 671405 ) these numbers when divided by 1000, we get dimensions of chip in micrometer.
+
+vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-03_10-54/logs/floorplan$ less 4-ioPlacer.log
+Here we can see design.tcl file has overriden system defaults.
+
+<pre>vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/configuration$ less README.md
+vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/configuration$ less floorplan.tcl</pre>
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/a130eba7-b5ef-403e-88fe-5793fe730752)
+
+Here, design config.tcl file have default values. Ex: FP_CORE_UTIL = "50" 
+    
+<pre>vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-03_10-54$ less config.tcl</pre>
+    
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/4101dc76-1fd3-4836-8bee-c0c78c8dbc37)
+
+Here, switch values are overrideen. set ::env(FP_CORE_UTIL) "35"
+    
+ <pre>vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a$ less sky130A_sky130_fd_sc_hd_config.tcl</pre>
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/fcb79c53-2743-43ea-8c12-1fcaf7e92bc0)
+
+Here set ::env(FP_CORE_UTIL) "35"
+
+Note :  design config.tcl should overwrite system defaults. But one fact is that sky130A_sky130_fd_sc_hd_config.tcl has highest priority. so, it happens like that design config.tcl     switch value remains same due to pdk config.tcl. 
+Ex: CORE_UTIL ="50" of sytem default should be overridden by 65 of design config.tcl. But  CORE_UTIL = 50 of config.tcl of pdk file doesnot allow to change switch CORE_UTIL = 65 of design config.tcl
+
+**Review Floorplan Layout in Magic** 
+Looking at .def file (floorplan result) doen't make sense . Don't know where what place? So, to see actual layout after floorplan, first done in Magic. 
+
+Magic Layout Tool is used for visualizing the layout after floorplan. In order to view floorplan in Magic, following three files are required: 1. Technology File (sky130A.tech) 2. Merged LEF file (merged.lef) 3. DEF File
+Tech file location : 
+
+<pre>/home/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech</pre>
+
+merged.lef file location:
+
+<pre>~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-03_10-54/tmp</pre>
+
+To view the layout of the floorplan in magic, I used the command below in the results/floorplan directory (note that in my case the pdk was previously downloaded on my desktop in the open_pdks directory):
+
+<pre>~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-03_10-54/results/floorplan$ magic -T /home/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &</pre>
+
+A screenshot of the obtained layout is below:
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/1a1e08d7-2ef4-44ad-9c81-e3f1d52fab43)
+
+After zooming in (left click, right click, z), below is the obtained screenshots (note that when we highlight (s after positioning the cursor), we can type "what" in the tkcon window and it will provide the layer of the highlighted object. The standard cells can be found on left bottom corner of the layout, as floorplan does not place those):
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/cd2f66da-f78f-4684-a901-6c2d1d38bd6c)
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/7ca44908-52e4-4b5b-bc60-655b39629243)
+
+
+#### Library Binding and Placement
+
+**Netlist Binding and initial place design**
+
+Placement involves the placing of standard cells onto the floorplan of the die/core. It occurs in 2 steps, that is, Global Placement and Detailed Placement.
+Global Placement is a coarse placement of cells which will consider initial timing constraints, congestion and multi-voltage variants. However they are not legalised (meaning the cells are placed such that they are not present on the standard cell rows, not appended with each other [incase of high frequency operations] and they overlap other cells --> in short they arent placed perfectly). In global placement, tool finds optimal position for all cells which may not be legal and cells may overlap. Optimization is done through reduction of half parameter wire length.
+
+In detailed placement, the tool changes the position of cells post global placement so as to legalise them. Legalisation occurs in Detailed Placement. This will give rise to new timing violations as the postions of cells will be minutely changed and hence the wire lengths (capacitances) will also change. This will have to be optimised to progress forward. 
+
+The first step in placement and routing is binding the netlist with physical cells. This means taking every component in the netlist and giving them a proper width and height. These widths and heights are taken from the library. Library will have following infrmation: height and widhth, delay information of of each and every cell and required conditions of particular cell Ex. at what condition F/F sends output i.e. When condition?, various flavours of cells available based on timing condition and based on sapce available on floorplan. The library has various options of widths and heights for the same cell (bigger is faster). 
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/8a4f5870-4bb1-4dd9-9b6d-b182262b6585)
+
+The above image shows a physical view of logic cells.
+These cells are placed onto the core space in the following manner. 
+The second step in placement and routing is placement. 
+In this step, the netlist is placed on the floor plan (which already has the preplaced cells by now). The placement is important as it affects the delays. 
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/72facaf9-f9c3-4041-b2eb-a4e27ed5e6f2)
+
+The third step is optimized placement to ensure that the timing is maintained. The respective cells are placed as close as possible to the related derivatives. The wire capacitances are estimated and the placement is optimized by adding buffers (repeaters that replicate the original signal) where needed to maintain the integrity of the signal. The distances for signals are calculated according to slew values and transition delay. Criss cross can occur when placing, and should be avoided. In case signal intergrity fails due to large distance between the cells, repeaters (buffers) are placed in the path to reproduce the signal and drive it to the respective cell. Hence Area is compromised for better timing and performance.
+
+**Need for Libraries and Characterization**
+
+All stages of Logic Synthesis, floorplanning, placement, Clock Tree Synthesis and Routing need library characterization. 
+Standard cells are placed inside libraries, which defines their functionalities and their different versions: different sizes and threshold voltages
+Library file contains information about the gate functionality, dimensions, capacitance rating, timing and delay values and much more.
+We build, characterise and model these cells so that the tool can understand it.
+
+</details>
+
+<h2 id="C7">Day 7</h2>
+
+<details>
+
+   <summary>Cell Design and Characteriztion Flow</summary>
+
+**Inputs for Cell Design Flow**
+
+For one standard cell, the cell design flow defined in the library consists of:
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/45a93fcd-60ad-4c67-bb5d-f9262f27ccfe)
+
+It consists of 3 parts:-
+1) Inputs
+   - Inputs to cells from Process Design Kits.
+   - pdks comes from foundary: consist of DRC and LVS rules, SPICE models, library and user-defined specs
+   - PDKs --> files which contain information about the technology being used for your design.
+   - DRC & LVS --> Physical design rules that need to be met so that the foundry can fabricate the cell.
+   - SPICE Models --> contains characteristics of the transistors that will be used to build the cell (threshold voltage, aspect ratio, capacitances,
+     etc).
+   - library and user-defined spec --> cell height (space between Vcc and Gnd rails), cell width (delay constraints, drive strength), supply voltage
+     (noise margin), metal layer specs (specific metal layer to be used), pin location (close to Vcc or Gnd).
+
+2) Design steps: 
+    - Circuit design --> The circuit is designed by making use of the industry parameters and inputs where sizing takes place.
+      First step is to implement functionality.
+      Second steps is to model PMOS and NMOS transistors. For instance, to model the aspect ratio of 2.5,the PMOS = 2.5 NMOS dimensions while keeping         height constant based on the technology file. Similarly, Switching threshold is also model based on the requirement.
+    - Layout design --> build the circuit with transistors to meet the required functionality, apply Euler's Path (unidirectional traverse only) and          create the respective network graphs, implement the stick diagram of the circuit topology. Then stick diagram is converted to layout by sticking        to the DRC rules and LVS checks defined by the foundary.
+    - Characterization --> specific flow; Gives information on Timing, Power and Noise in the form of .libs files along with functionality.
+
+3-) Outputs: 
+    - Circuit Description Language (CDL)
+    - GSDII, LEF, extracted SPICE netlists (.cir) which includes the parasitics (resistand and capacitance of each cell)
+    - Timing, noise, power .libs, function
+    
+**Typical Characterization flow**
+
+There are few problems of Standard Cells in polygon level format (GDSII). Some of them are:
+
+    * Extraction of functionality is complicated and unnecessary as it is known
+    * Functional/Delay simulation takes way too long
+    * Power extraction for a whole chip takes too long
+    * Automatic detection of timing constraints (e.g. Setup time) is difficult
+
+A solution to above problems is Cell Characterization. It is a simple model for delay, function, constraints and power on cell/gate level. 
+
+Characterization Flow (GUNA). 
+    1. Read the SPICE Model file     
+    2. Read extracted SPICE netlist
+    3. Recognise the behavior of the circuit design*
+    4. Read sub-circuit of the design
+    5. Set the Power supply
+    6. Apply stimulus
+    7. Provide the load capacitance (NLDM --> range of capacitances)
+    8. Provide simultion constraints
+
+These 8 steps are fed via a configuration file to the characterization software called "GUNA". And the software will generate timing, noise, power models,.libs function.
+
+There are hence three characterization types: timing characterization, power characterization, and noise characterization.
+
+##### General Timing and Characterization Parameters
+
+**Timimg Threshold Definations**
+
+Timing Characterisation --> Delays between input and output wave from (Propagation Delay), Rise time; Fall time delays (Transition delay).
+Timing threshold definitions are points whose definitions help us calculate slew from the waveforms (definitions are for slew_low_rise_thr, slew_high_rise_thr, slew_low_fall_thr, and slew_high_fall_thr), and the delay of the cell between input and output plots (definitions are for in_rise_thr, in_fall_thr, out_rise_thr, and out_fall_thr).
+
+Solution --> Choosing the correct threshold points, Having proper circuit designs to reduce the wire delays. Negative delays are intolerable. 
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/82b7371a-846f-4d38-8cdb-d01395f86d4d)
+
+**propagation delay and transition time**
+
+The choice of the threshold definitions is important to get correct propagation delay and transition time. 
+Propagation delay = time(out_thr) - time(in_thr). 
+Fall/Rise Transition time = time(slew_high_thr) - time(slew_low_thr). 
+
+</details>
+
+<h2 id="C8">Day 8</h2>
+
+<details>
+
+   <summary>Design library cell using Magic Layout and ngspice characterization</summary>
+
+##### Labs for CMOS Inverter ngSpice Simulations
+
+**Spice Deck creation for CMOS Inverter**
+
+  To simulate the inverter, first its spice deck needs to be created.
+  Recall that a spice deck includes component connectivity, component values, identify nodes, Name nodes. The netlist to simulate includes model  
+  description, netlist description, simulation type and parameters, and needed libraries.
+
+**Note: Spice Simulation Lab from ShonTaware**
+
+**Threshold Voltage Vm**
+
+  Recall that the switching threshold (Vm, used to evaluate static behavior) of a CMOS inverter is the point on the voltage transfer characteristic curve where input voltage equals output voltage: at which both PMOS and NMOS are in saturation region which gives rise to a leakage current.
+
+**Lab VSDcell gitclone**mariam aashish
+
+
+#### Inception of Layout : A CMOS Fabrication Process
+
+**16-mask CMOS process steps**
+
+1-) Selecting a substrate: selecting body/substrate material (P-type substrate)
+    High resistivity(5 ~ 50ohms),doping level(10 to power 15 / cm cube ), orientation(100)
+
+2-) Creating active region for transistors: First create isolation between active region pockets by SiO2, then perform ~40nm SiO2 on P-type substare and then ~80 nm Si3N4 deposition, then ~1nm photoresist deposition, and then apply photolithography (part of photoresist is covered by mask1 to protect it against UV light). Areas that are not protected against UV light are then washed out using developing solution and etching is done, then photoresist is chemically removed. Then we place CMOS in oxidation furnace,and field oxide is grown (process is called LOCOS or Local Oxidation of Silicon). After that, Si3N4 is stripped using hot phospheric acid.
+
+3-) N-well and P-well formation: Photoresist is deposited and mask2 is used to define the protected area. UV light reacts with exposed area, and then we wash the area which is unprotected. After that, the mask is removed (this is lithography). Ion implantation by Boron for P-well is then done, followed by ion implementation of Phosphorous for N-well formation (after photoresist, mask application, and wash out). Then the CMOS is put in a high temperature furnace for a high temperature for a long time, which will diffuse the N-well and P-well (the pockets). In N-well the pmos will be created and in P-well the nmos will be created.
+
+ ![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/d8c372ae-80b4-4f29-b44f-e71759c64e5b)
+
+4-) Formation of gate terminal: Doping Concentration and Oxide Capacitance are important term in gate formation as they control threshold voltage Vt. The nmos and pmos gates are formed by depositing photoresist, using mask4, exposing UV, applying wash out, removing the mask, doping with Boron to modify the doping concentration in the P-well. Similar steps are repeated for P-well to control the threshold voltage or doping concentration in the N-well. Extra oxide is diluted then re-grown again to give high quality oxide. A polisilicon layer is then deposited to form the gate, then N-type material is doped on the gate to make it low resistance. Then photoresist is dumped, mask6 is used, unprotected material is washed out, mask is removed, and the remaining areas of polisilicon are etched away.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/0da6abab-c9b2-4442-8038-f294f75ebe35)
+
+5-) Lightly Doped Drain (LDD) formation: LDD is formed to prevent hot electron effect and short channel effect: P+, P-, P doping profile is needed for pmos and N+, N-, N profile is needed for nmos. Why need P- and N- ? Two Reasons Hot Electron Effect and short channel Effect
+In Hot Electron Effect, When device size reduces, electric field E = V/d increases, energy of electron and holes attains tremendous amount of energy which break si-si bonds leading to some more addition of electron and holes which we don't want because control doping profile very well. 
+Enegry might be so high that it crosses 3.2eV barrier between si conduction band and SiO2 conduction band. If it crosses this band it might enters into oxide layer which is present above substate which create issue.   
+Short channel effect, when device size reduces, drain field penetrate channel, difficult to Gate to control current.
+
+Photolithography is applied, Phosphorous is doped to create N- implants on P-well side. The lithography is repeated for N-well side and we get P- implant after doping Boron. A thick Si3N4 or SiO2 is deposited on whole material and plasma anisotropic etching takes place to create the side-wall spacers where source and drain will be later affected in next step.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/efa07cff-941f-4a29-8d38-241a97faf3ba)
+
+6-) Source and drain formation: Thin layer of screen oxide is added to avoid channelling during implantation. Then after photolithography, Aresenic implantation/doping takes place above P-well (below side-wall spacers). Then after photolithography, Boron implantation/doping takes place above N-well (below side-wall spacers). The material is put in high temperature furnace (called high temperature annealing).
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/8a2ecec0-1aa5-4a6a-8c6d-da65712dec66)
+
+7-) Contacts and local interconnect formation: Etching/removal of screen oxide by HF solution. Then Ti (Titinum) is deposited on material for low resistant contacts using sputtering (hitting Ti by Ar+ and the then Ti will be deposited on the substrate with heating). Then lithograpphy is used, and RCA cleaning is used to etch TiN. Result = TiN used only for local communication.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/e4c04c01-1771-4783-9c01-1467a81fbc5f)
+
+8-) Higher level metal formation: A thick layer of SiO2 doped with phosphorous or boron is deposited on the material. CMP is used for planarizing the wafer (polishing it), then photolithograpphy is used in areas where we want the metal to be formed, then TiN is deposited. Tungsten is then deposited, followed by CMP again. Al is then deposited on the material, and photolithography is used. Result is we get the first layer of metal. To get higher layers, SiO2 is deposited again, CMP is used, lithography is used, TiN is deposited, Tungsten is deposited, followed by CMP again. Al is then deposited on the material, and photolithography is used. The result is a metal layer which is higher and thicker (thicker Al). Si3N4 is deposited on top to protect the whole chip. Finally, mask16 is used to open contact holes on this top layer and connect the highest metal layer to the top.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/01e2d91c-dc52-42ec-9092-f0bbe06e1054)
+
+CMOS after finishing the fabrication process
 
 
 
