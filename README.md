@@ -4404,9 +4404,21 @@ run
 The SPICE netlist generated in previous step is simulated using the NGSPICE tool.
 NGSPICE is an open-source mixed-level/mixed-signal electronic spice circuit simulator. The command used to invoke NGSPICE in the same directory of the netlist (sky130_inv.spice), 
 use the following commands to run the simulation:
-ngspice <name-of-SPICE-netlist-file>
-ngspice sky130_inv.spice
+
+<pre>
+	ngspice <name-of-SPICE-netlist-file>
+	ngspice sky130_inv.spice
+</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/cb7e878a-a315-4259-8c81-b4b5cab4060e)
+
 Following command is used to plot waveform in ngspice tool.
-ngspice 1 -> plot Y vs time A
+
+<pre>ngspice 1 -> plot Y vs time A</pre>
+
 plot <output: y> vs time <input: a>
+
+
+
  </details>
+
