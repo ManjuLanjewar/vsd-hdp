@@ -4421,7 +4421,8 @@ Following command is used to plot waveform in ngspice tool.
 plot <output: y> vs time <input: a>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/3a170d1e-abc6-49ba-95a1-2c5ccdf1adcf)
-Here spike was there so 
+
+ spike was there in plot so in SPICE Deck capacitance C3 value changes as C3 Y VGND 2fF and then ouput is plotted
 
 
  </details>
