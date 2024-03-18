@@ -3335,8 +3335,8 @@ Above is snap shot of the inverter chain
 
     1) Inverter Chain:
         - When inverters are connected back-to-back they are collectively called as "Inverter Chain".
-        - In an inverter chain, the gates in the middle have same structures on both sides. So, it's very likely that this particular gate structure               will have a repeated distortion because they are exposed to same kind of structures.
-        - In an inverter chain, gates in the middle will have a structure which is different from the gates at the ends because they might be connected            to different devices that will impact the gates.
+        - In an inverter chain, the gates in the middle have same structures on both sides. So, it's very likely that this particular gate structure will have a repeated distortion because they are exposed to same kind of structures.
+        - In an inverter chain, gates in the middle will have a structure which is different from the gates at the ends because they might be connected to different devices that will impact the gates.
         - Variation in L and W takes place because of non-ideal mask, which in turn impacts the drain current. 
         
 ![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/06406461-7d6d-41c5-83a3-3a46a157902f)
@@ -4125,11 +4125,7 @@ After zooming in, this is the obtained placement:
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e5cb18ba-0a2a-4528-9e93-f60712a818fd)
 
-
-
-
 </details>
-
 
 <h2 id="C15">Day 15</h2>
 
@@ -4214,11 +4210,16 @@ Fall/Rise Transition time = time(slew_high_thr) - time(slew_low_thr).
 
 <h2 id="C16">Day 16</h2>
 
+##### Design library cell using Magic Layout and ngspice characterization
+
+**Labs for CMOS Inverter ngSpice Simulations**
+
 <details>
+	  <summary>Labs for IO Placer Revision</summary>
 
-   <summary>Design library cell using Magic Layout and ngspice characterization</summary>
+OpenLane allows users to make changes on the fly, using the following command before rerunning the design step (for example floorplanning):
 
-##### Labs for CMOS Inverter ngSpice Simulations
+</details>
 
 **Spice Deck creation for CMOS Inverter**
 
