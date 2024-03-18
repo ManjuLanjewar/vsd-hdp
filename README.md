@@ -3987,6 +3987,8 @@ These are system default values which have lowest priority. (settings in floorpl
 After that next priority to config.tcl of design (Note that these config.tcl files of designs are present in ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14_03_10_54) and then highest priority to pdk variant.tcl, here sky130A_sky130_fd_sc_hd_config.tcl 
 In openlane flow, in config.tcl, FP_IO_VMETAL and FP_IO_HMETAL layer are one more than what is specified.  
 
+<summary>Lab</summary>
+
 **Floorplan Files and Steps to view floorplan**
 
 To run the floorplanning after synthesis of the picorv32a design, I used the following command (During this, the 6 steps mentioned are done, and a .def is created in the results/floorplan directory inside the chosen design directory. The results can be found in OpenLane/designs//RUN_*/runs):
@@ -4084,6 +4086,11 @@ All stages of Logic Synthesis, floorplanning, placement, Clock Tree Synthesis an
 Standard cells are placed inside libraries, which defines their functionalities and their different versions: different sizes and threshold voltages
 Library file contains information about the gate functionality, dimensions, capacitance rating, timing and delay values and much more.
 We build, characterise and model these cells so that the tool can understand it.
+
+**Congestion Aware Placement using RePlace**
+
+
+
 
 </details>
 
