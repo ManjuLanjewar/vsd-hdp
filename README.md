@@ -4275,8 +4275,13 @@ Technology file sky130A.tech in vsdstdcelldesign.
  To view the layout of the CMOS inverter, following command used (inside vsdstdcelldesign directory):
  
  <pre>magic -T sky130A.tech sky130_inv.mag &</pre>	
+ 
+Here '&' is used to free command prompt. If not used then Magic will keep prompt busy. 
 
- The obtained layout design can be found below (this layout will be used to intergate the inverter with the picorv32a design):
+The obtained layout design can be found below (this layout will be used to intergate the inverter with the picorv32a design):
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6af1afdc-73c5-4529-9c4c-33df8b1f70b4)
+
 
 
 **Extract SPICE Netlist from Standard Cell Layout**
