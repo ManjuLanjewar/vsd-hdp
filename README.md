@@ -4154,9 +4154,11 @@ It consists of 3 parts:-
 
 2) Design steps: 
     - Circuit design --> The circuit is designed by making use of the industry parameters and inputs where sizing takes place.
-      First step is to implement functionality.
-      Second steps is to model PMOS and NMOS transistors. For instance, to model the aspect ratio of 2.5,the PMOS = 2.5 NMOS dimensions while keeping         height constant based on the technology file. Similarly, Switching threshold is also model based on the requirement.
-    - Layout design --> build the circuit with transistors to meet the required functionality, apply Euler's Path (unidirectional traverse only) and          create the respective network graphs, implement the stick diagram of the circuit topology. Then stick diagram is converted to layout by sticking        to the DRC rules and LVS checks defined by the foundary.
+      * First step is to implement functionality.
+      * Second steps is to model PMOS and NMOS transistors. For instance, to model the aspect ratio of 2.5,the PMOS = 2.5 NMOS dimensions while keeping height constant based on the 	 
+        technology file. Similarly, Switching threshold is also model based on the requirement.
+    - Layout design --> build the circuit with transistors to meet the required functionality, apply Euler's Path (unidirectional traverse only) and create the respective network 
+      graphs,implement the stick diagram of the circuit topology. Then stick diagram is converted to layout by sticking to the DRC rules and LVS checks defined by the foundary.
     - Characterization --> specific flow; Gives information on Timing, Power and Noise in the form of .libs files along with functionality.
 
 3-) Outputs: 
@@ -4266,6 +4268,9 @@ To get the technology file inside the cloned github, use the following commands 
  
 <pre>git clone https://github.com/nickson-jose/vsdstdcelldesign.git
  vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic$ cp sky130A.tech /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/</pre> 
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/990105f8-e9c2-445c-adb8-4a9a82afc672)
+Technology file sky130A.tech in vsdstdcelldesign.
 
  To view the layout of the CMOS inverter, following command used (inside vsdstdcelldesign directory):
  
