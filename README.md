@@ -4353,7 +4353,12 @@ SPICE model very closely models the actual circuit behavior. Extraction of SPICE
 
 sky130_inv.ext file is created 
 
-Commands for Extraction 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b8853215-67f0-4b0e-be93-b934e5b8ceee)
+
+Generated .ext file
+
+Commands for Extraction: Using the magic environment, following commands used in tkcon to extract .spice from .mag (this generates the sky130_inv.spice file in the same directory. 
+
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6792d466-07d4-4473-85bf-960c12bb9fe3)
 
 2. Convert the extracted circuit to SPICE model.
@@ -4365,7 +4370,8 @@ Commands for Extraction
 
 sky130_inv.spice file is created
 
-
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/ef21f531-b546-412c-8822-a523cf49d4b7)
+Generated SPICE deck
 
 The extracted SPICE model like the first snippet shown below. Some modification are done to the SPICE netlist for the purpose of simulations, which is shown in the second snippet below.
 
