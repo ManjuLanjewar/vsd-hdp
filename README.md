@@ -4252,28 +4252,28 @@ Fall/Rise Transition time = time(slew_high_thr) - time(slew_low_thr).
 **Lab**
 	<summary>gitclone vsdstdcelldesign</summary>
 	
- 	* Every Design is represented by equivalent cell design. All the standard cell designs are available in the Cell Library. 
-	* A fully custom cell design that meets all rules can be added to the library.
-        * To begin with, a CMOS Inverter is designed in Magic Layout Tool and analysis is carried out using NGSPICE tool.
-	
+ * Every Design is represented by equivalent cell design. All the standard cell designs are available in the Cell Library.
+ * A fully custom cell design that meets all rules can be added to the library.
+        	
 ##### CMOS Inverter Design using Magic
- 
-	* The inverter design is done using Magic Layout Tool. It takes the technology file as an input (sky130A.tech in this case). 
-	* Magic tool provide a very easy to use interface to design various layers of the layout. 
-	* It also has an in-built DRC check fetaure. The snippet below shows a layout for CMOS Inverter with and without design rule violations.
+* To begin with, a CMOS Inverter is designed in Magic Layout Tool and analysis is carried out using NGSPICE tool.
+* The inverter design is done using Magic Layout Tool. It takes the technology file as an input (sky130A.tech in this case). 
+* Magic tool provide a very easy to use interface to design various layers of the layout. 
+* It also has an in-built DRC check fetaure. The snippet below shows a layout for CMOS Inverter with and without design rule violations.
 
 To get the technology file inside the cloned github, use the following commands (inside OpenLane directory):
  
- git clone https://github.com/nickson-jose/vsdstdcelldesign.git
- cp /home/mariam/Desktop/open_pdks/sky130/sky130A/libs.tech/magic/sky130A.tech ./vsdstdcelldesign 
+<pre>git clone https://github.com/nickson-jose/vsdstdcelldesign.git
+ cp /home/mariam/Desktop/open_pdks/sky130/sky130A/libs.tech/magic/sky130A.tech ./vsdstdcelldesign</pre> 
 
  To view the layout of the CMOS inverter, following command used (inside vsdstdcelldesign directory):
- magic -T sky130A.tech sky130_inv.mag &	
+ 
+ <pre>magic -T sky130A.tech sky130_inv.mag &</pre>	
 
  The obtained layout design can be found below (this layout will be used to intergate the inverter with the picorv32a design):
 
 
-
+**Extract SPICE Netlist from Standard Cell Layout**
  
  </details>
 
