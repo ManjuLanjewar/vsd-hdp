@@ -4371,14 +4371,42 @@ Commands for Extraction: Using the magic environment, following commands used in
 sky130_inv.spice file is created
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/ef21f531-b546-412c-8822-a523cf49d4b7)
+
 Generated SPICE deck
 
-The extracted SPICE model like the first snippet shown below. Some modification are done to the SPICE netlist for the purpose of simulations, which is shown in the second snippet below.
+Some modification are done to the SPICE netlist for the purpose of simulations, which is shown below.
 
+Generated the sky130_inv.spice file, this SPICE deck is edited to include pshort.lib and nshort.lib which are the pmos and nmos libraries respectively.
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e853f1e9-0637-41c3-b0bd-e688807f72ad)
 
+pshort.lib and nshort.lib are present in above libs folder
 
+Modified the extracted netlist to include the library files and define the power supply, ground and input pulses, and specify the type of analysis. 
+The minimum grid size of inverter is measured after zoom In from the magic layout and then type command 'box' in tkon.tcl. Here, option scale = 10m to 0.01u.
+The model names in the MOSFET definitions are changed to pshort_model.0 and nshort_model.0 for pmos and nmos respectively. ( This model name is present in pshort.lib and nshort.lib files)
+Note that commented .subckt and .ends, and  changed x0 and x1 to M1000 and M1001):
 
-Using the magic environment, I used the following commands in tkcon to extract .spice from .mag (this generates the sky130_inv.spice file in the same directory. This SPICE deck is edited to include pshort.lib and nshort.lib which are the pmos and nmos libraries respectively. The minimum grid size of inverter is measured from the magic layout and incorporated into the deck as: .option scale=10m. The model names in the MOSFET definitions are changed to pshort.model.0 and nshort.model.0 for pmos and nmos respectively):
- 
+<pre>.include ./libs/pshort.lib
+.include ./libs/nshort.lib
+VDD VPWR 0 3.3V
+VSS VGND 0 0V
+Va A VGND PULSE(0V 3.3V 0 0.1ns 0.1ns 2ns 4ns)
+.tran 1n 20n
+.control 
+run
+.endc
+.end
+</pre>
+ The final netlist looks like this:
+ ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/bb592341-6ff2-4b93-9a9a-b05a41b68e7a)
+
+The SPICE netlist generated in previous step is simulated using the NGSPICE tool.
+NGSPICE is an open-source mixed-level/mixed-signal electronic spice circuit simulator. The command used to invoke NGSPICE in the same directory of the netlist (sky130_inv.spice), 
+use the following commands to run the simulation:
+ngspice <name-of-SPICE-netlist-file>
+ngspice sky130_inv.spice
+Following command is used to plot waveform in ngspice tool.
+ngspice 1 -> plot Y vs time A
+plot <output: y> vs time <input: a>
  </details>
