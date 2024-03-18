@@ -4035,6 +4035,7 @@ Note :  design config.tcl should overwrite system defaults. But one fact is that
 Ex: CORE_UTIL ="50" of sytem default should be overridden by 65 of design config.tcl. But  CORE_UTIL = 50 of config.tcl of pdk file doesnot allow to change switch CORE_UTIL = 65 of design config.tcl
 
 **Review Floorplan Layout in Magic** 
+
 Looking at .def file (floorplan result) doen't make sense . Don't know where what place? So, to see actual layout after floorplan, first done in Magic. 
 
 Magic Layout Tool is used for visualizing the layout after floorplan. In order to view floorplan in Magic, following three files are required: 1. Technology File (sky130A.tech) 2. Merged LEF file (merged.lef) 3. DEF File
@@ -4062,7 +4063,6 @@ After zooming in (left click, right click, z), below is the obtained screenshots
 </details>
 
 <details>
-
          <summary>Library Binding and Placement</summary>
 
 **Netlist Binding and initial place design**
@@ -4091,6 +4091,7 @@ All stages of Logic Synthesis, floorplanning, placement, Clock Tree Synthesis an
 Standard cells are placed inside libraries, which defines their functionalities and their different versions: different sizes and threshold voltages
 Library file contains information about the gate functionality, dimensions, capacitance rating, timing and delay values and much more.
 We build, characterise and model these cells so that the tool can understand it.
+
 </details>
 
 <details>
