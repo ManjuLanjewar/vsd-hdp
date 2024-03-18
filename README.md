@@ -4063,7 +4063,7 @@ After zooming in (left click, right click, z), below is the obtained screenshots
 
 <details>
 
-#### Library Binding and Placement
+         <summary>Library Binding and Placement</summary>
 
 **Netlist Binding and initial place design**
 
