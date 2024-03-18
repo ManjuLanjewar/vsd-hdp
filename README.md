@@ -4217,22 +4217,24 @@ Fall/Rise Transition time = time(slew_high_thr) - time(slew_low_thr).
 <details>
 	  <summary>Labs for IO Placer Revision</summary>
 
-	- IO Placer is opensource EDA tool which used to place IO's along the core. currently, IO pins are equidistant and randomply placed. 
- 	- OpenLane allows users to make changes on the fly, using the following command before rerunning the design step (for example floorplanning):
-        - To make change in openlane Flow, reset variables and run flow again to evalaute make change
-  	- To change configuration of IO pins along the core. 
+- IO Placer is opensource EDA tool which used to place IO's along the core. currently, IO pins are equidistant and randomply placed. 
+- OpenLane allows users to make changes on the fly, using the following command before rerunning the design step (for example floorplanning):
+- To make change in openlane Flow, reset variables and run flow again to evalaute make change
+- To change configuration of IO pins along the core. 
 
-set ::env(<name of variable that can be extracted from OpenLane/configurations/<design step: floorplan>.tcl: FP_IO_MODE>) <value: 2>
+	<pre>% set ::env(<name of variable that can be extracted from OpenLane/configurations/<design step: floorplan>.tcl: FP_IO_MODE>) <value: 2>
 
-% set ::env(FP_IO_MODE) 2
-% run_floorplan
+	% set ::env(FP_IO_MODE) 2
+	% run_floorplan
 
-vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-03_10-54/results/floorplan$ magic -T /home/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+	vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-03_10-54/results/floorplan$ magic -T
+	/home/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+	</pre>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/439a6ee6-9520-4f70-add3-894cd43de40d)
 
 </details>
-
+	
 **Spice Deck creation for CMOS Inverter**
 
   To simulate the inverter, first its spice deck needs to be created.
@@ -4245,7 +4247,35 @@ vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/p
 
   Recall that the switching threshold (Vm, used to evaluate static behavior) of a CMOS inverter is the point on the voltage transfer characteristic curve where input voltage equals output voltage: at which both PMOS and NMOS are in saturation region which gives rise to a leakage current.
 
-**Note: Lab VSDcell gitclone **
+<details>
+
+**Lab**
+	<summary>gitclone vsdstdcelldesign</summary>
+	
+ 	* Every Design is represented by equivalent cell design. All the standard cell designs are available in the Cell Library. 
+	* A fully custom cell design that meets all rules can be added to the library.
+        * To begin with, a CMOS Inverter is designed in Magic Layout Tool and analysis is carried out using NGSPICE tool.
+	
+##### CMOS Inverter Design using Magic
+ 
+	* The inverter design is done using Magic Layout Tool. It takes the technology file as an input (sky130A.tech in this case). 
+	* Magic tool provide a very easy to use interface to design various layers of the layout. 
+	* It also has an in-built DRC check fetaure. The snippet below shows a layout for CMOS Inverter with and without design rule violations.
+
+To get the technology file inside the cloned github, use the following commands (inside OpenLane directory):
+ 
+ git clone https://github.com/nickson-jose/vsdstdcelldesign.git
+ cp /home/mariam/Desktop/open_pdks/sky130/sky130A/libs.tech/magic/sky130A.tech ./vsdstdcelldesign 
+
+ To view the layout of the CMOS inverter, following command used (inside vsdstdcelldesign directory):
+ magic -T sky130A.tech sky130_inv.mag &	
+
+ The obtained layout design can be found below (this layout will be used to intergate the inverter with the picorv32a design):
+
+
+
+ 
+ </details>
 
 #### Inception of Layout : A CMOS Fabrication Process
 
