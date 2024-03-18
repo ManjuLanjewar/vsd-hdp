@@ -4236,7 +4236,9 @@ Fall/Rise Transition time = time(slew_high_thr) - time(slew_low_thr).
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/439a6ee6-9520-4f70-add3-894cd43de40d)
 
 </details>
-	
+
+ <detail>
+
 **Spice Deck creation for CMOS Inverter**
 
   To simulate the inverter, first its spice deck needs to be created.
@@ -4247,50 +4249,15 @@ Fall/Rise Transition time = time(slew_high_thr) - time(slew_low_thr).
 
 **Threshold Voltage Vm**
 
-  Recall that the switching threshold (Vm, used to evaluate static behavior) of a CMOS inverter is the point on the voltage transfer characteristic curve where input voltage equals output voltage: at which both PMOS and NMOS are in saturation region which gives rise to a leakage current.
-
-<details>
-
-**Lab**
-	<summary>gitclone vsdstdcelldesign</summary>
-	
- * Every Design is represented by equivalent cell design. All the standard cell designs are available in the Cell Library.
- * A fully custom cell design that meets all rules can be added to the library.
-        	
-##### CMOS Inverter Design using Magic
-* To begin with, a CMOS Inverter is designed in Magic Layout Tool and analysis is carried out using NGSPICE tool.
-* The inverter design is done using Magic Layout Tool. It takes the technology file as an input (sky130A.tech in this case). 
-* Magic tool provide a very easy to use interface to design various layers of the layout. 
-* It also has an in-built DRC check fetaure. The snippet below shows a layout for CMOS Inverter with and without design rule violations.
-
-Technology file sky130A.tech is present in pdks.so, copy this technology file inside vsdstdcelldesign.
-To get the technology file inside the cloned github, use the following commands (inside OpenLane directory):
- 
-<pre>git clone https://github.com/nickson-jose/vsdstdcelldesign.git
- vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic$ cp sky130A.tech /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/</pre> 
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/990105f8-e9c2-445c-adb8-4a9a82afc672)
-Technology file sky130A.tech in vsdstdcelldesign.
-
- To view the layout of the CMOS inverter, following command used (inside vsdstdcelldesign directory):
- 
- <pre>magic -T sky130A.tech sky130_inv.mag &</pre>	
- 
-Here '&' is used to free command prompt. If not used then Magic will keep prompt busy. 
-
-The obtained layout design can be found below (this layout will be used to intergate the inverter with the picorv32a design):
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6af1afdc-73c5-4529-9c4c-33df8b1f70b4)
-
-
-
-**Extract SPICE Netlist from Standard Cell Layout**
- 
- </details>
+  Recall that the switching threshold (Vm, used to evaluate static behavior) of a CMOS inverter is the point on the voltage transfer characteristic curve where input voltage equals 
+  output voltage: at which both PMOS and NMOS are in saturation region which gives rise to a leakage current.
+  
+</details>
 
 #### Inception of Layout : A CMOS Fabrication Process
+<detail>
 
-**16-mask CMOS process steps**
+	<summary>16-mask CMOS process steps</summary>
 
 1-) Selecting a substrate: selecting body/substrate material (P-type substrate)
     High resistivity(5 ~ 50ohms),doping level(10 to power 15 / cm cube ), orientation(100)
@@ -4328,5 +4295,51 @@ Photolithography is applied, Phosphorous is doped to create N- implants on P-wel
 
 CMOS after finishing the fabrication process
 
+In CMOS magic layout the first layer is called the local interconnect layer or Locali. The P diffusion and N diffusion regions with Polysilicon verify that this is the layout of a CMOS inverter. Also, drain and source connections are another sanity cehck: drains of both pmos and nmos are connected to output port (Y) and the sources of nmos/pmos are connected to GND/VDD respectively (moving cursor and clicking S twice helps us identify the connections in magic).
+
+Library Exchange Format (LEF): A format that tells us about cell pins and boundaries, VDD and GND lines. 
+It contains no information about the logic of circuit and is also used to protect the IP.
+
+The technology file is a one setup file that tells magic everything it needs to know about a project (all layer types, patters, connectvitity, DRC rules, GDS generation rules, rules to read LEF and Def files, rules for interactive wiring, etc...). There are two sections: CIF and GDS styles. CIF is human readable.
+
+</details>
+
+<details>
+
+**Lab**
+	<summary>gitclone vsdstdcelldesign</summary>
+	
+ * Every Design is represented by equivalent cell design. All the standard cell designs are available in the Cell Library.
+ * A fully custom cell design that meets all rules can be added to the library.
+        	
+##### CMOS Inverter Design using Magic
+* To begin with, a CMOS Inverter is designed in Magic Layout Tool and analysis is carried out using NGSPICE tool.
+* The inverter design is done using Magic Layout Tool. It takes the technology file as an input (sky130A.tech in this case). 
+* Magic tool provide a very easy to use interface to design various layers of the layout. 
+* It also has an in-built DRC check fetaure. The snippet below shows a layout for CMOS Inverter with and without design rule violations.
+
+Technology file sky130A.tech is present in pdks.so, copy this technology file inside vsdstdcelldesign.
+To get the technology file inside the cloned github, use the following commands (inside OpenLane directory):
+ 
+<pre>git clone https://github.com/nickson-jose/vsdstdcelldesign.git
+ vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic$ cp sky130A.tech /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/</pre> 
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/990105f8-e9c2-445c-adb8-4a9a82afc672)
+Technology file sky130A.tech in vsdstdcelldesign.
+
+ To view the layout of the CMOS inverter, following command used (inside vsdstdcelldesign directory):
+ 
+ <pre>magic -T sky130A.tech sky130_inv.mag &</pre>	
+ 
+Here '&' is used to free command prompt. If not used then Magic will keep prompt busy. 
+
+The obtained layout design can be found below (this layout will be used to intergate the inverter with the picorv32a design):
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6af1afdc-73c5-4529-9c4c-33df8b1f70b4)
+
+In tkcon.tcl, what? this will tell what is highlighted area.
 
 
+**Extract SPICE Netlist from Standard Cell Layout**
+ 
+ </details>
