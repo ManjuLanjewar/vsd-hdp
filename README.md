@@ -4099,6 +4099,32 @@ We build, characterise and model these cells so that the tool can understand it.
 	
  **Congestion Aware Placement using RePlace**
 
+The next step after floorplanning is placement. Placement determines location of each of the components on the die. Placement does not just place the standard cells available in the synthesized netlist. It also optimizes the design, thereby removing any timing violations created due to the relative placement on die.
+OpenLane has congestion aware placement using RepLace. The Half Parameter Wire Length (HPWL) and overflow (OVFL) on reduction reduce the area used for placement of standard cells. (optimal and compact).
+To run the placement after floorplanning of the picorv32a design, used the following command (If overflow value progressively reduces during the placement run, this means the design will converge and placement will be successful):
+
+% run_placement
+
+The DEF file created during floorplan is used as an input to placement. Placement in OpenLANE occurs in two stages:
+	- Global Placement
+ 	- Detailed Placement
+Placement is carried out as an iterative process till the value of overflow converges to 0.
+
+To view the layout after placement in magic, I used the command below in the results/placement directory 
+<pre>
+vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-03_10-54/results/floorplan$ cd ../placement/
+vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-03_10-54/results/placement$ ls
+merged_unpadded.lef  picorv32a.placement.def  picorv32a.placement.def.png
+vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-03_10-54/results/placement$ magic -T /home/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &</pre>
+
+A screenshot of the obtained layout is below:
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/51cb427c-fd58-48e1-b756-5125ec2bbd65)
+
+After zooming in, this is the obtained placement:
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e5cb18ba-0a2a-4528-9e93-f60712a818fd)
+
 
 
 
