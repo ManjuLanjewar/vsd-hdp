@@ -20,7 +20,7 @@
 <p><a href="#C13">Day 13</a></p>
 <p><a href="#C14">Day 14</a></p>
 <p><a href="#C15">Day 15</a></p>
-
+<p><a href="#C16">Day 16</a></p>
 
 </body>
 </html>
@@ -4217,7 +4217,19 @@ Fall/Rise Transition time = time(slew_high_thr) - time(slew_low_thr).
 <details>
 	  <summary>Labs for IO Placer Revision</summary>
 
-OpenLane allows users to make changes on the fly, using the following command before rerunning the design step (for example floorplanning):
+	- IO Placer is opensource EDA tool which used to place IO's along the core. currently, IO pins are equidistant and randomply placed. 
+ 	- OpenLane allows users to make changes on the fly, using the following command before rerunning the design step (for example floorplanning):
+        - To make change in openlane Flow, reset variables and run flow again to evalaute make change
+  	- To change configuration of IO pins along the core. 
+
+set ::env(<name of variable that can be extracted from OpenLane/configurations/<design step: floorplan>.tcl: FP_IO_MODE>) <value: 2>
+
+% set ::env(FP_IO_MODE) 2
+% run_floorplan
+
+vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-03_10-54/results/floorplan$ magic -T /home/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/439a6ee6-9520-4f70-add3-894cd43de40d)
 
 </details>
 
