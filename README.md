@@ -4261,10 +4261,11 @@ Fall/Rise Transition time = time(slew_high_thr) - time(slew_low_thr).
 * Magic tool provide a very easy to use interface to design various layers of the layout. 
 * It also has an in-built DRC check fetaure. The snippet below shows a layout for CMOS Inverter with and without design rule violations.
 
+Technology file sky130A.tech is present in pdks.so, copy this technology file inside vsdstdcelldesign.
 To get the technology file inside the cloned github, use the following commands (inside OpenLane directory):
  
 <pre>git clone https://github.com/nickson-jose/vsdstdcelldesign.git
- cp /home/mariam/Desktop/open_pdks/sky130/sky130A/libs.tech/magic/sky130A.tech ./vsdstdcelldesign</pre> 
+ vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic$ cp sky130A.tech /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/</pre> 
 
  To view the layout of the CMOS inverter, following command used (inside vsdstdcelldesign directory):
  
