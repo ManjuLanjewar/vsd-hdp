@@ -4339,7 +4339,40 @@ The obtained layout design can be found below (this layout will be used to inter
 
 In tkcon.tcl, what? this will tell what is highlighted area.
 
-
 **Extract SPICE Netlist from Standard Cell Layout**
+
+To simulate and verify the functionality of the standard cell layout designed, there is a need of SPICE netlist of a given layout. 
+To mention in brief, "Simulation Program with Integrated Circuit Emphasis (SPICE)" is an industry standard design language for electronic circuitry. 
+SPICE model very closely models the actual circuit behavior. Extraction of SPICE model for a given layout is done in two stages.
+
+1. Extract the circuit from the layout design.
+   
+	<pre>extract all</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/dd4b6e82-3801-45a3-be9d-a6e10c77f9bf)
+
+sky130_inv.ext file is created 
+
+Commands for Extraction 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6792d466-07d4-4473-85bf-960c12bb9fe3)
+
+2. Convert the extracted circuit to SPICE model.
+   
+    <pre>ext2spice cthresh 0 rthresh 0 (Extract all prasitic capacitances)
+      ext2spice</pre>
+   
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/fc885997-6ea8-41e1-ad54-5aaef1eb84f0)
+
+sky130_inv.spice file is created
+
+
+
+The extracted SPICE model like the first snippet shown below. Some modification are done to the SPICE netlist for the purpose of simulations, which is shown in the second snippet below.
+
+
+
+
+
+Using the magic environment, I used the following commands in tkcon to extract .spice from .mag (this generates the sky130_inv.spice file in the same directory. This SPICE deck is edited to include pshort.lib and nshort.lib which are the pmos and nmos libraries respectively. The minimum grid size of inverter is measured from the magic layout and incorporated into the deck as: .option scale=10m. The model names in the MOSFET definitions are changed to pshort.model.0 and nshort.model.0 for pmos and nmos respectively):
  
  </details>
