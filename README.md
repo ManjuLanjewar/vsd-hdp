@@ -3986,8 +3986,10 @@ When FP mode - 0 means pin position not equidistant.
 These are system default values which have lowest priority. (settings in floorplan.tcl / placement.tcl)
 After that next priority to config.tcl of design (Note that these config.tcl files of designs are present in ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14_03_10_54) and then highest priority to pdk variant.tcl, here sky130A_sky130_fd_sc_hd_config.tcl 
 In openlane flow, in config.tcl, FP_IO_VMETAL and FP_IO_HMETAL layer are one more than what is specified.  
+</details>
 
-<summary>Lab</summary>
+<details>
+	<summary>Lab</summary>
 
 **Floorplan Files and Steps to view floorplan**
 
@@ -4057,6 +4059,9 @@ After zooming in (left click, right click, z), below is the obtained screenshots
 
 ![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/7ca44908-52e4-4b5b-bc60-655b39629243)
 
+</details>
+
+<details>
 
 #### Library Binding and Placement
 
@@ -4086,13 +4091,18 @@ All stages of Logic Synthesis, floorplanning, placement, Clock Tree Synthesis an
 Standard cells are placed inside libraries, which defines their functionalities and their different versions: different sizes and threshold voltages
 Library file contains information about the gate functionality, dimensions, capacitance rating, timing and delay values and much more.
 We build, characterise and model these cells so that the tool can understand it.
+</details>
 
-**Congestion Aware Placement using RePlace**
+<details>
+	 <summary>Lab</summary>	
+	
+ **Congestion Aware Placement using RePlace**
 
 
 
 
 </details>
+
 
 <h2 id="C15">Day 15</h2>
 
