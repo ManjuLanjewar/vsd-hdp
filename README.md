@@ -4388,18 +4388,20 @@ The model names in the MOSFET definitions are changed to pshort_model.0 and nsho
 Note that commented .subckt and .ends, and  changed x0 and x1 to M1000 and M1001):
 
 <pre>.include ./libs/pshort.lib
-.include ./libs/nshort.lib
-VDD VPWR 0 3.3V
-VSS VGND 0 0V
-Va A VGND PULSE(0V 3.3V 0 0.1ns 0.1ns 2ns 4ns)
-.tran 1n 20n
-.control 
-run
-.endc
-.end
-</pre>
+       .include ./libs/nshort.lib
+        VDD VPWR 0 3.3V
+	VSS VGND 0 0V
+	Va A VGND PULSE(0V 3.3V 0 0.1ns 0.1ns 2ns 4ns)
+	.tran 1n 20n
+	.control 
+	run
+	.endc
+	.end
+	</pre>
+
  The final netlist looks like this:
- ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/bb592341-6ff2-4b93-9a9a-b05a41b68e7a)
+ 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/0c21e83a-a9d7-45fa-b423-781e7846ec42)
 
 The SPICE netlist generated in previous step is simulated using the NGSPICE tool.
 NGSPICE is an open-source mixed-level/mixed-signal electronic spice circuit simulator. The command used to invoke NGSPICE in the same directory of the netlist (sky130_inv.spice), 
@@ -4418,6 +4420,8 @@ Following command is used to plot waveform in ngspice tool.
 
 plot <output: y> vs time <input: a>
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/3a170d1e-abc6-49ba-95a1-2c5ccdf1adcf)
+Here spike was there so 
 
 
  </details>
