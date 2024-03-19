@@ -4513,5 +4513,7 @@ I then used the following commands in the tkcon window to load the updated sky13
 tech load sky130A.tech
 drc check
 
-
 The resulting layout with the flagged violation is shown below:
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/9972cf15-cd54-4df4-aa74-2963f3604c50)
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/ee1e8414-217d-43ae-8d70-f5c04cf05e3f)
