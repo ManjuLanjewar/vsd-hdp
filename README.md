@@ -4502,6 +4502,8 @@ Then, used the following commands in the tkcon window to load the updated sky130
 <pre>tech load sky130A.tech
 drc check</pre>
 
+The resulting layout with the flagged violation is shown below:
+
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/3e230b97-ba4b-4d63-bf3d-fcc106825ae5)
 
 To implement poly resistor spacing to diff and tap, I modified a rule in the sky130A.tech file, as highlighted below:
