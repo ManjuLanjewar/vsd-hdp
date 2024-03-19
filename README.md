@@ -4497,12 +4497,19 @@ Then, edit the sky130A.tech file to add the following two highlighted commands:
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d6b6e0ed-8464-4c9d-8837-7bf1a508d708)
 
-
 Then, used the following commands in the tkcon window to load the updated sky130A.tech file (this will lead to the correct implementation of the drc rule and an error being flagged in magic):
+
 <pre>tech load sky130A.tech
 drc check</pre>
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/3e230b97-ba4b-4d63-bf3d-fcc106825ae5)
+
+To implement poly resistor spacing to diff and tap, I modified a rule in the sky130A.tech file, as highlighted below:
+
+I then used the following commands in the tkcon window to load the updated sky130A.tech file:
+
+tech load sky130A.tech
+drc check
 
 
-
-
+The resulting layout with the flagged violation is shown below:
