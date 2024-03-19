@@ -4338,6 +4338,9 @@ The obtained layout design can be found below (this layout will be used to inter
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6af1afdc-73c5-4529-9c4c-33df8b1f70b4)
 
 In tkcon.tcl, what? this will tell what is highlighted area.
+</details>
+
+SKY130 Tech File Labs
 
 **Extract SPICE Netlist from Standard Cell Layout**
 
@@ -4424,6 +4427,24 @@ plot <output: y> vs time <input: a>
 
  spike was there in plot so in SPICE Deck capacitance C3 value changes as C3 Y VGND 2fF and then ouput is plotted
 
+</details>
 
- </details>
+#### Sky130 Tech File Labs
 
+<h2 id="C16">Day 16</h2>
+
+<details>
+	
+        <summary>Characterize Inverter using Sky130 model files</summary>
+
+The cell chacarterization is done via the waveforms obtained from spice simualtion, and the results are noted below:
+The above timing parameters can be computed by noting down various values from the ngspice waveform (recall that Rise transition: Time taken for the output to rise from 20% of max value to 80% of max value, Fall transition: Time taken for the output to fall from 80% of max value to 20% of max value, Cell rise delay: time(50% output rise) - time(50% input fall), Cell fall delay: time(50% output fall) - time(50% input rise)):
+
+<pre>Rise transition = (2.1957e-9 - 2.15099e-9) = 44.71 ps
+Fall transition = (4.06461e-9 - 4.03953e-9) = 25.08 ps
+Cell rise delay = (2.17613e-9 - 2.15e-9) = 26.13 ps
+Cell fall delay = (4.05241e-9 - 4.04991e-9) = 25.00 ps<pre>
+
+
+
+`
