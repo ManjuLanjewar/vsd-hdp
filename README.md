@@ -4340,7 +4340,9 @@ The obtained layout design can be found below (this layout will be used to inter
 In tkcon.tcl, what? this will tell what is highlighted area.
 </details>
 
-SKY130 Tech File Labs
+<details>
+
+### SKY130 Tech File Labs
 
 **Extract SPICE Netlist from Standard Cell Layout**
 
@@ -4429,10 +4431,6 @@ plot <output: y> vs time <input: a>
 
 </details>
 
-#### Sky130 Tech File Labs
-
-<h2 id="C16">Day 16</h2>
-
 <details>
 	
         <summary>Characterize Inverter using Sky130 model files</summary>
@@ -4440,10 +4438,18 @@ plot <output: y> vs time <input: a>
 The cell chacarterization is done via the waveforms obtained from spice simualtion, and the results are noted below:
 The above timing parameters can be computed by noting down various values from the ngspice waveform (recall that Rise transition: Time taken for the output to rise from 20% of max value to 80% of max value, Fall transition: Time taken for the output to fall from 80% of max value to 20% of max value, Cell rise delay: time(50% output rise) - time(50% input fall), Cell fall delay: time(50% output fall) - time(50% input rise)):
 
-<pre>Rise transition = (2.1957e-9 - 2.15099e-9) = 44.71 ps
-Fall transition = (4.06461e-9 - 4.03953e-9) = 25.08 ps
-Cell rise delay = (2.17613e-9 - 2.15e-9) = 26.13 ps
-Cell fall delay = (4.05241e-9 - 4.04991e-9) = 25.00 ps<pre>
+<pre>Rise Transition Readings : x0 = 2.17991e-09, y0 = 0.660026
+			   x0 = 2.23946e-09, y0 = 2.64026
+Fall Transition Readings : x0 = 4.05067e-09, y0 = 2.64024
+			   x0 = 4.09437e-09, y0 = 0.599762 
+      Cell Rise Readings : x0 = 2.20755e-09, y0 = 1.65
+			   x0 = 2.14981e-09, y0 = 1.64908
+      Cell Fall Readings : x0 = 4.07536e-09, y0 = 1.65
+			   x0 = 4.05e-09, y0 = 1.65001
+Rise transition = (2.23946e-09 - 2.17991e-09) = 0.06 ns
+Fall transition = (4.09437e-09 - 4.05067e-09) = 0.044 ns
+Cell rise delay = (2.20755e-09 - 2.14981e-09) = 0.058 ns
+Cell fall delay = (4.07536e-09 - 4.05e-09) = 0.025 ns</pre>
 
 
 
