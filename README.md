@@ -4493,6 +4493,9 @@ Look at poly.9. In google document it is mentioned that poly resitor spacing is 
 See highlighted numbers in tkcon.tcl whcih shows row vioaltion. To fix this issue follow below steps.
 Then, edit the sky130A.tech file to add the following two highlighted commands:
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6b7d8de6-cc0b-42f8-8bf2-7817ba547c97)
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d6b6e0ed-8464-4c9d-8837-7bf1a508d708)
 
 
 Then, used the following commands in the tkcon window to load the updated sky130A.tech file (this will lead to the correct implementation of the drc rule and an error being flagged in magic):
