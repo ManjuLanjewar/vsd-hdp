@@ -4451,6 +4451,26 @@ Fall transition = (4.09437e-09 - 4.05067e-09) = 0.044 ns
 Cell rise delay = (2.20755e-09 - 2.14981e-09) = 0.058 ns
 Cell fall delay = (4.07536e-09 - 4.05e-09) = 0.025 ns</pre>
 
+</details>
+
+<details>
+
+**Labs**
+	<summary>DRC rules and Sky130 tech-rules</summary>
+
+To download the needed files, I used the following commands:
+
+<pre>wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+     tar xfz drc_tests.tgz</pre>
+
+To invoke magic, following command is used in the /drc_tests directory:	
+	
+ <pre>magic -d XR</pre>
+
+To load the sky130 tech-rules, clicked on (in the magic wizard) file, open, and selected "met3.mag" which has the rules for layer3. 
+Below is a screenshot of the layout obtained (there are layout geometries with DRC errors, and each component of layout is named after a DRC rule number in the google documentation. Selecting the component and writing "drc why" in the tkcon shows the rules that has been violated):
+
+
 
 
 `
