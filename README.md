@@ -4467,10 +4467,14 @@ To invoke magic, following command is used in the /drc_tests directory:
 	
  <pre>magic -d XR</pre>
 
-To load the sky130 tech-rules, clicked on (in the magic wizard) file, open, and selected "met3.mag" which has the rules for layer3. 
-Below is a screenshot of the layout obtained (there are layout geometries with DRC errors, and each component of layout is named after a DRC rule number in the google documentation. Selecting the component and writing "drc why" in the tkcon shows the rules that has been violated):
+To load the sky130 tech-rules, clicked on (in the magic wizard) file, open, and select "met3.mag" which has the rules for layer3. 
+Below is a screenshot of the layout obtained 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6564df06-dca1-4246-b6f1-02c86e50b4bb)
 
+There are layout geometries with DRC errors, and each component of layout is named after a DRC rule number in the google documentation. 
+Selecting the component and writing "drc why" in the tkcon shows the rules that has been violated.
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/7fda9348-542b-4f8a-adce-20881b95e01e)
 
 
 `
