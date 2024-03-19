@@ -4458,17 +4458,20 @@ Cell fall delay = (4.07536e-09 - 4.05e-09) = 0.025 ns</pre>
 **Labs**
 	<summary>DRC rules and Sky130 tech-rules</summary>
 
-To download the needed files, I used the following commands:
+To download the needed files, following commands is used. (Path to download: ~/Desktop/work/tools/openlane_working_dir/openlane)
 
 <pre>wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
-     tar xfz drc_tests.tgz</pre>
+     tar xfz drc_tests.tgz
+     cd drc_tests/</pre>
 
 To invoke magic, following command is used in the /drc_tests directory:	
 	
  <pre>magic -d XR</pre>
 
 To load the sky130 tech-rules, clicked on (in the magic wizard) file, open, and select "met3.mag" which has the rules for layer3. 
-Below is a screenshot of the layout obtained 
+
+Below is a screenshot of the layout obtained. 
+
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6564df06-dca1-4246-b6f1-02c86e50b4bb)
 
 There are layout geometries with DRC errors, and each component of layout is named after a DRC rule number in the google documentation. 
@@ -4476,5 +4479,27 @@ Selecting the component and writing "drc why" in the tkcon shows the rules that 
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/7fda9348-542b-4f8a-adce-20881b95e01e)
 
-
+**Lab exercise to fix poly.9 error in Sky130 tech-file**
 `
+To fix poly.9 error in magic's layout, first I loaded the file using magic's tkcon as follows:
+<pre>load poly.mag</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/94edef7b-9b44-4910-bb82-49d8f8505c08)
+
+Look at poly.9. In google document it is mentioned that poly resitor spacing is 0.48micron. 
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/3bdd6415-f5ed-43da-8ca0-7005d25c6184)
+
+See highlighted numbers in tkcon.tcl whcih shows row vioaltion. To fix this issue follow below steps.
+Then, edit the sky130A.tech file to add the following two highlighted commands:
+
+
+
+Then, used the following commands in the tkcon window to load the updated sky130A.tech file (this will lead to the correct implementation of the drc rule and an error being flagged in magic):
+<pre>tech load sky130A.tech
+drc check</pre>
+
+
+
+
+
