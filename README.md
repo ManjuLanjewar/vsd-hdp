@@ -21,6 +21,7 @@
 <p><a href="#C14">Day 14</a></p>
 <p><a href="#C15">Day 15</a></p>
 <p><a href="#C16">Day 16</a></p>
+<p><a href="#C17">Day 17</a></p>
 
 </body>
 </html>
@@ -4532,4 +4533,11 @@ The resulting layout with the flagged violation is shown below:
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/a00bbeb2-88c8-4f23-9d8d-3d7729b4fc4c)
 
+</details>
 
+<h2 id="C0">Day 17</h2>
+  
+#### Prelayout Timing Analysis and Importance of Good Clock Tree
+
+<details>
+	<summary>Installation Steps</summary>
