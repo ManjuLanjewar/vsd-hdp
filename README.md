@@ -4566,9 +4566,19 @@ To create a standard cell LEF from an existing layout, some important aspects ne
 	1. The height of cell be appropriate, so that the VPWR and VGND properly fall on the power distribution network.
  	2. The width of cell should be an odd multiple of the minimum permissible grid size.
   	3. The input and ouptut of the cell fall on intersection of the vertical and horizontal grid line.
+   
+In Magic, when 'g' is pressed, grid get activated and we can see small blck box at corner. Then zoom in to see grid.
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/fc27a4d8-3867-401b-8376-8d606892fa63)
+
 
 To force ports to lie on the intersection point, I used the following commmands in tkcon:
- 
+	<pre>grid 0.46um 0.34um 0.23um 0.17um
+	      save sky130_vsdinv.mag</pre>
+
+
+
+
 1. **Delay Tables**
  
     - In delay tables, there are delay values for varying input transition and output load. For CTS: Delay tables for all buffers with their different sizes compose the timing models.  
