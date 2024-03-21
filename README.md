@@ -4623,6 +4623,25 @@ set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc
 set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
 set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]</pre>
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d3d06de6-2369-4a15-9b6f-95886195962b)
+The modified config.tcl file is above:
+
+I then invoked OpenLane from the already used OpenLane Container then run synthesis (note that in my case no slack violations were reported after synthesis), floorplan, and placement as follows:
+<pre>exit
+% prep -design picorv32a</pre>
+
+After Prep -design picorv32a step , we have to insert commands shown below.
+<pre>% set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+% add_lefs -src $lefs</pre>
+% run_synthesis
+Below image shows that synthesis used 1554 sky130_vsdinv cells.
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6d2ea500-6530-4f98-a73f-1dfcf331e823)
+
+
+run_floorplan
+run_placement
+
+
 1. **Delay Tables**
  
     - In delay tables, there are delay values for varying input transition and output load. For CTS: Delay tables for all buffers with their different sizes compose the timing models.  
