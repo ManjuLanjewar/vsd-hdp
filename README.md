@@ -4642,9 +4642,19 @@ slack violations were reported after synthesis. Open leafpad(notepad) and note d
 
 We have to correct this using command 
 
-<pre>set ::env(SYNTH_STRATEGY) "DELAY 1"
-set ::env(SYNTH_SIZING) 1
-run_synthesis</pre>
+<pre>% echo $::env(SYNTH_STRATEGY)
+AREA 0
+% set ::env(SYNTH_STRATEGY) "DELAY 1"
+DELAY 1
+% echo $::env(SYNTH_BUFFERING)
+1
+% echo $::env(SYNTH_SIZING)       
+0
+% set ::env(SYNTH_SIZING) 1         
+1
+% echo $::env(SYNTH_DRIVING_CELL)
+sky130_fd_sc_hd__inv_8
+% run_synthesis</pre>
 
 run_floorplan
 run_placement
