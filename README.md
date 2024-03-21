@@ -4566,6 +4566,10 @@ To create a standard cell LEF from an existing layout, some important aspects ne
 	1. The height of cell be appropriate, so that the VPWR and VGND properly fall on the power distribution network.
  	2. The width of cell should be an odd multiple of the minimum permissible grid size.
   	3. The input and ouptut of the cell fall on intersection of the vertical and horizontal grid line.
+
+To open layout of std cell in Magic: 
+
+   ~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ magic -T sky130A.tech sky130_inv.mag &
    
 In Magic, when 'g' is pressed, grid get activated and we can see small blck box at corner. Then zoom in to see grid.
 
