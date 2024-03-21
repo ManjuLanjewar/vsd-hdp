@@ -4326,6 +4326,7 @@ To get the technology file inside the cloned github, use the following commands 
  vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic$ cp sky130A.tech /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/</pre> 
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/990105f8-e9c2-445c-adb8-4a9a82afc672)
+
 Technology file sky130A.tech in vsdstdcelldesign.
 
  To view the layout of the CMOS inverter, following command used (inside vsdstdcelldesign directory):
@@ -4535,7 +4536,7 @@ The resulting layout with the flagged violation is shown below:
 
 </details>
 
-<h2 id="C0">Day 17</h2>
+<h2 id="17">Day 17</h2>
   
   #### Prelayout Timing Analysis and Importance of Good Clock Tree
 <details>
@@ -4575,13 +4576,32 @@ In Magic, when 'g' is pressed, grid get activated and we can see small blck box 
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/fc27a4d8-3867-401b-8376-8d606892fa63)
 
-To force ports to lie on the intersection point, I used the following commmands in tkcon:
+To force ports to lie on the intersection point, following commmand is used in tkcon:
 	<pre>grid 0.46um 0.34um 0.23um 0.17um
 	      save sky130_vsdinv.mag</pre>
+
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b22d72b0-78e3-415a-ba52-eebd1ef7eae8)
+
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/8aedf2c0-73e8-4c5c-bcf9-13588c00e49d)
 
+To extract LEF (In a LEF file, a cell that contains ports is written as a macro, and the ports are declared pins of the macro) from a given layout in standard format, one must first define ports. To define a port through magic's wizard, first source the .mag file for the design, then click "Edit, Text" which opens up a dialogue box. Use the box to input a label name along with a sticky label of the layer name with which the port needs to be associated. Note that I have not done this step for the CMOS because it is already done for us.
 
+The next step in extracting LEF is defining the purpose of ports. For example to define that of A, use the following commands in tkcon: 1-) port class input 2-) port use signal.       To define that of VGND, use the following commands in tkcon: 1-) port class inout 2-) port use ground. Note that I have not done this step for the CMOS because it is already done for us.
+
+To write the LEF file, I first invoked magic using the below command:
+
+<pre>magic -T sky130A.tech sky130_vsdinv.mag &</pre>
+
+Then, I used the following command in the tckon window:
+
+<pre>lef write</pre>
+
+Path to open lef file as below:
+~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ less sky130_vsdinv.lef
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/fb906ee1-77f1-4da4-9937-6f45e8dbef49)
+
+A screenshot of the obtained LEF is shown below:
 
 1. **Delay Tables**
  
@@ -4668,7 +4688,7 @@ If the design produces any setup timing violaions in the analysis, it can be eli
 
 </details>
 
-<h2 id="C0">Day 18</h2>
+<h2 id="C18">Day 18</h2>
 
 #### Final steps for RTL2GDS using TritonRoute and OpenSTA
 <details>
