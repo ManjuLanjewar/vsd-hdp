@@ -4595,7 +4595,7 @@ To write the LEF file, I first invoked magic using the below command:
 
 <pre>magic -T sky130A.tech sky130_vsdinv.mag &</pre>
 
-Then, I used the following command in the tckon window:
+Then, following command used in the tckon window:
 
 <pre>lef write</pre>
 
@@ -4609,8 +4609,9 @@ A screenshot of the obtained LEF is shown below:
 **Introduction to timing libs and steps to include new cell in synthesis**
 To include the generated LEF with the picorv32a design, following commands used in the OpenLane/designs/picorv32a/src (I also copied sky130_fd_sc_hd__*.lib file from vsdstdcelldesign/libs directory since abc maps the standard cell to a library):
 
-
-
+~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ cp sky130_vsdinv.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src
+~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/libs$ cp sky130_fd_sc_hd__* /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d34df8d8-963d-4e71-a411-5e52991954d4)
 
 
 1. **Delay Tables**
