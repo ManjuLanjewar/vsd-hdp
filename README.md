@@ -3595,7 +3595,8 @@ From conception to product, the ASIC design flow is an iterative process that is
 * ii. Registers
 * iii. Modules (IP’s or Soft Macros)
 
-    b. Behavioral Modeling – Allows the microarchitecture modeling to be performed with behavior-based modeling in HDL. This method bridges the gap between C and HDL allowing HDL design to be performed
+    b. Behavioral Modeling – Allows the microarchitecture modeling to be performed with behavior-based modeling in HDL.
+       This method bridges the gap between C and HDL allowing HDL design to be performed
   
 3) RTL Verification - Behavioral verification of design
 4) DFT Insertion - Design-for-Test Circuit Insertion
@@ -3622,8 +3623,8 @@ the above steps involve Partitioning, Floor planning and Power planning.
    In Detailed placement takes the global placement and legalizes all of the placements trying to adhere to what the global placement wants.
    finalised layout of the modules, macros, pins and pads.
 
-11) CTS – Clock tree synteshsis is used to create the clock distribution network that is used to deliver the clock to all sequential elements.
-    The main goal is to create a network with minimal skew across the chip. H-trees are a common network topology that is used to achieve this goal.        * CTS alters the netlist. Functionality check is required before progressing
+10) CTS – Clock tree synteshsis is used to create the clock distribution network that is used to deliver the clock to all sequential elements.
+    The main goal is to create a network with minimal skew across the chip. H-trees are a common network topology that is used to achieve this goal.* CTS alters the netlist. Functionality check is required before progressing
     * Logical Equivalence Check (LEC) --> formally confirm that the function did not change after modifying netlist
 it is imperative to check functionality when the netlist is modified.
 
@@ -4540,10 +4541,12 @@ The resulting layout with the flagged violation is shown below:
   
   #### Prelayout Timing Analysis and Importance of Good Clock Tree
 <details>
-	<summary>Timing Modelling using Delay Tables</summary>
 
- **Steps to convert grid info to track info**
-  In order to use a design of standard cell layout in OpenLANE RTL2GDS flow, it is converted to a standard cell LEF. LEF stands for Library Exchange Format. 
+**Timing Modelling using Delay Tables**
+		<summary>Labs</summary>
+
+**Steps to convert grid info to track info**
+ In order to use a design of standard cell layout in OpenLANE RTL2GDS flow, it is converted to a standard cell LEF. LEF stands for Library Exchange Format. 
  The entire design has to be analyzed for any timing violations after addition or change in the design.
  
  **Magic Layout to Standard Cell LEF**
@@ -4602,6 +4605,13 @@ Path to open lef file as below:
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/fb906ee1-77f1-4da4-9937-6f45e8dbef49)
 
 A screenshot of the obtained LEF is shown below:
+
+**Introduction to timing libs and steps to include new cell in synthesis**
+To include the generated LEF with the picorv32a design, following commands used in the OpenLane/designs/picorv32a/src (I also copied sky130_fd_sc_hd__*.lib file from vsdstdcelldesign/libs directory since abc maps the standard cell to a library):
+
+
+
+
 
 1. **Delay Tables**
  
