@@ -4636,7 +4636,15 @@ After Prep -design picorv32a step , we have to insert commands shown below.
 % run_synthesis
 Below image shows that synthesis used 1554 sky130_vsdinv cells.
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6d2ea500-6530-4f98-a73f-1dfcf331e823)
+slack violations were reported after synthesis. Open leafpad(notepad) and note down Area and slack before using above commands:
+~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/libs$ leafpad &
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/256af336-a515-497c-aa41-16223e8e4e2b)
 
+We have to correct this using command 
+
+<pre>set ::env(SYNTH_STRATEGY) "DELAY 1"
+set ::env(SYNTH_SIZING) 1
+run_synthesis</pre>
 
 run_floorplan
 run_placement
