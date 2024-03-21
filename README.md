@@ -4257,8 +4257,7 @@ Fall/Rise Transition time = time(slew_high_thr) - time(slew_low_thr).
 </details>
 
 #### Inception of Layout : A CMOS Fabrication Process
-<detail>
-
+<details>
 	<summary>16-mask CMOS process steps</summary>
 
 1-) Selecting a substrate: selecting body/substrate material (P-type substrate)
