@@ -4615,8 +4615,13 @@ To include the generated LEF with the picorv32a design, following commands used 
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d34df8d8-963d-4e71-a411-5e52991954d4)
 
-
-
+Then we have to modify config.tcl file present at path <pre>~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a$ vim config.tcl.</pre>
+We have to insert commands shown below in the config.tcl file before synthesis.
+<pre>set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+set ::env(LIB_FASTEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
+set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib"
+set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]</pre>
 
 1. **Delay Tables**
  
