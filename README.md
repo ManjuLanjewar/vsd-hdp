@@ -4541,3 +4541,151 @@ The resulting layout with the flagged violation is shown below:
 
 <details>
 	<summary>Installation Steps</summary>
+
+<h2 id="C9">Day 9</h2>
+
+<details>
+
+<summary>Pre-layout timing analysis and importance of good clock tree</summary>
+
+#### Timing Modelling using Delay Tables
+
+1. **Delay Tables**
+ 
+    - In delay tables, there are delay values for varying input transition and output load. For CTS: Delay tables for all buffers with their different sizes compose the timing models.  
+    - To find a delay of a certain path, the delay tables of buffers on that path are used to find individual delays then those delays are added up. 
+    - If two paths have the same buffer as load in turn driving the same load, then the signal comming out of those two buffers will have a skew of 0 (ensuring this will not lead to     
+      problems). 
+    - For power-aware CTS, one of paths would be activated at a time.
+
+#### Timing analysis with ideal clocks using OpenSTA
+
+2. **Setup timing analysis and Introduction to F/F Setup Time, Clock Jitter and Uncertainty**
+
+Setup timing analysis (single clock, ideal scenario where clk is not built yet): 
+            The internal delay (finite time) in the capture flop which has to be subtracted from period, and the variation of time that a clock edge can undergo when it arrives to the launch flop and capture clock (called uncertainty) which has to be also subtracted from period, so D (combinational delay)< T (period) - S(Setup time)- SU (setup uncertainty). 
+Using this analysis, the combinational delay should be considered when placing the cells.
+
+![Screenshot from 2024-03-18 00-42-49](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/c7421fc5-ee8c-41a7-9c67-762d95d0cf46)
+
+#### Clock Tree Synthesis using TritonCTS and Signal Integrity
+
+3. **Clock Tree Routing and Buffering using H-Tree algorithm, Crosstalk and Clock Net Shielding**
+
+Clock Tree Synthesis (CTS): 
+- Clock Tree Synthesis(CTS) is a process which makes sure that the clock gets distributed evenly to all sequential elements in a design.
+- The goal of CTS is to minimize the clock latency and skew.
+- H-tree calculates the path from all flops and connects the clock to the midpoint of the flops. 
+- Buffers (with equal rise and fall time) are added on the H-tree path. The CTS run adds clock buffers, so buffer delays are taken into consideration, and the analysis now deals with
+  real clocks. 
+- Setup and hold time slacks can be then analyzed in the post-CTS STA analysis using OpenROAD.
+- All critical (as shielding all is sometimes not possible) clock nets are shielded to prevent coupling with other components, and hence reducing potential of a glitch. 
+- A glitch is a serious problem as it can reset memory system and can lead to incorrect functionality in the whole system activity. 
+- Crosstalk leads to exponential delta skew, and this is another reason shielding nets is important.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/96ce0c5e-1ada-47bf-802e-8890163a797f)
+
+#### Timing analysis with real clocks using OpenSTA
+
+4. **Setup timing analysis using Real Clocks**
+
+   Setup timing analysis (single clock, real clock scenario):
+     - Network clk goes through real wires and buffers, which cause delays.
+        D (combinational delay)+ del1 (time for clk to reach launch flop) < [T (period) + del2 (time for clk to reach capture flop)]- S (setup: D to clk delay in capture flop) - SU             (Setup uncertainty).
+     - del1-del2 is known as skew (difference in time the clk reaches the two flops).
+     - D+del1 = data arrival time,
+     - T+del2-S-SU = data required time
+     - Slack= data required time - data arrival time => slack should be +ve.
+       
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/3ef1b66c-6d33-4de5-bd85-e30c7b8a4568)
+
+5. **Hold Timing Analysis using Real Clocks**
+
+    a) Hold timing analysis (single clock, ideal scenario):
+   
+     - D > H (hold time: clk to Q in capture flop) + HU (hold uncertainty).
+
+    b) Hold timing analysis (single clock, real clock scenario):
+
+   - D + del1 > H (hold time: clk to Q in capture flop) + del2 + HU
+   - The left hand side is called data arrival time while right hand side is called data required time.
+   - In this case, slack = data arrival time - data required time, and slack here should be +ve too.
+ 
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/3c690827-54f0-43e6-add4-41fdd392dc11)
+
+   - Del1 and del2 need to be identified for both setup and hold time analysis.   
+   - Del1/del2 = sum of RC wire delays on path + sum of buffer delays on the path.
+   - The difference is that del1 goes to launch flop, while del2 goes to capture flop (see picture below to understand the difference).
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/7cee6862-3a1e-4887-9d75-8b5824ccf5bf)
+
+- There are several CTS techniques like:
+  1. H - Tree
+  2. X - Tree
+  3. Fish bone
+     
+In OpenLANE, clock tree synthesis is carried out using TritonCTS tool.
+CTS should always be done after the floorplanning and placement as the CTS is carried out on a placement.def file that is created during placement stage.
+
+If the design produces any setup timing violaions in the analysis, it can be eliminated or reduced using techniques as follows:
+
+- Increase the clock period (Not always possible as generally operating frequency is freezed in the specifications)
+- Scaling the buffers (Causes increase in design area)
+- Restricting the maximum fan-out of an element.
+
+</details>
+
+<h2 id="C10">Day 10</h2>
+
+#### Final steps for RTL2GDS using TritonRoute and OpenSTA
+<details>
+        <summary>Routing and Design Rule Check(DRC)</summary>
+
+1. **Introduction to Maze Routing and Lees Algorithm**
+
+   - In an ASIC flow, PDN generation is part of floorplan. In OpenLane, however, this is not the case and PDN must be generated after CTS and post-CTS STA analysis.
+   - During routing, algorithm tries to find the best possible connection between points. One such algorithm is maze routing also known as Lee's algorithm.
+   - This algorithm, find the minimum distance between points by
+     a. creating a routing grid,
+     b. labels source and target points,
+     c. labels edge grids of source point as 1 (horizontal and vertical), then labels unlabeled edge grids of those grids as 2 and so on and so forth until we hit the target grid,
+     d. Now all enumarated pathes in order that take from source to target grid are identified as options,
+     e. L shaped routes (if found) would be chosen, otherwise any other identified option is chosen (the lower the number of pins found the better).
+
+ Lee's algorithm is shown below.
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/881d99aa-86b2-4797-8f83-7ec312dcadb3)
+
+2. **Design rule check (drc)**
+   
+   - DRC are rules that need to be followed when routing.
+   - Some rules define: minimum wire width, minimum wire pitch (distance between two wires from midpoints), and minimum wire spacing (distance between two wires from inner points).
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/39e91af6-8834-4a0a-9fa3-49cf4ffcd348)![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/b64b0edf-3117-461a-aef8-fc45d5e04ade)![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/5ade4e8c-79a6-4fd4-9fad-127ecbd0bd36)
+
+   - One violation is signal short when two wires meet: to solve it, one wire is put on another metal layer
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/97fc7ac5-563c-4781-8249-376f20916a60)
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/0d86706c-4271-40d2-8832-60ad3b92321b)
+
+   - But in this case two new rules are created and need to be checked: 1-) via width (inner square width) and 2-) via spacing (from inner close sides).
+
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/1d39c508-a7ef-48a4-9328-78db1a257303) ![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/5c52376e-ea1a-44c1-933e-a17e51ef24b6) 
+
+<summary>Power Distribution Network and Routing</summary>
+
+3. **Global and Detailed Routing and Configure TritonRoute**
+
+There are 2 stages of routing: global (routing region is divided into rectangle grids which are represented as course 3D routes via FastRoute tool) and detailed (finer grids and routing guides are used to implement physical wiring via TritonRoute tool). 
+OpenLane uses the TritonRoute tool (an inter-layer sequential, intra-layer parallel routing framework that honours pre-processed route guides, assumes that each net satisfies inter-guide connectivity, and uses MILP based panel routing scheme) for detailed routing. The preprocessed route guides and inter-guide connectivity are found below.
+
+<summary>TriTonRoute Features</summary>
+
+OpenLANE uses TritonRoute, an open source router for modern industrial designs. The router consists of several main building blocks, including pin access analysis, track assignment, initial detailed routing, search and repair, and a DRC engine. The routing process is implemented in two stages:
+
+Global Routing - Routing guides are generated for interconnects
+Detailed Routing - Tracks are generated interatively. TritonRoute 14 ensures there are no DRC violations after routing.
+
+
+
