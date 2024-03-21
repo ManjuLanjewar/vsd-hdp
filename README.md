@@ -4571,11 +4571,11 @@ In Magic, when 'g' is pressed, grid get activated and we can see small blck box 
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/fc27a4d8-3867-401b-8376-8d606892fa63)
 
-
 To force ports to lie on the intersection point, I used the following commmands in tkcon:
 	<pre>grid 0.46um 0.34um 0.23um 0.17um
 	      save sky130_vsdinv.mag</pre>
-
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b22d72b0-78e3-415a-ba52-eebd1ef7eae8)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/8aedf2c0-73e8-4c5c-bcf9-13588c00e49d)
 
 
 
