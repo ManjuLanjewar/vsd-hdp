@@ -4541,6 +4541,34 @@ The resulting layout with the flagged violation is shown below:
 <details>
 	<summary>Timing Modelling using Delay Tables</summary>
 
+ **Steps to convert grid info to track info**
+  In order to use a design of standard cell layout in OpenLANE RTL2GDS flow, it is converted to a standard cell LEF. LEF stands for Library Exchange Format. 
+ The entire design has to be analyzed for any timing violations after addition or change in the design.
+ 
+ **Magic Layout to Standard Cell LEF**
+ Before creating the LEF file we require some details about the layers in the designs. This details are available in a tracks.info as shown below.
+ Ports should be at intersection of horizontal and vertical tracks. The CMOS ports A and Y are on li1 layer. A and Y must be on the intersection of horizontal and vertical tracks. 
+ Accessed the tracks.info file for the pitch and direction information by using the commands below:
+ 
+ ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd$ less tracks.info
+ 
+ It gives information about the offset and pitch of a track in a given layer both in horizontal and vertical direction. 
+ The track information is given in below mentioned format.
+ 
+ <layer-name> <X-or-Y> <track-offset> <track-pitch>
+
+ Below is a screenshot of the track.info file:
+ 
+ ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/fd1856c4-4db0-438b-9f01-ca802b0f3383)
+
+To create a standard cell LEF from an existing layout, some important aspects need to be taken into consideration.
+
+	1. The height of cell be appropriate, so that the VPWR and VGND properly fall on the power distribution network.
+ 	2. The width of cell should be an odd multiple of the minimum permissible grid size.
+  	3. The input and ouptut of the cell fall on intersection of the vertical and horizontal grid line.
+
+
+ 
 1. **Delay Tables**
  
     - In delay tables, there are delay values for varying input transition and output load. For CTS: Delay tables for all buffers with their different sizes compose the timing models.  
