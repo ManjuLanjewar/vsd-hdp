@@ -22,6 +22,7 @@
 <p><a href="#C15">Day 15</a></p>
 <p><a href="#C16">Day 16</a></p>
 <p><a href="#C17">Day 17</a></p>
+<p><a href="#C18">Day 18</a></p>
 
 </body>
 </html>
@@ -4540,15 +4541,8 @@ The resulting layout with the flagged violation is shown below:
 #### Prelayout Timing Analysis and Importance of Good Clock Tree
 
 <details>
-	<summary>Installation Steps</summary>
-
-<h2 id="C9">Day 9</h2>
-
-<details>
-
-<summary>Pre-layout timing analysis and importance of good clock tree</summary>
-
-#### Timing Modelling using Delay Tables
+	
+	<summary>Timing Modelling using Delay Tables</summary>
 
 1. **Delay Tables**
  
@@ -4635,9 +4629,10 @@ If the design produces any setup timing violaions in the analysis, it can be eli
 
 </details>
 
-<h2 id="C10">Day 10</h2>
+<h2 id="C0">Day 18</h2>
 
 #### Final steps for RTL2GDS using TritonRoute and OpenSTA
+
 <details>
         <summary>Routing and Design Rule Check(DRC)</summary>
 
@@ -4687,5 +4682,5 @@ OpenLANE uses TritonRoute, an open source router for modern industrial designs. 
 Global Routing - Routing guides are generated for interconnects
 Detailed Routing - Tracks are generated interatively. TritonRoute 14 ensures there are no DRC violations after routing.
 
-
+</details>
 
