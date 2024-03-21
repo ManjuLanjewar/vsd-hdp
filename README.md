@@ -4567,7 +4567,7 @@ To create a standard cell LEF from an existing layout, some important aspects ne
  	2. The width of cell should be an odd multiple of the minimum permissible grid size.
   	3. The input and ouptut of the cell fall on intersection of the vertical and horizontal grid line.
 
-
+To force ports to lie on the intersection point, I used the following commmands in tkcon:
  
 1. **Delay Tables**
  
