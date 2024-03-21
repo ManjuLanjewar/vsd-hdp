@@ -4537,10 +4537,8 @@ The resulting layout with the flagged violation is shown below:
 
 <h2 id="C0">Day 17</h2>
   
-#### Prelayout Timing Analysis and Importance of Good Clock Tree
-
+  #### Prelayout Timing Analysis and Importance of Good Clock Tree
 <details>
-	
 	<summary>Timing Modelling using Delay Tables</summary>
 
 1. **Delay Tables**
@@ -4631,7 +4629,6 @@ If the design produces any setup timing violaions in the analysis, it can be eli
 <h2 id="C0">Day 18</h2>
 
 #### Final steps for RTL2GDS using TritonRoute and OpenSTA
-
 <details>
         <summary>Routing and Design Rule Check(DRC)</summary>
 
