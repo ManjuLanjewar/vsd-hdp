@@ -4656,6 +4656,12 @@ DELAY 1
 sky130_fd_sc_hd__inv_8
 % run_synthesis</pre>
 
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/db29c48d-6a4a-4ee1-bd66-788128c3cecc)
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/220f1393-fc73-4c03-93fa-83607cfbc1bf)
+
+
 run_floorplan
 run_placement
 
