@@ -4685,10 +4685,22 @@ Read synthesis driving cell option echo $::env(SYNTH_DRIVING_CELL) -> sky130_fd_
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/db29c48d-6a4a-4ee1-bd66-788128c3cecc)
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/220f1393-fc73-4c03-93fa-83607cfbc1bf)
+Here we comprised with area to improve slack.
+We have to verify whether our custom cell is plugged into design after placement.
+<pre>% run_floorplan</pre>
+Errors after running floorplan so use commands for both floorplan and placement shown below:
+<pre>init_floorplan
+place_io
+global_placement_or
+detailed_placement
+tap_decap_or
+detailed_placement</pre>
 
+To view the layout after placement in magic, used the command below
 
-run_floorplan
-run_placement
+<pre>~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/22-03_07-54/results/placement$ magic -T /home/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/26019866-4a51-42ce-ab50-e98ef4e496c3)
 
 
 1. **Delay Tables**
