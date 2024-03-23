@@ -4651,7 +4651,7 @@ slack violations were reported after synthesis. Open leafpad(notepad) and note d
 
 **Lab steps to configure synthesis settings to fix slack and include vsdinv**
 
-- The synthesis results with the present settings has a huge wns slack of -26.53ns and tns of -3232.44. 
+- The synthesis results with the present settings has a huge wns slack of -23.89ns and tns of -711.59 
 - To obtain timing closure in post-route STA, this negative slack needs to be reduced in synthesis.
 - Read back the Synthesis configuration variables that could be potentitally wrecking the timing:
 
