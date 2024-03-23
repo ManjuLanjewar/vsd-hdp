@@ -4724,6 +4724,26 @@ Using this analysis, the combinational delay should be considered when placing t
 
 ![Screenshot from 2024-03-18 00-42-49](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/c7421fc5-ee8c-41a7-9c67-762d95d0cf46)
 
+**Lab steps to configure OpenSTA for post-synth timing analysis**
+- Negative slack was reported post synthesis. The slack value is the difference between data required time and data arrival time. 
+- The worst slack value must be greater than or equal to zero. If a negative slack is obtained, one can do the following steps:
+	change synthesis strategy, enable buffering (in OpenLane) and upsizing buffers: review maximum fanout of cells replacing those with high fanout (in OpenSTA). When edits are done 
+  in OpenLane, the synthesis should be rerun.
+- In any PnR tool if there is timing violation, we carry out analysis in separate tool.For example primetime.
+- In opensoure EDA tools, we do it OpenSTA tool.
+- For that we have prepare our own sdc file and config file.
+- To apply these, OpenSTA will be used iteratively (it displaying the changes, and OpenLane applying some changes), and one starts by writing a configuration file (that sets the units, 
+  reads liberty for both fast and slow sky130 technologies, reads the verilog for the synthesized picorv32a found in results/synthesis, links the design, reads the sdc file that 
+  specifies the constraints based on base.sdc in /scripts (i.e. to produce same slack initially seen in OpenLane inside the OpenSTA) and has some environemnt definitions brought from 
+  OpenLane and library files, and reports the delays).
+- OpenSTA can then be invoked as follows (recall that CTS is not done yet, so this is done for ideal clock assumed, and only setup analysis is included):
+  
+##### sdc file
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/bb86df66-4a44-4901-9404-dee9cb454072)
+
+##### config file
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/7a6ab1f3-dfb5-41ed-93e5-e10e8efbc12f)
+
 #### Clock Tree Synthesis using TritonCTS and Signal Integrity
 
 3. **Clock Tree Routing and Buffering using H-Tree algorithm, Crosstalk and Clock Net Shielding**
