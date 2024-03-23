@@ -4865,3 +4865,4 @@ Detailed Routing - Tracks are generated interatively. TritonRoute 14 ensures the
 
 </details>
 
+~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/21-03_21-17/results/synthesis/picorv32a.synthesis.v
