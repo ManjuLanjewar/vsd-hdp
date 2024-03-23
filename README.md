@@ -4600,6 +4600,7 @@ Then, following command used in the tckon window:
 <pre>lef write</pre>
 
 Path to open lef file as below:
+
 ~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ less sky130_vsdinv.lef
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/fb906ee1-77f1-4da4-9937-6f45e8dbef49)
@@ -4607,7 +4608,8 @@ Path to open lef file as below:
 A screenshot of the obtained LEF is shown below:
 
 **Introduction to timing libs and steps to include new cell in synthesis**
-To include the generated LEF with the picorv32a design, following commands used in the OpenLane/designs/picorv32a/src (I also copied sky130_fd_sc_hd__*.lib file from vsdstdcelldesign/libs directory since abc maps the standard cell to a library):
+
+To include the generated LEF with the picorv32a design, following commands used in the OpenLane/designs/picorv32a/src (Copy sky130_fd_sc_hd__*.lib file from vsdstdcelldesign/libs directory since abc maps the standard cell to a library):
 
 <pre>~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ cp sky130_vsdinv.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src</pre>
 
@@ -4624,38 +4626,61 @@ set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc
 set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]</pre>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d3d06de6-2369-4a15-9b6f-95886195962b)
+
 The modified config.tcl file is above:
 
-I then invoked OpenLane from the already used OpenLane Container then run synthesis (note that in my case no slack violations were reported after synthesis), floorplan, and placement as follows:
-<pre>exit
-% prep -design picorv32a</pre>
+Now invoke OpenLANE in interactive mode and after the prep -design picorv32a command is executed, run the following two commands to merge the custom cell(s)' LEF file(s) to the existing processed LEF files.
+<pre>% prep -design picorv32a</pre>
 
 After Prep -design picorv32a step , we have to insert commands shown below.
+
 <pre>% set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
 % add_lefs -src $lefs</pre>
-% run_synthesis
+<pre>% run_synthesis</pre>
+
 Below image shows that synthesis used 1554 sky130_vsdinv cells.
+
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6d2ea500-6530-4f98-a73f-1dfcf331e823)
+
 slack violations were reported after synthesis. Open leafpad(notepad) and note down Area and slack before using above commands:
-~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/libs$ leafpad &
+
+<pre>~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/libs$ leafpad &</pre>
+
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/256af336-a515-497c-aa41-16223e8e4e2b)
 
-We have to correct this using command 
 
-<pre>% echo $::env(SYNTH_STRATEGY)
-AREA 0
-% set ::env(SYNTH_STRATEGY) "DELAY 1"
-DELAY 1
-% echo $::env(SYNTH_BUFFERING)
-1
-% echo $::env(SYNTH_SIZING)       
-0
-% set ::env(SYNTH_SIZING) 1         
-1
-% echo $::env(SYNTH_DRIVING_CELL)
-sky130_fd_sc_hd__inv_8
-% run_synthesis</pre>
+**Lab steps to configure synthesis settings to fix slack and include vsdinv**
 
+- The synthesis results with the present settings has a huge wns slack of -26.53ns and tns of -3232.44. 
+- To obtain timing closure in post-route STA, this negative slack needs to be reduced in synthesis.
+- Read back the Synthesis configuration variables that could be potentitally wrecking the timing:
+
+<pre>Read synthesis strategy echo $::env(SYNTH_STRATEGY) -> AREA 0
+Change to delay optimization set ::env(SYNTH_STRATEGY) "DELAY 1"
+Read synthesis buffering option echo $::env(SYNTH_BUFFERING) -> 1 it's OK
+Read synthesis sizing option echo $::env(SYNTH_SIZING) -> '0' disabled.
+Enable sizing for cells set ::env(SYNTH_SIZING) 1
+Read synthesis driving cell option echo $::env(SYNTH_DRIVING_CELL) -> sky130_fd_sc_hd__inv_8 it's OK</pre>
+<pre>- Invoke Docker
+- ./flow.tcl -interactive
+- % prep -design picorv32a
+- % set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+  /openLANE_flow/designs/picorv32a/src/sky130_vsdinv.lef
+- % add_lefs -src $lefs
+  [INFO]: Merging /openLANE_flow/designs/picorv32a/src/sky130_vsdinv.lef
+- % echo $::env(SYNTH_STRATEGY)      
+  AREA 0
+- % echo $::env(SYNTH_BUFFERING)
+  1
+- % echo $::env(SYNTH_SIZING)
+  0
+- % echo $::env(SYNTH_DRIVING_CELL)
+  sky130_fd_sc_hd__inv_8
+- % set ::env(SYNTH_STRATEGY) "DELAY 1"
+  DELAY 1
+- % set ::env(SYNTH_SIZING) 1 
+  1
+- % run_synthesis</pre>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/db29c48d-6a4a-4ee1-bd66-788128c3cecc)
 
