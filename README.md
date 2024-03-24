@@ -4727,8 +4727,8 @@ Using this analysis, the combinational delay should be considered when placing t
 **Lab steps to configure OpenSTA for post-synth timing analysis**
 - Negative slack was reported post synthesis. The slack value is the difference between data required time and data arrival time. 
 - The worst slack value must be greater than or equal to zero. If a negative slack is obtained, one can do the following steps:
-	change synthesis strategy, enable buffering (in OpenLane) and upsizing buffers: review maximum fanout of cells replacing those with high fanout (in OpenSTA). When edits are done 
-  in OpenLane, the synthesis should be rerun.
+	change synthesis strategy, enable buffering (in OpenLane) and upsizing buffers: review maximum fanout of cells replacing those with high fanout (in OpenSTA).
+  When edits are done in OpenLane, the synthesis should be rerun.
 - In any PnR tool if there is timing violation, we carry out analysis in separate tool.For example primetime.
 - In opensoure EDA tools, we do it OpenSTA tool.
 - For that we have prepare our own sdc file and config file.
@@ -4743,6 +4743,19 @@ Using this analysis, the combinational delay should be considered when placing t
 
 ##### config file
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/7a6ab1f3-dfb5-41ed-93e5-e10e8efbc12f)
+
+<pre>~/Desktop/work/tools/openlane_working_dir/openlane$ sta pre_sta.conf</pre>
+
+Note that each time a change is done in OpenLane, the netlist (.v) with same name gets updated, and hence OpenSTA must be invoked again to reflect the salck of the applied changes (that is why it is an iterative approach). Now if changes for timing where done within OpenSTA (like upsizing buffers), we need to reflect those to the OpenLane tool and the way we do this is via an echo the new timing: use "write_verilog" command in OpenSTA dumping file in the results/synthesis directory. Then rerun the synthesis, floorplan and placement again.
+**Lab steps to optimize synthesis to reduce setup violations**
+In my case ,I got tns=0,wns=0; no negative slack was reported post synthesis.But if we encounter timing violations then we do STA analysis in separate tool(in our case OpenSTA).
+There are many ways to reduce slack . Following example is one of the ways.
+<pre>% set ::env(SYNTH_MAX_FANOUT) 4</pre>
+To see how many pins are driven by a cell, we use below command
+report_net -connections <net name>
+
+**Lab steps to do basic timing ECO**
+
 
 #### Clock Tree Synthesis using TritonCTS and Signal Integrity
 
@@ -4865,4 +4878,3 @@ Detailed Routing - Tracks are generated interatively. TritonRoute 14 ensures the
 
 </details>
 
-~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/21-03_21-17/results/synthesis/picorv32a.synthesis.v
