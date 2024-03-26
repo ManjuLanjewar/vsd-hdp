@@ -4861,7 +4861,15 @@ Clock Tree Synthesis (CTS):
      	- Command to run cts: run_cts
 	- After CTS, a new netlist <design_name>.synthesis_cts.v will be created in the runs/<tag>/results/synthesis/ folder that includes the information on the generated clock,
           clock tree and the newly instanced clock buffers.
-  
+
+   ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b362766f-b1a5-452b-9913-ba69a99ce06f)
+   
+   ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1e71e01c-f782-422d-81db-476aacc8d1c1)
+
+  - Below image shows that a new was created
+
+   ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/0b46b535-4afd-46d7-a218-4bc4df1d3309)
+
 #### Timing analysis with real clocks using OpenSTA
 
 4. **Setup timing analysis using Real Clocks**
