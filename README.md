@@ -4870,6 +4870,23 @@ Clock Tree Synthesis (CTS):
 
    ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/0b46b535-4afd-46d7-a218-4bc4df1d3309)
 
+   After CTS no slack violations were present.
+
+   ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/ceb844ec-d706-4dbf-8b12-f136e9fabd3c)
+
+   ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/92c7e05c-cac0-47c8-b737-c8d9e0b14a07)
+
+**Lab: Steps to verify CTS runs**
+   - CTS configuration variables to verify:
+     
+<pre>Configuration Variable	          Details
+CTS_TARGET_SKEW	           The target clock skew in picoseconds, usually 10% of the clock period.
+CTS_ROOT_BUFFER	           The name of cell inserted at the root of the clock tree (sky130_fd_sc_hd__clkbuf_16 in our case)
+CTS_TOLERANCE	           An integer value that represents a tradeoff of QoR and runtime.
+			   Higher values will produce smaller runtime but worse QoR.
+LIB_CTS	                   The liberty file used for CTS. By default, this is the LIB_SYNTH_COMPLETE minus the cells with drc errors.
+CTS_MAX_CAP                Defines the maximum capacitance for clock tree synthesis in the design in pF.</pre>
+
 #### Timing analysis with real clocks using OpenSTA
 
 4. **Setup timing analysis using Real Clocks**
