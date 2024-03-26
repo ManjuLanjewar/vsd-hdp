@@ -4873,6 +4873,7 @@ Clock Tree Synthesis (CTS):
       low impedance upon which an aggressor has no effect).
 
 **Lab: Steps to run CTS using TritonCTS**
+
      	- Command to run cts: run_cts
 	- After CTS, a new netlist <design_name>.synthesis_cts.v will be created in the runs/<tag>/results/synthesis/ folder that includes the information on the generated clock,
           clock tree and the newly instanced clock buffers.
