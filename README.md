@@ -4870,11 +4870,13 @@ Clock Tree Synthesis (CTS):
 	- After CTS, a new netlist <design_name>.synthesis_cts.v will be created in the runs/<tag>/results/synthesis/ folder that includes the information on the generated clock,
           clock tree and the newly instanced clock buffers.
   
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/34d68b08-203a-428d-a16e-b8429e4156fd)
+
    After CTS no slack violations were present.
 
-   ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/ceb844ec-d706-4dbf-8b12-f136e9fabd3c)
+ ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/2b32ce58-92ae-4250-b6bc-a90078d33a9a)
 
-   ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/92c7e05c-cac0-47c8-b737-c8d9e0b14a07)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/95e86f8e-3797-439b-b3de-eea415ec7905)
 
 **Lab: Steps to verify CTS runs**
    - CTS configuration variables to verify:
