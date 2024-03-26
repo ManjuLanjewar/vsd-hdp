@@ -4785,10 +4785,10 @@ Note that each time a change is done in OpenLane, the netlist (.v) with same nam
 - Below image shows write_verilog command on openSTA to generate new netlist.
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1e71e01c-f782-422d-81db-476aacc8d1c1)
 
-- Below image shows old netlist.
+- Below image shows old netlist with previous date.
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b362766f-b1a5-452b-9913-ba69a99ce06f)
 
-- Below image shows that a new was created
+- Below image shows that a new was created on new date.
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/0b46b535-4afd-46d7-a218-4bc4df1d3309)
 
 - Fixing timing violations by ECOs is an iterative cyclical process.
