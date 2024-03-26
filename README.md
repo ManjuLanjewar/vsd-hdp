@@ -4762,14 +4762,15 @@ Note that each time a change is done in OpenLane, the netlist (.v) with same nam
 - From analysing the setup violations in OpenSTA, we will be able to infer the possible reasons for the violations
 - One common reason could a large output slew for a net due to large capacitance load/ fanout which the synthesis tool could not optimize further. In this case a cell drives more cells 
   then we can upsize that cell so that slack can be reduced. For upsizing we have to replace that cell with a more drive strength cell to reduce the delay using the replace_cell command.
-<pre>Syntax : replace_cell instance lib_cell
-Example: replace_cell _44195_ sky130_fd_sc_hd__inv_4
+  <pre>Syntax : replace_cell instance lib_cell
+     Example: replace_cell _44195_ sky130_fd_sc_hd__inv_4
          where, _44195_ is the instance name of the cell to be replaced
                 sky130_fd_sc_hd__inv_4 is the upsized std cell version</pre>
-To check if the violation has been resolved:
-report_checks -from <instance or pin> -to <instance or pin> -through <instance> -path_delay max
-Example: report_checks -from _50144_ -to _50075_ -through _44195_ -path_delay min_max
+- To check if the violation has been resolved:
+	<pre>report_checks -from <instance or pin> -to <instance or pin> -through <instance> -path_delay max
+	Example: report_checks -from _50144_ -to _50075_ -through _44195_ -path_delay min_max</pre>
 
+The above step of upsizing the cell to improve timing would obviously change the netlist, which needs to be updated in the netlist file for it to be captured in the OpenLANE flow. To write the updated netlist:
 
 #### Clock Tree Synthesis using TritonCTS and Signal Integrity
 
