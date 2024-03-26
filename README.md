@@ -4690,7 +4690,13 @@ Read synthesis driving cell option echo $::env(SYNTH_DRIVING_CELL) -> sky130_fd_
 - We have to verify whether our custom cell is plugged into design after placement.
 
 <pre>% run_floorplan</pre>
-Errors after running floorplan so use commands for both floorplan and placement shown below:
+
+Errors after running floorplan. The floorplan process generate an error and exit from the process.
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/96f71b13-6935-468d-a88d-dabc03a204b4)
+
+No any macro defined for the design. To mitigate that error I use floorplan/placement workflow without macro placement:
+so use commands for both floorplan and placement shown below:
 <pre>init_floorplan
 place_io
 global_placement_or
@@ -4703,7 +4709,6 @@ detailed_placement</pre>
 <pre>~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/22-03_07-54/results/placement$ magic -T /home/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &</pre>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/26019866-4a51-42ce-ab50-e98ef4e496c3)
-
 
 1. **Delay Tables**
  
@@ -4718,7 +4723,7 @@ detailed_placement</pre>
 2. **Setup timing analysis and Introduction to F/F Setup Time, Clock Jitter and Uncertainty**
 
 Setup timing analysis (single clock, ideal scenario where clk is not built yet): 
-            The internal delay (finite time) in the capture flop which has to be subtracted from period, and the variation of time that a clock edge can undergo when it arrives to the launch flop and capture clock (called uncertainty) which has to be also subtracted from period, so D (combinational delay)< T (period) - S(Setup time)- SU (setup uncertainty). 
+	The internal delay (finite time) in the capture flop which has to be subtracted from period, and the variation of time that a clock edge can undergo when it arrives to the launch flop and capture clock (called uncertainty) which has to be also subtracted from period, so D (combinational delay)< T (period) - S(Setup time)- SU (setup uncertainty). 
 Using this analysis, the combinational delay should be considered when placing the cells.
 
 ![Screenshot from 2024-03-18 00-42-49](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/c7421fc5-ee8c-41a7-9c67-762d95d0cf46)
@@ -4774,15 +4779,17 @@ Note that each time a change is done in OpenLane, the netlist (.v) with same nam
 - The above step of upsizing the cell to improve timing or replacin cell would obviously change the netlist, which needs to be updated in the netlist file for it to be captured
   in the OpenLANE flow.
 - To write the updated netlist:
+  
 	<pre>write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/22-03_22-55/results/synthesis/picorv32a.synthesis.v</pre>
 
-    ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b362766f-b1a5-452b-9913-ba69a99ce06f)
-   
-   ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1e71e01c-f782-422d-81db-476aacc8d1c1)
+- Below image shows write_verilog command on openSTA to generate new netlist.
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1e71e01c-f782-422d-81db-476aacc8d1c1)
 
-  - Below image shows that a new was created
+- Below image shows old netlist.
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b362766f-b1a5-452b-9913-ba69a99ce06f)
 
-   ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/0b46b535-4afd-46d7-a218-4bc4df1d3309)
+- Below image shows that a new was created
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/0b46b535-4afd-46d7-a218-4bc4df1d3309)
 
 - Fixing timing violations by ECOs is an iterative cyclical process.
 - The STA engineer(s) will do the necessary modifications like upsizing, replacing cell with a different Vt cell, inserting buffers etc. to fix a violation and provide the ECO to the 
