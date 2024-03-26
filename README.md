@@ -4554,7 +4554,7 @@ The resulting layout with the flagged violation is shown below:
  Ports should be at intersection of horizontal and vertical tracks. The CMOS ports A and Y are on li1 layer. A and Y must be on the intersection of horizontal and vertical tracks. 
  Accessed the tracks.info file for the pitch and direction information by using the commands below:
  
- ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd$ less tracks.info
+ <pre>~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd$ less tracks.info</pre>
  
  It gives information about the offset and pitch of a track in a given layer both in horizontal and vertical direction. 
  The track information is given in below mentioned format.
@@ -4573,7 +4573,7 @@ To create a standard cell LEF from an existing layout, some important aspects ne
 
 To open layout of std cell in Magic: 
 
-   ~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ magic -T sky130A.tech sky130_inv.mag &
+<pre>~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ magic -T sky130A.tech sky130_inv.mag &</pre>
    
 In Magic, when 'g' is pressed, grid get activated and we can see small blck box at corner. Then zoom in to see grid.
 
@@ -4601,7 +4601,7 @@ Then, following command used in the tckon window:
 
 Path to open lef file as below:
 
-~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ less sky130_vsdinv.lef
+<pre>~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ less sky130_vsdinv.lef</pre>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/fb906ee1-77f1-4da4-9937-6f45e8dbef49)
 
