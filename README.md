@@ -4648,7 +4648,6 @@ slack violations were reported after synthesis. Open leafpad(notepad) and note d
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/256af336-a515-497c-aa41-16223e8e4e2b)
 
-
 **Lab steps to configure synthesis settings to fix slack and include vsdinv**
 
 - The synthesis results with the present settings has a huge wns slack of -23.89ns and tns of -711.59 
@@ -4747,14 +4746,29 @@ Using this analysis, the combinational delay should be considered when placing t
 <pre>~/Desktop/work/tools/openlane_working_dir/openlane$ sta pre_sta.conf</pre>
 
 Note that each time a change is done in OpenLane, the netlist (.v) with same name gets updated, and hence OpenSTA must be invoked again to reflect the salck of the applied changes (that is why it is an iterative approach). Now if changes for timing where done within OpenSTA (like upsizing buffers), we need to reflect those to the OpenLane tool and the way we do this is via an echo the new timing: use "write_verilog" command in OpenSTA dumping file in the results/synthesis directory. Then rerun the synthesis, floorplan and placement again.
+
 **Lab steps to optimize synthesis to reduce setup violations**
-In my case ,I got tns=0,wns=0; no negative slack was reported post synthesis.But if we encounter timing violations then we do STA analysis in separate tool(in our case OpenSTA).
-There are many ways to reduce slack . Following example is one of the ways.
-<pre>% set ::env(SYNTH_MAX_FANOUT) 4</pre>
-To see how many pins are driven by a cell, we use below command
-report_net -connections <net name>
+
+- In my case ,I got tns=0,wns=0; no negative slack was reported post synthesis. But if we encounter timing violations then we do STA analysis in separate tool(in our case OpenSTA).
+- In addition to the synthesis configuration variables that we have seen before, there are a few more that we can use to optimize synthesis to improve setup slack. 
+- There are many ways to reduce slack . Following example is one of the ways.
+	* If there are setup timing violations (and possible slew & max cap violations) from nets with high fanout, we can limit the fanout to improve the delay using:
+		<pre>% set ::env(SYNTH_MAX_FANOUT) 4</pre>
+- To view the nets driven by the output pin of a cell, the following command can be used:
+	* report_net -connections <net name>
 
 **Lab steps to do basic timing ECO**
+
+- From analysing the setup violations in OpenSTA, we will be able to infer the possible reasons for the violations
+- One common reason could a large output slew for a net due to large capacitance load/ fanout which the synthesis tool could not optimize further. In this case a cell drives more cells 
+  then we can upsize that cell so that slack can be reduced. For upsizing we have to replace that cell with a more drive strength cell to reduce the delay using the replace_cell command.
+<pre>Syntax : replace_cell instance lib_cell
+Example: replace_cell _44195_ sky130_fd_sc_hd__inv_4
+         where, _44195_ is the instance name of the cell to be replaced
+                sky130_fd_sc_hd__inv_4 is the upsized std cell version</pre>
+To check if the violation has been resolved:
+report_checks -from <instance or pin> -to <instance or pin> -through <instance> -path_delay max
+Example: report_checks -from _50144_ -to _50075_ -through _44195_ -path_delay min_max
 
 
 #### Clock Tree Synthesis using TritonCTS and Signal Integrity
