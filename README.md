@@ -4877,6 +4877,12 @@ Clock Tree Synthesis (CTS):
      	- Command to run cts: run_cts
 	- After CTS, a new netlist <design_name>.synthesis_cts.v will be created in the runs/<tag>/results/synthesis/ folder that includes the information on the generated clock,
           clock tree and the newly instanced clock buffers.
+In OpenLANE, clock tree synthesis is carried out using TritonCTS tool. CTS should always be done after the floorplanning and placement as the CTS is carried out on a placement.def file that is created during placement stage.
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/f80c2dc7-ee84-43e4-b598-f823012b8cd5)
+
+   ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/22fee31c-db73-4028-9d73-ef1edbad7654)
+
   
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/34d68b08-203a-428d-a16e-b8429e4156fd)
 
