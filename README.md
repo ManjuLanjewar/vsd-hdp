@@ -4776,6 +4776,14 @@ Note that each time a change is done in OpenLane, the netlist (.v) with same nam
 - To write the updated netlist:
 	<pre>write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/22-03_22-55/results/synthesis/picorv32a.synthesis.v</pre>
 
+    ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b362766f-b1a5-452b-9913-ba69a99ce06f)
+   
+   ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1e71e01c-f782-422d-81db-476aacc8d1c1)
+
+  - Below image shows that a new was created
+
+   ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/0b46b535-4afd-46d7-a218-4bc4df1d3309)
+
 - Fixing timing violations by ECOs is an iterative cyclical process.
 - The STA engineer(s) will do the necessary modifications like upsizing, replacing cell with a different Vt cell, inserting buffers etc. to fix a violation and provide the ECO to the 
   PnR engineer(s).
@@ -4861,15 +4869,7 @@ Clock Tree Synthesis (CTS):
      	- Command to run cts: run_cts
 	- After CTS, a new netlist <design_name>.synthesis_cts.v will be created in the runs/<tag>/results/synthesis/ folder that includes the information on the generated clock,
           clock tree and the newly instanced clock buffers.
-
-   ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b362766f-b1a5-452b-9913-ba69a99ce06f)
-   
-   ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1e71e01c-f782-422d-81db-476aacc8d1c1)
-
-  - Below image shows that a new was created
-
-   ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/0b46b535-4afd-46d7-a218-4bc4df1d3309)
-
+  
    After CTS no slack violations were present.
 
    ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/ceb844ec-d706-4dbf-8b12-f136e9fabd3c)
