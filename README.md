@@ -4856,6 +4856,11 @@ Clock Tree Synthesis (CTS):
    o. Shielding nets are placed on either sides of the clock net along its entire length, to decouple the aggressor net. The shielding nets are connected to either VDD or GND
       (either both of them to VDD (or GND), or one of them to VDD & the other to GND). (Basically the shielding nets need to be connected to a non-transitioning net,
       low impedance upon which an aggressor has no effect).
+
+**Lab: Steps to run CTS using TritonCTS**
+     	- Command to run cts: run_cts
+	- After CTS, a new netlist <design_name>.synthesis_cts.v will be created in the runs/<tag>/results/synthesis/ folder that includes the information on the generated clock,
+          clock tree and the newly instanced clock buffers.
   
 #### Timing analysis with real clocks using OpenSTA
 
