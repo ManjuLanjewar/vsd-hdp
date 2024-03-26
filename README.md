@@ -4770,11 +4770,23 @@ Note that each time a change is done in OpenLane, the netlist (.v) with same nam
 	<pre>report_checks -from <instance or pin> -to <instance or pin> -through <instance> -path_delay max
 	Example: report_checks -from _50144_ -to _50075_ -through _44195_ -path_delay min_max</pre>
 
-The above step of upsizing the cell to improve timing would obviously change the netlist, which needs to be updated in the netlist file for it to be captured in the OpenLANE flow. To write the updated netlist:
+- This is what people do in the industry using commercial tools. We solve violations and generate a timing eco and give it to PnR .
+- The above step of upsizing the cell to improve timing or replacin cell would obviously change the netlist, which needs to be updated in the netlist file for it to be captured
+  in the OpenLANE flow.
+- To write the updated netlist:
+	<pre>write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/22-03_22-55/results/synthesis/picorv32a.synthesis.v</pre>
 
+- Fixing timing violations by ECOs is an iterative cyclical process.
+- The STA engineer(s) will do the necessary modifications like upsizing, replacing cell with a different Vt cell, inserting buffers etc. to fix a violation and provide the ECO to the 
+  PnR engineer(s).
+- The PnR engineer(s) will then take this ECO and do the PnR and perform the post-route timing analysis with the back-annotated values that capture the parasitics as well.
+- This may fix or improve the existing the timing violation, while there is a chance that it may introduce new violations.
+- Now the STA engineer(s) will take the new data and perform STA analysis again and provide new timing ECOs for the new violations.
+- This "spinning" process goes on till all voilations are rectified.
+  
 #### Clock Tree Synthesis using TritonCTS and Signal Integrity
 
-3. **Clock Tree Routing and Buffering using H-Tree algorithm, Crosstalk and Clock Net Shielding**
+3. **Clock Tree Routing and Buffering using H-Tree algorithm**
 
 Clock Tree Synthesis (CTS): 
 - Clock Tree Synthesis(CTS) is a process which makes sure that the clock gets distributed evenly to all sequential elements in a design.
@@ -4789,6 +4801,62 @@ Clock Tree Synthesis (CTS):
 
 ![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/96ce0c5e-1ada-47bf-802e-8890163a797f)
 
+* QoR parameters for a Clock Tree:
+  	1. Clock Insertion Delay/ Latency: Refers to the arrival time of the clock signal at the sink pin with respect to the clock source.
+  	2. Clock Skew: Refers to the difference in the clock arrival time between two sinks. It can further be sub-divided into Local Clock Skew and Global Clock Skew:
+  	   o. Local Clock Skew – The difference in the arrival times of the clock signal reaching any pair of registers that have a valid timing path between them.
+  	   o. Global Clock Skew – The difference in the arrival times of the clock signal reaching any pair of registers that may or may not have a valid timing path between them.
+        3. Clock Slew (Transition Time): Clock slew needs to be as small as possible to provide a sharp timing edge by reducing the timing uncertainty. However this will have th
+  	   implication of higher area and power if we use larger clock tree buffers.
+        4. Duty Cycle: Unequal rise and fall times of the clock buffers is the primary cause of duty cycle distortion in a clock tree.
+  	   Usually inverters are used instead of buffers to reduce DCD in a clock tree.
+        5. Pulse Width: Usually SRAMs, flip-flops and latches will have minimum pulse width requirements to meet their internal timing.
+  	   There will be minimum pulse width requirements for both the high and low times of a clock period.
+
+* Clock buffering
+
+  - To ensure the clock signal reaching each sink pin is having the required target slew/ transition time, we need to add clock repeaters or clock buffers at multiple points of the 
+    distribution network, ensuring the RC wire load is split across multiple levels of buffers.
+  - To reduce Duty Cycle Distortion (DCD), clock buffers need to have equal rise and fall times. Usually it is very difficult to design buffers with equal rise and fall times and in a 
+    long clock tree with multiple levels of buffering, this can often lead to DCD. Hence instead of clock buffers, clock inverters are used in clock trees to reduce the introduction of 
+    DCD.
+    
+4. **Clock Signal Integrity: Crosstalk and Clock Net Shielding**
+
+* Crosstalk Glitch
+
+	1. If a high slew net is somehow routed near to the clock net, a transition on this agressor net can cause a glitch on the the clock net while
+           the clock net is at a logic LOW or HIGH level.
+        2. This happens due to the capacitive coupling between the nets and can cause the signal level on the clock net to temporarily go above the VIH or VIL
+           level resulting in a spurious unwanted high/ low pulse on this clock net.
+        3. Depending on the height (and width) of the glitch, it could be a safe or unsafe one.
+		a. If the glitch height within the noise margin, it can be considered a safe glitch.
+                b. If the glitch height is above the noise margin limits, it is a potentially unsafe glitch.
+		c. If the glitch heigh is within the noise margin limits, it is an unpredictable case as the output transition may be random and could cause some
+                   flop to go metastable.
+	4. A glitch on the clock signal can have serious ramifications on the operation of the whole system and it can result in timing failure, writing of an invalid
+           data to some flops or cause it to go metastable, eventually even resulting in system failure.
+	5. Theoretically, the reverse could also happen wherein the clock net can act as an aggressor since the edge rate of clock nets are usually very high.
+
+* Crosstalk Delta Delay
+
+	i. Crosstalk delay occurs when both aggressor and victim nets switch together.
+        ii. There can be two cases:
+		a. When both the aggressor and victim nets transition in the same direction
+                   - The transition of the victim net becomes faster, being aided by the crosstalk, reducing its rise/ fall time and thus the cell delay.
+		b. When the aggressor and victim nets transition in opposite direction
+		   - Transition of the victim net gets becomes delayed due to the crosstalk trying to oppose the transition on the victim net, causing a voltage
+                     bump on its rising or falling edge. This increases the transition time and hence the cell delay.
+	iii. If the victim net is a clock net, crosstalk can cause a previously skew-balanced clock tree to become unbalanced. Since the clock skew is affected,
+             it may result in some paths getting faster or slower resulting in hold or setup violations respectively.
+  
+* Clock Net Shielding
+
+   o. The critical clock nets are shielded to prevent any unwanted crosstalk on to the clock nets.
+   o. Shielding nets are placed on either sides of the clock net along its entire length, to decouple the aggressor net. The shielding nets are connected to either VDD or GND
+      (either both of them to VDD (or GND), or one of them to VDD & the other to GND). (Basically the shielding nets need to be connected to a non-transitioning net,
+      low impedance upon which an aggressor has no effect).
+  
 #### Timing analysis with real clocks using OpenSTA
 
 4. **Setup timing analysis using Real Clocks**
