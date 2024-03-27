@@ -4951,6 +4951,14 @@ If the design produces any setup timing violaions in the analysis, it can be eli
 - Scaling the buffers (Causes increase in design area)
 - Restricting the maximum fan-out of an element.
 
+<summary>LAB</summary>
+
+**Steps to analyze timing with real clocks using OpenSTA**
+
+
+
+
+
 </details>
 
 <h2 id="C18">Day 18</h2>
