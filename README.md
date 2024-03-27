@@ -5006,7 +5006,9 @@ sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8</p
   	This command insert clock buffer as below.
 	sky130_fd_sc_hd__clkbuf_1 sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8
 
-**Layout after CTS looks like:**
+**Layout after CTS looks like:** ('/openLANE_flow/designs/picorv32a/runs/22-03_07-54/results/cts/picorv32a.cts.def.png')
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e82fbb73-0d59-4682-afbc-02bbf959a897)
 
 </details>
 
