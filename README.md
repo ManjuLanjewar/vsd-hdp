@@ -4974,6 +4974,25 @@ report_checks -path_delay min_max -fields {slew trans net cap input_pin} -format
 
 - Be sure to perform the timing analysis with the correct library file which was used for CTS (which was the LIB_SYNTH_COMPLETE or the LIB_TYPICAL in our case).
 - Note: As of now, CTS does not support multi-corner optimization.
+  
+**Steps to observe impact of bigger CTS buffers on setup and hold timing**
+
+- Modify the CTS_CLK_BUFFER_LIST variable to exclude the sky130_fd_sc_hd__clkbuf_1 cell and re-run CTS again.
+- Be sure to modify the CURRENT_DEF variable to point to the DEF file after placement before triggering the CTS run
+  
+<pre>% echo $::env(CTS_CLK_BUFFER_LIST)
+sky130_fd_sc_hd__clkbuf_1 sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8
+- command to replace a clock buffer.
+set ::env(CTS_CLK_BUFFER_LIST) [lreplace $::env(CTS_CLK_BUFFER_LIST) 0 0]
+After executing above command, you will see that sky130_fd_sc_hd__clkbuf_1 is removed
+sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8</pre>	
+
+<pre>set ::env(CURRENT_DEF) /openLANE_flow/designs/picorv32a/runs/latest_21-03/results/placement/picorv32a.placement.def
+
+run_cts</pre>
+
+
+
 
 
 </details>
