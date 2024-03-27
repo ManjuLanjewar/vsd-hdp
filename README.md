@@ -4953,7 +4953,7 @@ If the design produces any setup timing violaions in the analysis, it can be eli
 
 <summary>LAB</summary>
 
-**Steps to analyze timing with real clocks using OpenSTA**
+**Steps to analyze timing with real clocks (Post-CTS STA) using OpenSTA**
 - In OpenRoad, the timing analysis is performed by creating a db file using the LEF and DEF files of the design.
 - db creation is a one-time process (unless the def changes). To create the db, invoke OpenRoad from within the OpenLANE shell using openroad.
   Then from within the OpenRoad shell execute the following commands:
