@@ -4983,15 +4983,14 @@ report_checks -path_delay min_max -fields {slew trans net cap input_pin} -format
 <pre>% echo $::env(CTS_CLK_BUFFER_LIST)
 sky130_fd_sc_hd__clkbuf_1 sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8
 - command to replace a clock buffer.
-set ::env(CTS_CLK_BUFFER_LIST) [lreplace $::env(CTS_CLK_BUFFER_LIST) 0 0]
+%set ::env(CTS_CLK_BUFFER_LIST) [lreplace $::env(CTS_CLK_BUFFER_LIST) 0 0]
 After executing above command, you will see that sky130_fd_sc_hd__clkbuf_1 is removed
 sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8</pre>	
 
 <pre>set ::env(CURRENT_DEF) /openLANE_flow/designs/picorv32a/runs/latest_21-03/results/placement/picorv32a.placement.def
+     run_cts</pre>
 
-run_cts</pre>
-
-
+- We will be able to see the setup and hold slacks having some amount of improvement, but do note that this comes with a potentially large area & power penalty due to the larger clock buffers used.
 
 
 
