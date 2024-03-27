@@ -4974,12 +4974,6 @@ report_checks -path_delay min_max -fields {slew trans net cap input_pin} -format
 
 - Be sure to perform the timing analysis with the correct library file which was used for CTS (which was the LIB_SYNTH_COMPLETE or the LIB_TYPICAL in our case).
 - Note: As of now, CTS does not support multi-corner optimization.
-- Commands to know the skew.
-- <pre>report_clock_skew -hold
-  report_clock_skew -setup</pre>
-- After executing above commands:
-  
-  ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/4c34f036-3128-45b8-a761-f8853276cdaa)
 
 **Steps to observe impact of bigger CTS buffers on setup and hold timing**
 
@@ -4997,8 +4991,22 @@ sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8</p
      run_cts</pre>
 
 - We will be able to see the setup and hold slacks having some amount of improvement, but do note that this comes with a potentially large area & power penalty due to the larger clock buffers used.
+- Commands to know the skew.
+- <pre>report_clock_skew -hold
+  report_clock_skew -setup</pre>
+- After executing above commands:
+  
+  ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/4c34f036-3128-45b8-a761-f8853276cdaa)
 
+- Command to insert clock buffer
+	<pre>% echo $::env(CTS_CLK_BUFFER_LIST)</pre>
+	 This command list out clock buffer list as below
+	 sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8
+	<pre>% set ::env(CTS_CLK_BUFFER_LIST) [linsert $::env(CTS_CLK_BUFFER_LIST) 0 sky130_fd_sc_hd__clkbuf_1]</pre>
+  	This command insert clock buffer as below.
+	sky130_fd_sc_hd__clkbuf_1 sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8
 
+**Layout after CTS looks like:**
 
 </details>
 
