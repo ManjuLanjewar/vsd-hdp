@@ -4974,7 +4974,13 @@ report_checks -path_delay min_max -fields {slew trans net cap input_pin} -format
 
 - Be sure to perform the timing analysis with the correct library file which was used for CTS (which was the LIB_SYNTH_COMPLETE or the LIB_TYPICAL in our case).
 - Note: As of now, CTS does not support multi-corner optimization.
+- Commands to know the skew.
+- <pre>report_clock_skew -hold
+  report_clock_skew -setup</pre>
+- After executing above commands:
   
+  ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/4c34f036-3128-45b8-a761-f8853276cdaa)
+
 **Steps to observe impact of bigger CTS buffers on setup and hold timing**
 
 - Modify the CTS_CLK_BUFFER_LIST variable to exclude the sky130_fd_sc_hd__clkbuf_1 cell and re-run CTS again.
