@@ -5104,6 +5104,8 @@ Layout after routing looks like:
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/135b3e19-2e1a-49cb-8e64-6e006920e87c)
 
+Layout after routing - Zoomed (Magic)
+
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/2dfb0c27-31d0-4b93-80ec-0c9f9b44c637)
 
 3. **Global and Detailed Routing and Configure TritonRoute**
