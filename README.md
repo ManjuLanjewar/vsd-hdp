@@ -5078,6 +5078,28 @@ sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8</p
 - Command to run routing.
   	<pre>run_routing</pre>
 
+No DRC violations after detailed routing
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e4baca31-d993-4923-9dd1-1f27f4e5514b)
+
+No Timing violations at TYPICAL corner
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1328b111-2eb0-4cc2-8052-8d7621794f1d)
+
+**Post-route STA**
+
+<pre>read_lef /openLANE_flow/designs/picorv32a/runs/latest_25-03/tmp/merged.lef
+read_def /openLANE_flow/designs/picorv32a/runs/latest_25-03/results/routing/picorv32a.def
+read_spef /openLANE_flow/designs/picorv32a/runs/latest_25-03/results/routing/picorv32a.spef
+write_db picorv32a_routing.db
+read_db picorv32a_routing.db
+read_verilog /openLANE_flow/designs/picorv32a/runs/latest_25-03/results/synthesis/picorv32a.synthesis_preroute.v
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+link_design picorv32a
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+set_propagated_clock [all_clocks]
+report_checks -path_delay min_max -format full_clock_expanded -digits 4 -fields {net cap slew input_pins fanout}</pre>
+
 3. **Global and Detailed Routing and Configure TritonRoute**
 
 There are 2 stages of routing: global (routing region is divided into rectangle grids which are represented as course 3D routes via FastRoute tool) and detailed (finer grids and routing guides are used to implement physical wiring via TritonRoute tool). 
