@@ -5054,9 +5054,29 @@ sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8</p
 
 **Lab steps to build power distribution network**
 
+- Levels of Power distribution
+  > VDD, VSS pins/ balls
+  |--> VDD, VSS pads
+       |--> Core Power Rings
+            |--> VDD, VSS Horizontal, Vertical Straps
+                 |--> Standard Cell Rails
+                 |
+                 |--> Macro Power Ring
+  >
+  
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b1da6586-7f49-4a42-8900-0d461ce738f6)
 
+- command to perfom power planning
+	<pre>% echo $::env(CURRENT_DEF)</pre>
+	/openLANE_flow/designs/picorv32a/runs/22-03_07-54/results/cts/picorv32a.cts.def
 
+	<pre>gen_pdn</pre>
 
+	<pre>% echo $::env(CURRENT_DEF)</pre>
+	/openLANE_flow/designs/picorv32a/runs/22-03_07-54/tmp/floorplan/30-pdn.def
+        After PDN, cts changed to pdn.def in floorplan
+- Command to run routing.
+  	<pre>run_routing</pre>
 
 3. **Global and Detailed Routing and Configure TritonRoute**
 
