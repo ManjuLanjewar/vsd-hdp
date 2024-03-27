@@ -5052,6 +5052,12 @@ sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8</p
 
 <summary>Power Distribution Network and Routing</summary>
 
+**Lab steps to build power distribution network**
+
+
+
+
+
 3. **Global and Detailed Routing and Configure TritonRoute**
 
 There are 2 stages of routing: global (routing region is divided into rectangle grids which are represented as course 3D routes via FastRoute tool) and detailed (finer grids and routing guides are used to implement physical wiring via TritonRoute tool). 
