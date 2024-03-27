@@ -5100,6 +5100,11 @@ read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
 set_propagated_clock [all_clocks]
 report_checks -path_delay min_max -format full_clock_expanded -digits 4 -fields {net cap slew input_pins fanout}</pre>
 
+Layout after routing looks like:
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/135b3e19-2e1a-49cb-8e64-6e006920e87c)
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/2dfb0c27-31d0-4b93-80ec-0c9f9b44c637)
+
 3. **Global and Detailed Routing and Configure TritonRoute**
 
 There are 2 stages of routing: global (routing region is divided into rectangle grids which are represented as course 3D routes via FastRoute tool) and detailed (finer grids and routing guides are used to implement physical wiring via TritonRoute tool). 
