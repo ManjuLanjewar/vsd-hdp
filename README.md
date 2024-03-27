@@ -5101,6 +5101,7 @@ set_propagated_clock [all_clocks]
 report_checks -path_delay min_max -format full_clock_expanded -digits 4 -fields {net cap slew input_pins fanout}</pre>
 
 Layout after routing looks like:
+
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/135b3e19-2e1a-49cb-8e64-6e006920e87c)
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/2dfb0c27-31d0-4b93-80ec-0c9f9b44c637)
