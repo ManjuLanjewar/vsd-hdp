@@ -4954,9 +4954,26 @@ If the design produces any setup timing violaions in the analysis, it can be eli
 <summary>LAB</summary>
 
 **Steps to analyze timing with real clocks using OpenSTA**
+- In OpenRoad, the timing analysis is performed by creating a db file using the LEF and DEF files of the design.
+- db creation is a one-time process (unless the def changes). To create the db, invoke OpenRoad from within the OpenLANE shell using openroad.
+  Then from within the OpenRoad shell execute the following commands:
+  
+<pre>read_lef /openLANE_flow/designs/picorv32a/runs/22-03_07-54/tmp/merged.lef
+read_def /openLANE_flow/designs/picorv32a/runs/22-03_07-54/results/cts/picorv32a.cts.def
+write_db picorv32a_cts.db</pre>
 
+- Performing STA:
+	
+<pre>read_db picorv32a_cts.db
+read_verilog /openLANE_flow/designs/picorv32a/runs/22-03_07-54/results/synthesis/picorv32a.synthesis_cts.v
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+link_design picorv32a
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+set_propagated_clock [all_clocks]
+report_checks -path_delay min_max -fields {slew trans net cap input_pin} -format full_clock_expanded -digits 4</pre>
 
-
+- Be sure to perform the timing analysis with the correct library file which was used for CTS (which was the LIB_SYNTH_COMPLETE or the LIB_TYPICAL in our case).
+- Note: As of now, CTS does not support multi-corner optimization.
 
 
 </details>
