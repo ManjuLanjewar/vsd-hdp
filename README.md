@@ -5127,19 +5127,15 @@ sudo apt-get update
   
 <pre>sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</pre>
 
-- Verify that the Docker Engine installation is successful by running the hello-world image.
-
-  <pre>sudo docker run hello-world</pre>
-
-![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/5a770edf-71a2-4d5f-ad70-7bdec390a873)
-
 - Making Docker available without root (Linux)
 <pre>sudo groupadd docker
 sudo usermod -aG docker $USER
 sudo reboot</pre> 
 
-- After reboot, I used this command:
-sudo docker run hello-world
+- After reboot verify that the Docker Engine installation is successful by running command:
+<pre>sudo docker run hello-world</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e2ca07bf-3d13-45da-9665-107db0d9a40d)
 
 - To check dependencies, use the following commands:
 <pre>git --version
@@ -5149,7 +5145,7 @@ sudo docker run hello-world
      make --version
      python3 -m venv -h</pre>
 
-- Below commands to install PDKs and tools:
+- Below commands to download and install OpenLane from github
 <pre>git clone --depth 1 https://github.com/The-OpenROAD-Project/OpenLane.git
      cd OpenLane/
      make
