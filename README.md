@@ -23,7 +23,7 @@
 <p><a href="#C16">Day 16</a></p>
 <p><a href="#C17">Day 17</a></p>
 <p><a href="#C18">Day 18</a></p>
-
+<p><a href="#C19">Day 19</a></p>
 </body>
 </html>
 
@@ -121,41 +121,6 @@ $ sudo make
 $ sudo make install</pre>
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/62a97dfb-f60c-425d-8955-c026a0ac623a)
 
-* Python Installation
-
-<pre>$ sudo apt install -y build-essential python3 python3-venv python3-pip</pre>
-
-* Docker Installation
-
-<pre>$ sudo apt-get remove docker docker-engine docker.io containerd runc (removes older version of docker if installed)
-
-$ sudo apt-get update
-
-$ sudo apt-get install \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
-    
-$ sudo mkdir -p /etc/apt/keyrings
-
-$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-
-$ echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  
-$ sudo apt-get update
-
-$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-
-$ apt-cache madison docker-ce (copy the version string you want to install)
-
-$ sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io docker-compose-plugin (paste the version string copies in place of <VERSION_STRING>)
-
-$ sudo docker run hello-world (If the docker is successfully installed u will get a success message here)</pre>
-    
-![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/5a770edf-71a2-4d5f-ad70-7bdec390a873)
 
 </details>
 
@@ -5121,4 +5086,76 @@ Global Routing - Routing guides are generated for interconnects
 Detailed Routing - Tracks are generated interatively. TritonRoute 14 ensures there are no DRC violations after routing.
 
 </details>
+
+<h2 id="C19">Day 19</h2>
+
+**OpenLane Tool Installation Steps** 
+
+https://openlane.readthedocs.io/en/latest/getting_started/installation/installation_ubuntu.html
+
+<summary>OpenLane, PDKs, and tools: Installation</summary>
+
+- Installation of required packages to avoid version mismatches then install required packages.
+
+<pre>sudo apt-get update
+sudo apt-get upgrade
+sudo apt install -y build-essential python3 python3-venv make git</pre>
+
+- Run the following command to uninstall all conflicting packages:
+
+for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+
+- Docker installation
+  
+**Add Docker's official GPG key**
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+**Add the repository to Apt sources**
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+- To install the latest version, run:
+  
+<pre>sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</pre>
+
+- Verify that the Docker Engine installation is successful by running the hello-world image.
+
+  <pre>sudo docker run hello-world</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e4a348b4-db9e-441f-b252-02b15070007a)
+
+- Making Docker available without root (Linux)
+<pre>sudo groupadd docker
+sudo usermod -aG docker $USER
+sudo reboot</pre> 
+
+- After reboot, I used this command:
+sudo docker run hello-world
+
+- To check dependencies, use the following commands:
+<pre>git --version
+     docker --version
+     python3 --version
+     python3 -m pip --version
+     make --version
+     python3 -m venv -h</pre>
+
+- Below commands to install PDKs and tools:
+<pre>git clone --depth 1 https://github.com/The-OpenROAD-Project/OpenLane.git
+     cd OpenLane/
+     make
+     make test</pre>
+
+As all the above steps were successful, I got the following terminal result:
+   
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/5a770edf-71a2-4d5f-ad70-7bdec390a873)
+
+
 
