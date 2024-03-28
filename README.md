@@ -5091,6 +5091,8 @@ Detailed Routing - Tracks are generated interatively. TritonRoute 14 ensures the
 
 **OpenLane Tool Installation Steps** 
 
+<details>
+	
 https://openlane.readthedocs.io/en/latest/getting_started/installation/installation_ubuntu.html
 
 <summary>OpenLane, PDKs, and tools: Installation</summary>
@@ -5103,7 +5105,7 @@ sudo apt install -y build-essential python3 python3-venv make git</pre>
 
 - Run the following command to uninstall all conflicting packages:
 
-for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+<pre>for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done</pre>
 
 - Docker installation
   
@@ -5129,7 +5131,7 @@ sudo apt-get update
 
   <pre>sudo docker run hello-world</pre>
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e4a348b4-db9e-441f-b252-02b15070007a)
+![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/5a770edf-71a2-4d5f-ad70-7bdec390a873)
 
 - Making Docker available without root (Linux)
 <pre>sudo groupadd docker
@@ -5155,7 +5157,7 @@ sudo docker run hello-world
 
 As all the above steps were successful, I got the following terminal result:
    
-![image](https://github.com/ManjuLanjewar/VSD_HDP/assets/157192602/5a770edf-71a2-4d5f-ad70-7bdec390a873)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e4a348b4-db9e-441f-b252-02b15070007a)
 
-
+</details>
 
