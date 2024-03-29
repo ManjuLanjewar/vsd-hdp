@@ -5157,7 +5157,8 @@ As all the above steps were successful, I got the following terminal result:
 
 ### Error after command run_synthesis
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/f9dee5eb-d5ab-4838-8681-4a94273a8aac)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e09f9cd0-de11-4130-b01f-d71212ec6b68)
+
 
 
 </details>
