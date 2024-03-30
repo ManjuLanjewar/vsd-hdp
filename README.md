@@ -5155,6 +5155,9 @@ As all the above steps were successful, I got the following terminal result:
    
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e4a348b4-db9e-441f-b252-02b15070007a)
 
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/ed7913ae-f334-4b65-a3db-01a46176e648)
+
 ### Error after command run_synthesis
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e09f9cd0-de11-4130-b01f-d71212ec6b68)
