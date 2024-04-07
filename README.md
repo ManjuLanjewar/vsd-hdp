@@ -5162,6 +5162,175 @@ As all the above steps were successful, I got the following terminal result:
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e09f9cd0-de11-4130-b01f-d71212ec6b68)
 
+<pre>% package require openlane 0.9
+% prep -design <design> [-tag TAG] [-config CONFIG] [-init_design_config] [-overwrite]
+% run_synthesis
+% run_floorplan
+% run_placement
+% run_cts
+% run_routing
+% write_powered_verilog -output_def <def filename> -output_verilog <verilog filename>
+% set_netlist $::env(routing_logs)/$::env(DESIGN_NAME).powered.v
+% run_magic
+% run_magic_spice_export
+% run_magic_drc
+% run_lvs
+% run_antenna_check</pre>
+
+
+
+
+
+<pre>manju123@manju123-VirtualBox:~/OpenLane$ make mount
+cd /home/manju123/OpenLane && \
+	docker run --rm -v /home/manju123:/home/manju123 -v /home/manju123/OpenLane:/openlane -v /home/manju123/OpenLane/empty:/openlane/install -v /home/manju123/.volare:/home/manju123/.volare -e PDK_ROOT=/home/manju123/.volare -e PDK=sky130A  --user 1000:1000 -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/manju123/.Xauthority:/.Xauthority --network host --security-opt seccomp=unconfined -ti efabless/openlane:525d7ed3fec0b62b268ff5748fb748bd92913568-amd64
+OpenLane Container (525d7ed):/openlane$ ./flow.tcl -interactive
+OpenLane 525d7ed3fec0b62b268ff5748fb748bd92913568
+All rights reserved. (c) 2020-2023 Efabless Corporation and contributors.
+Available under the Apache License, version 2.0. See the LICENSE file for more details.
+
+% package require openlane 0.9
+0.9
+% prep -design alu_4_bit -tag runs -overwrite
+[INFO]: Using configuration in 'designs/alu_4_bit/config.tcl'...
+[INFO]: PDK Root: /home/manju123/.volare
+[INFO]: Process Design Kit: sky130A
+[INFO]: Standard Cell Library: sky130_fd_sc_hd
+[INFO]: Optimization Standard Cell Library: sky130_fd_sc_hd
+[INFO]: Run Directory: /openlane/designs/alu_4_bit/runs/runs
+[INFO]: Removing existing /openlane/designs/alu_4_bit/runs/runs...
+[INFO]: Saving runtime environment...
+[INFO]: Preparing LEF files for the nom corner...
+[INFO]: Preparing LEF files for the min corner...
+[INFO]: Preparing LEF files for the max corner...
+% set ::env(SYNTH_STRATEGY) "DELAY 1"
+DELAY 1
+% set ::env(SYNTH_SIZING) 1
+1
+% set ::env(FP_PDN_MULTILAYER) {1}
+1
+% run_synthesis
+[STEP 1]
+[INFO]: Running Synthesis (log: designs/alu_4_bit/runs/runs/logs/synthesis/1-synthesis.log)...
+[STEP 2]
+[INFO]: Running Single-Corner Static Timing Analysis (log: designs/alu_4_bit/runs/runs/logs/synthesis/2-sta.log)...
+% run_floorplan
+[STEP 3]
+[INFO]: Running Initial Floorplanning (log: designs/alu_4_bit/runs/runs/logs/floorplan/3-initial_fp.log)...
+[WARNING]: Current core area is too small for the power grid settings chosen. The power grid was scaled down to an offset of 1/8 the core width and height and a pitch of 1/4 the core width and height.
+[INFO]: Floorplanned with width 62.1 and height 59.84.
+[STEP 4]
+[INFO]: Running IO Placement (log: designs/alu_4_bit/runs/runs/logs/floorplan/4-io.log)...
+[STEP 5]
+[INFO]: Running Tap/Decap Insertion (log: designs/alu_4_bit/runs/runs/logs/floorplan/5-tap.log)...
+[INFO]: Power planning with power {VPWR} and ground {VGND}...
+[STEP 6]
+[INFO]: Generating PDN (log: designs/alu_4_bit/runs/runs/logs/floorplan/6-pdn.log)...
+% set ::env(FP_PDN_MULTILAYER) {1}
+1
+% run_floorplan
+[STEP 7]
+[INFO]: Running Initial Floorplanning (log: designs/alu_4_bit/runs/runs/logs/floorplan/7-initial_fp.log)...
+[INFO]: Floorplanned with width 62.1 and height 59.84.
+[STEP 8]
+[INFO]: Running IO Placement (log: designs/alu_4_bit/runs/runs/logs/floorplan/8-io.log)...
+[STEP 9]
+[INFO]: Running Tap/Decap Insertion (log: designs/alu_4_bit/runs/runs/logs/floorplan/9-tap.log)...
+[INFO]: Power planning with power {VPWR} and ground {VGND}...
+[STEP 10]
+[INFO]: Generating PDN (log: designs/alu_4_bit/runs/runs/logs/floorplan/10-pdn.log)...
+% run_placement
+[STEP 11]
+[INFO]: Running Global Placement (skip_io) (log: designs/alu_4_bit/runs/runs/logs/placement/10-global_skip_io.log)...
+[STEP 12]
+[INFO]: Running Single-Corner Static Timing Analysis (log: designs/alu_4_bit/runs/runs/logs/placement/12-gpl_sta.log)...
+[STEP 13]
+[INFO]: Running IO Placement (log: designs/alu_4_bit/runs/runs/logs/placement/13-io.log)...
+[STEP 14]
+[INFO]: Running Global Placement (log: designs/alu_4_bit/runs/runs/logs/placement/13-global.log)...
+[STEP 15]
+[INFO]: Running Single-Corner Static Timing Analysis (log: designs/alu_4_bit/runs/runs/logs/placement/15-gpl_sta.log)...
+[STEP 16]
+[INFO]: Running Placement Resizer Design Optimizations (log: designs/alu_4_bit/runs/runs/logs/placement/16-resizer.log)...
+[STEP 17]
+[INFO]: Running Detailed Placement (log: designs/alu_4_bit/runs/runs/logs/placement/17-detailed.log)...
+[STEP 18]
+[INFO]: Running Single-Corner Static Timing Analysis (log: designs/alu_4_bit/runs/runs/logs/placement/18-dpl_sta.log)...
+% run_cts
+[STEP 19]
+[INFO]: Running Clock Tree Synthesis (log: designs/alu_4_bit/runs/runs/logs/cts/19-cts.log)...
+[STEP 20]
+[INFO]: Running Single-Corner Static Timing Analysis (log: designs/alu_4_bit/runs/runs/logs/cts/20-cts_sta.log)...
+% run_routing
+[STEP 21]
+[INFO]: Running Global Routing Resizer Design Optimizations (log: designs/alu_4_bit/runs/runs/logs/routing/21-resizer_design.log)...
+[STEP 22]
+[INFO]: Running Single-Corner Static Timing Analysis (log: designs/alu_4_bit/runs/runs/logs/routing/22-rsz_design_sta.log)...
+[STEP 23]
+[INFO]: Running Global Routing Resizer Timing Optimizations (log: designs/alu_4_bit/runs/runs/logs/routing/23-resizer_timing.log)...
+[STEP 24]
+[INFO]: Running Single-Corner Static Timing Analysis (log: designs/alu_4_bit/runs/runs/logs/routing/24-rsz_timing_sta.log)...
+[STEP 25]
+[INFO]: Running Global Routing (log: designs/alu_4_bit/runs/runs/logs/routing/25-global.log)...
+[STEP 26]
+[INFO]: Writing Verilog (log: designs/alu_4_bit/runs/runs/logs/routing/25-global_write_netlist.log)...
+[STEP 27]
+[INFO]: Running Single-Corner Static Timing Analysis (log: designs/alu_4_bit/runs/runs/logs/routing/27-grt_sta.log)...
+[STEP 28]
+[INFO]: Running Fill Insertion (log: designs/alu_4_bit/runs/runs/logs/routing/28-fill.log)...
+[STEP 29]
+[INFO]: Running Detailed Routing (log: designs/alu_4_bit/runs/runs/logs/routing/29-detailed.log)...
+[INFO]: No Magic DRC violations after detailed routing.
+[STEP 30]
+[INFO]: Checking Wire Lengths (log: designs/alu_4_bit/runs/runs/logs/routing/30-wire_lengths.log)...
+1712514860
+% write_powered_verilog -output_def alu_4_bit_powered_verilog.def -output_verilog $::env(routing_logs)/$::env(DESIGN_NAME).powered.v    
+[WARNING]: The -output_verilog option of write_powered_verilog is deprecated.
+[WARNING]: Update your invocation to:
+[WARNING]:     write_powered_verilog -output_nl <UNPOWERED_NETLIST> -output_pnl <POWERED_NETLIST>
+[STEP 31]
+[INFO]: Writing Powered Verilog (logs: designs/alu_4_bit/runs/runs/logs/signoff/31-write_powered_def.log, designs/alu_4_bit/runs/runs/logs/signoff/31-write_powered_verilog.log)...
+[STEP 32]
+[INFO]: Writing Verilog (log: designs/alu_4_bit/runs/runs/logs/signoff/31-write_powered_verilog.log)...
+% set_netlist $::env(routing_logs)/$::env(DESIGN_NAME).powered.v
+% run_magic
+[STEP 33]
+[INFO]: Running Magic to generate various views...
+[INFO]: Streaming out GDSII with Magic (log: designs/alu_4_bit/runs/runs/logs/signoff/33-gdsii.log)...
+[INFO]: Generating MAGLEF views...
+[INFO]: Generating lef with Magic (/openlane/designs/alu_4_bit/runs/runs/logs/signoff/33-lef.log)...
+% run_magic_spice_export
+[STEP 34]
+[INFO]: Running Magic Spice Export from LEF (log: designs/alu_4_bit/runs/runs/logs/signoff/34-spice.log)...
+% run_magic_drc
+[STEP 35]
+[INFO]: Running Magic DRC (log: designs/alu_4_bit/runs/runs/logs/signoff/35-drc.log)...
+[INFO]: Converting Magic DRC database to various tool-readable formats...
+[INFO]: No Magic DRC violations after GDS streaming out.
+% run_lvs
+[STEP 36]
+[INFO]: Writing Powered Verilog (logs: designs/alu_4_bit/runs/runs/logs/signoff/36-write_powered_def.log, designs/alu_4_bit/runs/runs/logs/signoff/36-write_powered_verilog.log)...
+[STEP 37]
+[INFO]: Writing Verilog (log: designs/alu_4_bit/runs/runs/logs/signoff/36-write_powered_verilog.log)...
+[STEP 38]
+[INFO]: Running LVS (log: designs/alu_4_bit/runs/runs/logs/signoff/38-lvs.lef.log)...
+% run_antenna_check
+[STEP 39]
+[INFO]: Running OpenROAD Antenna Rule Checker (log: designs/alu_4_bit/runs/runs/logs/signoff/39-arc.log)...
+% 
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </details>
