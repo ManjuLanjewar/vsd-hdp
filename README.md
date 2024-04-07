@@ -5156,14 +5156,139 @@ As all the above steps were successful, I got the following terminal result:
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e4a348b4-db9e-441f-b252-02b15070007a)
 
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/ed7913ae-f334-4b65-a3db-01a46176e648)
+#### Adding Designs
 
-### Error after command run_synthesis
+To add a new design, the following command creates a configuration file for your design:
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e09f9cd0-de11-4130-b01f-d71212ec6b68)
+# JSON Configuration File
+./flow.tcl -design <design_name> -init_design_config -add_to_designs
 
-<pre>% package require openlane 0.9
-% prep -design <design> [-tag TAG] [-config CONFIG] [-init_design_config] [-overwrite]
+Or for TCL version use
+
+# Tcl Configuration File
+./flow.tcl -design <design_name> -init_design_config -add_to_designs -config_file config.tcl
+
+This will create the following directory structure: 
+designs/<design_name>
+├── config.json (or config.tcl)
+
+IMPORTANT NOTE: The <design_name> must match the top-level module name of your design exactly. Otherwise, OpenLane will throw an error (at least by the run_synthesis stage).
+
+It is recommended to place the verilog files of the design in a src directory inside the folder of the design as following:
+designs/<design_name>
+├── config.tcl
+├── src
+│   ├── design.v
+
+
+Fine tune config file for the project:
+# Design
+set ::env(DESIGN_NAME) "alu_4_bit"
+
+set ::env(VERILOG_FILES) "./designs/alu_4_bit/src/alu_4_bit.v"
+set ::env(BASE_SDC_FILE) "$::env(DESIGN_DIR)/src/alu_4_bit.sdc"
+
+set ::env(CLOCK_PERIOD) "10.000"
+set ::env(CLOCK_PORT) "clk"
+
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+set ::env(FP_PDN_MULTILAYER) {1}
+set ::env(SYNTH_STRATEGY) "DELAY 1"
+set ::env(SYNTH_SIZING) 1
+
+set filename $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+        source $filename
+}
+
+Constrains to STA of the project alu_4_bit.sdc :
+
+create_clock -period 10 -name clk [get_ports clk]
+set_clock_latency -source -max 3 [get_clock clk]
+set_clock_latency 1 [get_clock clk]
+set_clock_uncertainty -setup 0.5 [get_clock clk]
+set_clock_uncertainty -hold 0.2 [get_clock clk]
+set_input_delay -clock clk -max 3 [get_ports A[0]]
+set_input_delay -clock clk -max 3 [get_ports A[1]]
+set_input_delay -clock clk -max 3 [get_ports A[2]]
+set_input_delay -clock clk -max 3 [get_ports A[3]]
+set_input_delay -clock clk -max 3 [get_ports B[0]]
+set_input_delay -clock clk -max 3 [get_ports B[1]]
+set_input_delay -clock clk -max 3 [get_ports B[2]]
+set_input_delay -clock clk -max 3 [get_ports B[3]]
+set_input_delay -clock clk -max 3 [get_ports rst] 
+set_input_delay -clock clk -min 1 [get_ports A[1]]
+set_input_delay -clock clk -min 1 [get_ports A[0]]
+set_input_delay -clock clk -min 1 [get_ports A[2]]
+set_input_delay -clock clk -min 1 [get_ports A[3]]
+set_input_delay -clock clk -min 1 [get_ports B[0]]
+set_input_delay -clock clk -min 1 [get_ports B[1]]
+set_input_delay -clock clk -min 1 [get_ports B[2]]
+set_input_delay -clock clk -min 1 [get_ports B[3]]
+set_input_delay -clock clk -min 1 [get_ports rst] 
+set_input_delay -clock clk -max 3 [get_ports mode[0]]
+set_input_delay -clock clk -max 3 [get_ports mode[1]]    
+set_input_delay -clock clk -max 3 [get_ports mode[2]]
+set_input_delay -clock clk -min 1 [get_ports mode[0]]
+set_input_delay -clock clk -min 1 [get_ports mode[1]]
+set_input_delay -clock clk -min 1 [get_ports mode[2]]
+set_input_transition -max 0.5 [get_ports A[0]]
+set_input_transition -max 0.5 [get_ports A[1]]
+set_input_transition -max 0.5 [get_ports A[2]]
+set_input_transition -max 0.5 [get_ports A[3]]
+set_input_transition -max 0.5 [get_ports B[0]]
+set_input_transition -max 0.5 [get_ports B[1]]
+set_input_transition -max 0.5 [get_ports B[2]]
+set_input_transition -max 0.5 [get_ports B[3]]
+set_input_transition -max 0.5 [get_ports rst] 
+set_input_transition -min 0.1 [get_ports A[0]]
+set_input_transition -min 0.1 [get_ports A[1]]
+set_input_transition -min 0.1 [get_ports A[2]]
+set_input_transition -min 0.1 [get_ports A[3]]
+set_input_transition -min 0.1 [get_ports B[0]]
+set_input_transition -min 0.1 [get_ports B[1]]
+set_input_transition -min 0.1 [get_ports B[2]]
+set_input_transition -min 0.1 [get_ports B[3]]
+set_input_transition -min 0.1 [get_ports rst] 
+set_input_transition -max 0.5 [get_ports mode[0]]
+set_input_transition -max 0.5 [get_ports mode[1]]
+set_input_transition -max 0.5 [get_ports mode[2]]
+set_input_transition -min 0.1 [get_ports mode[0]]
+set_input_transition -min 0.1 [get_ports mode[1]]
+set_input_transition -min 0.1 [get_ports mode[2]]
+set_output_delay -clock clk -max 5 [get_ports y[0]]
+set_output_delay -clock clk -max 5 [get_ports y[1]]
+set_output_delay -clock clk -max 5 [get_ports y[2]]
+set_output_delay -clock clk -max 5 [get_ports y[3]]
+set_output_delay -clock clk -max 5 [get_ports y[4]]
+set_output_delay -clock clk -max 5 [get_ports y[5]]
+set_output_delay -clock clk -max 5 [get_ports y[6]]
+set_output_delay -clock clk -max 5 [get_ports y[7]]
+set_output_delay -clock clk -min 1 [get_ports y[0]]
+set_output_delay -clock clk -min 1 [get_ports y[1]]
+set_output_delay -clock clk -min 1 [get_ports y[2]]
+set_output_delay -clock clk -min 1 [get_ports y[3]]
+set_output_delay -clock clk -min 1 [get_ports y[4]]
+set_output_delay -clock clk -min 1 [get_ports y[5]]
+set_output_delay -clock clk -min 1 [get_ports y[6]]
+set_output_delay -clock clk -min 1 [get_ports y[7]]
+set_load -max 0.4 [get_ports y]
+set_load -min 0.1 [get_ports y]
+
+
+Running the flow for the design
+To run the automated flow:
+./flow.tcl -design <design_name>
+
+To run the flow interactively
+./flow.tcl -interactive
+
+A tcl shell will be opened where the openlane package is to be sourced 
+package require openlane 0.9
+
+**Workflow**
+
+<pre>% prep -design <design> [-tag TAG] [-config CONFIG] [-init_design_config] [-overwrite]
 % run_synthesis
 % run_floorplan
 % run_placement
@@ -5177,9 +5302,7 @@ As all the above steps were successful, I got the following terminal result:
 % run_lvs
 % run_antenna_check</pre>
 
-
-
-
+**Working log:**
 
 <pre>manju123@manju123-VirtualBox:~/OpenLane$ make mount
 cd /home/manju123/OpenLane && \
