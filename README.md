@@ -5161,27 +5161,30 @@ As all the above steps were successful, I got the following terminal result:
 To add a new design, the following command creates a configuration file for your design:
 
 # JSON Configuration File
-./flow.tcl -design <design_name> -init_design_config -add_to_designs
+<pre>./flow.tcl -design <design_name> -init_design_config -add_to_designs</pre>
 
 Or for TCL version use
 
 # Tcl Configuration File
-./flow.tcl -design <design_name> -init_design_config -add_to_designs -config_file config.tcl
+<pre>./flow.tcl -design <design_name> -init_design_config -add_to_designs -config_file config.tcl</pre>
 
 This will create the following directory structure: 
-designs/<design_name>
-├── config.json (or config.tcl)
 
-IMPORTANT NOTE: The <design_name> must match the top-level module name of your design exactly. Otherwise, OpenLane will throw an error (at least by the run_synthesis stage).
+<pre>designs/<design_name>
+├── config.json (or config.tcl)</pre>
 
-It is recommended to place the verilog files of the design in a src directory inside the folder of the design as following:
-designs/<design_name>
+**IMPORTANT NOTE: The <design_name> must match the top-level module name of your design exactly. Otherwise, OpenLane will throw an error (at least by the run_synthesis stage)** 
+
+- It is recommended to place the verilog files of the design in a src directory inside the folder of the design as following:
+
+<pre>designs/<design_name>
 ├── config.tcl
 ├── src
-│   ├── design.v
+│   ├── design.v</pre>
 
 
 Fine tune config file for the project:
+<pre>
 # Design
 set ::env(DESIGN_NAME) "alu_4_bit"
 
@@ -5200,10 +5203,11 @@ set filename $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/$::env(PDK)_$::en
 if { [file exists $filename] == 1} {
         source $filename
 }
+</pre>
 
-Constrains to STA of the project alu_4_bit.sdc :
+- Constrains to STA of the project alu_4_bit.sdc :
 
-create_clock -period 10 -name clk [get_ports clk]
+<pre>create_clock -period 10 -name clk [get_ports clk]
 set_clock_latency -source -max 3 [get_clock clk]
 set_clock_latency 1 [get_clock clk]
 set_clock_uncertainty -setup 0.5 [get_clock clk]
@@ -5274,17 +5278,21 @@ set_output_delay -clock clk -min 1 [get_ports y[6]]
 set_output_delay -clock clk -min 1 [get_ports y[7]]
 set_load -max 0.4 [get_ports y]
 set_load -min 0.1 [get_ports y]
+</pre>
 
+- Running the flow for the design
 
-Running the flow for the design
 To run the automated flow:
-./flow.tcl -design <design_name>
+
+<pre>./flow.tcl -design <design_name></pre>
 
 To run the flow interactively
-./flow.tcl -interactive
 
-A tcl shell will be opened where the openlane package is to be sourced 
-package require openlane 0.9
+<pre>./flow.tcl -interactive</pre>
+
+A tcl shell will be opened where the openlane package is to be sourced
+
+<pre>package require openlane 0.9</pre>
 
 **Workflow**
 
@@ -5450,10 +5458,6 @@ DELAY 1
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/0e31af04-1ff4-4a10-9a4b-480a5a7238cb)
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/af6d433e-e502-4e6d-87cd-56b87dc7964c)
-
-
-
-
 
 
 
