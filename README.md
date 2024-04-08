@@ -5459,8 +5459,11 @@ DELAY 1
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/af6d433e-e502-4e6d-87cd-56b87dc7964c)
 
+</details>
 
- <summary>Synthesis cell usage statistics:</summary>
+<details>
+
+	<summary>Synthesis cell usage statistics</summary>
 
 <pre>62. Printing statistics.
 
@@ -5535,7 +5538,6 @@ DELAY 1
 
    Chip area for module '\alu_4_bit': 1938.108800
    </pre>
-
 
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/904e13eb-4fdf-4482-b82d-4729d078dfdb)
