@@ -5155,8 +5155,11 @@ As all the above steps were successful, I got the following terminal result:
    
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e4a348b4-db9e-441f-b252-02b15070007a)
 
+</details>
 
 #### Adding Designs
+<details>
+         <summary>OpenLane Flow : alu_4_bit</summary>
 
 To add a new design, the following command creates a configuration file for your design:
 
@@ -5461,7 +5464,10 @@ DELAY 1
 
 </details>
 
+
 <details>
+
+**Synthesis cell usage statistics**
 
 	<summary>Synthesis cell usage statistics</summary>
 
