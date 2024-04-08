@@ -5548,6 +5548,11 @@ DELAY 1
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/904e13eb-4fdf-4482-b82d-4729d078dfdb)
 
+
+<pre>manju123@manju123-VirtualBox:~/OpenLane/designs/alu_4_bit/runs/runs/results/placement$ magic -T ~/home/manju123/.volare/volare/sky130/versions/cd1748bb197f9b7af62a54507de6624e30363943/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.min.lef def read alu_4_bit.def &</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/a046423c-c90e-4e19-a49b-7aaac92af210)
+
 </details>
 
 
