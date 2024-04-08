@@ -5545,6 +5545,20 @@ DELAY 1
    Chip area for module '\alu_4_bit': 1938.108800
    </pre>
 
+sky130tech file location
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d20126e4-de85-4b35-a789-3011b172195e)
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b8a2bdc3-0c7d-4ed0-a383-99654cf63e16)
+
+lef file location 
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/3211c874-41b9-4971-b849-16e5a2a1f6ab)
+
+def file location
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/0ddedafb-874f-4b5b-a2ab-38120f4da461)
+
 To check the layout invoke magic from the results/placement directory:
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/4593c814-2a67-46b6-b803-70b766cd24bc)
