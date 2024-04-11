@@ -5490,14 +5490,16 @@ DELAY 1
 
 === alu_4_bit ===
 
-   Number of wires:                199
-   Number of wire bits:            214
+   === alu_4_bit ===
+
+   Number of wires:                255
+   Number of wire bits:            270
    Number of public wires:           6
    Number of public wire bits:      21
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                201
+   Number of cells:                257
      sky130_fd_sc_hd__a2111oi_2      1
      sky130_fd_sc_hd__a211oi_2       3
      sky130_fd_sc_hd__a21bo_2        2
@@ -5521,7 +5523,7 @@ DELAY 1
      sky130_fd_sc_hd__and3_2         3
      sky130_fd_sc_hd__and3b_2        1
      sky130_fd_sc_hd__and4_2         1
-     sky130_fd_sc_hd__buf_1         15
+     sky130_fd_sc_hd__buf_1         71
      sky130_fd_sc_hd__dfxtp_2        8
      sky130_fd_sc_hd__inv_2          6
      sky130_fd_sc_hd__nand2_2       22
@@ -5557,7 +5559,7 @@ DELAY 1
      sky130_fd_sc_hd__or4b_2         2
      sky130_fd_sc_hd__or4bb_2        1
 
-   Chip area for module '\alu_4_bit': 1938.108800
+   Chip area for module '\alu_4_bit': 2148.310400
    </pre>
 
 sky130tech file location
