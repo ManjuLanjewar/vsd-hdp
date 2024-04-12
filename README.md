@@ -5321,7 +5321,8 @@ A tcl shell will be opened where the openlane package is to be sourced
 % run_lvs
 % run_antenna_check</pre>
 
-Let's build an ASIC in interactive mode by command:
+- Let's build an ASIC in interactive mode by command:
+
 **Working log:**
 
 <pre>manju123@manju123-VirtualBox:~/OpenLane$ make mount
@@ -5473,7 +5474,7 @@ DELAY 1
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/af6d433e-e502-4e6d-87cd-56b87dc7964c)
 
-The flow completed without any issues. 
+**Note: The flow completed without any issues**
 
 **Screenshots for Working Flow in fully automatic mode**
 
@@ -5486,6 +5487,8 @@ The flow completed without any issues.
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/cdf6fb5c-9775-4cbf-8cc5-03fcb9d1f2e0)
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d671e901-20b0-4a0d-9f7d-3308e3633a3a)
+
+**Note: Here, Flow is not completed as it throws errors as hold violations**
 
 </details>
 
@@ -5570,6 +5573,12 @@ The flow completed without any issues.
 
    Chip area for module '\alu_4_bit': 2148.310400
    </pre>
+</details>
+
+**Placement View**
+
+<details>
+	 <summary>Placement view in magic</summary>
 
 sky130tech file location
 
