@@ -5473,7 +5473,7 @@ DELAY 1
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/af6d433e-e502-4e6d-87cd-56b87dc7964c)
 
-</details>
+The flow completed without any issues. 
 
 **Screenshots for Working Flow in fully automatic mode**
 
@@ -5489,11 +5489,12 @@ DELAY 1
 
 </details>
 
-<details>
-	
-	<summary>Synthesis cell usage statistics</summary>
 
 **Synthesis cell usage statistics**
+
+<details>
+
+	<summary>Synthesis cell usage statistics</summary>
 
 <pre>62. Printing statistics.
 
