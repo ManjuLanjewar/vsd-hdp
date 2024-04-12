@@ -5186,6 +5186,12 @@ This will create the following directory structure:
 ├── src
 │   ├── design.v</pre>
 
+</details>
+
+#### PVT Corner Analysis
+
+<details>
+	<summary>STA for post-synthesis</summary>
 
 **Fine tune config file for the project:**
 <pre>
@@ -5291,8 +5297,6 @@ set_output_delay -clock clk -min 1 [get_ports y[7]]
 
 </pre>
 
-#### STA for post-synthesis
-
 **For the STA we will use special TCL script alu_4_bit.tcl:**
 
 <pre>#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
@@ -5323,6 +5327,8 @@ report_tns -digits {4} > sta_out_tns.txt
 report_wns -digits {4} > sta_out_wns.txt</pre>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/fce12a05-8690-4654-841f-96aa91776c10)
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/db603718-229b-493b-9afe-28f2617f2599)
 
 </details>
 
