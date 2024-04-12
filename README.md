@@ -5188,7 +5188,7 @@ This will create the following directory structure:
 
 </details>
 
-#### PVT Corner Analysis
+## PVT Corner Analysis
 
 <details>
 	<summary>STA for post-synthesis</summary>
@@ -5537,7 +5537,7 @@ DELAY 1
 </details>
 
 
-**Synthesis cell usage statistics**
+## Synthesis cell usage statistics
 
 <details>
 	 <summary>Cell statistics</summary>
