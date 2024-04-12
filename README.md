@@ -5189,23 +5189,32 @@ This will create the following directory structure:
 Fine tune config file for the project:
 <pre>
 # Design
-set ::env(DESIGN_NAME) "alu_4_bit"
+# Design
+# set ::env(PDK) "sky130A"
+# set ::env(STD_CELL_LIBRARY) "sky130_fd_sc_hd"
 
+set ::env(DESIGN_NAME) "alu_4_bit"
 set ::env(VERILOG_FILES) "./designs/alu_4_bit/src/alu_4_bit.v"
+
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_PERIOD) "10.000"
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+
+set ::env(QUIT_ON_SYNTH_CHECKS) 0
 set ::env(BASE_SDC_FILE) "$::env(DESIGN_DIR)/src/alu_4_bit.sdc"
 
-set ::env(CLOCK_PERIOD) "10.000"
-set ::env(CLOCK_PORT) "clk"
-
-set ::env(CLOCK_NET) $::env(CLOCK_PORT)
-set ::env(FP_PDN_MULTILAYER) {1}
+set ::env(SYNTH_AUTONAME) 0
 set ::env(SYNTH_STRATEGY) "DELAY 1"
+set ::env(SYNTH_BUFFERING) 1
 set ::env(SYNTH_SIZING) 1
+set ::env(OUTPUT_CAP_LOAD) 17.65
+set ::env(MAX_FANOUT_CONSTRAINT) 4
 
 set filename $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
 if { [file exists $filename] == 1} {
         source $filename
 }
+
 </pre>
 
 - Constrains to STA of the project alu_4_bit.sdc :
@@ -5279,8 +5288,7 @@ set_output_delay -clock clk -min 1 [get_ports y[4]]
 set_output_delay -clock clk -min 1 [get_ports y[5]]
 set_output_delay -clock clk -min 1 [get_ports y[6]]
 set_output_delay -clock clk -min 1 [get_ports y[7]]
-set_load -max 0.4 [get_ports y]
-set_load -min 0.1 [get_ports y]
+
 </pre>
 
 - Running the flow for the design
@@ -5313,6 +5321,7 @@ A tcl shell will be opened where the openlane package is to be sourced
 % run_lvs
 % run_antenna_check</pre>
 
+Let's build an ASIC in interactive mode by command:
 **Working log:**
 
 <pre>manju123@manju123-VirtualBox:~/OpenLane$ make mount
@@ -5454,6 +5463,8 @@ DELAY 1
 % 
 </pre>
 
+**Screenshots for Working Flow in interactive mode**
+
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/080fa5c0-392a-49da-ba26-fe4ae40de31f)
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/bbaca1a5-4573-4b9a-acd6-df6a863a61bd)
@@ -5463,6 +5474,10 @@ DELAY 1
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/af6d433e-e502-4e6d-87cd-56b87dc7964c)
 
 </details>
+
+**Screenshots for Working Flow in fully automatic mode**
+
+<pre>./flow.tcl -design alu_4_bit</pre>
 
 <details>
 
@@ -5474,11 +5489,7 @@ DELAY 1
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d671e901-20b0-4a0d-9f7d-3308e3633a3a)
 
-
-
 </details>
-
-
 
 <details>
 
