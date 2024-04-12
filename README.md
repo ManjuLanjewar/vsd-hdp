@@ -5190,9 +5190,8 @@ This will create the following directory structure:
 **Fine tune config file for the project:**
 <pre>
 # Design
-# Design
-# set ::env(PDK) "sky130A"
-# set ::env(STD_CELL_LIBRARY) "sky130_fd_sc_hd"
+set ::env(PDK) "sky130A"
+set ::env(STD_CELL_LIBRARY) "sky130_fd_sc_hd"
 
 set ::env(DESIGN_NAME) "alu_4_bit"
 set ::env(VERILOG_FILES) "./designs/alu_4_bit/src/alu_4_bit.v"
@@ -5292,13 +5291,13 @@ set_output_delay -clock clk -min 1 [get_ports y[7]]
 
 </pre>
 
-- Running the flow for the design
+**Running the flow for the design**
 
-To run the automated flow:
+- To run the automated flow:
 
 <pre>./flow.tcl -design <design_name></pre>
 
-To run the flow interactively
+- To run the flow interactively:
 
 <pre>./flow.tcl -interactive</pre>
 
