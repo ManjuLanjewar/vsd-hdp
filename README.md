@@ -5158,6 +5158,7 @@ As all the above steps were successful, I got the following terminal result:
 </details>
 
 #### Adding Designs
+
 <details>
          <summary>OpenLane Flow : alu_4_bit</summary>
 
@@ -5186,7 +5187,7 @@ This will create the following directory structure:
 │   ├── design.v</pre>
 
 
-Fine tune config file for the project:
+**Fine tune config file for the project:**
 <pre>
 # Design
 # Design
@@ -5217,7 +5218,7 @@ if { [file exists $filename] == 1} {
 
 </pre>
 
-- Constrains to STA of the project alu_4_bit.sdc :
+**Constraints to STA of the project alu_4_bit.sdc :**
 
 <pre>create_clock -period 10 -name clk [get_ports clk]
 set_clock_latency -source -max 3 [get_clock clk]
