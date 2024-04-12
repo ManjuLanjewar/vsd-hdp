@@ -5479,8 +5479,6 @@ DELAY 1
 
 <pre>./flow.tcl -design alu_4_bit</pre>
 
-<details>
-
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/802166f7-3dbb-4913-81d6-96eab9688858)
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/83e4c64b-2f19-4bdb-b4a0-739285c14a0d)
@@ -5492,10 +5490,10 @@ DELAY 1
 </details>
 
 <details>
+	
+	<summary>Synthesis cell usage statistics</summary>
 
 **Synthesis cell usage statistics**
-
-	<summary>Synthesis cell usage statistics</summary>
 
 <pre>62. Printing statistics.
 
