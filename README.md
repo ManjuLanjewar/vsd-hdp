@@ -5493,7 +5493,6 @@ The flow completed without any issues.
 **Synthesis cell usage statistics**
 
 <details>
-	
 	 <summary>Cell statistics</summary>
 
 <pre>62. Printing statistics.
