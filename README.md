@@ -5291,7 +5291,45 @@ set_output_delay -clock clk -min 1 [get_ports y[7]]
 
 </pre>
 
-**Running the flow for the design**
+#### STA for post-synthesis
+
+**For the STA we will use special TCL script alu_4_bit.tcl:**
+
+<pre>#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v76.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v44.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v40.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v35.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v28.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v40.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v76.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v65.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v56.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v95.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v65.lib
+
+#read_verilog ~/home/manju123/OpenLane/designs/alu_4_bit/src/alu_4_bit_net.v
+
+read_verilog /home/manju123/OpenLane/designs/alu_4_bit/runs/RUN_2024.04.11_12.33.03/results/synthesis/alu_4_bit.v
+link_design alu_4_bit
+current_design
+read_sdc ~/home/manju123/OpenLane/designs/alu_4_bit/src/alu_4_bit.sdc
+check_setup -verbose
+report_checks -path_delay min_max -fields {nets cap slew input_pins fanout} -digits {4} > sta_out_min-max.txt
+report_worst_slack -max -digits {4} > sta_out_worst-max.txt
+report_worst_slack -min -digits {4} > sta_out_worst-min.txt
+report_tns -digits {4} > sta_out_tns.txt
+report_wns -digits {4} > sta_out_wns.txt</pre>
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/fce12a05-8690-4654-841f-96aa91776c10)
+
+</details>
+
+**Design Flow**
+
+<details>
+	<summary>Running the flow for the design</summary>
 
 - To run the automated flow:
 
