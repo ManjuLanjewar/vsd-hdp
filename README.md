@@ -5659,16 +5659,6 @@ Available under the Apache License, version 2.0. See the LICENSE file for more d
 
 <pre>./flow.tcl -design alu_4_bit</pre>
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/802166f7-3dbb-4913-81d6-96eab9688858)
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/83e4c64b-2f19-4bdb-b4a0-739285c14a0d)
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/cdf6fb5c-9775-4cbf-8cc5-03fcb9d1f2e0)
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/d671e901-20b0-4a0d-9f7d-3308e3633a3a)
-
-**Note: Here, Flow is not completed as it throws errors as hold violations**
-
 </details>
 
 
