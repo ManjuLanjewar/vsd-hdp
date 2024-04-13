@@ -5521,7 +5521,7 @@ DELAY 1
 **Note: The flow completed without any issues**
 
 **Working Log for Non-interactive mode**
-
+<pre>
 OpenLane Container (525d7ed):/openlane$ ./flow.tcl -design alu_4_bit
 OpenLane 525d7ed3fec0b62b268ff5748fb748bd92913568
 All rights reserved. (c) 2020-2023 Efabless Corporation and contributors.
@@ -5653,7 +5653,7 @@ Available under the Apache License, version 2.0. See the LICENSE file for more d
 [WARNING]: 13 warnings found by linter
 [WARNING]: Current core area is too small for the power grid settings chosen. The power grid was scaled down to an offset of 1/8 the core width and height and a pitch of 1/4 the core width and height.
 [WARNING]: VSRC_LOC_FILES was not given a value, which may make the results of IR drop analysis inaccurate. If you are not integrating a top-level chip for manufacture, you may ignore this warning, otherwise, see the documentation for VSRC_LOC_FILES.
-
+</pre>
 
 **Screenshots for Working Flow in fully automatic mode**
 
