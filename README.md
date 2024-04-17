@@ -5324,7 +5324,7 @@ report_worst_slack -min -digits {4} > sta_out_worst-min.txt
 report_tns -digits {4} > sta_out_tns.txt
 report_wns -digits {4} > sta_out_wns.txt</pre>
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/fce12a05-8690-4654-841f-96aa91776c10)
+
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/db603718-229b-493b-9afe-28f2617f2599)
 
