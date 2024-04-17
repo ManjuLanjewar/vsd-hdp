@@ -5299,7 +5299,7 @@ set_output_delay -clock clk -min 1 [get_ports y[7]]
 
 **For the STA we will use special TCL script alu_4_bit.tcl:**
 
-<pre>#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+<pre>read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v76.lib
 #read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v44.lib
 #read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v40.lib
@@ -5312,8 +5312,6 @@ read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_
 #read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v56.lib
 #read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v95.lib
 #read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v65.lib
-
-#read_verilog ~/home/manju123/OpenLane/designs/alu_4_bit/src/alu_4_bit_net.v
 
 read_verilog /home/manju123/OpenLane/designs/alu_4_bit/runs/RUN_2024.04.11_12.33.03/results/synthesis/alu_4_bit.v
 link_design alu_4_bit
@@ -5346,6 +5344,9 @@ Post-CTS STA Check:
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1ef0f00a-d9e4-4100-940b-8dcc175382b3)
 
+Post-Route STA Check:
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/09218019-4573-4c20-9558-f370251ad1f0)
 
 
 </details>
