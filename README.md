@@ -5330,7 +5330,8 @@ report_wns -digits {4} > sta_out_wns.txt</pre>
 
 Post-Synthesis STA Check:
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/061f5dbb-cd4b-4a28-a14a-b78f17911435)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/58c56631-8848-4d63-a0ba-fe220f53f356)
+
 
 Post-Placement STA Check:
 
