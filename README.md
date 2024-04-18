@@ -5328,9 +5328,9 @@ report_wns -digits {4} > sta_out_wns.txt</pre>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/db603718-229b-493b-9afe-28f2617f2599)
 
-Post-Synthesis STA Check:
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/4ae26701-e6a2-41a8-a251-09a8281d369b)![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/63b3be62-5ee8-43c1-917b-f55124a335d3)
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/58c56631-8848-4d63-a0ba-fe220f53f356)
+
 
 
 Post-Placement STA Check:
