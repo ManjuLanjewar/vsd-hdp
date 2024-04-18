@@ -5328,7 +5328,7 @@ report_wns -digits {4} > sta_out_wns.txt</pre>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/db603718-229b-493b-9afe-28f2617f2599)
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/6b7d6631-1d4b-4681-a315-7e64066e2111)![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/7b7c49c7-eac9-46d9-a5a4-9e5743811f10)
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/a022795a-4e2b-46cc-8fa6-5f3c6277db2e)![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1167af7b-e4cd-465e-9a93-ec56e693a70f)
 
 
 
