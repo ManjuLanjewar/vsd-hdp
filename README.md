@@ -5331,9 +5331,7 @@ report_wns -digits {4} > sta_out_wns.txt</pre>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/a022795a-4e2b-46cc-8fa6-5f3c6277db2e) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1167af7b-e4cd-465e-9a93-ec56e693a70f)
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b7790677-9f3f-4886-824e-381f12f36451) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/962ac019-38cf-4201-9b31-9c93bc9c74b9)
-
-
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/962ac019-38cf-4201-9b31-9c93bc9c74b9) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b7790677-9f3f-4886-824e-381f12f36451) 
 
 Conversion of .db to .v in openroad
 
