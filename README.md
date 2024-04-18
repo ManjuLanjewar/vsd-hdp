@@ -5331,22 +5331,13 @@ report_wns -digits {4} > sta_out_wns.txt</pre>
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/a022795a-4e2b-46cc-8fa6-5f3c6277db2e) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1167af7b-e4cd-465e-9a93-ec56e693a70f)
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b7790677-9f3f-4886-824e-381f12f36451) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/962ac019-38cf-4201-9b31-9c93bc9c74b9)
 
-Post-Placement STA Check:
 
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/10aeec36-eba5-4ec6-a1d2-976ccbb2567f)
 
 Conversion of .db to .v in openroad
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/dcceb50c-547d-4a4b-8770-805772d7c0a7)
-
-Post-CTS STA Check:
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1ef0f00a-d9e4-4100-940b-8dcc175382b3)
-
-Post-Route STA Check:
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/09218019-4573-4c20-9558-f370251ad1f0)
 
 
 </details>
