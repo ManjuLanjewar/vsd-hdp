@@ -5089,7 +5089,7 @@ Detailed Routing - Tracks are generated interatively. TritonRoute 14 ensures the
 
 <h2 id="C19">Day 19</h2>
 
-**OpenLane Tool Installation Steps** 
+#### OpenLane Tool Installation Steps
 
 <details>
 	
@@ -5187,426 +5187,7 @@ This will create the following directory structure:
 │   ├── design.v</pre>
 
 </details>
-
-### PVT Corner Analysis
-
-<details>
-	<summary>.tcl and .SDC files of various stages</summary>
-
-- This tcl file is used for post-synthesis STA checks.
-  
-<pre>read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v76.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v44.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v40.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v35.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v28.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v40.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v76.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v65.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v56.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v95.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v65.lib
-
-read_verilog /home/manju123/OpenLane/designs/alu_4_bit/runs/RUN_2024.04.13_12.55.05/results/synthesis/alu_4_bit.v
-link_design alu_4_bit
-current_design
-read_sdc /home/manju123/OpenLane/designs/alu_4_bit/src/alu_4_bit.sdc
-check_setup -verbose
-report_checks -path_delay min_max -fields {nets cap slew input_pins fanout} -digits {4} > sta_out_min-max.txt
-report_worst_slack -max -digits {4} > sta_out_worst-max.txt
-report_worst_slack -min -digits {4} > sta_out_worst-min.txt
-report_tns -digits {4} > sta_out_tns.txt
-report_wns -digits {4} > sta_out_wns.txt</pre>
-
-- This tcl file is used for post-placement STA checks
-  
-<pre>#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v76.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v44.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v40.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v35.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v28.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v40.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v76.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v65.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v56.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v95.lib
-read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v65.lib
-
-read_verilog /home/manju123/OpenLane/designs/alu_4_bit/runs/RUN_2024.04.13_12.55.05/results/placement/alu_4_bit.pnl.v
-link_design alu_4_bit
-current_design
-read_sdc ~/home/manju123/OpenLane/designs/alu_4_bit/src/alu_4_bit.sdc
-check_setup -verbose
-report_checks -path_delay min_max -fields {nets cap slew input_pins fanout} -digits {4} > sta_out_min-max.txt
-report_worst_slack -max -digits {4} > sta_out_worst-max.txt
-report_worst_slack -min -digits {4} > sta_out_worst-min.txt
-report_tns -digits {4} > sta_out_tns.txt
-report_wns -digits {4} > sta_out_wns.txt</pre>
-
-- This tcl file is used for post-cts STA checks
-
-<pre>#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v76.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v44.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v40.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v35.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v28.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v40.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v76.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v65.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v56.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v95.lib
-read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v65.lib
-
-read_verilog /home/manju123/OpenLane/designs/alu_4_bit/runs/RUN_2024.04.13_12.55.05/results/cts/post_cts.v
-link_design alu_4_bit 
-current_design
-read_sdc /home/manju123/OpenLane/designs/alu_4_bit/src/alu_4_bit_PNR.sdc
-check_setup -verbose
-report_checks -path_delay min_max -fields {nets cap slew input_pins fanout} -digits {4} > sta_out_min-max.txt
-report_worst_slack -max -digits {4} > sta_out_worst-max.txt
-report_worst_slack -min -digits {4} > sta_out_worst-min.txt
-report_tns -digits {4} > sta_out_tns.txt
-report_wns -digits {4} > sta_out_wns.txt</pre>
-
-- This tcl file is used for post-routing STA checks
-  
-<pre>#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v76.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v44.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v40.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v35.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v28.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v40.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v76.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v65.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v56.lib
-#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v95.lib
-read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v65.lib
-
-read_verilog /home/manju123/OpenLane/designs/alu_4_bit/runs/RUN_2024.04.13_12.55.05/results/routing/alu_4_bit.pnl.v
-link_design alu_4_bit
-current_design
-read_spef /home/manju123/OpenLane/designs/alu_4_bit/runs/RUN_2024.04.13_12.55.05/results/final/spef/alu_4_bit.spef
-read_sdc /home/manju123/OpenLane/designs/alu_4_bit/src/alu_4_bit_PNR.sdc
-report_checks -path_delay min_max -fields {nets cap slew input_pins fanout} -digits {4} > sta_out_min-max.txt
-report_worst_slack -max -digits {4} > sta_out_worst-max.txt
-report_worst_slack -min -digits {4} > sta_out_worst-min.txt
-report_tns -digits {4} > sta_out_tns.txt
-report_wns -digits {4} > sta_out_wns.txt</pre>
-
-- Following file is the config.tcl file
-  
-<pre>
-# Design
-set ::env(PDK) "sky130A"
-set ::env(STD_CELL_LIBRARY) "sky130_fd_sc_hd"
-
-set ::env(DESIGN_NAME) "alu_4_bit"
-set ::env(VERILOG_FILES) "./designs/alu_4_bit/src/alu_4_bit.v"
-
-set ::env(CLOCK_PORT) "clk"
-set ::env(CLOCK_PERIOD) "10.000"
-set ::env(CLOCK_NET) $::env(CLOCK_PORT)
-
-set ::env(QUIT_ON_SYNTH_CHECKS) 0
-set ::env(BASE_SDC_FILE) "$::env(DESIGN_DIR)/src/alu_4_bit.sdc"
-
-set ::env(SYNTH_AUTONAME) 0
-set ::env(SYNTH_STRATEGY) "DELAY 1"
-set ::env(SYNTH_BUFFERING) 1
-set ::env(SYNTH_SIZING) 1
-set ::env(OUTPUT_CAP_LOAD) 17.65
-set ::env(MAX_FANOUT_CONSTRAINT) 4
-
-set filename $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
-if { [file exists $filename] == 1} {
-        source $filename
-}
-</pre>
-
-- Constraints to STA of the project alu_4_bit.sdc
-
-<pre>create_clock -period 10 -name clk [get_ports clk]
-set_clock_latency -source -max 3 [get_clock clk]
-set_clock_latency 1 [get_clock clk]
-set_clock_uncertainty -setup 0.5 [get_clock clk]
-set_clock_uncertainty -hold 0.2 [get_clock clk]
-set_input_delay -clock clk -max 3 [get_ports A[0]]
-set_input_delay -clock clk -max 3 [get_ports A[1]]
-set_input_delay -clock clk -max 3 [get_ports A[2]]
-set_input_delay -clock clk -max 3 [get_ports A[3]]
-set_input_delay -clock clk -max 3 [get_ports B[0]]
-set_input_delay -clock clk -max 3 [get_ports B[1]]
-set_input_delay -clock clk -max 3 [get_ports B[2]]
-set_input_delay -clock clk -max 3 [get_ports B[3]]
-set_input_delay -clock clk -max 3 [get_ports rst] 
-set_input_delay -clock clk -min 1 [get_ports A[1]]
-set_input_delay -clock clk -min 1 [get_ports A[0]]
-set_input_delay -clock clk -min 1 [get_ports A[2]]
-set_input_delay -clock clk -min 1 [get_ports A[3]]
-set_input_delay -clock clk -min 1 [get_ports B[0]]
-set_input_delay -clock clk -min 1 [get_ports B[1]]
-set_input_delay -clock clk -min 1 [get_ports B[2]]
-set_input_delay -clock clk -min 1 [get_ports B[3]]
-set_input_delay -clock clk -min 1 [get_ports rst] 
-set_input_delay -clock clk -max 3 [get_ports mode[0]]
-set_input_delay -clock clk -max 3 [get_ports mode[1]]    
-set_input_delay -clock clk -max 3 [get_ports mode[2]]
-set_input_delay -clock clk -min 1 [get_ports mode[0]]
-set_input_delay -clock clk -min 1 [get_ports mode[1]]
-set_input_delay -clock clk -min 1 [get_ports mode[2]]
-set_input_transition -max 0.5 [get_ports A[0]]
-set_input_transition -max 0.5 [get_ports A[1]]
-set_input_transition -max 0.5 [get_ports A[2]]
-set_input_transition -max 0.5 [get_ports A[3]]
-set_input_transition -max 0.5 [get_ports B[0]]
-set_input_transition -max 0.5 [get_ports B[1]]
-set_input_transition -max 0.5 [get_ports B[2]]
-set_input_transition -max 0.5 [get_ports B[3]]
-set_input_transition -max 0.5 [get_ports rst] 
-set_input_transition -min 0.1 [get_ports A[0]]
-set_input_transition -min 0.1 [get_ports A[1]]
-set_input_transition -min 0.1 [get_ports A[2]]
-set_input_transition -min 0.1 [get_ports A[3]]
-set_input_transition -min 0.1 [get_ports B[0]]
-set_input_transition -min 0.1 [get_ports B[1]]
-set_input_transition -min 0.1 [get_ports B[2]]
-set_input_transition -min 0.1 [get_ports B[3]]
-set_input_transition -min 0.1 [get_ports rst] 
-set_input_transition -max 0.5 [get_ports mode[0]]
-set_input_transition -max 0.5 [get_ports mode[1]]
-set_input_transition -max 0.5 [get_ports mode[2]]
-set_input_transition -min 0.1 [get_ports mode[0]]
-set_input_transition -min 0.1 [get_ports mode[1]]
-set_input_transition -min 0.1 [get_ports mode[2]]
-set_output_delay -clock clk -max 5 [get_ports y[0]]
-set_output_delay -clock clk -max 5 [get_ports y[1]]
-set_output_delay -clock clk -max 5 [get_ports y[2]]
-set_output_delay -clock clk -max 5 [get_ports y[3]]
-set_output_delay -clock clk -max 5 [get_ports y[4]]
-set_output_delay -clock clk -max 5 [get_ports y[5]]
-set_output_delay -clock clk -max 5 [get_ports y[6]]
-set_output_delay -clock clk -max 5 [get_ports y[7]]
-set_output_delay -clock clk -min 1 [get_ports y[0]]
-set_output_delay -clock clk -min 1 [get_ports y[1]]
-set_output_delay -clock clk -min 1 [get_ports y[2]]
-set_output_delay -clock clk -min 1 [get_ports y[3]]
-set_output_delay -clock clk -min 1 [get_ports y[4]]
-set_output_delay -clock clk -min 1 [get_ports y[5]]
-set_output_delay -clock clk -min 1 [get_ports y[6]]
-set_output_delay -clock clk -min 1 [get_ports y[7]]
-</pre>
-
-- PNR_SDC and SIGNOFF_SDC file
-  
-<pre>create_clock -period 10 -name clk [get_ports clk]
-set_clock_transition -max 0.4 [get_clock clk]
-set_clock_transition -min 0.1 [get_clock clk]
-set_clock_uncertainty -setup 0.2 [get_clock clk]
-set_clock_uncertainty -hold 0.1 [get_clock clk]
-set_propagated_clock [all_clocks]
-set_input_delay -clock clk -max 3 [get_ports A[0]]
-set_input_delay -clock clk -max 3 [get_ports A[1]]
-set_input_delay -clock clk -max 3 [get_ports A[2]]
-set_input_delay -clock clk -max 3 [get_ports A[3]]
-set_input_delay -clock clk -max 3 [get_ports B[0]]
-set_input_delay -clock clk -max 3 [get_ports B[1]]
-set_input_delay -clock clk -max 3 [get_ports B[2]]
-set_input_delay -clock clk -max 3 [get_ports B[3]]
-set_input_delay -clock clk -max 3 [get_ports rst] 
-set_input_delay -clock clk -min 1 [get_ports A[0]]
-set_input_delay -clock clk -min 1 [get_ports A[1]]
-set_input_delay -clock clk -min 1 [get_ports A[2]]
-set_input_delay -clock clk -min 1 [get_ports A[3]]
-set_input_delay -clock clk -min 1 [get_ports B[0]]
-set_input_delay -clock clk -min 1 [get_ports B[1]]
-set_input_delay -clock clk -min 1 [get_ports B[2]]
-set_input_delay -clock clk -min 1 [get_ports B[3]]
-set_input_delay -clock clk -min 1 [get_ports rst] 
-set_input_delay -clock clk -max 3 [get_ports mode[0]]
-set_input_delay -clock clk -max 3 [get_ports mode[1]]    
-set_input_delay -clock clk -max 3 [get_ports mode[2]]
-set_input_delay -clock clk -min 1 [get_ports mode[0]]
-set_input_delay -clock clk -min 1 [get_ports mode[1]]
-set_input_delay -clock clk -min 1 [get_ports mode[2]]
-set_input_transition -max 0.5 [get_ports A[0]]
-set_input_transition -max 0.5 [get_ports A[1]]
-set_input_transition -max 0.5 [get_ports A[2]]
-set_input_transition -max 0.5 [get_ports A[3]]
-set_input_transition -max 0.5 [get_ports B[0]]
-set_input_transition -max 0.5 [get_ports B[1]]
-set_input_transition -max 0.5 [get_ports B[2]]
-set_input_transition -max 0.5 [get_ports B[3]]
-set_input_transition -max 0.5 [get_ports rst] 
-set_input_transition -min 0.1 [get_ports A[0]]
-set_input_transition -min 0.1 [get_ports A[1]]
-set_input_transition -min 0.1 [get_ports A[2]]
-set_input_transition -min 0.1 [get_ports A[3]]
-set_input_transition -min 0.1 [get_ports B[0]]
-set_input_transition -min 0.1 [get_ports B[1]]
-set_input_transition -min 0.1 [get_ports B[2]]
-set_input_transition -min 0.1 [get_ports B[3]]
-set_input_transition -min 0.1 [get_ports rst] 
-set_input_transition -max 0.5 [get_ports mode[0]]
-set_input_transition -max 0.5 [get_ports mode[1]]
-set_input_transition -max 0.5 [get_ports mode[2]]
-set_input_transition -min 0.1 [get_ports mode[0]]
-set_input_transition -min 0.1 [get_ports mode[1]]
-set_input_transition -min 0.1 [get_ports mode[2]]
-set_output_delay -clock clk -max 3 [get_ports y[0]]
-set_output_delay -clock clk -max 3 [get_ports y[1]]
-set_output_delay -clock clk -max 3 [get_ports y[2]]
-set_output_delay -clock clk -max 3 [get_ports y[3]]
-set_output_delay -clock clk -max 3 [get_ports y[4]]
-set_output_delay -clock clk -max 3 [get_ports y[5]]
-set_output_delay -clock clk -max 3 [get_ports y[6]]
-set_output_delay -clock clk -max 3 [get_ports y[7]]
-set_output_delay -clock clk -min 0.5 [get_ports y[0]]
-set_output_delay -clock clk -min 0.5 [get_ports y[1]]
-set_output_delay -clock clk -min 0.5 [get_ports y[2]]
-set_output_delay -clock clk -min 0.5 [get_ports y[3]]
-set_output_delay -clock clk -min 0.5 [get_ports y[4]]
-set_output_delay -clock clk -min 0.5 [get_ports y[5]]
-set_output_delay -clock clk -min 0.5 [get_ports y[6]]
-set_output_delay -clock clk -min 0.5 [get_ports y[7]]</pre>
-
-Conversion of .db to .v in openroad
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/dcceb50c-547d-4a4b-8770-805772d7c0a7)
-
-</details>
-
-## STA
-
-<details>
-	<summary>STA Comparision and STA Reports</summary>
-	
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/a022795a-4e2b-46cc-8fa6-5f3c6277db2e) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1167af7b-e4cd-465e-9a93-ec56e693a70f)
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/962ac019-38cf-4201-9b31-9c93bc9c74b9) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b7790677-9f3f-4886-824e-381f12f36451) 
-
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/9ba4ba33-825b-4366-96e2-d609475b3194)
-
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e20301f5-0198-43a8-9a96-7291d4670c62)
-
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/68ebaed5-ef0e-4803-84e0-c4cf4ccc8510)
-
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/c4a477b7-ad6a-44bc-91cd-d2147ffe34a8)
-
-
-- STA report for Setup and typical process/voltage(1.8V)
-  
-Startpoint: B[2] (input port clocked by clk)
-Endpoint: _498_ (rising edge-triggered flip-flop clocked by clk)
-Path Group: clk
-Path Type: max
-
-Fanout       Cap      Slew     Delay      Time   Description
--------------------------------------------------------------------------------------
-                              0.0000    0.0000   clock clk (rise edge)
-                              0.0000    0.0000   clock network delay (propagated)
-                              3.0000    3.0000 v input external delay
-     1    0.0026    0.5000    0.0000    3.0000 v B[2] (in)
-                                                 B[2] (net)
-                    0.5001    0.0000    3.0000 v input4/A (sky130_fd_sc_hd__buf_1)
-     3    0.0096    0.0695    0.2572    3.2572 v input4/X (sky130_fd_sc_hd__buf_1)
-                                                 net4 (net)
-                    0.0695    0.0003    3.2576 v _267_/A (sky130_fd_sc_hd__buf_1)
-     4    0.0127    0.0793    0.1424    3.4000 v _267_/X (sky130_fd_sc_hd__buf_1)
-                                                 _188_ (net)
-                    0.0793    0.0002    3.4002 v _268_/A (sky130_fd_sc_hd__dlymetal6s2s_1)
-     4    0.0163    0.0938    0.2016    3.6018 v _268_/X (sky130_fd_sc_hd__dlymetal6s2s_1)
-                                                 _189_ (net)
-                    0.0938    0.0003    3.6021 v _269_/B (sky130_fd_sc_hd__nor2_1)
-     3    0.0146    0.2709    0.2445    3.8466 ^ _269_/Y (sky130_fd_sc_hd__nor2_1)
-                                                 _190_ (net)
-                    0.2709    0.0003    3.8469 ^ _272_/B1 (sky130_fd_sc_hd__o211ai_2)
-     4    0.0135    0.1258    0.1839    4.0308 v _272_/Y (sky130_fd_sc_hd__o211ai_2)
-                                                 _193_ (net)
-                    0.1258    0.0005    4.0313 v _279_/A3 (sky130_fd_sc_hd__a31oi_1)
-     1    0.0078    0.2226    0.2620    4.2932 ^ _279_/Y (sky130_fd_sc_hd__a31oi_1)
-                                                 _200_ (net)
-                    0.2226    0.0003    4.2935 ^ _294_/A1 (sky130_fd_sc_hd__a21boi_2)
-     4    0.0130    0.0869    0.1158    4.4094 v _294_/Y (sky130_fd_sc_hd__a21boi_2)
-                                                 _215_ (net)
-                    0.0869    0.0003    4.4096 v _322_/A2 (sky130_fd_sc_hd__o211ai_1)
-     1    0.0043    0.1697    0.1885    4.5981 ^ _322_/Y (sky130_fd_sc_hd__o211ai_1)
-                                                 _243_ (net)
-                    0.1697    0.0001    4.5982 ^ _323_/C1 (sky130_fd_sc_hd__o211ai_1)
-     1    0.0028    0.0795    0.1096    4.7078 v _323_/Y (sky130_fd_sc_hd__o211ai_1)
-                                                 _244_ (net)
-                    0.0795    0.0001    4.7078 v _336_/A1_N (sky130_fd_sc_hd__o2bb2ai_1)
-     1    0.0033    0.0462    0.1375    4.8453 v _336_/Y (sky130_fd_sc_hd__o2bb2ai_1)
-                                                 _016_ (net)
-                    0.0462    0.0001    4.8454 v _339_/A (sky130_fd_sc_hd__nand2_1)
-     1    0.0086    0.0927    0.0910    4.9364 ^ _339_/Y (sky130_fd_sc_hd__nand2_1)
-                                                 _019_ (net)
-                    0.0927    0.0003    4.9367 ^ _365_/A1 (sky130_fd_sc_hd__a21oi_1)
-     1    0.0021    0.0540    0.0642    5.0009 v _365_/Y (sky130_fd_sc_hd__a21oi_1)
-                                                 _000_ (net)
-                    0.0540    0.0000    5.0010 v _498_/D (sky130_fd_sc_hd__dfxtp_1)
-                                        5.0010   data arrival time
-
-                             10.0000   10.0000   clock clk (rise edge)
-                              0.2270   10.2270   clock network delay (propagated)
-                             -0.2000   10.0270   clock uncertainty
-                              0.0000   10.0270   clock reconvergence pessimism
-                                       10.0270 ^ _498_/CLK (sky130_fd_sc_hd__dfxtp_1)
-                             -0.1170    9.9100   library setup time
-                                        9.9100   data required time
--------------------------------------------------------------------------------------
-                                        9.9100   data required time
-                                       -5.0010   data arrival time
--------------------------------------------------------------------------------------
-                                        4.9090   slack (MET)
-
-- STA report for Hold and typical process/voltage(1.8V)
-
-Startpoint: _499_ (rising edge-triggered flip-flop clocked by clk)
-Endpoint: y[1] (output port clocked by clk)
-Path Group: clk
-Path Type: min
-
-Fanout       Cap      Slew     Delay      Time   Description
--------------------------------------------------------------------------------------
-                              0.0000    0.0000   clock clk (rise edge)
-                              0.2270    0.2270   clock network delay (propagated)
-                    0.0343    0.0000    0.2270 ^ _499_/CLK (sky130_fd_sc_hd__dfxtp_1)
-     1    0.0023    0.0246    0.2845    0.5115 v _499_/Q (sky130_fd_sc_hd__dfxtp_1)
-                                                 net10 (net)
-                    0.0246    0.0001    0.5116 v output10/A (sky130_fd_sc_hd__buf_1)
-     1    0.0004    0.0146    0.0646    0.5761 v output10/X (sky130_fd_sc_hd__buf_1)
-                                                 y[1] (net)
-                    0.0146    0.0000    0.5762 v y[1] (out)
-                                        0.5762   data arrival time
-
-                              0.0000    0.0000   clock clk (rise edge)
-                              0.0000    0.0000   clock network delay (propagated)
-                              0.1000    0.1000   clock uncertainty
-                              0.0000    0.1000   clock reconvergence pessimism
-                             -0.5000   -0.4000   output external delay
-                                       -0.4000   data required time
--------------------------------------------------------------------------------------
-                                       -0.4000   data required time
-                                       -0.5762   data arrival time
--------------------------------------------------------------------------------------
-                                        0.9762   slack (MET)
-					
-</pre>
-</details>
-
-**Design Flow**
+#### Design Flow
 
 <details>
 	<summary>Running the flow for the design</summary>
@@ -5932,13 +5513,9 @@ Available under the Apache License, version 2.0. See the LICENSE file for more d
 [WARNING]: VSRC_LOC_FILES was not given a value, which may make the results of IR drop analysis inaccurate. If you are not integrating a top-level chip for manufacture, you may ignore this warning, otherwise, see the documentation for VSRC_LOC_FILES.
 </pre>
 
-**Screenshots for Working Flow in fully automatic mode**
-
-
-
 </details>
 
-### Synthesis cell usage statistics
+#### Synthesis cell usage statistics
 
 <details>
 	 <summary>Cell statistics</summary>
@@ -6020,7 +5597,425 @@ Available under the Apache License, version 2.0. See the LICENSE file for more d
    </pre>
 </details>
 
-**Placement View**
+#### PVT Corner Analysis
+
+<details>
+	<summary>.tcl and .SDC files of various stages</summary>
+
+- This tcl file is used for post-synthesis STA checks.
+  
+<pre>read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v76.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v44.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v40.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v35.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v28.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v40.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v76.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v65.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v56.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v95.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v65.lib
+
+read_verilog /home/manju123/OpenLane/designs/alu_4_bit/runs/RUN_2024.04.13_12.55.05/results/synthesis/alu_4_bit.v
+link_design alu_4_bit
+current_design
+read_sdc /home/manju123/OpenLane/designs/alu_4_bit/src/alu_4_bit.sdc
+check_setup -verbose
+report_checks -path_delay min_max -fields {nets cap slew input_pins fanout} -digits {4} > sta_out_min-max.txt
+report_worst_slack -max -digits {4} > sta_out_worst-max.txt
+report_worst_slack -min -digits {4} > sta_out_worst-min.txt
+report_tns -digits {4} > sta_out_tns.txt
+report_wns -digits {4} > sta_out_wns.txt</pre>
+
+- This tcl file is used for post-placement STA checks
+  
+<pre>#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v76.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v44.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v40.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v35.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v28.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v40.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v76.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v65.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v56.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v95.lib
+read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v65.lib
+
+read_verilog /home/manju123/OpenLane/designs/alu_4_bit/runs/RUN_2024.04.13_12.55.05/results/placement/alu_4_bit.pnl.v
+link_design alu_4_bit
+current_design
+read_sdc ~/home/manju123/OpenLane/designs/alu_4_bit/src/alu_4_bit.sdc
+check_setup -verbose
+report_checks -path_delay min_max -fields {nets cap slew input_pins fanout} -digits {4} > sta_out_min-max.txt
+report_worst_slack -max -digits {4} > sta_out_worst-max.txt
+report_worst_slack -min -digits {4} > sta_out_worst-min.txt
+report_tns -digits {4} > sta_out_tns.txt
+report_wns -digits {4} > sta_out_wns.txt</pre>
+
+- This tcl file is used for post-cts STA checks
+
+<pre>#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v76.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v44.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v40.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v35.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v28.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v40.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v76.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v65.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v56.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v95.lib
+read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v65.lib
+
+read_verilog /home/manju123/OpenLane/designs/alu_4_bit/runs/RUN_2024.04.13_12.55.05/results/cts/post_cts.v
+link_design alu_4_bit 
+current_design
+read_sdc /home/manju123/OpenLane/designs/alu_4_bit/src/alu_4_bit_PNR.sdc
+check_setup -verbose
+report_checks -path_delay min_max -fields {nets cap slew input_pins fanout} -digits {4} > sta_out_min-max.txt
+report_worst_slack -max -digits {4} > sta_out_worst-max.txt
+report_worst_slack -min -digits {4} > sta_out_worst-min.txt
+report_tns -digits {4} > sta_out_tns.txt
+report_wns -digits {4} > sta_out_wns.txt</pre>
+
+- This tcl file is used for post-routing STA checks
+  
+<pre>#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v76.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v44.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v40.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v35.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v28.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v40.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v76.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v65.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v56.lib
+#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v95.lib
+read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_100C_1v65.lib
+
+read_verilog /home/manju123/OpenLane/designs/alu_4_bit/runs/RUN_2024.04.13_12.55.05/results/routing/alu_4_bit.pnl.v
+link_design alu_4_bit
+current_design
+read_spef /home/manju123/OpenLane/designs/alu_4_bit/runs/RUN_2024.04.13_12.55.05/results/final/spef/alu_4_bit.spef
+read_sdc /home/manju123/OpenLane/designs/alu_4_bit/src/alu_4_bit_PNR.sdc
+report_checks -path_delay min_max -fields {nets cap slew input_pins fanout} -digits {4} > sta_out_min-max.txt
+report_worst_slack -max -digits {4} > sta_out_worst-max.txt
+report_worst_slack -min -digits {4} > sta_out_worst-min.txt
+report_tns -digits {4} > sta_out_tns.txt
+report_wns -digits {4} > sta_out_wns.txt</pre>
+
+- Following file is the config.tcl file
+  
+<pre>
+# Design
+set ::env(PDK) "sky130A"
+set ::env(STD_CELL_LIBRARY) "sky130_fd_sc_hd"
+
+set ::env(DESIGN_NAME) "alu_4_bit"
+set ::env(VERILOG_FILES) "./designs/alu_4_bit/src/alu_4_bit.v"
+
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_PERIOD) "10.000"
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+
+set ::env(QUIT_ON_SYNTH_CHECKS) 0
+set ::env(BASE_SDC_FILE) "$::env(DESIGN_DIR)/src/alu_4_bit.sdc"
+
+set ::env(SYNTH_AUTONAME) 0
+set ::env(SYNTH_STRATEGY) "DELAY 1"
+set ::env(SYNTH_BUFFERING) 1
+set ::env(SYNTH_SIZING) 1
+set ::env(OUTPUT_CAP_LOAD) 17.65
+set ::env(MAX_FANOUT_CONSTRAINT) 4
+
+set filename $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+        source $filename
+}
+</pre>
+
+- Constraints to STA of the project alu_4_bit.sdc
+
+<pre>create_clock -period 10 -name clk [get_ports clk]
+set_clock_latency -source -max 3 [get_clock clk]
+set_clock_latency 1 [get_clock clk]
+set_clock_uncertainty -setup 0.5 [get_clock clk]
+set_clock_uncertainty -hold 0.2 [get_clock clk]
+set_input_delay -clock clk -max 3 [get_ports A[0]]
+set_input_delay -clock clk -max 3 [get_ports A[1]]
+set_input_delay -clock clk -max 3 [get_ports A[2]]
+set_input_delay -clock clk -max 3 [get_ports A[3]]
+set_input_delay -clock clk -max 3 [get_ports B[0]]
+set_input_delay -clock clk -max 3 [get_ports B[1]]
+set_input_delay -clock clk -max 3 [get_ports B[2]]
+set_input_delay -clock clk -max 3 [get_ports B[3]]
+set_input_delay -clock clk -max 3 [get_ports rst] 
+set_input_delay -clock clk -min 1 [get_ports A[1]]
+set_input_delay -clock clk -min 1 [get_ports A[0]]
+set_input_delay -clock clk -min 1 [get_ports A[2]]
+set_input_delay -clock clk -min 1 [get_ports A[3]]
+set_input_delay -clock clk -min 1 [get_ports B[0]]
+set_input_delay -clock clk -min 1 [get_ports B[1]]
+set_input_delay -clock clk -min 1 [get_ports B[2]]
+set_input_delay -clock clk -min 1 [get_ports B[3]]
+set_input_delay -clock clk -min 1 [get_ports rst] 
+set_input_delay -clock clk -max 3 [get_ports mode[0]]
+set_input_delay -clock clk -max 3 [get_ports mode[1]]    
+set_input_delay -clock clk -max 3 [get_ports mode[2]]
+set_input_delay -clock clk -min 1 [get_ports mode[0]]
+set_input_delay -clock clk -min 1 [get_ports mode[1]]
+set_input_delay -clock clk -min 1 [get_ports mode[2]]
+set_input_transition -max 0.5 [get_ports A[0]]
+set_input_transition -max 0.5 [get_ports A[1]]
+set_input_transition -max 0.5 [get_ports A[2]]
+set_input_transition -max 0.5 [get_ports A[3]]
+set_input_transition -max 0.5 [get_ports B[0]]
+set_input_transition -max 0.5 [get_ports B[1]]
+set_input_transition -max 0.5 [get_ports B[2]]
+set_input_transition -max 0.5 [get_ports B[3]]
+set_input_transition -max 0.5 [get_ports rst] 
+set_input_transition -min 0.1 [get_ports A[0]]
+set_input_transition -min 0.1 [get_ports A[1]]
+set_input_transition -min 0.1 [get_ports A[2]]
+set_input_transition -min 0.1 [get_ports A[3]]
+set_input_transition -min 0.1 [get_ports B[0]]
+set_input_transition -min 0.1 [get_ports B[1]]
+set_input_transition -min 0.1 [get_ports B[2]]
+set_input_transition -min 0.1 [get_ports B[3]]
+set_input_transition -min 0.1 [get_ports rst] 
+set_input_transition -max 0.5 [get_ports mode[0]]
+set_input_transition -max 0.5 [get_ports mode[1]]
+set_input_transition -max 0.5 [get_ports mode[2]]
+set_input_transition -min 0.1 [get_ports mode[0]]
+set_input_transition -min 0.1 [get_ports mode[1]]
+set_input_transition -min 0.1 [get_ports mode[2]]
+set_output_delay -clock clk -max 5 [get_ports y[0]]
+set_output_delay -clock clk -max 5 [get_ports y[1]]
+set_output_delay -clock clk -max 5 [get_ports y[2]]
+set_output_delay -clock clk -max 5 [get_ports y[3]]
+set_output_delay -clock clk -max 5 [get_ports y[4]]
+set_output_delay -clock clk -max 5 [get_ports y[5]]
+set_output_delay -clock clk -max 5 [get_ports y[6]]
+set_output_delay -clock clk -max 5 [get_ports y[7]]
+set_output_delay -clock clk -min 1 [get_ports y[0]]
+set_output_delay -clock clk -min 1 [get_ports y[1]]
+set_output_delay -clock clk -min 1 [get_ports y[2]]
+set_output_delay -clock clk -min 1 [get_ports y[3]]
+set_output_delay -clock clk -min 1 [get_ports y[4]]
+set_output_delay -clock clk -min 1 [get_ports y[5]]
+set_output_delay -clock clk -min 1 [get_ports y[6]]
+set_output_delay -clock clk -min 1 [get_ports y[7]]
+</pre>
+
+- PNR_SDC and SIGNOFF_SDC file
+  
+<pre>create_clock -period 10 -name clk [get_ports clk]
+set_clock_transition -max 0.4 [get_clock clk]
+set_clock_transition -min 0.1 [get_clock clk]
+set_clock_uncertainty -setup 0.2 [get_clock clk]
+set_clock_uncertainty -hold 0.1 [get_clock clk]
+set_propagated_clock [all_clocks]
+set_input_delay -clock clk -max 3 [get_ports A[0]]
+set_input_delay -clock clk -max 3 [get_ports A[1]]
+set_input_delay -clock clk -max 3 [get_ports A[2]]
+set_input_delay -clock clk -max 3 [get_ports A[3]]
+set_input_delay -clock clk -max 3 [get_ports B[0]]
+set_input_delay -clock clk -max 3 [get_ports B[1]]
+set_input_delay -clock clk -max 3 [get_ports B[2]]
+set_input_delay -clock clk -max 3 [get_ports B[3]]
+set_input_delay -clock clk -max 3 [get_ports rst] 
+set_input_delay -clock clk -min 1 [get_ports A[0]]
+set_input_delay -clock clk -min 1 [get_ports A[1]]
+set_input_delay -clock clk -min 1 [get_ports A[2]]
+set_input_delay -clock clk -min 1 [get_ports A[3]]
+set_input_delay -clock clk -min 1 [get_ports B[0]]
+set_input_delay -clock clk -min 1 [get_ports B[1]]
+set_input_delay -clock clk -min 1 [get_ports B[2]]
+set_input_delay -clock clk -min 1 [get_ports B[3]]
+set_input_delay -clock clk -min 1 [get_ports rst] 
+set_input_delay -clock clk -max 3 [get_ports mode[0]]
+set_input_delay -clock clk -max 3 [get_ports mode[1]]    
+set_input_delay -clock clk -max 3 [get_ports mode[2]]
+set_input_delay -clock clk -min 1 [get_ports mode[0]]
+set_input_delay -clock clk -min 1 [get_ports mode[1]]
+set_input_delay -clock clk -min 1 [get_ports mode[2]]
+set_input_transition -max 0.5 [get_ports A[0]]
+set_input_transition -max 0.5 [get_ports A[1]]
+set_input_transition -max 0.5 [get_ports A[2]]
+set_input_transition -max 0.5 [get_ports A[3]]
+set_input_transition -max 0.5 [get_ports B[0]]
+set_input_transition -max 0.5 [get_ports B[1]]
+set_input_transition -max 0.5 [get_ports B[2]]
+set_input_transition -max 0.5 [get_ports B[3]]
+set_input_transition -max 0.5 [get_ports rst] 
+set_input_transition -min 0.1 [get_ports A[0]]
+set_input_transition -min 0.1 [get_ports A[1]]
+set_input_transition -min 0.1 [get_ports A[2]]
+set_input_transition -min 0.1 [get_ports A[3]]
+set_input_transition -min 0.1 [get_ports B[0]]
+set_input_transition -min 0.1 [get_ports B[1]]
+set_input_transition -min 0.1 [get_ports B[2]]
+set_input_transition -min 0.1 [get_ports B[3]]
+set_input_transition -min 0.1 [get_ports rst] 
+set_input_transition -max 0.5 [get_ports mode[0]]
+set_input_transition -max 0.5 [get_ports mode[1]]
+set_input_transition -max 0.5 [get_ports mode[2]]
+set_input_transition -min 0.1 [get_ports mode[0]]
+set_input_transition -min 0.1 [get_ports mode[1]]
+set_input_transition -min 0.1 [get_ports mode[2]]
+set_output_delay -clock clk -max 3 [get_ports y[0]]
+set_output_delay -clock clk -max 3 [get_ports y[1]]
+set_output_delay -clock clk -max 3 [get_ports y[2]]
+set_output_delay -clock clk -max 3 [get_ports y[3]]
+set_output_delay -clock clk -max 3 [get_ports y[4]]
+set_output_delay -clock clk -max 3 [get_ports y[5]]
+set_output_delay -clock clk -max 3 [get_ports y[6]]
+set_output_delay -clock clk -max 3 [get_ports y[7]]
+set_output_delay -clock clk -min 0.5 [get_ports y[0]]
+set_output_delay -clock clk -min 0.5 [get_ports y[1]]
+set_output_delay -clock clk -min 0.5 [get_ports y[2]]
+set_output_delay -clock clk -min 0.5 [get_ports y[3]]
+set_output_delay -clock clk -min 0.5 [get_ports y[4]]
+set_output_delay -clock clk -min 0.5 [get_ports y[5]]
+set_output_delay -clock clk -min 0.5 [get_ports y[6]]
+set_output_delay -clock clk -min 0.5 [get_ports y[7]]</pre>
+
+Conversion of .db to .v in openroad
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/dcceb50c-547d-4a4b-8770-805772d7c0a7)
+
+</details>
+
+#### STA
+
+<details>
+	<summary>STA Comparision and STA Reports</summary>
+	
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/a022795a-4e2b-46cc-8fa6-5f3c6277db2e) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1167af7b-e4cd-465e-9a93-ec56e693a70f)
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/962ac019-38cf-4201-9b31-9c93bc9c74b9) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b7790677-9f3f-4886-824e-381f12f36451) 
+
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/9ba4ba33-825b-4366-96e2-d609475b3194)
+
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/e20301f5-0198-43a8-9a96-7291d4670c62)
+
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/68ebaed5-ef0e-4803-84e0-c4cf4ccc8510)
+
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/c4a477b7-ad6a-44bc-91cd-d2147ffe34a8)
+
+
+- STA report for Setup and typical process/voltage(1.8V)
+  
+Startpoint: B[2] (input port clocked by clk)
+Endpoint: _498_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+Fanout       Cap      Slew     Delay      Time   Description
+-------------------------------------------------------------------------------------
+                              0.0000    0.0000   clock clk (rise edge)
+                              0.0000    0.0000   clock network delay (propagated)
+                              3.0000    3.0000 v input external delay
+     1    0.0026    0.5000    0.0000    3.0000 v B[2] (in)
+                                                 B[2] (net)
+                    0.5001    0.0000    3.0000 v input4/A (sky130_fd_sc_hd__buf_1)
+     3    0.0096    0.0695    0.2572    3.2572 v input4/X (sky130_fd_sc_hd__buf_1)
+                                                 net4 (net)
+                    0.0695    0.0003    3.2576 v _267_/A (sky130_fd_sc_hd__buf_1)
+     4    0.0127    0.0793    0.1424    3.4000 v _267_/X (sky130_fd_sc_hd__buf_1)
+                                                 _188_ (net)
+                    0.0793    0.0002    3.4002 v _268_/A (sky130_fd_sc_hd__dlymetal6s2s_1)
+     4    0.0163    0.0938    0.2016    3.6018 v _268_/X (sky130_fd_sc_hd__dlymetal6s2s_1)
+                                                 _189_ (net)
+                    0.0938    0.0003    3.6021 v _269_/B (sky130_fd_sc_hd__nor2_1)
+     3    0.0146    0.2709    0.2445    3.8466 ^ _269_/Y (sky130_fd_sc_hd__nor2_1)
+                                                 _190_ (net)
+                    0.2709    0.0003    3.8469 ^ _272_/B1 (sky130_fd_sc_hd__o211ai_2)
+     4    0.0135    0.1258    0.1839    4.0308 v _272_/Y (sky130_fd_sc_hd__o211ai_2)
+                                                 _193_ (net)
+                    0.1258    0.0005    4.0313 v _279_/A3 (sky130_fd_sc_hd__a31oi_1)
+     1    0.0078    0.2226    0.2620    4.2932 ^ _279_/Y (sky130_fd_sc_hd__a31oi_1)
+                                                 _200_ (net)
+                    0.2226    0.0003    4.2935 ^ _294_/A1 (sky130_fd_sc_hd__a21boi_2)
+     4    0.0130    0.0869    0.1158    4.4094 v _294_/Y (sky130_fd_sc_hd__a21boi_2)
+                                                 _215_ (net)
+                    0.0869    0.0003    4.4096 v _322_/A2 (sky130_fd_sc_hd__o211ai_1)
+     1    0.0043    0.1697    0.1885    4.5981 ^ _322_/Y (sky130_fd_sc_hd__o211ai_1)
+                                                 _243_ (net)
+                    0.1697    0.0001    4.5982 ^ _323_/C1 (sky130_fd_sc_hd__o211ai_1)
+     1    0.0028    0.0795    0.1096    4.7078 v _323_/Y (sky130_fd_sc_hd__o211ai_1)
+                                                 _244_ (net)
+                    0.0795    0.0001    4.7078 v _336_/A1_N (sky130_fd_sc_hd__o2bb2ai_1)
+     1    0.0033    0.0462    0.1375    4.8453 v _336_/Y (sky130_fd_sc_hd__o2bb2ai_1)
+                                                 _016_ (net)
+                    0.0462    0.0001    4.8454 v _339_/A (sky130_fd_sc_hd__nand2_1)
+     1    0.0086    0.0927    0.0910    4.9364 ^ _339_/Y (sky130_fd_sc_hd__nand2_1)
+                                                 _019_ (net)
+                    0.0927    0.0003    4.9367 ^ _365_/A1 (sky130_fd_sc_hd__a21oi_1)
+     1    0.0021    0.0540    0.0642    5.0009 v _365_/Y (sky130_fd_sc_hd__a21oi_1)
+                                                 _000_ (net)
+                    0.0540    0.0000    5.0010 v _498_/D (sky130_fd_sc_hd__dfxtp_1)
+                                        5.0010   data arrival time
+
+                             10.0000   10.0000   clock clk (rise edge)
+                              0.2270   10.2270   clock network delay (propagated)
+                             -0.2000   10.0270   clock uncertainty
+                              0.0000   10.0270   clock reconvergence pessimism
+                                       10.0270 ^ _498_/CLK (sky130_fd_sc_hd__dfxtp_1)
+                             -0.1170    9.9100   library setup time
+                                        9.9100   data required time
+-------------------------------------------------------------------------------------
+                                        9.9100   data required time
+                                       -5.0010   data arrival time
+-------------------------------------------------------------------------------------
+                                        4.9090   slack (MET)
+
+- STA report for Hold and typical process/voltage(1.8V)
+
+Startpoint: _499_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: y[1] (output port clocked by clk)
+Path Group: clk
+Path Type: min
+
+Fanout       Cap      Slew     Delay      Time   Description
+-------------------------------------------------------------------------------------
+                              0.0000    0.0000   clock clk (rise edge)
+                              0.2270    0.2270   clock network delay (propagated)
+                    0.0343    0.0000    0.2270 ^ _499_/CLK (sky130_fd_sc_hd__dfxtp_1)
+     1    0.0023    0.0246    0.2845    0.5115 v _499_/Q (sky130_fd_sc_hd__dfxtp_1)
+                                                 net10 (net)
+                    0.0246    0.0001    0.5116 v output10/A (sky130_fd_sc_hd__buf_1)
+     1    0.0004    0.0146    0.0646    0.5761 v output10/X (sky130_fd_sc_hd__buf_1)
+                                                 y[1] (net)
+                    0.0146    0.0000    0.5762 v y[1] (out)
+                                        0.5762   data arrival time
+
+                              0.0000    0.0000   clock clk (rise edge)
+                              0.0000    0.0000   clock network delay (propagated)
+                              0.1000    0.1000   clock uncertainty
+                              0.0000    0.1000   clock reconvergence pessimism
+                             -0.5000   -0.4000   output external delay
+                                       -0.4000   data required time
+-------------------------------------------------------------------------------------
+                                       -0.4000   data required time
+                                       -0.5762   data arrival time
+-------------------------------------------------------------------------------------
+                                        0.9762   slack (MET)
+					
+</pre>
+</details>
+
+#### Placement View
 
 <details>
 	 <summary>Placement view in magic</summary>
