@@ -5917,7 +5917,7 @@ Conversion of .db to .v in openroad
 
 - STA report for Setup and typical process/voltage(1.8V)
   
-Startpoint: B[2] (input port clocked by clk)
+<pre>Startpoint: B[2] (input port clocked by clk)
 Endpoint: _498_ (rising edge-triggered flip-flop clocked by clk)
 Path Group: clk
 Path Type: max
@@ -5979,11 +5979,11 @@ Fanout       Cap      Slew     Delay      Time   Description
                                         9.9100   data required time
                                        -5.0010   data arrival time
 -------------------------------------------------------------------------------------
-                                        4.9090   slack (MET)
+                                        4.9090   slack (MET)</pre>
 
 - STA report for Hold and typical process/voltage(1.8V)
 
-Startpoint: _499_ (rising edge-triggered flip-flop clocked by clk)
+<pre>Startpoint: _499_ (rising edge-triggered flip-flop clocked by clk)
 Endpoint: y[1] (output port clocked by clk)
 Path Group: clk
 Path Type: min
@@ -6014,6 +6014,7 @@ Fanout       Cap      Slew     Delay      Time   Description
                                         0.9762   slack (MET)
 					
 </pre>
+
 </details>
 
 #### Placement View
