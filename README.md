@@ -5795,6 +5795,9 @@ DELAY 1
 **Note: The flow completed without any issues**
 
 **Working Log for Non-interactive mode**
+
+<pre>./flow.tcl -design alu_4_bit</pre>
+
 <pre>
 OpenLane Container (525d7ed):/openlane$ ./flow.tcl -design alu_4_bit
 OpenLane 525d7ed3fec0b62b268ff5748fb748bd92913568
@@ -5931,7 +5934,7 @@ Available under the Apache License, version 2.0. See the LICENSE file for more d
 
 **Screenshots for Working Flow in fully automatic mode**
 
-<pre>./flow.tcl -design alu_4_bit</pre>
+
 
 </details>
 
