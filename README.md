@@ -5603,7 +5603,7 @@ Available under the Apache License, version 2.0. See the LICENSE file for more d
 <details>
 	<summary>.tcl and .SDC files of various stages</summary>
 
-- This tcl file is used for post-synthesis STA checks.
+**This tcl file is used for post-synthesis STA checks**
   
 <pre>read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 #read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v76.lib
@@ -5630,7 +5630,7 @@ report_worst_slack -min -digits {4} > sta_out_worst-min.txt
 report_tns -digits {4} > sta_out_tns.txt
 report_wns -digits {4} > sta_out_wns.txt</pre>
 
-- This tcl file is used for post-placement STA checks
+**This tcl file is used for post-placement STA checks**
   
 <pre>#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 #read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v76.lib
@@ -5657,7 +5657,7 @@ report_worst_slack -min -digits {4} > sta_out_worst-min.txt
 report_tns -digits {4} > sta_out_tns.txt
 report_wns -digits {4} > sta_out_wns.txt</pre>
 
-- This tcl file is used for post-cts STA checks
+**This tcl file is used for post-cts STA checks**
 
 <pre>#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 #read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v76.lib
@@ -5684,7 +5684,7 @@ report_worst_slack -min -digits {4} > sta_out_worst-min.txt
 report_tns -digits {4} > sta_out_tns.txt
 report_wns -digits {4} > sta_out_wns.txt</pre>
 
-- This tcl file is used for post-routing STA checks
+**This tcl file is used for post-routing STA checks**
   
 <pre>#read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 #read_liberty /home/manju123/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_n40C_1v76.lib
@@ -5711,7 +5711,7 @@ report_worst_slack -min -digits {4} > sta_out_worst-min.txt
 report_tns -digits {4} > sta_out_tns.txt
 report_wns -digits {4} > sta_out_wns.txt</pre>
 
-- Following file is the config.tcl file
+**Following file is the config.tcl file**
   
 <pre>
 # Design
@@ -5741,7 +5741,7 @@ if { [file exists $filename] == 1} {
 }
 </pre>
 
-- Constraints to STA of the project alu_4_bit.sdc
+**Constraints to STA of the project alu_4_bit.sdc**
 
 <pre>create_clock -period 10 -name clk [get_ports clk]
 set_clock_latency -source -max 3 [get_clock clk]
@@ -5814,7 +5814,7 @@ set_output_delay -clock clk -min 1 [get_ports y[6]]
 set_output_delay -clock clk -min 1 [get_ports y[7]]
 </pre>
 
-- PNR_SDC and SIGNOFF_SDC file
+**PNR_SDC and SIGNOFF_SDC file**
   
 <pre>create_clock -period 10 -name clk [get_ports clk]
 set_clock_transition -max 0.4 [get_clock clk]
@@ -5900,7 +5900,9 @@ Conversion of .db to .v in openroad
  
 
 
- ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/a022795a-4e2b-46cc-8fa6-5f3c6277db2e) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1167af7b-e4cd-465e-9a93-ec56e693a70f)
+
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/a022795a-4e2b-46cc-8fa6-5f3c6277db2e) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1167af7b-e4cd-465e-9a93-ec56e693a70f)
+
 
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/962ac019-38cf-4201-9b31-9c93bc9c74b9) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b7790677-9f3f-4886-824e-381f12f36451) 
