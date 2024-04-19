@@ -5505,37 +5505,6 @@ Conversion of .db to .v in openroad
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/c4a477b7-ad6a-44bc-91cd-d2147ffe34a8)
 
 
-- STA report for Hold and typical process/voltage(1.8V)
-Startpoint: _499_ (rising edge-triggered flip-flop clocked by clk)
-Endpoint: y[1] (output port clocked by clk)
-Path Group: clk
-Path Type: min
-
-Fanout       Cap      Slew     Delay      Time   Description
--------------------------------------------------------------------------------------
-                              0.0000    0.0000   clock clk (rise edge)
-                              0.2270    0.2270   clock network delay (propagated)
-                    0.0343    0.0000    0.2270 ^ _499_/CLK (sky130_fd_sc_hd__dfxtp_1)
-     1    0.0023    0.0246    0.2845    0.5115 v _499_/Q (sky130_fd_sc_hd__dfxtp_1)
-                                                 net10 (net)
-                    0.0246    0.0001    0.5116 v output10/A (sky130_fd_sc_hd__buf_1)
-     1    0.0004    0.0146    0.0646    0.5761 v output10/X (sky130_fd_sc_hd__buf_1)
-                                                 y[1] (net)
-                    0.0146    0.0000    0.5762 v y[1] (out)
-                                        0.5762   data arrival time
-
-                              0.0000    0.0000   clock clk (rise edge)
-                              0.0000    0.0000   clock network delay (propagated)
-                              0.1000    0.1000   clock uncertainty
-                              0.0000    0.1000   clock reconvergence pessimism
-                             -0.5000   -0.4000   output external delay
-                                       -0.4000   data required time
--------------------------------------------------------------------------------------
-                                       -0.4000   data required time
-                                       -0.5762   data arrival time
--------------------------------------------------------------------------------------
-                                        0.9762   slack (MET)
-					
 - STA report for Setup and typical process/voltage(1.8V)
   
 Startpoint: B[2] (input port clocked by clk)
@@ -5602,8 +5571,39 @@ Fanout       Cap      Slew     Delay      Time   Description
 -------------------------------------------------------------------------------------
                                         4.9090   slack (MET)
 
-</pre>
+- STA report for Hold and typical process/voltage(1.8V)
 
+Startpoint: _499_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: y[1] (output port clocked by clk)
+Path Group: clk
+Path Type: min
+
+Fanout       Cap      Slew     Delay      Time   Description
+-------------------------------------------------------------------------------------
+                              0.0000    0.0000   clock clk (rise edge)
+                              0.2270    0.2270   clock network delay (propagated)
+                    0.0343    0.0000    0.2270 ^ _499_/CLK (sky130_fd_sc_hd__dfxtp_1)
+     1    0.0023    0.0246    0.2845    0.5115 v _499_/Q (sky130_fd_sc_hd__dfxtp_1)
+                                                 net10 (net)
+                    0.0246    0.0001    0.5116 v output10/A (sky130_fd_sc_hd__buf_1)
+     1    0.0004    0.0146    0.0646    0.5761 v output10/X (sky130_fd_sc_hd__buf_1)
+                                                 y[1] (net)
+                    0.0146    0.0000    0.5762 v y[1] (out)
+                                        0.5762   data arrival time
+
+                              0.0000    0.0000   clock clk (rise edge)
+                              0.0000    0.0000   clock network delay (propagated)
+                              0.1000    0.1000   clock uncertainty
+                              0.0000    0.1000   clock reconvergence pessimism
+                             -0.5000   -0.4000   output external delay
+                                       -0.4000   data required time
+-------------------------------------------------------------------------------------
+                                       -0.4000   data required time
+                                       -0.5762   data arrival time
+-------------------------------------------------------------------------------------
+                                        0.9762   slack (MET)
+					
+</pre>
 </details>
 
 **Design Flow**
@@ -5934,7 +5934,6 @@ Available under the Apache License, version 2.0. See the LICENSE file for more d
 <pre>./flow.tcl -design alu_4_bit</pre>
 
 </details>
-
 
 ### Synthesis cell usage statistics
 
