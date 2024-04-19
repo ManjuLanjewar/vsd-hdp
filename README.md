@@ -5188,10 +5188,10 @@ This will create the following directory structure:
 
 </details>
 
-## PVT Corner Analysis
+### PVT Corner Analysis
 
 <details>
-	<summary>STA for post-synthesis</summary>
+	<summary>.tcl and .SDC files of various stages</summary>
 
 - This tcl file is used for post-synthesis STA checks.
   
@@ -5477,8 +5477,16 @@ set_output_delay -clock clk -min 0.5 [get_ports y[5]]
 set_output_delay -clock clk -min 0.5 [get_ports y[6]]
 set_output_delay -clock clk -min 0.5 [get_ports y[7]]</pre>
 
-### STA Comparison:
+Conversion of .db to .v in openroad
 
+![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/dcceb50c-547d-4a4b-8770-805772d7c0a7)
+
+</details>
+
+<details>
+
+	<summary>STA Comparision</summary>
+	
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/a022795a-4e2b-46cc-8fa6-5f3c6277db2e) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1167af7b-e4cd-465e-9a93-ec56e693a70f)
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/962ac019-38cf-4201-9b31-9c93bc9c74b9) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/b7790677-9f3f-4886-824e-381f12f36451) 
@@ -5494,12 +5502,6 @@ set_output_delay -clock clk -min 0.5 [get_ports y[7]]</pre>
 
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/c4a477b7-ad6a-44bc-91cd-d2147ffe34a8)
-
-
-Conversion of .db to .v in openroad
-
-![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/dcceb50c-547d-4a4b-8770-805772d7c0a7)
-
 
 </details>
 
