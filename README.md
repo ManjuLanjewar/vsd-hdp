@@ -5164,12 +5164,12 @@ As all the above steps were successful, I got the following terminal result:
 
 To add a new design, the following command creates a configuration file for your design:
 
-# JSON Configuration File
+- JSON Configuration File
 <pre>./flow.tcl -design <design_name> -init_design_config -add_to_designs</pre>
 
 Or for TCL version use
 
-# Tcl Configuration File
+- Tcl Configuration File
 <pre>./flow.tcl -design <design_name> -init_design_config -add_to_designs -config_file config.tcl</pre>
 
 This will create the following directory structure: 
