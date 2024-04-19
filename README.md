@@ -5477,6 +5477,7 @@ set_output_delay -clock clk -min 0.5 [get_ports y[5]]
 set_output_delay -clock clk -min 0.5 [get_ports y[6]]
 set_output_delay -clock clk -min 0.5 [get_ports y[7]]</pre>
 
+### STA Comparison:
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/a022795a-4e2b-46cc-8fa6-5f3c6277db2e) ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/1167af7b-e4cd-465e-9a93-ec56e693a70f)
 
@@ -5493,8 +5494,6 @@ set_output_delay -clock clk -min 0.5 [get_ports y[7]]</pre>
 
 
 ![image](https://github.com/ManjuLanjewar/vsd-hdp/assets/157192602/c4a477b7-ad6a-44bc-91cd-d2147ffe34a8)
-
-
 
 
 Conversion of .db to .v in openroad
